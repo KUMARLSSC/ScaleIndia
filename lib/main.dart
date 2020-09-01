@@ -1,13 +1,17 @@
-import 'package:Scaleindia/Manager/dialog_manager.dart';
-import 'package:Scaleindia/Models/router.dart';
-import 'package:Scaleindia/Pages/splash_page.dart';
+
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
+import 'Manager/dialog_manager.dart';
+import 'Models/router.dart';
+import 'Pages/splash_page.dart';
 import 'Services/dialog_service.dart';
+import 'Services/navigation_service.dart';
 import 'locator.dart';
-import 'services/navigation_service.dart';
 
 void main() {
+  setupLocator();
   runApp(MyApp());
 }
 

@@ -1,10 +1,12 @@
-import 'package:Scaleindia/Services/dialog_service.dart';
-import 'package:Scaleindia/Services/navigation_service.dart';
+
 import 'package:get_it/get_it.dart';
 
+import 'Services/dialog_service.dart';
+import 'Services/navigation_service.dart';
 GetIt locator = GetIt.instance;
 
-void setUpLocator() {
+void setupLocator() {
+ 
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => DialogService());
 }
