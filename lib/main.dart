@@ -1,8 +1,5 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'Manager/dialog_manager.dart';
 import 'Models/router.dart';
 import 'Pages/splash_page.dart';
