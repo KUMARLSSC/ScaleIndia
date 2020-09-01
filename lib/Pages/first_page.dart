@@ -38,27 +38,29 @@ class FirstPage extends StatelessWidget {
                              borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(15.0),
                       topRight: Radius.circular(15.0),
+                      bottomLeft: Radius.circular(15.0),
+                      bottomRight: Radius.circular(15.0),
                     ),
-                    child: Image.asset("assets/img/scale.png",fit: BoxFit.fill,),
+                    child: Image.asset("assets/img/scale.png",fit: BoxFit.fill,height: 155,width: 450,),
                    ),),
                     SizedBox(
                       height: 10,
                     ),
-                    Text(
+                   Center(child:  Text(
                       "Welcomes You",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
+                      style: TextStyle(color: Colors.white, fontSize: 23),
+                    ),),
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+            
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
                       color: Color.fromRGBO(255, 255, 255, 15),
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(60),
-                          topRight: Radius.circular(60))),
+                          topLeft: Radius.circular(35),
+                          topRight: Radius.circular(35))),
                   child: SingleChildScrollView(
                     child: Padding(
                       padding: EdgeInsets.all(30),
