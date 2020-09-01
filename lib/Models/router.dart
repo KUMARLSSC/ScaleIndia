@@ -1,5 +1,6 @@
 import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/first_page.dart';
+import 'package:Scaleindia/Pages/second_page.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -9,11 +10,17 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         routeName: settings.name,
         viewToShow: FirstPage(),
       );
-      default:
+    case SecondViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: SecondPage(),
+      );
+    default:
       return MaterialPageRoute(
           builder: (_) => Scaffold(
                 body: Center(
-                    child: Text('There was a technical error ${settings.name}')),
+                    child:
+                        Text('There was a technical error ${settings.name}')),
               ));
   }
 }
