@@ -52,7 +52,7 @@ class FirstPage extends StatelessWidget {
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Color.fromRGBO(255, 255, 255, 15),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(60),
                           topRight: Radius.circular(60))),
@@ -61,6 +61,7 @@ class FirstPage extends StatelessWidget {
                       padding: EdgeInsets.all(30),
                       child: Column(
                         children: <Widget>[
+                          Center(child: Image.asset("assets/img/scale.png",width: 150,),),
                           Center(child: Text("Request ID:",style: kTitleStyle,)),
                           SizedBox(
                             height: 15,
@@ -99,7 +100,9 @@ class FirstPage extends StatelessWidget {
                             title: 'Start',
                             busy: model.busy,
                             onPressed: () {
-                              model.navigateToSecondPage();
+                              model.navigateToSecondPage(
+                              
+                              );
                             },
                           ),
                           SizedBox(
