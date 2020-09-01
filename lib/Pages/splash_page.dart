@@ -2,6 +2,7 @@ import 'package:Scaleindia/ViewModels/splashpage_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+
 class SplashPage extends StatelessWidget {
   const SplashPage({Key key}) : super(key: key);
   @override
