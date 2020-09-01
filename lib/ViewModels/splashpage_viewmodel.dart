@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
 
@@ -8,6 +10,9 @@ class SplashPageViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
 
   Future handleStartUpLogic() async {
-    _navigationService.navigateTo(FirstViewRoute);
+    Future.delayed(
+      Duration(seconds: 3),
+      () => _navigationService.navigateTo(FirstViewRoute)
+    );
   }
 }
