@@ -13,7 +13,7 @@ var kStoryStyle = GoogleFonts.lato(
 
 var kTitleStyle = GoogleFonts.lato(
   textStyle: TextStyle(
-    fontSize: 15.0,
+    fontSize: 20.0,
     fontWeight: FontWeight.bold,
     color: Colors.black,
   ),

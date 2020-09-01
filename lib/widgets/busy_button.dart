@@ -26,16 +26,16 @@ class _BusyButtonState extends State<BusyButton> {
       onTap: widget.onPressed,
       child: InkWell(
         child: AnimatedContainer(
-          height: widget.busy ? 40 : null,
-          width: widget.busy ? 40 : null,
+          height: widget.busy ? 40 : 40,
+          width: widget.busy ? 40 : 100,
           duration: const Duration(milliseconds: 300),
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(
               horizontal: widget.busy ? 10 : 15,
               vertical: widget.busy ? 10 : 10),
           decoration: BoxDecoration(
-            color: widget.enabled ? Colors.grey[800] : Colors.grey[300],
-            borderRadius: BorderRadius.circular(5),
+            color: widget.enabled ? Colors.green[600] : Colors.grey[300],
+            borderRadius: BorderRadius.circular(10),
           ),
           child: !widget.busy
               ? Text(
