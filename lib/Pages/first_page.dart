@@ -34,10 +34,13 @@ class FirstPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      "Scale India",
-                      style: TextStyle(color: Colors.white, fontSize: 40),
+                   Center(child: ClipRRect(
+                             borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15.0),
+                      topRight: Radius.circular(15.0),
                     ),
+                    child: Image.asset("assets/img/scale.png",fit: BoxFit.fill,),
+                   ),),
                     SizedBox(
                       height: 10,
                     ),
@@ -61,7 +64,6 @@ class FirstPage extends StatelessWidget {
                       padding: EdgeInsets.all(30),
                       child: Column(
                         children: <Widget>[
-                          Center(child: Image.asset("assets/img/scale.png",width: 150,),),
                           Center(child: Text("Request ID:",style: kTitleStyle,)),
                           SizedBox(
                             height: 15,
