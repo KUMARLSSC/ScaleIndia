@@ -33,7 +33,7 @@ class InputField extends StatefulWidget {
       this.formatter,
       this.validationMessage,
       this.textInputAction = TextInputAction.next,
-      this.textInputType = TextInputType.text,
+      this.textInputType = TextInputType.number,
       this.password = false,
       this.isReadOnly = false,
       this.smallVersion = false});

@@ -6,6 +6,7 @@ import 'base_model.dart';
 
 class FirstPageViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
+  
 
   void navigateToSecondPage() {
     _navigationService.navigateTo(SecondViewRoute);

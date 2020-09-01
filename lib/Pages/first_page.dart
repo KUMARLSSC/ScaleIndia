@@ -42,7 +42,7 @@ class FirstPage extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      "Welcome Back",
+                      "Welcomes You",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ],
@@ -84,6 +84,7 @@ class FirstPage extends StatelessWidget {
                                           bottom: BorderSide(
                                               color: Colors.grey[200]))),
                                   child: InputField(
+                                    
                                     placeholder: 'Enter your request id',
                                     controller: textController,
                                   ),
