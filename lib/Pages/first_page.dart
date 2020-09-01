@@ -5,11 +5,9 @@ import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-
-
 class FirstPage extends StatelessWidget {
   final textController = TextEditingController();
- 
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<FirstPageViewModel>.reactive(
@@ -34,26 +32,34 @@ class FirstPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                   Center(child: ClipRRect(
-                             borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15.0),
-                      topRight: Radius.circular(15.0),
-                      bottomLeft: Radius.circular(15.0),
-                      bottomRight: Radius.circular(15.0),
+                    Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15.0),
+                          topRight: Radius.circular(15.0),
+                          bottomLeft: Radius.circular(15.0),
+                          bottomRight: Radius.circular(15.0),
+                        ),
+                        child: Image.asset(
+                          "assets/img/scale.png",
+                          fit: BoxFit.fill,
+                          height: 155,
+                          width: 450,
+                        ),
+                      ),
                     ),
-                    child: Image.asset("assets/img/scale.png",fit: BoxFit.fill,height: 155,width: 450,),
-                   ),),
                     SizedBox(
                       height: 10,
                     ),
-                   Center(child:  Text(
-                      "Welcomes You",
-                      style: TextStyle(color: Colors.white, fontSize: 23),
-                    ),),
+                    Center(
+                      child: Text(
+                        "Welcomes You",
+                        style: TextStyle(color: Colors.white, fontSize: 23),
+                      ),
+                    ),
                   ],
                 ),
               ),
-            
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
@@ -66,7 +72,11 @@ class FirstPage extends StatelessWidget {
                       padding: EdgeInsets.all(30),
                       child: Column(
                         children: <Widget>[
-                          Center(child: Text("Request ID:",style: kTitleStyle,)),
+                          Center(
+                              child: Text(
+                            "Request ID:",
+                            style: kTitleStyle,
+                          )),
                           SizedBox(
                             height: 15,
                           ),
@@ -89,7 +99,6 @@ class FirstPage extends StatelessWidget {
                                           bottom: BorderSide(
                                               color: Colors.grey[200]))),
                                   child: InputField(
-                                    
                                     placeholder: 'Enter your request id',
                                     controller: textController,
                                   ),
@@ -104,9 +113,7 @@ class FirstPage extends StatelessWidget {
                             title: 'Start',
                             busy: model.busy,
                             onPressed: () {
-                              model.navigateToSecondPage(
-                              
-                              );
+                              model.firstpage(requestid: textController.text );
                             },
                           ),
                           SizedBox(
