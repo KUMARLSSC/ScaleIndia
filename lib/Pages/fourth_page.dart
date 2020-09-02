@@ -81,7 +81,7 @@ class FourthPage extends StatelessWidget {
                                     "23516278765",
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.normal,
                                       fontSize: 14.0,
                                     ),
                                   )),
@@ -90,8 +90,8 @@ class FourthPage extends StatelessWidget {
                                       "Sanni kumar singh",
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 15.0,
                                       ),
                                     ),
                                   ),
