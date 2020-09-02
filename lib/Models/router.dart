@@ -1,5 +1,6 @@
 import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/first_page.dart';
+import 'package:Scaleindia/Pages/fourth_page.dart';
 import 'package:Scaleindia/Pages/second_page.dart';
 import 'package:Scaleindia/Pages/third_page.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _pageRoute(
         routeName: settings.name,
         viewToShow: ThirdPage(),
+      );
+       case FourthViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: FourthPage(),
       );
     default:
       return MaterialPageRoute(
