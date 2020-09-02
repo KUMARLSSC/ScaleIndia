@@ -34,6 +34,7 @@ dependencies:
   provider_architecture: ^1.1.1+1
   stacked: ^1.7.6
   async: ^2.4.1
+  font_awesome_flutter: ^8.8.1
   google_fonts: ^1.1.0
   connectivity: ^0.4.9+2
   flutter_offline: ^0.3.0
