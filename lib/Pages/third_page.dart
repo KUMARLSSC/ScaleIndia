@@ -5,9 +5,10 @@ class ThirdPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(child: header(context, isAppTitle: true,isIcon: false), preferredSize: Size.fromHeight(50.0)),
-      body: Center(
-        child: Container(
-          height: MediaQuery.of(context).size.height - 60.0,
+      body: Padding(
+        padding: EdgeInsets.only(left: 13),
+        child:  Container(
+          height: MediaQuery.of(context).size.height - 170.0,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -52,7 +53,7 @@ class ThirdPage extends StatelessWidget {
                         style: TextStyle(color: Colors.white, fontSize: 27,fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Divider(color: Colors.black45,height: 15,),
+                    Divider(color: Colors.black12,height: 15,),
                      SizedBox(
                       height: 10,
                     ),
@@ -125,12 +126,37 @@ class ThirdPage extends StatelessWidget {
                   ],
                 ),
               ),
+              Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Container(
+                              height: 50,
+                              width: 140,
+                              child: RaisedButton(
+                              splashColor: Colors.blue,
+                              elevation: 5.0,
+                                color: new Color(0xffffffff),
+                                child: Text('Candidate List',
+                                  style: TextStyle(
+                                    fontSize: 15.0,
+                                    color:Colors.blueAccent,
+                                  ),),
+                                onPressed: () {},
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      30.0),
+                                       side: BorderSide(color: Colors.blueAccent),
+                                      ),
+                            ),
+                            )
+                          ),
               ],
               ),
             ),
             ),
         ),
-      ),
+        )
+        
+      
     );
   }
 }
