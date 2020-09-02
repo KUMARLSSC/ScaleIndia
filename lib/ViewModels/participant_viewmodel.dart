@@ -12,7 +12,8 @@ class _ParticipantViewModelState extends State<ParticipantViewModel> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-          child: ListView.builder(
+          child: ListView.separated(
+            separatorBuilder: (context, index) => Divider(color: Colors.black,),
             itemCount: candidate.length,
             scrollDirection: Axis.vertical,
                 shrinkWrap: true,

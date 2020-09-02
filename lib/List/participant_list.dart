@@ -9,7 +9,7 @@ class ParticiPant {
 }
 
 List<ParticiPant> candidate = [
-  ParticiPant(id: "1234567890", name: "Kumaresan"),
+  ParticiPant(id: "1234567890", name: "Kumaresang"),
   ParticiPant(id: "0321456789", name: "Rajesh"),
   ParticiPant(id: "5467891230", name: "Surya"),
   ParticiPant(id: "7894561230", name: "Balaji"),

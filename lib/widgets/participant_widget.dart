@@ -9,11 +9,11 @@ class ParticipantWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text( participant.id,
+        Text( participant.id,maxLines: 2,
          style: TextStyle(
          color: Colors.white,
         fontWeight: FontWeight.normal,
-       fontSize: 15.0,
+       fontSize: 16.0,
     ),
       ),
        Text(
