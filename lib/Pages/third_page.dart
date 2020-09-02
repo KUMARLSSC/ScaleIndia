@@ -1,14 +1,11 @@
+import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:flutter/material.dart';
-class ThirdPage extends StatefulWidget {
-  @override
-  _ThirdPageState createState() => _ThirdPageState();
-}
-
-class _ThirdPageState extends State<ThirdPage> {
+class ThirdPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      appBar: PreferredSize(child: header(context, isAppTitle: true,isIcon: false), preferredSize: Size.fromHeight(47.0)),
+      body: null,
     );
   }
 }
