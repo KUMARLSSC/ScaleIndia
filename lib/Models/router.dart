@@ -1,4 +1,5 @@
 import 'package:Scaleindia/Models/route_names.dart';
+import 'package:Scaleindia/Pages/fifth_page.dart';
 import 'package:Scaleindia/Pages/first_page.dart';
 import 'package:Scaleindia/Pages/fourth_page.dart';
 import 'package:Scaleindia/Pages/second_page.dart';
@@ -26,6 +27,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _pageRoute(
         routeName: settings.name,
         viewToShow: FourthPage(),
+      );
+      case FifthViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: FifthPage(),
       );
     default:
       return MaterialPageRoute(
