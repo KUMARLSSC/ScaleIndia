@@ -72,7 +72,7 @@ class FourthPage extends StatelessWidget {
                               ),
                               SizedBox(height: 10,),
                               Container(
-                                height: 528,
+                                height:MediaQuery.of(context).size.height - 184.0,
                                 child: ParticipantViewModel(),
                               )
                              
