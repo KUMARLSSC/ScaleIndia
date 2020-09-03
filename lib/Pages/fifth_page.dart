@@ -1,7 +1,7 @@
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:flutter/material.dart';
-
 class FifthPage extends StatelessWidget {
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,9 +79,37 @@ class FifthPage extends StatelessWidget {
                                       "Instruction",
                                       style: TextStyle(
                                           color: Colors.white,
+                                          decoration: TextDecoration.underline,
                                           fontSize: 25,
                                           fontWeight: FontWeight.bold),
                                     )),
+                                     SizedBox(
+                              height: 5,
+                            ),
+                                    Center(
+                                      child: Text("• The examination is of 60 mintues",style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.normal),),
+                                    ),
+                                    SizedBox(
+                              height: 5,
+                            ),
+                                     Center(
+                                      child: Text("• It is a multiple choicequestion with no negative marking", textAlign: TextAlign.center,style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.normal),),
+                                    ),
+                                     SizedBox(
+                              height: 5,
+                            ),
+                                   Center(
+                                      child: Text("• For any issue contact the invagilator", textAlign: TextAlign.center,style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.normal),),
+                                    ),
                                   ],
                                 ),
                               ),
