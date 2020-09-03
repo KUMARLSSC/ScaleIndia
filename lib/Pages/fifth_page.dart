@@ -65,11 +65,11 @@ class FifthPage extends StatelessWidget {
                               height: 15,
                             ),
                             SizedBox(
-                              height: 5,
+                              height: 15,
                             ),
                             Container(
                               height:
-                                  MediaQuery.of(context).size.height - 227.0,
+                                  MediaQuery.of(context).size.height - 240.0,
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.vertical,
                                 child: Column(
@@ -110,6 +110,95 @@ class FifthPage extends StatelessWidget {
                                           fontSize: 18,
                                           fontWeight: FontWeight.normal),),
                                     ),
+                                    SizedBox(
+                              height: 15,
+                            ),
+                                    Center(child:  Container(
+                            height: 50,
+                            width: 140,
+                            child: RaisedButton(
+                              splashColor: Colors.blue,
+                              elevation: 5.0,
+                              color: new Color(0xFFEA4335),
+                              child: Text(
+                                'Theory',
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              onPressed: () {
+                                
+                              },
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                                side: BorderSide(color: Colors.blueAccent),
+                              ),
+                            ),
+                          ),),
+                          SizedBox(
+                              height: 10,
+                            ),
+                          Center(child:  Container(
+                            height: 50,
+                            width: 140,
+                            child: RaisedButton(
+                              splashColor: Colors.blue,
+                              elevation: 5.0,
+                              color: new Color(0xFF34A853),
+                              child: Text(
+                                'Practical',
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              onPressed: () {
+                                
+                              },
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                                side: BorderSide(color: Colors.blueAccent),
+                              ),
+                            ),
+                          ),),
+                          SizedBox(height: 15.0,),
+                          Center(child:  Container(
+                            height: 70,
+                            width: 220,
+                            child: RaisedButton(
+                              splashColor: Colors.blue,
+                              elevation: 5.0,
+                              color: Colors.black87,
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 5,),
+                                  Text(
+                                'Upload your photo',
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                                  Icon(Icons.camera_alt,color: Colors.white, size: 24.0,)
+                                  ,Text(
+                                'Upload your Aadhar card',
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                                ],
+                              ),
+                              onPressed: () {                               
+                              },
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                                side: BorderSide(color: Colors.blueAccent),
+                              ),
+                            ),
+                          ),),
+
                                   ],
                                 ),
                               ),
