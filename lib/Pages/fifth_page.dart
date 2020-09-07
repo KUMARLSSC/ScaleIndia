@@ -87,7 +87,7 @@ class FifthPage extends StatelessWidget {
                               height: 5,
                             ),
                                     Center(
-                                      child: Text("• The examination is of 60 mintues",style: TextStyle(
+                                      child: Text("•The examination is of 60 mintues",style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 18,
                                           fontWeight: FontWeight.normal),),
