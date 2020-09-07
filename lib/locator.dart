@@ -1,5 +1,6 @@
 
 import 'package:Scaleindia/Services/dialog_service.dart';
+import 'package:Scaleindia/Services/json_service.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:get_it/get_it.dart';
 
@@ -9,4 +10,5 @@ void setupLocator() {
  
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => DialogService());
+  locator.registerLazySingleton(() =>JsonService());
 }
