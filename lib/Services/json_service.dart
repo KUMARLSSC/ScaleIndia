@@ -1,11 +1,10 @@
 import 'dart:convert';
 
 import 'package:Scaleindia/json_api.dart';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class JsonService {
-  Future<dynamic> future(@required String requestid) async {
+  Future<dynamic> future(String requestid) async {
     var url = "http://www.json-generator.com/api/json/get/cfjguBWXqW?indent=2";
     var response = await http.get(url);
     var _scale = List<ScaleIndia>();
