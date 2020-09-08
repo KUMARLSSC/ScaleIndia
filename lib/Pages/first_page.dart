@@ -113,12 +113,13 @@ class FirstPage extends StatelessWidget {
                             title: 'Start',
                             busy: model.busy,
                             onPressed: () {
-                              model.firstpage(requestid: textController.text );
+                              model.firstpage(requestid: textController.text);
                             },
                           ),
                           SizedBox(
                             height: 50,
                           ),
+                           new Padding(padding: EdgeInsets.only(bottom: 20.0)),
                         ],
                       ),
                     ),

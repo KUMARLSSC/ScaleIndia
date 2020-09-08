@@ -9,17 +9,24 @@ import 'base_model.dart';
 class FirstPageViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
 
-   final DialogService _dialogService = locator<DialogService>();
-
-  Future firstpage({@required String requestid ,})async{
-     if (requestid.isEmpty){
-         await _dialogService.showDialog(
-          title: 'Given field is empty ',
-          description: 'Please enter your request id',
-        );
-     }else{
-       _navigationService.navigateTo(SecondViewRoute);
-     }
+  final DialogService _dialogService = locator<DialogService>();
+  String i = "1";
+  Future firstpage({
+    @required String requestid,
+  }) async {
+    if (requestid == i) {
+     _navigationService.navigateTo(SecondViewRoute);
+    } else if (requestid.isEmpty){ 
+      await _dialogService.showDialog(
+        title: 'Given field is empty ',
+        description: 'Please enter your request id',
+      ); 
+    }else{
+      await _dialogService.showDialog(
+        title: 'Request Id error',
+        description: 'Please re-enter your request id',
+      ); 
+    }
   }
 
   void navigateToSecondPage() {
