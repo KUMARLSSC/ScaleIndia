@@ -1,4 +1,5 @@
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
+import 'package:Scaleindia/widgets/bottom_sheet.dart';
 import 'package:flutter/material.dart';
 class FifthPage extends StatelessWidget {
  
@@ -190,8 +191,11 @@ class FifthPage extends StatelessWidget {
                               ),
                                 ],
                               ),
-                              onPressed: () {                               
-                              },
+                               onPressed: () {
+                          showModalBottomSheet(
+                              context: context,
+                              builder: ((builder) => BottomShhetWidget()));
+                        },
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30.0),
                                 side: BorderSide(color: Colors.blueAccent),
