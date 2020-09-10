@@ -190,53 +190,18 @@ class FifthPage extends StatelessWidget {
                                       SizedBox(
                                         height: 15.0,
                                       ),
+                                      Divider(
+                                color: Colors.black38,
+                                height: 15,
+                              ),
+                              SizedBox(
+                                        height: 15.0,
+                                      ),
                                       Center(
                                         child: Container(
-                                          height: 70,
+                                          height: 150,
                                           width: 220,
-                                          child: RaisedButton(
-                                            splashColor: Colors.blue,
-                                            elevation: 5.0,
-                                            color: Colors.black87,
-                                            child: Column(
-                                              children: [
-                                                SizedBox(
-                                                  height: 5,
-                                                ),
-                                                Text(
-                                                  'Upload your photo',
-                                                  style: TextStyle(
-                                                    fontSize: 15.0,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                                Icon(
-                                                  Icons.camera_alt,
-                                                  color: Colors.white,
-                                                  size: 24.0,
-                                                ),
-                                                Text(
-                                                  'Upload your Aadhar card',
-                                                  style: TextStyle(
-                                                    fontSize: 15.0,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            onPressed: () {
-                                              showModalBottomSheet(
-                                                  context: context,
-                                                  builder: ((builder) =>
-                                                      BottomShhetWidget()));
-                                            },
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(30.0),
-                                              side: BorderSide(
-                                                  color: Colors.blueAccent),
-                                            ),
-                                          ),
+                                          child: BottomShhetWidget(),
                                         ),
                                       ),
                                     ],

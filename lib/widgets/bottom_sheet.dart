@@ -19,60 +19,86 @@ class _BottomShhetWidgetState extends State<BottomShhetWidget> {
     });
   }
 
-  void takePhotoByGallery() async {
-    // ignore: deprecated_member_use
-    File image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      imageFile = image;
-    });
-  }
-
-  void removePhoto() {
-    setState(() {
-      imageFile = null;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100.0,
-      width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(left: 30.0, top: 20.0),
-      child: Column(
-        children: <Widget>[
-          Text(
-            "Profile photo",
-            style: TextStyle(
-                color: Colors.black,
-                decoration: TextDecoration.underline,
-                fontSize: 25,
-                fontWeight: FontWeight.bold),
+    return Column(
+      children: [
+        RaisedButton(
+          splashColor: Colors.blue,
+          elevation: 5.0,
+          color: Colors.black87,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                'Upload your photo',
+                style: TextStyle(
+                  fontSize: 15.0,
+                  color: Colors.white,
+                ),
+              ),
+              Icon(
+                Icons.camera_alt,
+                color: Colors.white,
+                size: 24.0,
+              ),
+            ],
           ),
-          Container(
-            child: Row(
-              children: <Widget>[
-                SizedBox(
-                  width: 40.0,
-                ),
-                FlatButton.icon(
-                  icon: Icon(Icons.camera),
-                  onPressed: takePhotoByCamera,
-                  label: Text("Camera"),
-                ),
-                Container(
-                  margin: EdgeInsets.only(right: 20.0),
-                ),
-                FlatButton.icon(
-                  icon: Icon(Icons.image),
-                  onPressed: takePhotoByGallery,
-                  label: Text("Gallery"),
-                ),
-              ],
-            ),
+          onPressed: () {
+            takePhotoByCamera();
+          },
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+            side: BorderSide(color: Colors.blueAccent),
           ),
-        ],
-      ),
+        ),
+        SizedBox(
+          height: 5.0,
+        ),
+        Text(
+          '&',
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 25,
+              fontWeight: FontWeight.bold),
+        ),
+        SizedBox(
+          height: 5.0,
+        ),
+        RaisedButton(
+          splashColor: Colors.blue,
+          elevation: 5.0,
+          color: Colors.black87,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                'Upload Aadhar card',
+                style: TextStyle(
+                  fontSize: 15.0,
+                  color: Colors.white,
+                ),
+              ),
+              Icon(
+                Icons.camera_alt,
+                color: Colors.white,
+                size: 24.0,
+              ),
+            ],
+          ),
+          onPressed: () {
+            takePhotoByCamera();
+          },
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+            side: BorderSide(color: Colors.blueAccent),
+          ),
+        ),
+      ],
     );
   }
 }
