@@ -176,7 +176,7 @@ class FifthPage extends StatelessWidget {
                                               ),
                                             ),
                                             onPressed: () {
-                                              model.navigateToTheory();
+                                              model.navigateToPractical();
                                             },
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
