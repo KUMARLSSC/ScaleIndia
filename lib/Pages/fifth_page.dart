@@ -53,7 +53,7 @@ class FifthPage extends StatelessWidget {
                               Center(
                                 child: Text.rich(TextSpan(children: [
                                   TextSpan(
-                                      text: "Enrollment ID:",
+                                      text: "Candidate ID:",
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 17)),
                                   TextSpan(
