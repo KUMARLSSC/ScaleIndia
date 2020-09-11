@@ -4,6 +4,7 @@ import 'package:Scaleindia/Pages/first_page.dart';
 import 'package:Scaleindia/Pages/fourth_page.dart';
 import 'package:Scaleindia/Pages/practical_page.dart';
 import 'package:Scaleindia/Pages/second_page.dart';
+import 'package:Scaleindia/Pages/summary_page.dart';
 import 'package:Scaleindia/Pages/theory_page.dart';
 import 'package:Scaleindia/Pages/third_page.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +45,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _pageRoute(
         routeName: settings.name,
         viewToShow: PracticalPage(),
+      );
+       case SummaryViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: SummaryPage(),
       );
     default:
       return MaterialPageRoute(
