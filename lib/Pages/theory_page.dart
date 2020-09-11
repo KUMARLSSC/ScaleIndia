@@ -78,13 +78,20 @@ class TheoryPage extends StatelessWidget {
                             SizedBox(
                               height: 10.0,
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width - 10.0,
-                              child: Text(
-                                "____________ consists of instructions of the work to be carried out by basic closing operator",
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
+                            Card(
+                              color: Colors.black,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 10.0,
+                                    bottom: 15.0,
+                                    left: 16.0,
+                                    right: 16.0),
+                                child: Text(
+                                  "1) "+"____________ consists of instructions of the work to be carried out by basic closing operator",
+                                  textAlign: TextAlign.justify,
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
                               ),
                             ),
                             SizedBox(

@@ -36,7 +36,7 @@ class _OptionsState extends State<Options> {
     return Card(
       child: Padding(
         padding: const EdgeInsets.only(
-            top: 32.0, bottom: 32.0, left: 16.0, right: 16.0),
+            top: 1.0, bottom: 2.0, left: 16.0, right: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: nList
