@@ -1,4 +1,5 @@
 import 'package:Scaleindia/ViewModels/practicalpage_viewmodel.dart';
+import 'package:Scaleindia/widgets/Enablebuttons_widget.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:flutter/material.dart';
 
@@ -61,26 +62,7 @@ class PracticalPage extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    Container(
-                      height: 50,
-                      width: 140,
-                      child: RaisedButton(
-                        splashColor: Colors.blue,
-                        elevation: 5.0,
-                        color: new Color(0xFFEA4335),
-                        child: Text(
-                          'Next',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onPressed: () {},
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ),
-                    ),
+                    SumbitButton(),
                   ],
                 ),
               ),
