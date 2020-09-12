@@ -52,33 +52,35 @@ class PracticalPage extends StatelessWidget {
                       height: 10,
                     ),
                     Container(
-                          width: 330,
-                          height:480,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black)),
-                          child: PracticalViewModel(),
-                        ),
-                    SizedBox(height: 10,),
+                      width: 330,
+                      height: 480,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black)),
+                      child: PracticalViewModel(),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Container(
-                                  height: 50,
-                                  width: 140,
-                                  child: RaisedButton(
-                                    splashColor: Colors.blue,
-                                    elevation: 5.0,
-                                    color: new Color(0xFFEA4335),
-                                    child: Text(
-                                      'Submit',
-                                      style: TextStyle(
-                                        fontSize: 15.0,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    onPressed: () {},
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
-                                  ),
-                                ),
+                      height: 50,
+                      width: 140,
+                      child: RaisedButton(
+                        splashColor: Colors.blue,
+                        elevation: 5.0,
+                        color: new Color(0xFFEA4335),
+                        child: Text(
+                          'Next',
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                        onPressed: () {},
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
