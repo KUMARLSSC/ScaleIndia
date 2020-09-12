@@ -13,9 +13,6 @@ class FifthPageViewModel extends BaseModel {
   }
 
   void navigateToPractical() {
-    _dialogService.showDialog(
-        title: 'Complete profile',
-        description:
-            'Please upload your photo & aadhar card for  continue theory and practical exam');
+    _navigationService.navigateTo(PracticalViewRoute);
   }
 }

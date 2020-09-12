@@ -87,7 +87,8 @@ class TheoryPage extends StatelessWidget {
                                     left: 16.0,
                                     right: 16.0),
                                 child: Text(
-                                  "1) "+"____________ consists of instructions of the work to be carried out by basic closing operator",
+                                  "1) " +
+                                      "____________ consists of instructions of the work to be carried out by basic closing operator",
                                   textAlign: TextAlign.justify,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20),
