@@ -10,18 +10,18 @@ class SumbitButton extends StatefulWidget {
 
 class _SumbitButtonState extends State<SumbitButton> {
   final DialogService _dialogService = locator<DialogService>();
-  bool isEnabled = true ;
- 
-  enableButton(){
- 
+  bool isEnabled = true;
+
+  enableButton() {
     setState(() {
       isEnabled = true;
     });
   }
-  sampleFunction(){
- 
+
+  sampleFunction() {
     print('Clicked');
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,7 +30,6 @@ class _SumbitButtonState extends State<SumbitButton> {
       child: RaisedButton(
         splashColor: Colors.blue,
         elevation: 5.0,
-
         child: Text(
           'Submit',
           style: TextStyle(
@@ -38,8 +37,13 @@ class _SumbitButtonState extends State<SumbitButton> {
             color: Colors.white,
           ),
         ),
-        onPressed: isEnabled ? ()=> _dialogService.showDialog( title: "Failed",
-        description: 'Please complete all the questions or check whether you attened all the questions or not',) : null,
+        onPressed: isEnabled
+            ? () => _dialogService.showDialog(
+                  title: "Failed",
+                  description:
+                      'Please complete all the questions or check whether you attened all the questions or not',
+                )
+            : null,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
