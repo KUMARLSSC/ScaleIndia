@@ -184,7 +184,6 @@ class ThirdPage extends StatelessWidget {
                               },
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30.0),
-                                side: BorderSide(color: Colors.blueAccent),
                               ),
                             ),
                           )),

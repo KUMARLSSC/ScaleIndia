@@ -122,8 +122,6 @@ class TheoryPage extends StatelessWidget {
                                     onPressed: () {},
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30.0),
-                                      side:
-                                          BorderSide(color: Colors.blueAccent),
                                     ),
                                   ),
                                 ),
@@ -144,8 +142,6 @@ class TheoryPage extends StatelessWidget {
                                     onPressed: () {},
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30.0),
-                                      side:
-                                          BorderSide(color: Colors.blueAccent),
                                     ),
                                   ),
                                 ),

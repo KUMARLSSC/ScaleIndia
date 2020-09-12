@@ -44,7 +44,7 @@ class PracticalPage extends StatelessWidget {
                     Container(child: SingleChildScrollView(
                       child: Container(
                         width: 330,
-                       height: 300,
+                       height: 380,
                        decoration: BoxDecoration(
                          border: Border.all(color: Colors.black)
                        ),
