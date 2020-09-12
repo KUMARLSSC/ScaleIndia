@@ -1,14 +1,12 @@
+import 'package:Scaleindia/List/questions_list.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:flutter/material.dart';
 
-class PracticalPageWidget extends StatefulWidget {
-  @override
-  _PracticalPageWidgetState createState() => _PracticalPageWidgetState();
-}
-
-class _PracticalPageWidgetState extends State<PracticalPageWidget> {
+class PracticalPageWidget extends StatelessWidget {
   final textController = TextEditingController();
+  final Questions questions;
+  PracticalPageWidget({this.questions});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,8 +17,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
           color: Colors.grey[350],
           child: Center(
             child: Text(
-              "1:" +
-                  "Select the right sewing machine .threads and bobbins for the materials as per the specifications in the job card. ",
+              questions.ques,
               style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
@@ -46,48 +43,49 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             color: Colors.white,
           ),
           textColor: Colors.white,
-          splashColor: Colors.red,
+          splashColor: Colors.blue,
           color: Colors.green,
         ),
         SizedBox(
           height: 15,
         ),
-        Text("Max Marks: 10",style: TextStyle(fontSize: 17),),
+        Text(
+          "Max Marks: 10",
+          style: TextStyle(fontSize: 17),
+        ),
         SizedBox(
           height: 15,
         ),
-          Text(
-                            "Enter Marks:",
-                            style: kTitleStyle,
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Container(
-                            height: 86,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Color.fromRGBO(32, 132, 232, .3),
-                                      blurRadius: 20,
-                                      offset: Offset(0, 10))
-                                ]),
-                            child: Container(
-                                  height: 80,
-                                  width: 150,
-                                  padding: Ed,
-                                  decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(
-                                              color: Colors.grey[200]))),
-                                  child: InputField(
-                                    placeholder: 'Mark',
-                                    controller: textController,
-                                  ),
-                                ),
-                          ),
+        Text(
+          "Enter Marks:",
+          style: kTitleStyle,
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Container(
+          height: 80,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                    color: Color.fromRGBO(32, 132, 232, .3),
+                    blurRadius: 20,
+                    offset: Offset(0, 10))
+              ]),
+          child: Container(
+            height: 80,
+            width: 150,
+            padding: EdgeInsets.fromLTRB(10, 10, 10, 1),
+            decoration: BoxDecoration(
+                border: Border(bottom: BorderSide(color: Colors.grey[200]))),
+            child: InputField(
+              placeholder: 'Mark',
+              controller: textController,
+            ),
+          ),
+        ),
       ],
     );
   }

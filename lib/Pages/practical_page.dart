@@ -1,5 +1,5 @@
+import 'package:Scaleindia/ViewModels/practicalpage_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
-import 'package:Scaleindia/widgets/practicalpage_widget.dart';
 import 'package:flutter/material.dart';
 
 class PracticalPage extends StatelessWidget {
@@ -36,21 +36,49 @@ class PracticalPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                       height: 45,
-            color: Colors.lightBlue,
-            child: Center(child: Text("LSS/N5501", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.white),),),
-                    ),
-                    SizedBox(height: 10,),
-                    Container(child: SingleChildScrollView(
-                      child: Container(
-                        width: 330,
-                       height: 380,
-                       decoration: BoxDecoration(
-                         border: Border.all(color: Colors.black)
-                       ),
-                       child: PracticalPageWidget(),
+                      height: 45,
+                      color: Colors.lightBlue,
+                      child: Center(
+                        child: Text(
+                          "LSS/N5501",
+                          style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
                       ),
-                    ),)
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                          width: 330,
+                          height:480,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black)),
+                          child: PracticalViewModel(),
+                        ),
+                    SizedBox(height: 10,),
+                    Container(
+                                  height: 50,
+                                  width: 140,
+                                  child: RaisedButton(
+                                    splashColor: Colors.blue,
+                                    elevation: 5.0,
+                                    color: new Color(0xFFEA4335),
+                                    child: Text(
+                                      'Submit',
+                                      style: TextStyle(
+                                        fontSize: 15.0,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    onPressed: () {},
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                  ),
+                                ),
                   ],
                 ),
               ),
