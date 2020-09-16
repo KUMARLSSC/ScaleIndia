@@ -11,7 +11,7 @@ class Api {
     var response = await client.get('$theorypoint/api/CenterAssesorInfo/$resId');
     final jsonresponse = json.decode(response.body);
 
-    return CenterAssesor.fromJson(jsonresponse[0]);
+    return CenterAssesor.fromJson(jsonresponse);
   }
 
 }
