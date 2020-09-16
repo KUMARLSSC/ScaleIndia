@@ -1,16 +1,16 @@
 import 'dart:async';
 
-import 'package:Scaleindia/ApiModel/theory_api.dart';
+import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/locator.dart';
 
 import 'api_services.dart';
 
 class RequestService {
   Api _api = locator<Api>();
-  StreamController<Theory> requestController = StreamController<Theory>();
+  StreamController<CenterAssesor> requestController = StreamController<CenterAssesor>();
 
   Future<bool> request(int resId) async {
-    var fetchedId = await _api.getTheoryQuestions(resId);
+    var fetchedId = await _api.getCenterAssesor(resId);
     var hasId = fetchedId != null;
     if (hasId) {
       requestController.add(fetchedId);
