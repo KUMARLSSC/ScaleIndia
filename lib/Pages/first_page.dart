@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class FirstPage extends StatelessWidget {
-  final textController = TextEditingController();
+  final TextEditingController textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class FirstPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-             const SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Padding(
@@ -113,13 +113,13 @@ class FirstPage extends StatelessWidget {
                             title: 'Start',
                             busy: model.busy,
                             onPressed: () {
-                              model.firstpage(requestid: textController.text);
+                              model.firstpage(requestidText:textController.text);
                             },
                           ),
                           SizedBox(
                             height: 50,
                           ),
-                           new Padding(padding: EdgeInsets.only(bottom: 20.0)),
+                          new Padding(padding: EdgeInsets.only(bottom: 20.0)),
                         ],
                       ),
                     ),

@@ -9,7 +9,7 @@ class RequestService {
   Api _api = locator<Api>();
   StreamController<Theory> requestController = StreamController<Theory>();
 
-  Future<bool> request(String resId) async {
+  Future<bool> request(int resId) async {
     var fetchedId = await _api.getTheoryQuestions(resId);
     var hasId = fetchedId != null;
     if (hasId) {

@@ -22,7 +22,7 @@ class Theory {
     this.tqVersionOfQb,
     this.tqLanguage,
   });
-
+  Theory.initial() : tqCode = 0;
   Theory.fromJson(Map<String, dynamic> json) {
     tqCode = json['tqCode'];
     tqQuestion = json['tqQuestion'];
@@ -35,7 +35,7 @@ class Theory {
     tqVersionOfQb = json['tqVersionOfQb'];
     tqLanguage = json['tqLanguage'];
   }
-   Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['tqCode'] = this.tqCode;
     data['tqQuestion'] = this.tqQuestion;
