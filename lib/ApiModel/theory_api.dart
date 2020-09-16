@@ -22,7 +22,6 @@ class Theory {
     this.tqVersionOfQb,
     this.tqLanguage,
   });
-  Theory.initial() : tqCode = 0;
   Theory.fromJson(Map<String, dynamic> json) {
     tqCode = json['tqCode'];
     tqQuestion = json['tqQuestion'];

@@ -9,7 +9,9 @@ class Api {
   var client = new http.Client();
 
   Future<Theory> getTheoryQuestions(int resId) async {
-    var response = await client.get('theorypoint/api/TheoryQuestion/$resId');
-    return Theory.fromJson(json.decode(response.body));
+    var response = await client.get('$theorypoint/api/TheoryQuestion/$resId');
+    final jsonresponse = json.decode(response.body);
+
+    return Theory.fromJson(jsonresponse[0]);
   }
 }
