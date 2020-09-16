@@ -8,10 +8,10 @@ class Api {
   var client = new http.Client();
 
   Future<CenterAssesor> getCenterAssesor(int resId) async {
-    var response = await client.get('$theorypoint/api/CenterAssesorInfo/$resId');
+    var response =
+        await client.get('$theorypoint/api/CenterAssesorInfo/$resId');
     final jsonresponse = json.decode(response.body);
 
     return CenterAssesor.fromJson(jsonresponse);
   }
-
 }
