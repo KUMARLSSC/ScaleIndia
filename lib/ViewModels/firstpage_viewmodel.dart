@@ -24,6 +24,7 @@ class FirstPageViewModel extends BaseModel {
         title: 'Given field is empty ',
         description: 'Please enter your request id',
       );
+      setBusy(false);
       return true;
     }
     var result = await _requestService.request(userID);
