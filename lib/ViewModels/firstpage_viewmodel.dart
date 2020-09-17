@@ -11,28 +11,32 @@ class FirstPageViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final RequestService _requestService = locator<RequestService>();
   final DialogService _dialogService = locator<DialogService>();
+  String i;
 //  String i = "1";
   Future firstpage({
     @required String requestidText,
   }) async {
     setBusy(true);
     var userID = int.tryParse(requestidText);
+
+    if (userID == null) {
+      await _dialogService.showDialog(
+        title: 'Given field is empty ',
+        description: 'Please enter your request id',
+      );
+      return true;
+    }
     var result = await _requestService.request(userID);
     setBusy(false);
 
     if (result is bool) {
       if (result) {
         _navigationService.navigateTo(SecondViewRoute);
-      } else {
-        await _dialogService.showDialog(
-          title: 'Given field is empty ',
-          description: 'Please enter your request id',
-        );
       }
     } else {
       await _dialogService.showDialog(
         title: 'Request Id error',
-        description: 'Please re-enter your request id',
+        description: 'Please enter your registered request id',
       );
     }
     /* if (requestid == i) {

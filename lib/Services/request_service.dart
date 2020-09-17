@@ -9,12 +9,16 @@ class RequestService {
   Api _api = locator<Api>();
   StreamController<CenterAssesor> requestController = StreamController<CenterAssesor>();
 
-  Future<bool> request(int resId) async {
-    var fetchedId = await _api.getCenterAssesor(resId);
+  Future request(int resId) async {
+    try {
+      var fetchedId = await _api.getCenterAssesor(resId);
     var hasId = fetchedId != null;
     if (hasId) {
       requestController.add(fetchedId);
     }
-    return hasId;
+    return hasId ;
+    } catch (e) {
+       return e.message;
+    }
   }
 }
