@@ -8,7 +8,6 @@ import 'api_services.dart';
 class RequestService {
   Api _api = locator<Api>();
   StreamController<CenterAssesor> requestController = StreamController<CenterAssesor>();
-
   Future request(int resId) async {
     try {
       var fetchedId = await _api.getCenterAssesor(resId);
