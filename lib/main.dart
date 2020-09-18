@@ -1,10 +1,13 @@
+import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'Manager/dialog_manager.dart';
 import 'Models/router.dart';
 import 'Pages/splash_page.dart';
 import 'Services/dialog_service.dart';
 import 'Services/navigation_service.dart';
+import 'Services/request_service.dart';
 import 'locator.dart';
 
 void main() {
@@ -15,7 +18,11 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return StreamProvider<CenterAssesor>(
+      initialData: CenterAssesor.initial(),
+      create: (BuildContext context) =>
+          locator<RequestService>().requestController.stream,
+      child: MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Scale India',
       builder: (context, child) => Navigator(
@@ -27,6 +34,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(primaryColor: new Color(0xff09031D)),
       home: SplashPage(),
       onGenerateRoute: generateRoute,
-    );
+    ),
+      );
   }
 }

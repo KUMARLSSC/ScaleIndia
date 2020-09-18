@@ -19,6 +19,11 @@ class CenterAssesor {
       this.qvHindi,
       this.qvTamil,
       this.qvBangla});
+  CenterAssesor.initial()
+      : asId = 0,
+        asContactPerson = '',
+        asSdmsbatchName = '',
+        centerName = '';
 
   CenterAssesor.fromJson(Map<String, dynamic> json) {
     asId = json['asId'];

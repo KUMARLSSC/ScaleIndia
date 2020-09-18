@@ -58,8 +58,8 @@ class ThirdPageWidget extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                fontSize: 20.0,
-              ),
+                fontSize: 17.0,
+              ),maxLines: 1,
             ),
           ),
         ], rows: <DataRow>[
@@ -70,7 +70,7 @@ class ThirdPageWidget extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 20.0,
+                  fontSize: 17.0,
                 ),
               )),
               DataCell(

@@ -32,7 +32,7 @@ class FirstPageViewModel extends BaseModel {
 
     if (result is bool) {
       if (result) {
-        _navigationService.navigateTo(ThirdViewRoute);
+        _navigationService.navigateTo(SecondViewRoute);
       }
     } else {
       await _dialogService.showDialog(
