@@ -16,7 +16,7 @@ class Api {
     return CenterAssesor.fromJson(jsonresponse);
   }
 
-  Future<List<Candidate>> getPostsForUser(int resId) async {
+  Future<List<Candidate>> getCandidateLiST(int resId) async {
     var _candidate = List<Candidate>();
     // Get user posts for id
     var response =
