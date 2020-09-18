@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:http/http.dart' as http;
 
@@ -13,5 +14,22 @@ class Api {
     final jsonresponse = json.decode(response.body);
 
     return CenterAssesor.fromJson(jsonresponse);
+  }
+
+  Future<List<Candidate>> getPostsForUser(int resId) async {
+    var _candidate = List<Candidate>();
+    // Get user posts for id
+    var response =
+        await client.get('$theorypoint/api/CandidateList?resId=$resId');
+
+    // parse into List
+    var parsed = json.decode(response.body) as List;
+
+    // loop and convert each item to Post
+    for (var candidate in parsed) {
+      _candidate.add(Candidate.fromJson(candidate));
+    }
+
+    return _candidate;
   }
 }
