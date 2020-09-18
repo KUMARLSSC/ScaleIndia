@@ -1,13 +1,11 @@
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ThirdPageWidget extends StatelessWidget {
-  final CenterAssesor centerAssesor;
-  const ThirdPageWidget({
-    this.centerAssesor,
-  });
   @override
   Widget build(BuildContext context) {
+    CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
