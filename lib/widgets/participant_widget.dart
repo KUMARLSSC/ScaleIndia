@@ -1,10 +1,10 @@
-import 'package:Scaleindia/ApiModel/candidate_api.dart';
+import 'package:Scaleindia/List/participant_list.dart';
 import 'package:Scaleindia/ViewModels/fourthpage_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class ParticipantWidget extends StatelessWidget {
-  final Candidate participant;
+  final ParticiPant participant;
   ParticipantWidget({
     this.participant,
   });
@@ -16,7 +16,7 @@ class ParticipantWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            participant.clEnrollmentNo,
+            participant.id,
             maxLines: 2,
             style: TextStyle(
               color: Colors.white,
@@ -25,7 +25,7 @@ class ParticipantWidget extends StatelessWidget {
             ),
           ),
           Text(
-            participant.clName,
+            participant.name,
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.normal,
