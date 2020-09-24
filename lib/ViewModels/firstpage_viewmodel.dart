@@ -13,7 +13,7 @@ class FirstPageViewModel extends BaseModel {
   final DialogService _dialogService = locator<DialogService>();
   String i;
 //  String i = "1";
-  Future<bool> firstpage({
+  Future firstpage({
     @required String requestidText,
   }) async {
     setBusy(true);
