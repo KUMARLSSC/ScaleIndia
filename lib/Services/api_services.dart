@@ -20,10 +20,10 @@ class Api {
     var _candidate = List<Candidate>();
     // Get user posts for id
     var response =
-        await client.get('$theorypoint/api/CandidateList?resId=$resId');
+        await client.get('$theorypoint/api/CandidateList/$resId');
 
     // parse into List
-    var parsed = json.decode(response.body) as List;
+    var parsed = json.decode(response.body)  as List<dynamic>;
 
     // loop and convert each item to Post
     for (var candidate in parsed) {

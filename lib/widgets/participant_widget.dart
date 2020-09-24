@@ -1,22 +1,21 @@
+import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/List/participant_list.dart';
 import 'package:Scaleindia/ViewModels/fourthpage_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class ParticipantWidget extends StatelessWidget {
-  final ParticiPant participant;
+  final Candidate candidate;
   ParticipantWidget({
-    this.participant,
+    this.candidate,
   });
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<FourthPageViewModel>.reactive(
-      viewModelBuilder: () => FourthPageViewModel(),
-      builder: (context, model, child) => Row(
+    return  Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            participant.id,
+            candidate.clEnrollmentNo,
             maxLines: 2,
             style: TextStyle(
               color: Colors.white,
@@ -25,7 +24,7 @@ class ParticipantWidget extends StatelessWidget {
             ),
           ),
           Text(
-            participant.name,
+            candidate.clName,
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.normal,
@@ -47,7 +46,7 @@ class ParticipantWidget extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                model.navigateToFifthPage();
+              
               },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0),
@@ -56,7 +55,6 @@ class ParticipantWidget extends StatelessWidget {
             ),
           )
         ],
-      ),
     );
   }
 }

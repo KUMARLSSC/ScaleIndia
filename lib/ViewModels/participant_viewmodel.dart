@@ -1,4 +1,4 @@
-import 'package:Scaleindia/List/participant_list.dart';
+/*import 'package:Scaleindia/List/participant_list.dart';
 import 'package:Scaleindia/widgets/participant_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -25,4 +25,4 @@ class _ParticipantViewModelState extends State<ParticipantViewModel> {
           ),
         );
   }
-}
+}*/
