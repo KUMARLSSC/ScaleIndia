@@ -2,6 +2,7 @@ import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/fifth_page.dart';
 import 'package:Scaleindia/Pages/first_page.dart';
 import 'package:Scaleindia/Pages/fourth_page.dart';
+import 'package:Scaleindia/Pages/langugae_page.dart';
 import 'package:Scaleindia/Pages/practical_page.dart';
 import 'package:Scaleindia/Pages/second_page.dart';
 import 'package:Scaleindia/Pages/summary_page.dart';
@@ -50,6 +51,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _pageRoute(
         routeName: settings.name,
         viewToShow: SummaryPage(),
+      );
+       case LanguageViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: LangugaePage(),
       );
     default:
       return MaterialPageRoute(
