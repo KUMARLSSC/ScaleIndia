@@ -1,4 +1,3 @@
-import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
