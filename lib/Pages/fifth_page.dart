@@ -1,3 +1,4 @@
+import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ViewModels/fifthpage_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/bottom_sheet.dart';
@@ -5,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class FifthPage extends StatelessWidget {
+  final Candidate candidate;
+  FifthPage({this.candidate});
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<FifthPageViewModel>.reactive(
@@ -57,7 +60,7 @@ class FifthPage extends StatelessWidget {
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 17)),
                                   TextSpan(
-                                      text: "1234567890",
+                                      text: candidate.clEnrollmentNo,
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 20,
@@ -187,10 +190,10 @@ class FifthPage extends StatelessWidget {
                                         height: 15.0,
                                       ),
                                       Divider(
-                                color: Colors.black38,
-                                height: 15,
-                              ),
-                              SizedBox(
+                                        color: Colors.black38,
+                                        height: 15,
+                                      ),
+                                      SizedBox(
                                         height: 15.0,
                                       ),
                                       Center(

@@ -1,4 +1,5 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
+import 'package:Scaleindia/Pages/fifth_page.dart';
 import 'package:Scaleindia/ViewModels/fourthpage_viewmodel.dart';
 
 import 'package:flutter/material.dart';
@@ -70,7 +71,11 @@ class ParticipantWidget extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        model.navigateToFifthPage();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    FifthPage(candidate: candidate)));
                       },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
