@@ -10,50 +10,43 @@ import 'package:stacked/stacked.dart';
 class LanguagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-     CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
+    CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
     return ViewModelBuilder<LanguagePageViewModel>.reactive(
-      onModelReady: (model) => model.getTheory(centerAssesor.asId),
-      viewModelBuilder: () => LanguagePageViewModel(),
-      builder: (context, model, child) => Scaffold(
-      appBar: PreferredSize(
-          child: header(context, isAppTitle: true, isIcon: false),
-          preferredSize: Size.fromHeight(50.0)),
-          body: Column(
-                        children: <Widget>[
-                          Center(
-                              child: Text(
-                            "Select an Language:",
-                            style: kTitleStyle,
-                          )),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          BusyButton(
-                              title: "English",
-                              onPressed: () {
-                               
-                              }),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          BusyButton(title: "தமிழ்", onPressed:() {
-                               
-                              }),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          BusyButton(title: "हिन्दी", onPressed:() {
-                               
-                              }),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          BusyButton(title: "తెలుగు", onPressed: () {
-                              
-                              }),
-                        ],
-                      ),
-    )
-    );
+        onModelReady: (model) => model.getTheory(centerAssesor.asId),
+        viewModelBuilder: () => LanguagePageViewModel(),
+        builder: (context, model, child) => Scaffold(
+              appBar: PreferredSize(
+                  child: header(context, isAppTitle: true, isIcon: false),
+                  preferredSize: Size.fromHeight(50.0)),
+              body: Column(
+                children: <Widget>[
+                  Center(
+                      child: Text(
+                    "Select an Language:",
+                    style: kTitleStyle,
+                  )),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  BusyButton(
+                      title: "English",
+                      onPressed: () {
+                        model.navigateToTheoryPage();
+                      }),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  BusyButton(title: "தமிழ்", onPressed: () {}),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  BusyButton(title: "हिन्दी", onPressed: () {}),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  BusyButton(title: "తెలుగు", onPressed: () {}),
+                ],
+              ),
+            ));
   }
 }

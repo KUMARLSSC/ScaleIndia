@@ -18,8 +18,8 @@ class LanguagePageViewModel extends BaseModel {
     setBusy(true);
   }
 
-  void navigateToFifthPage() {
-    _navigationService.navigateTo(FifthViewRoute);
+  void navigateToTheoryPage() {
+    _navigationService.navigateTo(TheoryViewRoute);
   }
 
   void navigateToCompleted() {
