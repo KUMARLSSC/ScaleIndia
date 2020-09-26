@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
-class LangugaePage extends StatelessWidget {
+class LanguagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
      CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);

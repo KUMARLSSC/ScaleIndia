@@ -55,7 +55,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
        case LanguageViewRoute:
       return _pageRoute(
         routeName: settings.name,
-        viewToShow: LangugaePage(),
+        viewToShow: LanguagePage(),
       );
     default:
       return MaterialPageRoute(
