@@ -1,7 +1,9 @@
 import 'package:Scaleindia/ApiModel/center_api.dart';
+import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
+import 'package:Scaleindia/widgets/language_widget.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,35 +20,13 @@ class LanguagePage extends StatelessWidget {
               appBar: PreferredSize(
                   child: header(context, isAppTitle: true, isIcon: false),
                   preferredSize: Size.fromHeight(50.0)),
-              body: Column(
-                children: <Widget>[
-                  Center(
-                      child: Text(
-                    "Select an Language:",
-                    style: kTitleStyle,
-                  )),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  BusyButton(
-                      title: "English",
-                      onPressed: () {
-                        model.navigateToTheoryPage();
-                      }),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  BusyButton(title: "தமிழ்", onPressed: () {}),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  BusyButton(title: "हिन्दी", onPressed: () {}),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  BusyButton(title: "తెలుగు", onPressed: () {}),
-                ],
-              ),
+              body: model.busy==false?Center(child: CircularProgressIndicator(),):_getPostUi(model.posts)
             ));
   }
+  Widget _getPostUi(List<Theory> posts,) => ListView.builder(
+        itemCount: 1,
+        itemBuilder: (BuildContext context, int index) => LanguageWidget(
+          theory: posts[index],
+        )
+      );
 }

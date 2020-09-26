@@ -9,11 +9,6 @@ class Theory {
   int tqMarks;
   String tqVersionOfQb;
   String tqLanguage;
-  Null tqImg;
-  Null tqNos;
-  Null tqDifficultyLevel;
-  Null tqNosNavigation;
-  Null tqVersionOfQbNavigation;
 
   Theory(
       {this.tqCode,
@@ -26,11 +21,7 @@ class Theory {
       this.tqMarks,
       this.tqVersionOfQb,
       this.tqLanguage,
-      this.tqImg,
-      this.tqNos,
-      this.tqDifficultyLevel,
-      this.tqNosNavigation,
-      this.tqVersionOfQbNavigation});
+      });
 
   Theory.fromJson(Map<String, dynamic> json) {
     tqCode = json['tqCode'];
@@ -43,11 +34,7 @@ class Theory {
     tqMarks = json['tqMarks'];
     tqVersionOfQb = json['tqVersionOfQb'];
     tqLanguage = json['tqLanguage'];
-    tqImg = json['tqImg'];
-    tqNos = json['tqNos'];
-    tqDifficultyLevel = json['tqDifficultyLevel'];
-    tqNosNavigation = json['tqNosNavigation'];
-    tqVersionOfQbNavigation = json['tqVersionOfQbNavigation'];
+    
   }
 
   Map<String, dynamic> toJson() {
@@ -62,11 +49,6 @@ class Theory {
     data['tqMarks'] = this.tqMarks;
     data['tqVersionOfQb'] = this.tqVersionOfQb;
     data['tqLanguage'] = this.tqLanguage;
-    data['tqImg'] = this.tqImg;
-    data['tqNos'] = this.tqNos;
-    data['tqDifficultyLevel'] = this.tqDifficultyLevel;
-    data['tqNosNavigation'] = this.tqNosNavigation;
-    data['tqVersionOfQbNavigation'] = this.tqVersionOfQbNavigation;
     return data;
   }
 }
