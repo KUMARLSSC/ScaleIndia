@@ -39,19 +39,36 @@ class _OptionsState extends State<Options> {
             top: 1.0, bottom: 2.0, left: 16.0, right: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: nList
-              .map((data) => RadioListTile(
-                    title: Text("${data.number}",style: TextStyle(fontSize: 20),),
+          children: <Widget>[
+            new  RadioListTile<int>(
+                    title: Text("hi",style: TextStyle(fontSize: 20),),
                     activeColor: Colors.green,
-                    value: data.index,
+                    value: 0,
                     groupValue: id,
-                    onChanged: (val) {
-                      setState(() {
-                        id = data.index;
-                      });
-                    },
-                  ))
-              .toList(),
+                    onChanged:null
+                  ),
+                   new  RadioListTile<int>(
+                    title: Text("hi",style: TextStyle(fontSize: 20),),
+                    activeColor: Colors.green,
+                    value: 1,
+                    groupValue: id,
+                    onChanged:null
+                  ),
+                   new  RadioListTile<int>(
+                    title: Text("hi",style: TextStyle(fontSize: 20),),
+                    activeColor: Colors.green,
+                    value: 2,
+                    groupValue: id,
+                    onChanged:null
+                  ),
+                   new  RadioListTile<int>(
+                    title: Text("hi",style: TextStyle(fontSize: 20),),
+                    activeColor: Colors.green,
+                    value: 3,
+                    groupValue: id,
+                    onChanged:null
+                  )
+          ]
         ),
       ),
     );
