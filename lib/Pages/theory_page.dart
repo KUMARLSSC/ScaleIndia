@@ -1,16 +1,21 @@
+import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ViewModels/theory_viewmodal.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/options_widget.dart';
 import 'package:Scaleindia/widgets/timer_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
 class TheoryPage extends StatelessWidget {
+  
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
+    CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
     return ViewModelBuilder<TheoryPageViewModel>.reactive(
+      onModelReady: (model) => model.getTheory(centerAssesor.asId),
       viewModelBuilder: () => TheoryPageViewModel(),
       builder: (context, modal, child) => Scaffold(
         key: _key,
