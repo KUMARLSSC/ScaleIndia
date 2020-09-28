@@ -1,4 +1,5 @@
 import 'package:Scaleindia/ApiModel/center_api.dart';
+import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/ViewModels/theory_viewmodal.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/options_widget.dart';
@@ -23,7 +24,7 @@ class TheoryPage extends StatelessWidget {
             child: header(context,
                 isAppTitle: false, isIcon: false, strTitle: "Theory Exam"),
             preferredSize: Size.fromHeight(50.0)),
-        body: Center(
+        body:Center(
           child: Container(
             height: MediaQuery.of(context).size.height - 30.0,
             child: Padding(
@@ -83,103 +84,14 @@ class TheoryPage extends StatelessWidget {
                             SizedBox(
                               height: 10.0,
                             ),
-                            Card(
-                              color: Colors.black,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 10.0,
-                                    bottom: 15.0,
-                                    left: 16.0,
-                                    right: 16.0),
-                                child: Text(
-                                  "1) " +
-                                      "____________ consists of instructions of the work to be carried out by basic closing operator",
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10.0,
-                            ),
-                            Options(),
-                            SizedBox(
-                              height: 10.0,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  height: 50,
-                                  width: 140,
-                                  child: RaisedButton(
-                                    splashColor: Colors.blue,
-                                    elevation: 5.0,
-                                    color: new Color(0xFFEA4335),
-                                    child: Text(
-                                      'Previous',
-                                      style: TextStyle(
-                                        fontSize: 15.0,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    onPressed: () {},
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  height: 50,
-                                  width: 140,
-                                  child: RaisedButton(
-                                    splashColor: Colors.blue,
-                                    elevation: 5.0,
-                                    color: new Color(0xFF34A853),
-                                    child: Text(
-                                      'Next',
-                                      style: TextStyle(
-                                        fontSize: 15.0,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    onPressed: () {},
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 15.0,
-                            ),
-                            Center(
-                              child: Container(
-                                height: 50,
-                                width: 140,
-                                child: RaisedButton(
-                                  splashColor: Colors.blue,
-                                  elevation: 5.0,
-                                  color: Colors.black87,
-                                  child: Text(
-                                    'Summary',
-                                    style: TextStyle(
-                                      fontSize: 15.0,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    modal.navigateToSummary();
-                                  },
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    side: BorderSide(color: Colors.blueAccent),
-                                  ),
-                                ),
-                              ),
-                            )
+                            
+                           Container(
+                                  height: 500,
+                                  child: modal.busy == false
+                                      ? Center(
+                                          child: CircularProgressIndicator(),
+                                        )
+                                      :SingleChildScrollView(child:  Options(theory: modal.posts,)),),                           
                           ]),
                     ),
                   ],
@@ -191,4 +103,10 @@ class TheoryPage extends StatelessWidget {
       ),
     );
   }
+   Widget _getPostUi(List<Theory> posts,) => ListView.builder(
+        itemCount: 1,
+        itemBuilder: (BuildContext context, int index) => Options(
+       theory: [],
+        )
+      );
 }
