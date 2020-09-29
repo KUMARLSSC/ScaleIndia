@@ -191,8 +191,8 @@ class _OptionsState extends State<Options> {
   void _next() {
     if (_answers[_currentIndex] == null) {
       _dialogService.showDialog(
-        title: 'Given field is empty ',
-        description: 'Please enter your request id',
+        title: 'Failed',
+        description: "You must select an answer to continue.",
       );
       return;
     }
