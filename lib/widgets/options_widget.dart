@@ -31,7 +31,7 @@ class _OptionsState extends State<Options> {
             padding: const EdgeInsets.only(
                 top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
             child: Text(
-              "1: " + widget.theory[_currentIndex].tqQuestion,
+              "${_currentIndex +1}: " + widget.theory[_currentIndex].tqQuestion,
               textAlign: TextAlign.justify,
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
@@ -196,7 +196,7 @@ class _OptionsState extends State<Options> {
       );
       return;
     }
-    if (_currentIndex < (widget.theory.length - 1)) {
+    if (_currentIndex < (widget.theory.length - 41)) {
       setState(() {
         _currentIndex++;
       });
