@@ -196,7 +196,7 @@ class _OptionsState extends State<Options> {
       );
       return;
     }
-    if (_currentIndex < (widget.theory.length - 41)) {
+    if (_currentIndex < (widget.theory.length )) {
       setState(() {
         _currentIndex++;
       });

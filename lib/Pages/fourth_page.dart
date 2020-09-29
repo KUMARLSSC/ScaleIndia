@@ -92,7 +92,7 @@ class FourthPage extends StatelessWidget {
                                       184.0,
                                   child: model.busy == false
                                       ? Center(
-                                          child: CircularProgressIndicator(),
+                                          child: CircularProgressIndicator(backgroundColor: Colors.white,),
                                         )
                                       : _getPostUi(model.posts))
                             ])),

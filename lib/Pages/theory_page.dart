@@ -88,7 +88,7 @@ class TheoryPage extends StatelessWidget {
                                   height: 500,
                                   child: modal.busy == false
                                       ? Center(
-                                          child: CircularProgressIndicator(),
+                                          child: CircularProgressIndicator(backgroundColor: Colors.white,),
                                         )
                                       :SingleChildScrollView(child:  Options(theory: modal.posts,)),),                           
                           ]),
