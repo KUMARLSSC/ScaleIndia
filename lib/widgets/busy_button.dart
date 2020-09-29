@@ -27,7 +27,7 @@ class _BusyButtonState extends State<BusyButton> {
       child: InkWell(
         child: AnimatedContainer(
           height: widget.busy ? 40 : 40,
-          width: widget.busy ? 40 : 100,
+          width: widget.busy ? 50 : 150,
           duration: const Duration(milliseconds: 300),
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(

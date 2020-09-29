@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
 class TheoryPage extends StatelessWidget {
-  
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
 
   @override
@@ -23,7 +22,7 @@ class TheoryPage extends StatelessWidget {
             child: header(context,
                 isAppTitle: false, isIcon: false, strTitle: "Theory Exam"),
             preferredSize: Size.fromHeight(50.0)),
-        body:Center(
+        body: Center(
           child: Container(
             height: MediaQuery.of(context).size.height - 30.0,
             child: Padding(
@@ -83,14 +82,19 @@ class TheoryPage extends StatelessWidget {
                             SizedBox(
                               height: 10.0,
                             ),
-                            
-                           Container(
-                                  height: 500,
-                                  child: modal.busy == false
-                                      ? Center(
-                                          child: CircularProgressIndicator(backgroundColor: Colors.white,),
-                                        )
-                                      :SingleChildScrollView(child:  Options(theory: modal.posts,)),),                           
+                            Container(
+                              height: 500,
+                              child: modal.busy == false
+                                  ? Center(
+                                      child: CircularProgressIndicator(
+                                        backgroundColor: Colors.white,
+                                      ),
+                                    )
+                                  : SingleChildScrollView(
+                                      child: Options(
+                                      theory: modal.posts,
+                                    )),
+                            ),
                           ]),
                     ),
                   ],
@@ -102,5 +106,4 @@ class TheoryPage extends StatelessWidget {
       ),
     );
   }
- 
 }

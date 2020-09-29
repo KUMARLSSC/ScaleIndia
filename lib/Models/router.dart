@@ -1,7 +1,10 @@
 import 'package:Scaleindia/Models/route_names.dart';
+import 'package:Scaleindia/Pages/candidate_page.dart';
+import 'package:Scaleindia/Pages/elearning_page.dart';
 import 'package:Scaleindia/Pages/fifth_page.dart';
 import 'package:Scaleindia/Pages/first_page.dart';
 import 'package:Scaleindia/Pages/fourth_page.dart';
+import 'package:Scaleindia/Pages/home_page.dart';
 import 'package:Scaleindia/Pages/langugae_page.dart';
 import 'package:Scaleindia/Pages/practical_page.dart';
 import 'package:Scaleindia/Pages/second_page.dart';
@@ -12,6 +15,21 @@ import 'package:flutter/material.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
+    case HomeViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: HomePage(),
+      );
+    case CandidateViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: CandidatePage(),
+      );
+      case ElearningViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: ELearningPage(),
+      );
     case FirstViewRoute:
       return _pageRoute(
         routeName: settings.name,
@@ -22,37 +40,37 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         routeName: settings.name,
         viewToShow: SecondPage(),
       );
-      case ThirdViewRoute:
+    case ThirdViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: ThirdPage(),
       );
-       case FourthViewRoute:
+    case FourthViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: FourthPage(),
       );
-      case FifthViewRoute:
+    case FifthViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: FifthPage(),
       );
-      case TheoryViewRoute:
+    case TheoryViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: TheoryPage(),
       );
-      case PracticalViewRoute:
+    case PracticalViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: PracticalPage(),
       );
-       case SummaryViewRoute:
+    case SummaryViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: SummaryPage(),
       );
-       case LanguageViewRoute:
+    case LanguageViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: LanguagePage(),
