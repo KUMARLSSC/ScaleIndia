@@ -1,5 +1,4 @@
 import 'package:Scaleindia/ApiModel/center_api.dart';
-import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/ViewModels/theory_viewmodal.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/options_widget.dart';
@@ -103,10 +102,5 @@ class TheoryPage extends StatelessWidget {
       ),
     );
   }
-   Widget _getPostUi(List<Theory> posts,) => ListView.builder(
-        itemCount: 1,
-        itemBuilder: (BuildContext context, int index) => Options(
-       theory: [],
-        )
-      );
+ 
 }

@@ -10,6 +10,7 @@ class TheoryPageViewModel extends BaseModel {
  
   final NavigationService _navigationService = locator<NavigationService>();
   final TheoryService _theoryService = locator<TheoryService>();
+  // ignore: unused_field
   final DialogService _dialogService = locator<DialogService>();
   List<Theory> get posts => _theoryService.theory;
 
