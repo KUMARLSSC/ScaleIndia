@@ -57,8 +57,8 @@ class _OptionsState extends State<Options> {
                     groupValue: _answers[_currentIndex],
                     onChanged: (val) {
                       setState(() {
-                                  _answers[_currentIndex] = 0;
-                                });
+                        _answers[_currentIndex] = 0;
+                      });
                     },
                   ),
                   new RadioListTile<int>(
@@ -70,9 +70,9 @@ class _OptionsState extends State<Options> {
                     value: 1,
                     groupValue: _answers[_currentIndex],
                     onChanged: (val) {
-                     setState(() {
-                                  _answers[_currentIndex] = 1;
-                                });
+                      setState(() {
+                        _answers[_currentIndex] = 1;
+                      });
                     },
                   ),
                   new RadioListTile<int>(
@@ -84,9 +84,9 @@ class _OptionsState extends State<Options> {
                     value: 2,
                     groupValue: _answers[_currentIndex],
                     onChanged: (val) {
-                       setState(() {
-                                  _answers[_currentIndex] = 2;
-                                });
+                      setState(() {
+                        _answers[_currentIndex] = 2;
+                      });
                     },
                   ),
                   new RadioListTile<int>(
@@ -98,9 +98,9 @@ class _OptionsState extends State<Options> {
                     value: 3,
                     groupValue: _answers[_currentIndex],
                     onChanged: (val) {
-                       setState(() {
-                                  _answers[_currentIndex] = 3;
-                                });
+                      setState(() {
+                        _answers[_currentIndex] = 3;
+                      });
                     },
                   )
                 ]),
@@ -189,8 +189,8 @@ class _OptionsState extends State<Options> {
   }
 
   void _next() {
-     if (_answers[_currentIndex] == null) {
-     _dialogService.showDialog(
+    if (_answers[_currentIndex] == null) {
+      _dialogService.showDialog(
         title: 'Given field is empty ',
         description: 'Please enter your request id',
       );
