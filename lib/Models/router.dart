@@ -1,6 +1,9 @@
 import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/candidate_page.dart';
 import 'package:Scaleindia/Pages/elearning_page.dart';
+import 'package:Scaleindia/Pages/employeeRegister.dart';
+import 'package:Scaleindia/Pages/employee_page.dart';
+import 'package:Scaleindia/Pages/employerRegister_page.dart';
 import 'package:Scaleindia/Pages/employer_page.dart';
 import 'package:Scaleindia/Pages/fifth_page.dart';
 import 'package:Scaleindia/Pages/first_page.dart';
@@ -25,6 +28,21 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _pageRoute(
         routeName: settings.name,
         viewToShow: EmployerPage(),
+      );
+       case EmployerRegisterViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: EmployerRegisterPage(),
+      );
+       case EmployeeViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: EmployeePage(),
+      );
+       case EmployeeRegisterViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: EmployeeRegisterPage(),
       );
     case CandidateViewRoute:
       return _pageRoute(

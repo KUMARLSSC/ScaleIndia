@@ -13,4 +13,7 @@ class HomePageViewModel extends BaseModel {
    void navigateToEmployerPage() {
     _navigationService.navigateTo(EmployerViewRoute);
   }
+  void navigateToEmployeePage() {
+    _navigationService.navigateTo(EmployeeViewRoute);
+  }
 }

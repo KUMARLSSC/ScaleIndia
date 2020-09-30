@@ -1,4 +1,4 @@
-import 'package:Scaleindia/ViewModels/employer_viewmodel.dart';
+import 'package:Scaleindia/ViewModels/employeePage_viewmodel.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
@@ -6,13 +6,13 @@ import 'package:Scaleindia/widgets/text_link.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class EmployerPage extends StatelessWidget {
+class EmployeePage extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<EmployerPageViewModel>.reactive(
-      viewModelBuilder: () => EmployerPageViewModel(),
+    return ViewModelBuilder<EmployeePageViewModel>.reactive(
+      viewModelBuilder: () => EmployeePageViewModel(),
       builder: (context, model, child) => Scaffold(
         body: Container(
           width: double.infinity,
@@ -75,7 +75,7 @@ class EmployerPage extends StatelessWidget {
                         children: <Widget>[
                           Center(
                               child: Text(
-                            "Employer Login",
+                            "Employee Login",
                             style: kTitleStyle,
                           )),
                           SizedBox(
@@ -142,7 +142,7 @@ class EmployerPage extends StatelessWidget {
                           TextLink(
                             'Create an Account if you\'re new.',
                             onPressed: () {
-                              model.navigateToEmployerRegister();
+                              model.navigateToEmployeeRegister();
                             },
                           ),
                           new Padding(padding: EdgeInsets.only(bottom: 20.0)),
