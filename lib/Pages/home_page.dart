@@ -80,7 +80,9 @@ class HomePage extends StatelessWidget {
                           BusyButton(
                             title: "Employer",
                             busy: model.busy,
-                            onPressed: () {},
+                            onPressed: () {
+                              model.navigateToEmployerPage();
+                            },
                           ),
                           SizedBox(
                             height: 15,

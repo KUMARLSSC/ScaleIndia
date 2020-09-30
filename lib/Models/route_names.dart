@@ -10,5 +10,7 @@ const String SummaryViewRoute = "SummaryScreen";
 const String LanguageViewRoute = "LanguageScreen";
 const String CandidateViewRoute = "CandidateScreen";
 const String ElearningViewRoute = "ElearningScreen";
+const String EmployerViewRoute = "EmployerScreen";
+
 
 //Generate the view here

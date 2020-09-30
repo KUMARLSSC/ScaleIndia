@@ -3,14 +3,15 @@ import 'package:Scaleindia/Services/navigation_service.dart';
 import '../locator.dart';
 import 'base_model.dart';
 
-class HomePageViewModel extends BaseModel {
+class EmployerPageViewModel extends BaseModel {
+
   final NavigationService _navigationService = locator<NavigationService>();
 
-  
-  void navigateToFirstPage() {
-    _navigationService.navigateTo(CandidateViewRoute);
+  void navigateToTheory() {
+    _navigationService.navigateTo(LanguageViewRoute);
   }
-   void navigateToEmployerPage() {
-    _navigationService.navigateTo(EmployerViewRoute);
+
+  void navigateToPractical() {
+    _navigationService.navigateTo(PracticalViewRoute);
   }
 }

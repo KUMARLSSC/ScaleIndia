@@ -9,6 +9,7 @@ import 'note_text.dart';
 class InputField extends StatefulWidget {
   final TextEditingController controller;
   final TextInputType textInputType;
+  final TextInputType text1InputType;
   final bool password;
   final bool isReadOnly;
   final String placeholder;
@@ -25,6 +26,7 @@ class InputField extends StatefulWidget {
   InputField(
       {@required this.controller,
       @required this.placeholder,
+      this.text1InputType,
       this.enterPressed,
       this.fieldFocusNode,
       this.nextFocusNode,
@@ -45,6 +47,7 @@ class InputField extends StatefulWidget {
 class _InputFieldState extends State<InputField> {
   bool isPassword;
   double fieldHeight = 55;
+  bool isKeyboardType;
 
   @override
   void initState() {
@@ -68,7 +71,7 @@ class _InputFieldState extends State<InputField> {
               Expanded(
                 child: TextFormField(
                   controller: widget.controller,
-                  keyboardType: widget.textInputType,
+                  keyboardType: isKeyboardType==true?widget.textInputType:widget.text1InputType,
                   focusNode: widget.fieldFocusNode,
                   textInputAction: widget.textInputAction,
                   onChanged: widget.onChanged,
