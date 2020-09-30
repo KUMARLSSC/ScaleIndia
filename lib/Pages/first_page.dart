@@ -100,6 +100,7 @@ class FirstPage extends StatelessWidget {
                                               color: Colors.grey[200]))),
                                   child: InputField(
                                     placeholder: 'Enter your request id',
+                                    text1InputType: TextInputType.number,
                                     controller: textController,
                                   ),
                                 ),

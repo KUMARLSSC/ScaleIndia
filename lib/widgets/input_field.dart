@@ -71,7 +71,7 @@ class _InputFieldState extends State<InputField> {
               Expanded(
                 child: TextFormField(
                   controller: widget.controller,
-                  keyboardType: isKeyboardType==true?widget.textInputType:widget.text1InputType,
+                  keyboardType: isKeyboardType == false ?widget.textInputType:widget.text1InputType,
                   focusNode: widget.fieldFocusNode,
                   textInputAction: widget.textInputAction,
                   onChanged: widget.onChanged,
