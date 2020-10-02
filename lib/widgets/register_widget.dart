@@ -11,6 +11,14 @@ class RegisterWidget extends StatefulWidget {
 class _RegisterWidgetState extends State<RegisterWidget> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final Map<int, dynamic> _answers = {};
+  int _currentIndex = 0;
+  setSelectedUser(int val) {
+    setState(() {
+      _currentIndex = val;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -56,32 +64,47 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     new RadioListTile<int>(
-                        title: Text(
-                          "Male",
-                          style: TextStyle(fontSize: 15),
-                        ),
-                        activeColor: Colors.green,
-                        value: 0,
-                        groupValue: null,
-                        onChanged: null),
+                      title: Text(
+                        "Male",
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      activeColor: Colors.green,
+                      value: 0,
+                      groupValue: _answers[_currentIndex],
+                      onChanged: (val) {
+                        setState(() {
+                          _answers[_currentIndex] = 0;
+                        });
+                      },
+                    ),
                     new RadioListTile<int>(
-                        title: Text(
-                          "Female",
-                          style: TextStyle(fontSize: 15),
-                        ),
-                        activeColor: Colors.green,
-                        value: 1,
-                        groupValue: null,
-                        onChanged: null),
+                      title: Text(
+                        "Female",
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      activeColor: Colors.green,
+                      value: 1,
+                      groupValue:_answers[_currentIndex],
+                      onChanged: (val) {
+                        setState(() {
+                          _answers[_currentIndex] = 1;
+                        });
+                      },
+                    ),
                     new RadioListTile<int>(
-                        title: Text(
-                          "Other",
-                          style: TextStyle(fontSize: 15),
-                        ),
-                        activeColor: Colors.green,
-                        value: 2,
-                        groupValue: null,
-                        onChanged: null),
+                      title: Text(
+                        "Other",
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      activeColor: Colors.green,
+                      value: 2,
+                      groupValue: _answers[_currentIndex],
+                      onChanged: (val) {
+                        setState(() {
+                          _answers[_currentIndex]= 2;
+                        });
+                      },
+                    ),
                   ]),
             ),
           ),
@@ -477,7 +500,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               borderRadius: BorderRadius.circular(30.0),
             ),
           ),
-           SizedBox(
+          SizedBox(
             height: 8,
           ),
         ],
