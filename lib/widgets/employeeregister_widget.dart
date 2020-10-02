@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'input_field.dart';
 
-class RegisterWidget extends StatefulWidget {
+class EmployeeRegisterWidget extends StatefulWidget {
   @override
-  _RegisterWidgetState createState() => _RegisterWidgetState();
+  _EmployeeRegisterWidgetState createState() => _EmployeeRegisterWidgetState();
 }
 
-class _RegisterWidgetState extends State<RegisterWidget> {
+class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
   String _selectedDate = 'Date of birth';
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -497,37 +497,6 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   ),
                 ),
               ],
-            ),
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          RaisedButton(
-            splashColor: Colors.blue,
-            elevation: 5.0,
-            color: Colors.black87,
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  'Upload Picture',
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    color: Colors.white,
-                  ),
-                ),
-                Icon(
-                  Icons.camera_alt,
-                  color: Colors.white,
-                  size: 24.0,
-                ),
-              ],
-            ),
-            onPressed: () {},
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
             ),
           ),
           SizedBox(

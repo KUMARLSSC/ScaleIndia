@@ -1,5 +1,5 @@
 import 'package:Scaleindia/widgets/busy_button.dart';
-import 'package:Scaleindia/widgets/register_widget.dart';
+import 'package:Scaleindia/widgets/employerregister_widget.dart';
 
 import 'package:flutter/material.dart';
 
@@ -63,13 +63,13 @@ class EmployerRegisterPage extends StatelessWidget {
                         ),
                         Center(
                             child: Text(
-                          "Employer Registration Form",
+                          "Employer/Company Registration Form",
                           style: TextStyle(),
                         )),
                         SizedBox(
                           height: 5,
                         ),
-                        RegisterWidget(),
+                        EmployerRegisterWidget(),
                         SizedBox(height: 21,),
         BusyButton(title: 'Submit', onPressed: null,color: Colors.blue,),
                         new Padding(padding: EdgeInsets.only(bottom: 10.0)),
