@@ -21,28 +21,28 @@ class ConnectionCheck extends StatelessWidget {
                     children: [
                       child,
                       Positioned(
-                        left: 0.0,
-                        right: 0.0,
-                        height: 32.0,
+                        left: 40.0,
+                        right: 40.0,
+                        height: 320.0,
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 300),
                           color: connected ? null : Color(0xFFEE4400),
                           child: connected ? null: 
-                          Row(
+                          Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     Text(
                                       "Please check your internet connection",
-                                      style: TextStyle(color: Colors.white),
+                                      style: TextStyle(color: Colors.white,fontSize: 15),
                                     ),
                                     SizedBox(
-                                      width: 10.0,
+                                     height: 20.0,
                                     ),
                                     SizedBox(
-                                      width: 12.0,
-                                      height: 12.0,
+                                      width: 50.0,
+                                      height: 50.0,
                                       child: CircularProgressIndicator(
-                                        strokeWidth: 2.0,
+                                        strokeWidth: 8.0,
                                         valueColor:
                                             AlwaysStoppedAnimation<Color>(
                                                 Colors.white),

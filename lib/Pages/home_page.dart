@@ -1,5 +1,6 @@
 import 'package:Scaleindia/ViewModels/home_viewmodel.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
+import 'package:Scaleindia/widgets/internet_connection.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -64,7 +65,7 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(35),
                           topRight: Radius.circular(35))),
-                  child: SingleChildScrollView(
+                  child: ConnectionCheck(child: SingleChildScrollView(
                     child: Padding(
                       padding: EdgeInsets.all(10),
                       child: Column(
@@ -129,7 +130,7 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     ),
-                  ),
+                  ),)
                 ),
               )
             ],
