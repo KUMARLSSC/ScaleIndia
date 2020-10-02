@@ -54,7 +54,7 @@ class Api {
     var _practical = List<Practical>();
     // Get user posts for id
     var response =
-        await client.get('$theorypoint/api/TheoryQuestion/$resId');
+        await client.get('$theorypoint/api/PracticalQuestion/$resId');
 
     // parse into List
     var parsed = json.decode(response.body)  as List<dynamic>;

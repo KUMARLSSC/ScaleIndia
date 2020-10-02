@@ -1,13 +1,24 @@
+import 'package:Scaleindia/ApiModel/center_api.dart';
+import 'package:Scaleindia/ApiModel/practical_api.dart';
 import 'package:Scaleindia/ViewModels/practicalpage_viewmodel.dart';
 import 'package:Scaleindia/widgets/Enablebuttons_widget.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
+import 'package:Scaleindia/widgets/practicalpage_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:stacked/stacked.dart';
 
 class PracticalPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
+  final Practical practical;
+  PracticalPage({this.practical});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
+    return ViewModelBuilder<PracticalPageViewModel>.reactive(
+      onModelReady: (model) => model.getPractical(centerAssesor.asId),
+      viewModelBuilder: () => PracticalPageViewModel(),
+      builder: (context, model, child) => Scaffold(
        resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: false,
       key: _key,
@@ -38,28 +49,17 @@ class PracticalPage extends StatelessWidget {
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: Column(
                   children: [
-                    Container(
-                      height: 45,
-                      color: Colors.lightBlue,
-                      child: Center(
-                        child: Text(
-                          "LSS/N5501",
-                          style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
+
                     Container(
                       width: 330,
-                      height: 480,
+                      height: 545,
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black)),
-                      child: PracticalViewModel(),
+                      child:  model.busy == false
+                                      ? Center(
+                                          child: CircularProgressIndicator(),
+                                        )
+                                      : _getPostUi(model.posts),
                     ),
                     SizedBox(
                       height: 10,
@@ -72,6 +72,17 @@ class PracticalPage extends StatelessWidget {
           ),
         ),
       ),
+    ),
     );
   }
+
+  Widget _getPostUi(List<Practical> practical) => ListView.separated(
+        separatorBuilder: (context, index) => Divider(
+          color: Colors.black,
+        ),
+        itemCount: practical.length,
+        itemBuilder: (BuildContext context, int index) => PracticalPageWidget(
+            practical: practical[index],
+            ),
+      );
 }

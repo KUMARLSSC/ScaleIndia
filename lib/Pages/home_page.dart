@@ -79,8 +79,8 @@ class HomePage extends StatelessWidget {
                           ),
                           BusyButton(
                             title: "Employer",
-                            busy: model.busy,
                             color: Colors.green,
+                            busy: model.busy,
                             onPressed: () {
                               model.navigateToEmployerPage();
                             },
@@ -90,8 +90,8 @@ class HomePage extends StatelessWidget {
                           ),
                           BusyButton(
                             title: 'Candidate',
+                             color: Colors.green,
                             busy: model.busy,
-                            color: Colors.green,
                             onPressed: () {
                               model.navigateToFirstPage();
                             },
@@ -102,7 +102,7 @@ class HomePage extends StatelessWidget {
                           BusyButton(
                             title: 'Employee',
                             busy: model.busy,
-                            color: Colors.green,
+                             color: Colors.green,
                             onPressed: () {
                               model.navigateToEmployeePage();
                             },
@@ -112,8 +112,8 @@ class HomePage extends StatelessWidget {
                           ),
                           BusyButton(
                             title: 'Trainer',
-                            color: Colors.green,
                             busy: model.busy,
+                             color: Colors.green,
                             onPressed: () {},
                           ),
                           SizedBox(
@@ -121,8 +121,8 @@ class HomePage extends StatelessWidget {
                           ),
                           BusyButton(
                             title: 'Assesor',
-                            color: Colors.green,
                             busy: model.busy,
+                             color: Colors.green,
                             onPressed: () {},
                           ),
                           new Padding(padding: EdgeInsets.only(bottom: 20.0)),

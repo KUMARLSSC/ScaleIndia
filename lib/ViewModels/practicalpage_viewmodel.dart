@@ -1,41 +1,26 @@
-import 'package:Scaleindia/List/questions_list.dart';
+import 'package:Scaleindia/ApiModel/practical_api.dart';
+import 'package:Scaleindia/ApiModel/theory_api.dart';
+import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
-import 'package:Scaleindia/locator.dart';
-import 'package:Scaleindia/widgets/practicalpage_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:Scaleindia/Services/navigation_service.dart';
+import 'package:Scaleindia/Services/practical_services.dart';
+import '../locator.dart';
+import 'base_model.dart';
 
-class PracticalViewModel extends StatefulWidget {
-  @override
-  _PracticalViewModelState createState() => _PracticalViewModelState();
-}
-
-class _PracticalViewModelState extends State<PracticalViewModel> {
+class PracticalPageViewModel extends BaseModel {
+  final NavigationService _navigationService = locator<NavigationService>();
+  final PracticalService _practicalService = locator<PracticalService>();
+  // ignore: unused_field
   final DialogService _dialogService = locator<DialogService>();
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: ListView.separated(
-        separatorBuilder: (context, index) => Divider(
-          color: Colors.black,
-        ),
-        itemCount: questions.length,
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        physics: ScrollPhysics(),
-        itemBuilder: (context, index) {
-          var activity = questions[index];
-          return PracticalPageWidget(
-            questions: activity,
-          );
-        },
-      ),
-    );
+  List<Practical> get posts => _practicalService.practical;
+
+  Future getPractical(int resId) async {
+    setBusy(false);
+    await _practicalService.getPracticalQuestion(resId);
+    setBusy(true);
   }
 
-  void validating() {
-    _dialogService.showDialog(
-       title: "Failed",
-        description: 'Please complete all the questions or check whether you attened all the questions or not',
-    );
+  void navigateToSummary() {
+    _navigationService.navigateTo(SummaryViewRoute);
   }
 }
