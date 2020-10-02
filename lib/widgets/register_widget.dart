@@ -1,6 +1,6 @@
 import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:flutter/material.dart';
-
+import 'package:intl/intl.dart';
 import 'input_field.dart';
 
 class RegisterWidget extends StatefulWidget {
@@ -9,9 +9,22 @@ class RegisterWidget extends StatefulWidget {
 }
 
 class _RegisterWidgetState extends State<RegisterWidget> {
+  String _selectedDate = 'Date of birth';
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final Map<int, dynamic> _answers = {};
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime d = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1980),
+      lastDate: DateTime.now(),
+    );
+    if (d != null)
+      setState(() {
+        _selectedDate = new DateFormat.yMMMMd("en_US").format(d);
+      });
+  }
   int _currentIndex = 0;
   setSelectedUser(int val) {
     setState(() {
@@ -109,8 +122,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             ),
           ),
           Container(
-            width: 150,
-            height: 86,
+            width: 180,
+            height: 69,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
@@ -122,11 +135,28 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   decoration: BoxDecoration(
                       border:
                           Border(bottom: BorderSide(color: Colors.grey[200]))),
-                  child: InputField(
-                    placeholder: 'Date of birth',
-                    controller: emailController,
-                    text1InputType: TextInputType.datetime,
-                  ),
+                  child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    InkWell(
+                      child: Text(
+                          _selectedDate,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Color(0xFF000000))
+                      ),
+                      onTap: (){
+                        _selectDate(context);
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.calendar_today),
+                      tooltip: 'Tap to open date picker',
+                      onPressed: () {
+                        _selectDate(context);
+                      },
+                    ),
+                  ],
+                ),
                 ),
               ],
             ),
