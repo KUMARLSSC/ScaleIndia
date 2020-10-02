@@ -81,25 +81,26 @@ class SecondPage extends StatelessWidget {
                           ),
                           BusyButton(
                               title: "English",
+                              color: Colors.green,
                               onPressed: () {
                                 model.navigateToThirdPage();
                               }),
                           SizedBox(
                             height: 15,
                           ),
-                          BusyButton(title: "தமிழ்", onPressed:() {
+                          BusyButton(title: "தமிழ்", color: Colors.green,onPressed:() {
                                 model.navigateToThirdPage();
                               }),
                           SizedBox(
                             height: 15,
                           ),
-                          BusyButton(title: "हिन्दी", onPressed:() {
+                          BusyButton(title: "हिन्दी",color: Colors.green, onPressed:() {
                                 model.navigateToThirdPage();
                               }),
                           SizedBox(
                             height: 15,
                           ),
-                          BusyButton(title: "తెలుగు", onPressed: () {
+                          BusyButton(title: "తెలుగు", color: Colors.green,onPressed: () {
                                 model.navigateToThirdPage();
                               }),
                         ],

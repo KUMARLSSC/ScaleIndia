@@ -133,6 +133,7 @@ class EmployerPage extends StatelessWidget {
                           ),
                           BusyButton(
                             title: 'Login',
+                            color: Colors.green,
                             busy: model.busy,
                             onPressed: () {},
                           ),

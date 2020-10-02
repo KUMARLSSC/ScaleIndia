@@ -80,6 +80,7 @@ class CandidatePage extends StatelessWidget {
                           BusyButton(
                             title: 'Assessment',
                             busy: model.busy,
+                            color: Colors.green,
                             onPressed: () {
                               model.navigateToFirstPage();
                             },
@@ -95,6 +96,7 @@ class CandidatePage extends StatelessWidget {
                           BusyButton(
                             title: 'E-Learning',
                             busy: model.busy,
+                            color: Colors.green,
                             onPressed: () {
                               model.navigateToELearningPage();
                             },

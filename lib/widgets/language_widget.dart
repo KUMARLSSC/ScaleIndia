@@ -18,6 +18,7 @@ class LanguageWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   BusyButton(
+                    color: Colors.green,
                       title: theory.tqLanguage,
                       onPressed: () {
                         model.navigateToTheoryPage();

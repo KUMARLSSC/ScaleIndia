@@ -134,6 +134,7 @@ class EmployeePage extends StatelessWidget {
                           BusyButton(
                             title: 'Login',
                             busy: model.busy,
+                            color: Colors.green,
                             onPressed: () {},
                           ),
                           SizedBox(

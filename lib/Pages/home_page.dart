@@ -80,6 +80,7 @@ class HomePage extends StatelessWidget {
                           BusyButton(
                             title: "Employer",
                             busy: model.busy,
+                            color: Colors.green,
                             onPressed: () {
                               model.navigateToEmployerPage();
                             },
@@ -90,6 +91,7 @@ class HomePage extends StatelessWidget {
                           BusyButton(
                             title: 'Candidate',
                             busy: model.busy,
+                            color: Colors.green,
                             onPressed: () {
                               model.navigateToFirstPage();
                             },
@@ -100,6 +102,7 @@ class HomePage extends StatelessWidget {
                           BusyButton(
                             title: 'Employee',
                             busy: model.busy,
+                            color: Colors.green,
                             onPressed: () {
                               model.navigateToEmployeePage();
                             },
@@ -109,6 +112,7 @@ class HomePage extends StatelessWidget {
                           ),
                           BusyButton(
                             title: 'Trainer',
+                            color: Colors.green,
                             busy: model.busy,
                             onPressed: () {},
                           ),
@@ -117,6 +121,7 @@ class HomePage extends StatelessWidget {
                           ),
                           BusyButton(
                             title: 'Assesor',
+                            color: Colors.green,
                             busy: model.busy,
                             onPressed: () {},
                           ),

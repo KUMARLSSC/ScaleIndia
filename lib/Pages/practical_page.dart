@@ -8,6 +8,8 @@ class PracticalPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       key: _key,
       appBar: PreferredSize(
           child: header(context,
