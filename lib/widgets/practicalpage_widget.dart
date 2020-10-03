@@ -1,15 +1,25 @@
 import 'package:Scaleindia/ApiModel/practical_api.dart';
+import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/ViewModels/practicalpage_viewmodel.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class PracticalPageWidget extends StatelessWidget {
-  final textController = TextEditingController();
-  final int _currentIndex = 0;
-  final Practical practical;
+import '../locator.dart';
+
+class PracticalPageWidget extends StatefulWidget {
+  final List<Practical> practical;
   PracticalPageWidget({this.practical});
+  @override
+  _PracticalPageWidgetState createState() => _PracticalPageWidgetState();
+}
+
+class _PracticalPageWidgetState extends State<PracticalPageWidget> {
+  final DialogService _dialogService = locator<DialogService>();
+  final textController = TextEditingController();
+  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<PracticalPageViewModel>.reactive(
@@ -18,24 +28,42 @@ class PracticalPageWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-                      height: 45,
-                      color: Colors.lightBlue,
-                      child: Center(
-                        child: Text(
-                          practical.pqNos,
-                          style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                      ),
-                    ),
+            height: 60,
+            color: Colors.lightBlue,
+            child: Center(
+              child: Text(
+                widget.practical[_currentIndex].pqNos,
+                style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
           Container(
             height: 80,
             color: Colors.grey[350],
             child: Center(
               child: Text(
-                practical.pqQuestion,
+                widget.practical[_currentIndex].pqCommonQuestion,
+                style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: 70,
+            child: Center(
+              child: Text(
+              "${_currentIndex + 1}: " + widget.practical[_currentIndex].pqQuestion,
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
@@ -62,7 +90,7 @@ class PracticalPageWidget extends StatelessWidget {
             ),
             textColor: Colors.white,
             splashColor: Colors.blue,
-            color: Colors.green,
+            color: Colors.black,
           ),
           SizedBox(
             height: 15,
@@ -93,7 +121,7 @@ class PracticalPageWidget extends StatelessWidget {
                       offset: Offset(0, 10))
                 ]),
             child: Container(
-              height: 80,
+              height: 70,
               width: 150,
               padding: EdgeInsets.fromLTRB(10, 10, 10, 1),
               decoration: BoxDecoration(
@@ -104,8 +132,116 @@ class PracticalPageWidget extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(
+            height: 35,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 50,
+                width: 140,
+                child: RaisedButton(
+                  splashColor: Colors.blue,
+                  elevation: 5.0,
+                  color: _currentIndex == (widget.practical.length+1 - widget.practical.length-1 )? Colors.white30:new Color(0xFFEA4335),
+                  child: Text(
+                    'Previous',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () {
+                    _previous();
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Container(
+                height: 50,
+                width: 140,
+                child: RaisedButton(
+                  splashColor: Colors.blue,
+                  elevation: 5.0,
+                  color: new Color(0xFF34A853),
+                  child: Text(
+                   _currentIndex == (widget.practical.length - 1)? "Submit":"Next",
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () {
+                    _nextSubmit();
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
+  }
+
+  void _nextSubmit() {
+    if ([_currentIndex] == null) {
+      _dialogService.showDialog(
+        title: 'Failed',
+        description: "You must select an answer to continue.",
+      );
+      return;
+    }
+    if (_currentIndex < (widget.practical.length)) {
+      setState(() {
+        _currentIndex++;
+      });
+    }else {
+     _dialogService.showDialog(
+        title: 'Completed',
+        description: "Practical Exam Completed",
+      );
+    }
+  }
+
+  void _previous() {
+    if (_currentIndex < (widget.practical.length --)) {
+      setState(() {
+        _currentIndex--;
+      });
+    }
+  }
+   Future<bool> _onWillPop() async {
+    return showDialog<bool>(
+        context: context,
+        builder: (_) {
+          return AlertDialog(
+            content: Text(
+                "Are you sure you want to quit the quiz? All your progress will be lost."),
+            title: Text("Warning!"),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("Yes"),
+                onPressed: () {
+                  Navigator.pop(context, true);
+                },
+              ),
+              FlatButton(
+                child: Text("No"),
+                onPressed: () {
+                  Navigator.pop(context, false);
+                },
+              ),
+            ],
+          );
+        });
   }
 }

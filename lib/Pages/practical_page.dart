@@ -49,22 +49,20 @@ class PracticalPage extends StatelessWidget {
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: Column(
                   children: [
-
                     Container(
                       width: 330,
-                      height: 545,
+                      height: 600,
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black)),
                       child:  model.busy == false
                                       ? Center(
                                           child: CircularProgressIndicator(),
                                         )
-                                      : _getPostUi(model.posts),
+                                      : PracticalPageWidget(practical:model.posts),
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    SumbitButton(),
                   ],
                 ),
               ),
@@ -76,7 +74,7 @@ class PracticalPage extends StatelessWidget {
     );
   }
 
-  Widget _getPostUi(List<Practical> practical) => ListView.separated(
+  /*Widget _getPostUi(List<Practical> practical) => ListView.separated(
         separatorBuilder: (context, index) => Divider(
           color: Colors.black,
         ),
@@ -84,5 +82,5 @@ class PracticalPage extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) => PracticalPageWidget(
             practical: practical[index],
             ),
-      );
+      );*/
 }

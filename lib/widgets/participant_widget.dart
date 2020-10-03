@@ -23,7 +23,7 @@ class ParticipantWidget extends StatelessWidget {
             candidate.clEnrollmentNo,
             maxLines: 2,
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.orangeAccent,
               fontWeight: FontWeight.normal,
               fontSize: 16.0,
             ),
@@ -62,12 +62,12 @@ class ParticipantWidget extends StatelessWidget {
                   : RaisedButton(
                       splashColor: Colors.blue,
                       elevation: 3.0,
-                      color: new Color(0xffffffff),
+                      color: Colors.green,
                       child: Text(
                         'Start',
                         style: TextStyle(
                           fontSize: 15.0,
-                          color: Colors.blueAccent,
+                          color: Colors.white,
                         ),
                       ),
                       onPressed: () {
