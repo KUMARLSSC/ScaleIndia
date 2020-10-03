@@ -219,29 +219,5 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
       });
     }
   }
-   Future<bool> _onWillPop() async {
-    return showDialog<bool>(
-        context: context,
-        builder: (_) {
-          return AlertDialog(
-            content: Text(
-                "Are you sure you want to quit the quiz? All your progress will be lost."),
-            title: Text("Warning!"),
-            actions: <Widget>[
-              FlatButton(
-                child: Text("Yes"),
-                onPressed: () {
-                  Navigator.pop(context, true);
-                },
-              ),
-              FlatButton(
-                child: Text("No"),
-                onPressed: () {
-                  Navigator.pop(context, false);
-                },
-              ),
-            ],
-          );
-        });
-  }
+   
 }
