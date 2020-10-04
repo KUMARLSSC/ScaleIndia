@@ -37,7 +37,7 @@ dependencies:
   async: ^2.4.1
   font_awesome_flutter: ^8.8.1
   google_fonts: ^1.1.0
-  connectivity: ^0.4.9+2
+  connectivity: ^0.4.9+3
   flutter_offline: ^0.3.0
   image_picker: ^0.6.7+7
   slide_countdown_clock: ^1.0.3
