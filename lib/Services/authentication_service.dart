@@ -14,12 +14,12 @@ class AuthenticationService{
 
 
    Future loginWithEmail({
-    @required String email,
+    @required String emailAddress,
     @required String password,
   }) async {
     try {
       var authResult = await _firebaseAuth.signInWithEmailAndPassword(
-        email: email,
+        email: emailAddress,
         password: password,
       );
       await _populateCurrentUser(authResult.user);
@@ -79,14 +79,14 @@ class AuthenticationService{
     }
   }
    Future<bool> isUserLoggedIn() async {
-    // ignore: await_only_futures
-    var user = await _firebaseAuth.currentUser;
+   
+    var user = _firebaseAuth.currentUser;
     await _populateCurrentUser(user);
     return user != null;
   }
 
-  // ignore: deprecated_member_use
-  Future _populateCurrentUser(FirebaseUser user) async {
+
+  Future _populateCurrentUser(User user) async {
     if (user != null) {
       _currentUser = await _firestoreService.getUser(user.uid);
     }

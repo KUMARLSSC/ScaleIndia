@@ -15,7 +15,7 @@ class EmployeeRegisterPage extends StatelessWidget {
               height: 10,
             ),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[

@@ -31,7 +31,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
   final lastCompanyWorkedForController = TextEditingController();
   final lastWorkingDesignationController = TextEditingController();
   final addressController = TextEditingController();
-  final genderController =TextEditingController();
+  final genderController = TextEditingController();
   Future<void> _selectDate(BuildContext context) async {
     final DateTime d = await showDatePicker(
       context: context,
@@ -64,10 +64,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                                Text(
-                            "Enter your Email Address:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Enter your Email Address:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -93,10 +95,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                                Text(
-                            "Enter your name:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Enter your name:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -122,10 +126,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                                Text(
-                            "Gender:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Gender:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -141,41 +147,29 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                         ),
                         Container(
-                          width: 200,
-                          height: 69,
+                          height: 114,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Column(
                             children: <Widget>[
+                              Text(
+                                "Enter your date of birth:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
-                                            color: Colors.grey[200]))),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: <Widget>[
-                                    InkWell(
-                                      child: Text(_selectedDate,
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              color: Color(0xFF000000))),
-                                      onTap: () {
-                                        _selectDate(context);
-                                      },
-                                    ),
-                                    IconButton(
-                                      icon: Icon(Icons.calendar_today),
-                                      tooltip: 'Tap to open date picker',
-                                      onPressed: () {
-                                        _selectDate(context);
-                                      },
-                                    ),
-                                  ],
+                                            color: Colors.grey[200]))),                              
+                                  child:InputField(
+                                  placeholder: 'Date of Birth',
+                                  controller: dateOfBirthController,
+                                  text1InputType: TextInputType.number,
                                 ),
                               ),
                             ],
@@ -184,7 +178,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                         SizedBox(
                           height: 5,
                         ),
-                        Container(                      
+                        Container(
                           height: 114,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -192,10 +186,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                                Text(
-                            "Enter your Aadhar number:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Enter your Aadhar number:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -222,10 +218,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                                Text(
-                            "Enter your phone number:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Enter your phone number:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -252,10 +250,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                               Text(
-                            "Enter your alternate phone number:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Enter your alternate phone number:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -282,10 +282,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                                Text(
-                            "Enter your father name:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Enter your father name:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -305,7 +307,6 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           height: 1,
                         ),
                         Container(
-                         
                           height: 114,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -313,10 +314,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                                Text(
-                            "Enter your mother name:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Enter your mother name:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -336,7 +339,6 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           height: 1,
                         ),
                         Container(
-                          
                           height: 114,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -344,10 +346,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                                Text(
-                            "Enter your address:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Enter your address:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -374,10 +378,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                                Text(
-                            "Enter District:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Enter District:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -404,10 +410,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                                Text(
-                            "Enter State:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Enter State:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -434,10 +442,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                                Text(
-                            "Enter pincode:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Enter pincode:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -464,10 +474,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                                Text(
-                            "Enter your Educational Qualification:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Enter your Educational Qualification:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -495,9 +507,11 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           child: Column(
                             children: <Widget>[
                               Text(
-                            "Enter your Work Experiance:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                                "Enter your Work Experiance:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -525,9 +539,11 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           child: Column(
                             children: <Widget>[
                               Text(
-                            "Enter your Last Company Worked for:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                                "Enter your Last Company Worked for:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -546,7 +562,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                         SizedBox(
                           height: 1,
                         ),
-                        Container(                          
+                        Container(
                           height: 114,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -554,10 +570,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                               Text(
-                            "Enter your Last Working Designation:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Enter your Last Working Designation:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -583,10 +601,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                           child: Column(
                             children: <Widget>[
-                               Text(
-                            "Create a password to login:",
-                            style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),
-                          ),
+                              Text(
+                                "Create a password to login:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
@@ -612,7 +632,9 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                     ),
                   ),
                 ),
-                SizedBox(height: 1,),
+                SizedBox(
+                  height: 1,
+                ),
                 BusyButton(
                   busy: model.busy,
                   title: 'Submit',
@@ -624,13 +646,17 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                         motherName: motherNameController.text,
                         fatherName: fatherNameController.text,
                         phoneNumber: phoneNumberController.text,
-                        alternatePhoneNumber: alternatePhoneNumberController.text,
+                        alternatePhoneNumber:
+                            alternatePhoneNumberController.text,
                         district: districtController.text,
                         pincode: pincodeController.text,
                         state: stateController.text,
-                        educationalQualification: educationQualificationController.text,
-                        lastCompanyWorkedFor: lastCompanyWorkedForController.text,
-                        lastWorkingDesignation: lastWorkingDesignationController.text,
+                        educationalQualification:
+                            educationQualificationController.text,
+                        lastCompanyWorkedFor:
+                            lastCompanyWorkedForController.text,
+                        lastWorkingDesignation:
+                            lastWorkingDesignationController.text,
                         dateOfBirth: dateOfBirthController.text,
                         gender: genderController.text,
                         aadharNumber: aadharNumberController.text,

@@ -126,7 +126,9 @@ class EmployeePage extends StatelessWidget {
                           ),
                           TextLink(
                             'Forgot Password',
-                            onPressed: () {},
+                            onPressed: () {
+                              model.forgot(email: emailController.text);
+                            },
                           ),
                           SizedBox(
                             height: 25,
@@ -135,7 +137,11 @@ class EmployeePage extends StatelessWidget {
                             title: 'Login',
                             busy: model.busy,
                             color: Colors.green,
-                            onPressed: () {},
+                            onPressed: () {
+                              model.login(
+                                  email: emailController.text,
+                                  password: passwordController.text);
+                            },
                           ),
                           SizedBox(
                             height: 20,
