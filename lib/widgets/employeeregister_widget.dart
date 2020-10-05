@@ -53,6 +53,28 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                       border:
                           Border(bottom: BorderSide(color: Colors.grey[200]))),
                   child: InputField(
+                    placeholder: 'EmailAddress',
+                    controller: emailController,
+                    text1InputType: TextInputType.emailAddress,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 10,),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      border:
+                          Border(bottom: BorderSide(color: Colors.grey[200]))),
+                  child: InputField(
                     placeholder: 'Name',
                     controller: emailController,
                     text1InputType: TextInputType.text,
@@ -500,10 +522,60 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
             ),
           ),
           SizedBox(
-            height: 8,
+            height: 10,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      border:
+                          Border(bottom: BorderSide(color: Colors.grey[200]))),
+                  child: InputField(
+                    password: true,
+                    placeholder: 'Create a password',
+                    controller:passwordController,
+                    additionalNote: 'Password has to be a minimum of 6 characters',
+                    text1InputType: TextInputType.emailAddress,
+                  ),
+                ),
+              ],
+            ),
+          ),
+           SizedBox(
+            height: 10,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      border:
+                          Border(bottom: BorderSide(color: Colors.grey[200]))),
+                  child: InputField(
+                    placeholder: 'Confirm a password',
+                    password: true,
+                    controller: passwordController,
+                    additionalNote: 'Password has to be a minimum of 6 characters',
+                    text1InputType: TextInputType.text,
+                  ),
+                ),               
+              ],
+            ),
           ),
         ],
-      )),
+      ),
+      ),
     );
   }
 }
