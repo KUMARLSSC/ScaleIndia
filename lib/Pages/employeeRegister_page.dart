@@ -30,7 +30,7 @@ class EmployeeRegisterPage extends StatelessWidget {
                       child: Image.asset(
                         "assets/img/lssc.jpg",
                         fit: BoxFit.fill,
-                        height: 80,
+                        height: 92,
                         width: 150,
                       ),
                     ),

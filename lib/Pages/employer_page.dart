@@ -1,4 +1,4 @@
-import 'package:Scaleindia/ViewModels/employer_viewmodel.dart';
+import 'package:Scaleindia/ViewModels/employerPage_viewmodel.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
@@ -42,7 +42,7 @@ class EmployerPage extends StatelessWidget {
                           bottomRight: Radius.circular(15.0),
                         ),
                         child: Image.asset(
-                          "assets/img/lssc.jpg",
+                          "assets/img/scale.png",
                           fit: BoxFit.fill,
                           height: 100,
                           width: 180,
@@ -126,7 +126,9 @@ class EmployerPage extends StatelessWidget {
                           ),
                           TextLink(
                             'Forgot Password',
-                            onPressed: () {},
+                            onPressed: () {
+                              model.navigateToForgotPage2();
+                            },
                           ),
                           SizedBox(
                             height: 25,
@@ -135,7 +137,11 @@ class EmployerPage extends StatelessWidget {
                             title: 'Login',
                             color: Colors.green,
                             busy: model.busy,
-                            onPressed: () {},
+                            onPressed: () {
+                              model.login(
+                                  email: emailController.text,
+                                  password: passwordController.text);
+                            },
                           ),
                           SizedBox(
                             height: 20,

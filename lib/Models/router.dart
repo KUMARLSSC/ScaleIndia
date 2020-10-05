@@ -2,12 +2,15 @@ import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/candidate_page.dart';
 import 'package:Scaleindia/Pages/elearning_page.dart';
 import 'package:Scaleindia/Pages/employeeDashBoard_page.dart';
-import 'package:Scaleindia/Pages/employeeRegister.dart';
+import 'package:Scaleindia/Pages/employeeRegister_page.dart';
 import 'package:Scaleindia/Pages/employee_page.dart';
+import 'package:Scaleindia/Pages/employerDashBoard_page.dart';
 import 'package:Scaleindia/Pages/employerRegister_page.dart';
 import 'package:Scaleindia/Pages/employer_page.dart';
 import 'package:Scaleindia/Pages/fifth_page.dart';
 import 'package:Scaleindia/Pages/first_page.dart';
+import 'package:Scaleindia/Pages/forgotPassword_Page1.dart';
+import 'package:Scaleindia/Pages/forgotPassword_Page2.dart';
 import 'package:Scaleindia/Pages/fourth_page.dart';
 import 'package:Scaleindia/Pages/home_page.dart';
 import 'package:Scaleindia/Pages/langugae_page.dart';
@@ -35,6 +38,16 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         routeName: settings.name,
         viewToShow: EmployerRegisterPage(),
       );
+       case ForgotPage1ViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow:ForgotPage1(),
+      );
+      case ForgotPage2ViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow:ForgotPage2(),
+      );
        case EmployeeViewRoute:
       return _pageRoute(
         routeName: settings.name,
@@ -44,6 +57,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _pageRoute(
         routeName: settings.name,
         viewToShow: EmployeeRegisterPage(),
+      );
+      case EmployerDashBoardViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: EmployerDashBoardPage(),
       );
        case EmployeeDashBoardViewRoute:
       return _pageRoute(

@@ -1,7 +1,5 @@
 import 'package:Scaleindia/ViewModels/employeeRegister_viewmodel.dart';
-import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
 import 'busy_button.dart';
 import 'expansion_list.dart';
@@ -13,7 +11,6 @@ class EmployeeRegisterWidget extends StatefulWidget {
 }
 
 class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
-  String _selectedDate = 'Date of birth';
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final nameController = TextEditingController();
@@ -32,18 +29,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
   final lastWorkingDesignationController = TextEditingController();
   final addressController = TextEditingController();
   final genderController = TextEditingController();
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime d = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1980),
-      lastDate: DateTime.now(),
-    );
-    if (d != null)
-      setState(() {
-        _selectedDate = new DateFormat.yMMMMd("en_US").format(d);
-      });
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -628,6 +614,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                         SizedBox(
                           height: 10,
                         ),
+                        new Padding(padding: EdgeInsets.only(bottom: 20.0)),
                       ],
                     ),
                   ),
@@ -640,6 +627,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                   title: 'Submit',
                   onPressed: () {
                     model.signUp(
+                      address: addressController.text,
                         emailAddress: emailController.text,
                         password: passwordController.text,
                         name: nameController.text,

@@ -22,6 +22,7 @@ String _selectedGender = 'Select a Gender';
     notifyListeners();
   }
   Future signUp({
+     @required String address,
     @required String emailAddress,
     @required String password,
     @required String name,
@@ -42,8 +43,8 @@ String _selectedGender = 'Select a Gender';
   }) async {
     setBusy(true);
 
-    var result = await _authenticationService.signUpWithEmail(
-     emailAddress: emailAddress,name: name,motherName: motherName,
+    var result = await _authenticationService.signUpWithEmailEmployee(
+     emailAddress: emailAddress,name: name,motherName: motherName,address: address,
           fatherName: fatherName,dateOfBirth: dateOfBirth,district: district,gender: _selectedGender,
           phoneNumber: phoneNumber,aadharNumber: aadharNumber,alternatePhoneNumber: alternatePhoneNumber,
           lastCompanyWorkedFor: lastCompanyWorkedFor,lastWorkingDesignation: lastWorkingDesignation,workExperiance: workExperiance,

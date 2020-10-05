@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 import '../locator.dart';
 import 'base_model.dart';
 
-class EmployeePageViewModel extends BaseModel {
+class EmployerPageViewModel extends BaseModel {
 
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
@@ -19,7 +19,7 @@ class EmployeePageViewModel extends BaseModel {
   }) async {
     setBusy(true);
 
-    var result = await _authenticationService.loginWithEmailEmployee(
+    var result = await _authenticationService.loginWithEmailEmployer(
       emailAddress: email,
       password: password,
     );
@@ -28,7 +28,7 @@ class EmployeePageViewModel extends BaseModel {
 
     if (result is bool) {
       if (result) {
-        _navigationService.navigateTo(EmployeeDashBoardViewRoute);
+        _navigationService.navigateTo(EmployerDashBoardViewRoute);
       } else {
         await _dialogService.showDialog(
           title: 'Login Failure',
@@ -42,12 +42,10 @@ class EmployeePageViewModel extends BaseModel {
       );
     }
   }
-
-  void navigateToEmployeeRegister() {
-    _navigationService.navigateTo(EmployeeRegisterViewRoute);
+  void navigateToEmployerRegister() {
+    _navigationService.navigateTo(EmployerRegisterViewRoute);
   }
- void navigateToForgotPage1() {
-    _navigationService.navigateTo(ForgotPage1ViewRoute);
+ void navigateToForgotPage2() {
+    _navigationService.navigateTo(ForgotPage2ViewRoute);
   }
- 
 }

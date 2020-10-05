@@ -16,9 +16,11 @@ class Employee {
   final String workExperiance;
   final String lastCompanyWorkedFor;
   final String lastWorkingDesignation;
+  final String address;
 
   Employee(
       {this.emailAddress,
+      this.address,
       this.id,
       this.name,
       this.gender,
@@ -40,40 +42,42 @@ class Employee {
       : emailAddress = data['emailAddress'],
         id = data['id'],
         name = data['name'],
+        address=data['address'],
         gender = data['gender'],
         phoneNumber = data['phoneNumber'],
         alternatePhoneNumber = data['alternatePhoneNumber'],
-        dateOfBirth=data['dateOfBirth'],
-        district=data['district'],
-        motherName=data['motherName'],
-        fatherName=data['fatherName'],
-        pincode=data['pincode'],
-        state=data['state'],
-        workExperiance=data['workExperiance'],
-        lastCompanyWorkedFor=data['lastCompanyWorkedFor'],
-        lastWorkingDesignation=data['lastWorkingDesignation'],
-        educationalQualification=data['educationalQualification'],
+        dateOfBirth = data['dateOfBirth'],
+        district = data['district'],
+        motherName = data['motherName'],
+        fatherName = data['fatherName'],
+        pincode = data['pincode'],
+        state = data['state'],
+        workExperiance = data['workExperiance'],
+        lastCompanyWorkedFor = data['lastCompanyWorkedFor'],
+        lastWorkingDesignation = data['lastWorkingDesignation'],
+        educationalQualification = data['educationalQualification'],
         aadharNumber = data['aadharNumber'];
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'name': name,
+      'address':address,
       'emailAddress': emailAddress,
       'gender': gender,
       'phoneNumber': phoneNumber,
       'alternatePhoneNumber': alternatePhoneNumber,
       'aadharNumber': aadharNumber,
-      'motherName':motherName,
-      'fatherName':fatherName,
-      'pincode':pincode,
-      'state':state,
-      'district':district,
-      'dateOfBirth':dateOfBirth,
-      'workExperiance':workExperiance,
-      'lastCompanyWorkedFor':lastCompanyWorkedFor,
-      'lastWorkingDesignation':lastWorkingDesignation,
-      'educationalQualification':educationalQualification
+      'motherName': motherName,
+      'fatherName': fatherName,
+      'pincode': pincode,
+      'state': state,
+      'district': district,
+      'dateOfBirth': dateOfBirth,
+      'workExperiance': workExperiance,
+      'lastCompanyWorkedFor': lastCompanyWorkedFor,
+      'lastWorkingDesignation': lastWorkingDesignation,
+      'educationalQualification': educationalQualification
     };
   }
 }

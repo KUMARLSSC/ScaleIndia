@@ -9,13 +9,22 @@ class HomePageViewModel extends BaseModel {
       locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
-  Future handleStartUpLogic() async {
-    var hasLoggedInUser = await _authenticationService.isUserLoggedIn();
+  Future handleStartUpLogicEmployee() async {
+    var hasLoggedInUser = await _authenticationService.isUserLoggedInEmployee();
 
     if (hasLoggedInUser) {
       _navigationService.navigateTo(EmployeeDashBoardViewRoute);
     } else {
       _navigationService.navigateTo(EmployeeViewRoute);
+    }
+  }
+  Future handleStartUpLogicEmployer() async {
+    var hasLoggedInUser = await _authenticationService.isUserLoggedInEmployer();
+
+    if (hasLoggedInUser) {
+      _navigationService.navigateTo(EmployerDashBoardViewRoute);
+    } else {
+      _navigationService.navigateTo(EmployerViewRoute);
     }
   }
   void navigateToFirstPage() {

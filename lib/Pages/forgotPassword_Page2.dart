@@ -1,4 +1,4 @@
-import 'package:Scaleindia/ViewModels/employeePage_viewmodel.dart';
+import 'package:Scaleindia/ViewModels/forgotPage2_viewmodel.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
@@ -6,14 +6,13 @@ import 'package:Scaleindia/widgets/text_link.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class EmployeePage extends StatelessWidget {
+class ForgotPage2 extends StatelessWidget {
   final emailController = TextEditingController();
-  final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<EmployeePageViewModel>.reactive(
-      viewModelBuilder: () => EmployeePageViewModel(),
-      builder: (context, model, child) => Scaffold(
+    return ViewModelBuilder<ForgotPage2ViewModel>.reactive(
+      viewModelBuilder: () => ForgotPage2ViewModel(),
+      builder: (context, model, child) =>  Scaffold(
         body: Container(
           width: double.infinity,
           decoration: BoxDecoration(
@@ -28,7 +27,7 @@ class EmployeePage extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-              Padding(
+            Padding(
                 padding: EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,7 +53,7 @@ class EmployeePage extends StatelessWidget {
                     ),
                     Center(
                       child: Text(
-                        "Welcomes You",
+                        "Reset Password",
                         style: TextStyle(color: Colors.white, fontSize: 23),
                       ),
                     ),
@@ -64,22 +63,22 @@ class EmployeePage extends StatelessWidget {
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 255, 255, 15),
+                      color: Colors.white,
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(35),
-                          topRight: Radius.circular(35))),
+                          topLeft: Radius.circular(60),
+                          topRight: Radius.circular(60))),
                   child: SingleChildScrollView(
                     child: Padding(
                       padding: EdgeInsets.all(30),
                       child: Column(
                         children: <Widget>[
-                          Center(
+                        Center(
                               child: Text(
-                            "Employee Login",
+                            "A password reset link has been sent to your email",
                             style: kTitleStyle,
                           )),
                           SizedBox(
-                            height: 15,
+                            height: 30,
                           ),
                           Container(
                             decoration: BoxDecoration(
@@ -102,57 +101,31 @@ class EmployeePage extends StatelessWidget {
                                   child: InputField(
                                     placeholder: 'Email',
                                     controller: emailController,
-                                    text1InputType: TextInputType.emailAddress,
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(
-                                              color: Colors.grey[200]))),
-                                  child: InputField(
-                                    placeholder: 'Password',
-                                    password: true,
-                                    text1InputType: TextInputType.text,
-                                    controller: passwordController,
                                   ),
                                 ),
                               ],
                             ),
                           ),
                           SizedBox(
-                            height: 40,
-                          ),
-                          TextLink(
-                            'Forgot Password',
-                            onPressed: () {
-                              model.navigateToForgotPage1();
-                            },
-                          ),
-                          SizedBox(
                             height: 25,
                           ),
                           BusyButton(
-                            title: 'Login',
+                            title: 'Sumbit',
                             busy: model.busy,
                             color: Colors.green,
                             onPressed: () {
-                              model.login(
-                                  email: emailController.text,
-                                  password: passwordController.text);
+                              model.forgot(email: emailController.text);
                             },
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 50,
                           ),
                           TextLink(
-                            'Create an Account if you\'re new.',
+                            'Return to Login In',
                             onPressed: () {
-                              model.navigateToEmployeeRegister();
+                              model.navigateBackToLogin();
                             },
                           ),
-                          new Padding(padding: EdgeInsets.only(bottom: 20.0)),
                         ],
                       ),
                     ),

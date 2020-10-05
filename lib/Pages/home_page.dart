@@ -84,7 +84,7 @@ class HomePage extends StatelessWidget {
                                 color: Colors.green,
                                 busy: model.busy,
                                 onPressed: () {
-                                  model.navigateToEmployerPage();
+                                  model.handleStartUpLogicEmployer();
                                 },
                               ),
                               SizedBox(
@@ -106,7 +106,7 @@ class HomePage extends StatelessWidget {
                                 busy: model.busy,
                                 color: Colors.green,
                                 onPressed: () {
-                                  model.handleStartUpLogic();
+                                  model.handleStartUpLogicEmployee();
                                 },
                               ),
                               SizedBox(

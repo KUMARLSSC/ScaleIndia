@@ -1,11 +1,9 @@
-import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/employerregister_widget.dart';
 
 import 'package:flutter/material.dart';
 
 class EmployerRegisterPage extends StatelessWidget {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,10 +14,10 @@ class EmployerRegisterPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const SizedBox(
-              height: 5,
+              height: 10,
             ),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.all(30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -34,7 +32,7 @@ class EmployerRegisterPage extends StatelessWidget {
                       child: Image.asset(
                         "assets/img/lssc.jpg",
                         fit: BoxFit.fill,
-                        height: 80,
+                        height: 92,
                         width: 150,
                       ),
                     ),
@@ -42,41 +40,37 @@ class EmployerRegisterPage extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
-              child: Container(
+           Container(
                 decoration: BoxDecoration(
                     color: Color.fromRGBO(255, 255, 255, 15),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(35),
                         topRight: Radius.circular(35))),
                 child: Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(1),
                     child: Column(
                       children: <Widget>[
                         Center(
                             child: Text(
                           "Leather Sector Skill Council",
-                          style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold),
                         )),
                          SizedBox(
-                          height: 8,
+                          height: 3,
                         ),
                         Center(
                             child: Text(
                           "Employer/Company Registration Form",
-                          style: TextStyle(),
+                          style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
                         )),
-                        SizedBox(
-                          height: 5,
-                        ),
+                       SizedBox(height: 5,),
                         EmployerRegisterWidget(),
-                        SizedBox(height: 21,),
-        BusyButton(title: 'Submit', onPressed: null,color: Colors.blue,),
+                      
                         new Padding(padding: EdgeInsets.only(bottom: 10.0)),
                       ],
                     ),
 
-                ),
+                
               ),
             )
           ],
