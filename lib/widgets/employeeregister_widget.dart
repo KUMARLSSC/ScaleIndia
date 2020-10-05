@@ -612,7 +612,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           ),
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 150,
                         ),
                         new Padding(padding: EdgeInsets.only(bottom: 20.0)),
                       ],
