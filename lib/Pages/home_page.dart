@@ -60,78 +60,80 @@ class HomePage extends StatelessWidget {
               ),
               Expanded(
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 255, 255, 15),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(35),
-                          topRight: Radius.circular(35))),
-                  child: ConnectionCheck(child: SingleChildScrollView(
-                    child: Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        children: <Widget>[
-                          Center(
-                              child: Text(
-                            "Select your role in ScaleIndia",
-                            style: kTitleStyle,
-                          )),
-                          SizedBox(
-                            height: 15,
+                    decoration: BoxDecoration(
+                        color: Color.fromRGBO(255, 255, 255, 15),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(35),
+                            topRight: Radius.circular(35))),
+                    child: ConnectionCheck(
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Column(
+                            children: <Widget>[
+                              Center(
+                                  child: Text(
+                                "Select your role in ScaleIndia",
+                                style: kTitleStyle,
+                              )),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              BusyButton(
+                                title: "Employer",
+                                color: Colors.green,
+                                busy: model.busy,
+                                onPressed: () {
+                                  model.navigateToEmployerPage();
+                                },
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              BusyButton(
+                                title: 'Candidate',
+                                color: Colors.green,
+                                busy: model.busy,
+                                onPressed: () {
+                                  model.navigateToFirstPage();
+                                },
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              BusyButton(
+                                title: 'Employee',
+                                busy: model.busy,
+                                color: Colors.green,
+                                onPressed: () {
+                                  model.handleStartUpLogic();
+                                },
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              BusyButton(
+                                title: 'Trainer',
+                                busy: model.busy,
+                                color: Colors.green,
+                                onPressed: () {},
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              BusyButton(
+                                title: 'Assesor',
+                                busy: model.busy,
+                                color: Colors.green,
+                                onPressed: () {},
+                              ),
+                              new Padding(
+                                  padding: EdgeInsets.only(bottom: 20.0)),
+                            ],
                           ),
-                          BusyButton(
-                            title: "Employer",
-                            color: Colors.green,
-                            busy: model.busy,
-                            onPressed: () {
-                              model.navigateToEmployerPage();
-                            },
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          BusyButton(
-                            title: 'Candidate',
-                             color: Colors.green,
-                            busy: model.busy,
-                            onPressed: () {
-                              model.navigateToFirstPage();
-                            },
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          BusyButton(
-                            title: 'Employee',
-                            busy: model.busy,
-                             color: Colors.green,
-                            onPressed: () {
-                              model.navigateToEmployeePage();
-                            },
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          BusyButton(
-                            title: 'Trainer',
-                            busy: model.busy,
-                             color: Colors.green,
-                            onPressed: () {},
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          BusyButton(
-                            title: 'Assesor',
-                            busy: model.busy,
-                             color: Colors.green,
-                            onPressed: () {},
-                          ),
-                          new Padding(padding: EdgeInsets.only(bottom: 20.0)),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),)
-                ),
+                    )),
               )
             ],
           ),

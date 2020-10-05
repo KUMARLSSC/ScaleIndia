@@ -12,7 +12,7 @@ class EmployeePageViewModel extends BaseModel {
       locator<AuthenticationService>();
   final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
-
+  
   Future login({
     @required String email,
     @required String password,
