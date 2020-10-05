@@ -11,7 +11,4 @@ class EmployeePageViewModel extends BaseModel {
     _navigationService.navigateTo(EmployeeRegisterViewRoute);
   }
 
-  void navigateToPractical() {
-    _navigationService.navigateTo(PracticalViewRoute);
-  }
 }

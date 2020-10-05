@@ -14,5 +14,6 @@ const String EmployerViewRoute = "EmployerScreen";
 const String EmployerRegisterViewRoute = "EmployerRegisterScreen";
 const String EmployeeViewRoute = "EmployeeScreen";
 const String EmployeeRegisterViewRoute = "EmployeeRegisterScreen";
+const String EmployeeDashBoardViewRoute = "EmployeeDashBoardScreen";
 
 //Generate the view here

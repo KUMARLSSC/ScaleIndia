@@ -32,7 +32,7 @@ class EmployerRegisterPage extends StatelessWidget {
                         bottomRight: Radius.circular(30.0),
                       ),
                       child: Image.asset(
-                        "assets/img/scale.png",
+                        "assets/img/lssc.jpg",
                         fit: BoxFit.fill,
                         height: 80,
                         width: 150,

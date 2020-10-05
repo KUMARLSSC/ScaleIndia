@@ -1,6 +1,8 @@
 import 'package:Scaleindia/Services/api_services.dart';
+import 'package:Scaleindia/Services/authentication_service.dart';
 import 'package:Scaleindia/Services/candidate_service.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
+import 'package:Scaleindia/Services/firestore_service.dart';
 import 'package:Scaleindia/Services/json_service.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:Scaleindia/Services/practical_services.dart';
@@ -18,5 +20,7 @@ void setupLocator() {
   locator.registerLazySingleton(() => Api());
   locator.registerLazySingleton(() => CandidateService());
   locator.registerLazySingleton(() => TheoryService());
-   locator.registerLazySingleton(() => PracticalService());
+  locator.registerLazySingleton(() => PracticalService());
+  locator.registerLazySingleton(() => AuthenticationService());
+  locator.registerLazySingleton(() => FirestoreService());
 }

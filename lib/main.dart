@@ -1,4 +1,5 @@
 import 'package:Scaleindia/ApiModel/center_api.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,8 +11,10 @@ import 'Services/navigation_service.dart';
 import 'Services/request_service.dart';
 import 'locator.dart';
 
-void main() {
+Future<void> main() async {
   setupLocator();
+  WidgetsFlutterBinding.ensureInitialized();
+ await Firebase.initializeApp();
   runApp(MyApp());
 }
 

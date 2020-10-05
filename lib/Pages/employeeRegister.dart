@@ -1,4 +1,3 @@
-import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/employeeregister_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +12,7 @@ class EmployeeRegisterPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const SizedBox(
-              height: 5,
+              height: 10,
             ),
             Padding(
               padding: EdgeInsets.all(20),
@@ -29,7 +28,7 @@ class EmployeeRegisterPage extends StatelessWidget {
                         bottomRight: Radius.circular(30.0),
                       ),
                       child: Image.asset(
-                        "assets/img/scale.png",
+                        "assets/img/lssc.jpg",
                         fit: BoxFit.fill,
                         height: 80,
                         width: 150,
@@ -47,7 +46,7 @@ class EmployeeRegisterPage extends StatelessWidget {
                         topLeft: Radius.circular(35),
                         topRight: Radius.circular(35))),
                 child: Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(1),
                     child: Column(
                       children: <Widget>[
                         Center(
@@ -56,23 +55,20 @@ class EmployeeRegisterPage extends StatelessWidget {
                           style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
                         )),
                          SizedBox(
-                          height: 8,
+                          height: 3,
                         ),
                         Center(
                             child: Text(
                           "Employee Registration Form",
-                          style: TextStyle(),
+                          style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
                         )),
                         SizedBox(
                           height: 5,
                         ),
-                        EmployeeRegisterWidget(),
-                        SizedBox(height: 21,),
-        BusyButton(title: 'Submit', onPressed: null,color: Colors.blue,),
+                        EmployeeRegisterWidget(),       
                         new Padding(padding: EdgeInsets.only(bottom: 10.0)),
                       ],
                     ),
-
                 ),
               ),
             )

@@ -1,4 +1,5 @@
 import 'package:Scaleindia/ViewModels/splashpage_viewmodel.dart';
+import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -16,14 +17,15 @@ class SplashPage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              FlutterLogo(
-                size: 150.0,
-              ),
-              CircularProgressIndicator(
-                strokeWidth: 3,
-                valueColor: AlwaysStoppedAnimation(
-                  Color(0xff19c7c1),
-                ),
+              Image.asset(
+                          "assets/img/scale_india.png",
+                          fit: BoxFit.fill,
+                          height: 100,
+                          width: 180,
+                        ),
+              ColorLoader3(
+                radius: 20.0,
+                dotRadius: 10.0,
               )
             ],
           ),

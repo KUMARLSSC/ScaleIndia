@@ -1,4 +1,5 @@
 import 'package:Scaleindia/shared/shared_styles.dart';
+import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:flutter/material.dart';
 
 /// A button that shows a busy indicator in place of title
@@ -43,9 +44,7 @@ class _BusyButtonState extends State<BusyButton> {
                   widget.title,
                   style: buttonTitleTextStyle,
                 )
-              : CircularProgressIndicator(
-                  strokeWidth: 2,
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white)),
+              : ColorLoader3(radius: 15,dotRadius: 5,)
         ),
       ),
     );
