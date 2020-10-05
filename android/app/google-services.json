@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "912259751198",
+    "firebase_url": "https://scale-india.firebaseio.com",
+    "project_id": "scale-india",
+    "storage_bucket": "scale-india.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912259751198:android:f3c0c336eafb3b4cb5fd0f",
+        "android_client_info": {
+          "package_name": "com.example.Scaleindia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912259751198-1idl9ig714tpm2mq6hbloi4bap9gp8ut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.Scaleindia",
+            "certificate_hash": "c8d90de5dfe03f6b2ac7d7920e9abe16d5a23220"
+          }
+        },
+        {
+          "client_id": "912259751198-d39vkto3f2povr2qt7bo3ob32b7c40n0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDl9eokouCCUzXk70Zu78BxcKoMduE_dcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "912259751198-d39vkto3f2povr2qt7bo3ob32b7c40n0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
