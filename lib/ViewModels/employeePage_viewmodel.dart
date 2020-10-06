@@ -32,7 +32,7 @@ class EmployeePageViewModel extends BaseModel {
       } else {
         await _dialogService.showDialog(
           title: 'Login Failure',
-          description: 'General login failure. Please try again later',
+          description: result.toString(),
         );
       }
     } else {
