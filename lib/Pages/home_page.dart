@@ -85,7 +85,7 @@ class HomePage extends StatelessWidget {
                                 color: Colors.green,
                                 busy: model.busy,
                                 onPressed: () {
-                                 model.handleStartUpLogicEmployer();
+                                  model.navigateToEmployerPage();
                                 },
                               ),
                               SizedBox(
