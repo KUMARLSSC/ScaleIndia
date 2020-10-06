@@ -1,7 +1,7 @@
 import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/candidate_page.dart';
 import 'package:Scaleindia/Pages/elearning_page.dart';
-import 'package:Scaleindia/Pages/employeeDashBoard_page.dart';
+import 'package:Scaleindia/Pages/EmployeeDashBoard/employeeDashBoard_page.dart';
 import 'package:Scaleindia/Pages/employeeRegister_page.dart';
 import 'package:Scaleindia/Pages/employee_page.dart';
 import 'package:Scaleindia/Pages/employerDashBoard_page.dart';

@@ -13,64 +13,38 @@ class EmployerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<EmployerPageViewModel>.reactive(
       viewModelBuilder: () => EmployerPageViewModel(),
-      builder: (context, model, child) => Scaffold(
-        body: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-            Colors.blue[900],
-            Colors.blue[800],
-            Colors.blue[400]
-          ])),
-          child: Column(
+      builder: (context, model, child) =>Scaffold(
+        resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
+        body:Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const SizedBox(
-                height: 50,
-              ),
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
+                height: 40,
+              ),            
                     Center(
                       child: ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15.0),
-                          topRight: Radius.circular(15.0),
-                          bottomLeft: Radius.circular(15.0),
-                          bottomRight: Radius.circular(15.0),
-                        ),
                         child: Image.asset(
-                          "assets/img/scale.png",
+                          "assets/img/logo.png",
                           fit: BoxFit.fill,
-                          height: 100,
-                          width: 180,
+                          height: 130,
+                          width: 300,
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Center(
                       child: Text(
                         "Welcomes You",
-                        style: TextStyle(color: Colors.white, fontSize: 23),
+                        style: TextStyle(color: Colors.black, fontSize: 23,fontWeight: FontWeight.bold),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 255, 255, 15),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(35),
-                          topRight: Radius.circular(35))),
+                    ),             
+               Container( 
                   child: SingleChildScrollView(
                     child: Padding(
-                      padding: EdgeInsets.all(30),
+                      padding: EdgeInsets.all(10),
                       child: Column(
                         children: <Widget>[
                           Center(
@@ -82,6 +56,7 @@ class EmployerPage extends StatelessWidget {
                             height: 15,
                           ),
                           Container(
+                            width: 280,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
@@ -122,7 +97,7 @@ class EmployerPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 40,
+                            height: 15,
                           ),
                           TextLink(
                             'Forgot Password',
@@ -135,8 +110,8 @@ class EmployerPage extends StatelessWidget {
                           ),
                           BusyButton(
                             title: 'Login',
-                            color: Colors.green,
                             busy: model.busy,
+                            color: Colors.green,
                             onPressed: () {
                               model.login(
                                   email: emailController.text,
@@ -146,22 +121,22 @@ class EmployerPage extends StatelessWidget {
                           SizedBox(
                             height: 20,
                           ),
-                          TextLink(
-                            'Create an Account if you\'re new.',
-                            onPressed: () {
-                              model.navigateToEmployerRegister();
-                            },
-                          ),
+                          BusyButton(
+                        title: 'Register',
+                        busy: model.busy,
+                        color: Colors.blue[300],
+                        onPressed: () {
+                          model.navigateToEmployerRegister();
+                        },
+                      ),
                           new Padding(padding: EdgeInsets.only(bottom: 20.0)),
                         ],
                       ),
                     ),
                   ),
                 ),
-              )
             ],
           ),
-        ),
       ),
     );
   }

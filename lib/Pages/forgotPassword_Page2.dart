@@ -1,4 +1,4 @@
-import 'package:Scaleindia/ViewModels/forgotPage2_viewmodel.dart';
+import 'package:Scaleindia/ViewModels/employerPage_viewmodel.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
@@ -10,74 +10,48 @@ class ForgotPage2 extends StatelessWidget {
   final emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<ForgotPage2ViewModel>.reactive(
-      viewModelBuilder: () => ForgotPage2ViewModel(),
-      builder: (context, model, child) =>  Scaffold(
-        body: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-            Colors.blue[900],
-            Colors.blue[800],
-            Colors.blue[400]
-          ])),
-          child: Column(
+    return ViewModelBuilder<EmployerPageViewModel>.reactive(
+      viewModelBuilder: () => EmployerPageViewModel(),
+      builder: (context, model, child) => Scaffold(
+        resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
+        body:Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const SizedBox(
-                height: 50,
-              ),
-            Padding(
-                padding: EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
+                height: 40,
+              ),            
                     Center(
                       child: ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15.0),
-                          topRight: Radius.circular(15.0),
-                          bottomLeft: Radius.circular(15.0),
-                          bottomRight: Radius.circular(15.0),
-                        ),
                         child: Image.asset(
-                          "assets/img/scale.png",
+                          "assets/img/logo.png",
                           fit: BoxFit.fill,
-                          height: 100,
-                          width: 180,
+                          height: 130,
+                          width: 300,
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Center(
                       child: Text(
                         "Reset Password",
-                        style: TextStyle(color: Colors.white, fontSize: 23),
+                        style: TextStyle(color: Colors.black, fontSize: 23,fontWeight: FontWeight.bold),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(60),
-                          topRight: Radius.circular(60))),
+                    ),             
+               Container( 
                   child: SingleChildScrollView(
                     child: Padding(
-                      padding: EdgeInsets.all(30),
+                      padding: EdgeInsets.all(10),
                       child: Column(
                         children: <Widget>[
-                        Center(
+                          Center(
                               child: Text(
                             "A password reset link has been sent to your email",
                             style: kTitleStyle,
                           )),
-                          SizedBox(
+                           SizedBox(
                             height: 30,
                           ),
                           Container(
@@ -93,6 +67,7 @@ class ForgotPage2 extends StatelessWidget {
                             child: Column(
                               children: <Widget>[
                                 Container(
+                                  width: 280,
                                   padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       border: Border(
@@ -118,7 +93,7 @@ class ForgotPage2 extends StatelessWidget {
                             },
                           ),
                           SizedBox(
-                            height: 50,
+                            height: 25,
                           ),
                           TextLink(
                             'Return to Login In',
@@ -126,15 +101,14 @@ class ForgotPage2 extends StatelessWidget {
                               model.navigateBackToLogin();
                             },
                           ),
+                          new Padding(padding: EdgeInsets.only(bottom: 20.0)),
                         ],
                       ),
                     ),
                   ),
                 ),
-              )
             ],
           ),
-        ),
       ),
     );
   }

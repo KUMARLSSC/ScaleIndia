@@ -13,123 +13,109 @@ class FirstPage extends StatelessWidget {
     return ViewModelBuilder<FirstPageViewModel>.reactive(
       viewModelBuilder: () => FirstPageViewModel(),
       builder: (context, model, child) => Scaffold(
-        body: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-            Colors.blue[900],
-            Colors.blue[800],
-            Colors.blue[400]
-          ])),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              const SizedBox(
-                height: 50,
-              ),
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15.0),
-                          topRight: Radius.circular(15.0),
-                          bottomLeft: Radius.circular(15.0),
-                          bottomRight: Radius.circular(15.0),
-                        ),
-                        child: Image.asset(
-                          "assets/img/scale.png",
-                          fit: BoxFit.fill,
-                          height: 155,
-                          width: 450,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Center(
-                      child: Text(
-                        "Welcomes You",
-                        style: TextStyle(color: Colors.white, fontSize: 23),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 255, 255, 15),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(35),
-                          topRight: Radius.circular(35))),
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: EdgeInsets.all(30),
-                      child: Column(
-                        children: <Widget>[
-                          Center(
-                              child: Text(
-                            "Request ID:",
-                            style: kTitleStyle,
-                          )),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Color.fromRGBO(32, 132, 232, .3),
-                                      blurRadius: 20,
-                                      offset: Offset(0, 10))
-                                ]),
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(
-                                              color: Colors.grey[200]))),
-                                  child: InputField(
-                                    placeholder: 'Enter your request id',
-                                    text1InputType: TextInputType.number,
-                                    controller: textController,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          BusyButton(
-                            title: 'Start',
-                            busy: model.busy,
-                            color: Colors.green,
-                            onPressed: () {
-                              model.firstpage(requestidText:textController.text);
-                            },
-                          ),
-                          SizedBox(
-                            height: 50,
-                          ),
-                          new Padding(padding: EdgeInsets.only(bottom: 20.0)),
-                        ],
+        resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            const SizedBox(
+              height: 50,
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Center(
+                    child: ClipRRect(
+                      child: Image.asset(
+                        "assets/img/logo.png",
+                        fit: BoxFit.fill,
+                        height: 100,
+                        width: 250,
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Center(
+                    child: Text(
+                      "Welcomes You",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 23,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Container(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.all(5),
+                    child: Column(
+                      children: <Widget>[
+                        Center(
+                            child: Text(
+                          "Request ID:",
+                          style: kTitleStyle,
+                        )),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Container(
+                          width: 200,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Color.fromRGBO(32, 132, 232, .3),
+                                    blurRadius: 20,
+                                    offset: Offset(0, 10))
+                              ]),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[200]))),
+                                child: InputField(
+                                  placeholder: 'Enter your request id',
+                                  text1InputType: TextInputType.number,
+                                  controller: textController,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 25,
+                        ),
+                        BusyButton(
+                          title: 'Start',
+                          busy: model.busy,
+                          color: Colors.green,
+                          onPressed: () {
+                            model.firstpage(requestidText: textController.text);
+                          },
+                        ),
+                        SizedBox(
+                          height: 50,
+                        ),
+                        new Padding(padding: EdgeInsets.only(bottom: 20.0)),
+                      ],
+                    ),
+                  ),
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );

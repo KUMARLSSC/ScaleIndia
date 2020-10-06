@@ -28,7 +28,7 @@ class EmployeeRegisterPage extends StatelessWidget {
                         bottomRight: Radius.circular(30.0),
                       ),
                       child: Image.asset(
-                        "assets/img/lssc.jpg",
+                        "assets/img/logo.png",
                         fit: BoxFit.fill,
                         height: 92,
                         width: 150,

@@ -10,15 +10,7 @@ class CandidatePage extends StatelessWidget {
     return ViewModelBuilder<CandidatePageViewModel>.reactive(
       viewModelBuilder: () => CandidatePageViewModel(),
       builder: (context, model, child) => Scaffold(
-        body: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-            Colors.blue[900],
-            Colors.blue[800],
-            Colors.blue[400]
-          ])),
-          child: Column(
+        body:Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const SizedBox(
@@ -31,27 +23,23 @@ class CandidatePage extends StatelessWidget {
                   children: <Widget>[
                     Center(
                       child: ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15.0),
-                          topRight: Radius.circular(15.0),
-                          bottomLeft: Radius.circular(15.0),
-                          bottomRight: Radius.circular(15.0),
-                        ),
-                        child: Image.asset(
-                          "assets/img/scale.png",
+
+                        child:  Image.asset(
+                          "assets/img/logo.png",
                           fit: BoxFit.fill,
-                          height: 155,
-                          width: 450,
+                          height: 100,
+                          width: 250,
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 40
+                      ,
                     ),
                     Center(
                       child: Text(
                         "Welcomes You",
-                        style: TextStyle(color: Colors.white, fontSize: 23),
+                         style: TextStyle(color: Colors.black, fontSize: 23,fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
@@ -59,14 +47,10 @@ class CandidatePage extends StatelessWidget {
               ),
               Expanded(
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: Color.fromRGBO(255, 255, 255, 15),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(35),
-                          topRight: Radius.circular(35))),
+                 
                   child: SingleChildScrollView(
                     child: Padding(
-                      padding: EdgeInsets.all(30),
+                      padding: EdgeInsets.all(5),
                       child: Column(
                         children: <Widget>[
                           Center(
@@ -110,7 +94,6 @@ class CandidatePage extends StatelessWidget {
               )
             ],
           ),
-        ),
       ),
     );
   }

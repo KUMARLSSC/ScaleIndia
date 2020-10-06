@@ -12,15 +12,7 @@ class HomePage extends StatelessWidget {
     return ViewModelBuilder<HomePageViewModel>.reactive(
       viewModelBuilder: () => HomePageViewModel(),
       builder: (context, model, child) => Scaffold(
-        body: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-            Colors.blue[900],
-            Colors.blue[800],
-            Colors.blue[400]
-          ])),
-          child: Column(
+        body:  Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const SizedBox(
@@ -33,27 +25,21 @@ class HomePage extends StatelessWidget {
                   children: <Widget>[
                     Center(
                       child: ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30.0),
-                          topRight: Radius.circular(30.0),
-                          bottomLeft: Radius.circular(30.0),
-                          bottomRight: Radius.circular(30.0),
-                        ),
                         child: Image.asset(
-                          "assets/img/scale.png",
+                          "assets/img/logo.png",
                           fit: BoxFit.fill,
                           height: 100,
-                          width: 180,
+                          width: 250,
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 30,
                     ),
                     Center(
                       child: Text(
                         "Welcomes You",
-                        style: TextStyle(color: Colors.white, fontSize: 23),
+                        style: TextStyle(color: Colors.black, fontSize: 23,fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
@@ -61,15 +47,10 @@ class HomePage extends StatelessWidget {
               ),
               Expanded(
                 child: Container(
-                    decoration: BoxDecoration(
-                        color: Color.fromRGBO(255, 255, 255, 15),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(35),
-                            topRight: Radius.circular(35))),
                     child: ConnectionCheck(
                       child: SingleChildScrollView(
                         child: Padding(
-                          padding: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(1),
                           child: Column(
                             children: <Widget>[
                               Center(
@@ -107,7 +88,7 @@ class HomePage extends StatelessWidget {
                                 busy: model.busy,
                                 color: Colors.green,
                                 onPressed: () {
-                                  model.handleStartUpLogicEmployee();
+                                  model.navigateToEmployeePage();
                                 },
                               ),
                               SizedBox(
@@ -138,7 +119,6 @@ class HomePage extends StatelessWidget {
               )
             ],
           ),
-        ),
       ),
     );
   }

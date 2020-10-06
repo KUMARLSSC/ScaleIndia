@@ -378,7 +378,7 @@ class _EmployerRegisterWidgetState extends State<EmployerRegisterWidget> {
                   )),
                 ),
                 SizedBox(
-                  height: 2,
+                  height: 10,
                 ),
                 BusyButton(
                   title: 'Submit',

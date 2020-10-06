@@ -1,4 +1,4 @@
-import 'package:Scaleindia/ViewModels/forgotPage1_viewmodel.dart';
+import 'package:Scaleindia/ViewModels/employeePage_viewmodel.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
@@ -10,8 +10,8 @@ class ForgotPage1 extends StatelessWidget {
   final emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<ForgotPage1ViewModel>.reactive(
-      viewModelBuilder: () => ForgotPage1ViewModel(),
+    return ViewModelBuilder<EmployeePageViewModel>.reactive(
+      viewModelBuilder: () => EmployeePageViewModel(),
       builder: (context, model, child) => Scaffold(
         body: Container(
           width: double.infinity,

@@ -18,10 +18,10 @@ class SplashPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Image.asset(
-                          "assets/img/scale_india.png",
+                          "assets/img/logo.png",
                           fit: BoxFit.fill,
                           height: 100,
-                          width: 180,
+                          width: 200,
                         ),
               ColorLoader3(
                 radius: 20.0,

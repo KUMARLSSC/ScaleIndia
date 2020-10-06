@@ -43,6 +43,18 @@ class EmployeePageViewModel extends BaseModel {
     }
   }
 
+  Future<void> forgot({
+    @required String email,
+  }) async {
+    _authenticationService.sendPasswordResetEmail(email: email);
+    _dialogService.showDialog(
+        title: 'Reset Password',
+        description: 'A password reset link has beeen sent to' + email);
+  }
+   void navigateBackToLogin() {
+    _navigationService.navigateTo(EmployeeViewRoute);
+  }
+
   void navigateToEmployeeRegister() {
     _navigationService.navigateTo(EmployeeRegisterViewRoute);
   }
