@@ -20,7 +20,7 @@ class EmployerPageViewModel extends BaseModel {
     setBusy(true);
 
     var result = await _authenticationService.loginWithEmailEmployer(
-      emailAddress: email,
+      companyEmailAddress: email,
       password: password,
     );
 

@@ -1,7 +1,7 @@
 class Employee {
   final String id;
   final String name;
-  final String emailAddress;
+  final String employeeEmailAddress;
   final String gender;
   final String phoneNumber;
   final String alternatePhoneNumber;
@@ -19,7 +19,7 @@ class Employee {
   final String address;
 
   Employee(
-      {this.emailAddress,
+      {this.employeeEmailAddress,
       this.address,
       this.id,
       this.name,
@@ -39,7 +39,7 @@ class Employee {
       this.workExperiance});
 
   Employee.fromData(Map<String, dynamic> data)
-      : emailAddress = data['emailAddress'],
+      : employeeEmailAddress = data['employeeEmailAddress'],
         id = data['id'],
         name = data['name'],
         address=data['address'],
@@ -63,7 +63,7 @@ class Employee {
       'id': id,
       'name': name,
       'address':address,
-      'emailAddress': emailAddress,
+      'employeeEmailAddress': employeeEmailAddress,
       'gender': gender,
       'phoneNumber': phoneNumber,
       'alternatePhoneNumber': alternatePhoneNumber,

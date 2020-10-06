@@ -628,7 +628,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                   onPressed: () {
                     model.signUp(
                       address: addressController.text,
-                        emailAddress: emailController.text,
+                        employeeEmailAddress: emailController.text,
                         password: passwordController.text,
                         name: nameController.text,
                         motherName: motherNameController.text,

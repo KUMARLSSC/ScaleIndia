@@ -48,7 +48,7 @@ Future getEmployer(String uid) async {
         _employerController.add(userdetails);
       }
     });
-    return _employeeController.stream;
+    return _employerController.stream;
   }
   Future createEmployee(Employee employee) async {
     try {

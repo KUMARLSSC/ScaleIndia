@@ -15,12 +15,12 @@ class AuthenticationService {
   Employer get currentEmployer => _currentEmployer;
 
   Future loginWithEmailEmployee({
-    @required String emailAddress,
+    @required String employeeEmailAddress,
     @required String password,
   }) async {
     try {
       var authResult = await _firebaseAuth.signInWithEmailAndPassword(
-        email: emailAddress,
+        email: employeeEmailAddress,
         password: password,
       );
       await _populateCurrentUserEmployee(authResult.user);
@@ -31,12 +31,12 @@ class AuthenticationService {
   }
 
   Future loginWithEmailEmployer({
-    @required String emailAddress,
+    @required String companyEmailAddress,
     @required String password,
   }) async {
     try {
       var authResult = await _firebaseAuth.signInWithEmailAndPassword(
-        email: emailAddress,
+        email: companyEmailAddress,
         password: password,
       );
       await _populateCurrentUserEmployer(authResult.user);
@@ -88,7 +88,7 @@ class AuthenticationService {
   }
 
   Future signUpWithEmailEmployee({
-    @required String emailAddress,
+    @required String employeeEmailAddress,
     @required String address,
     @required String password,
     @required String name,
@@ -109,13 +109,13 @@ class AuthenticationService {
   }) async {
     try {
       var authResult = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: emailAddress,
+        email:employeeEmailAddress,
         password: password,
       );
 
       _currentEmployee = Employee(
           id: authResult.user.uid,
-          emailAddress: emailAddress,
+          employeeEmailAddress: employeeEmailAddress,
           name: name,
           motherName: motherName,
           fatherName: fatherName,
