@@ -106,7 +106,7 @@ class HomePage extends StatelessWidget {
                           height: 15,
                         ),
                         BusyButton(
-                          title: 'Assesor',
+                          title: 'Assessor',
                           busy: model.busy,
                           color: Colors.green,
                           onPressed: () {},

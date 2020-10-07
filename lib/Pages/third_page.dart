@@ -41,7 +41,7 @@ class ThirdPage extends StatelessWidget {
         ),
         Center(
           child: Text(
-            "Center and Assesser info",
+            "Center and Assessor info",
             style: TextStyle(
                 color: Colors.black, fontSize: 27, fontWeight: FontWeight.bold),
           ),

@@ -93,7 +93,7 @@ class FifthPage extends StatelessWidget {
                                       ),
                                       Center(
                                         child: Text(
-                                          "•The examination is of 60 mintues",
+                                          "•The Assessment is of 60 mintues",
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 18,
@@ -118,7 +118,7 @@ class FifthPage extends StatelessWidget {
                                       ),
                                       Center(
                                         child: Text(
-                                          "• For any issue contact the Assesor",
+                                          "• For any issue contact the Assessor",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               color: Colors.white,
