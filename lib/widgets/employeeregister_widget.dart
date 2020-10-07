@@ -281,7 +281,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                                         bottom: BorderSide(
                                             color: Colors.grey[200]))),
                                 child: InputField(
-                                  placeholder: 'Father name',
+                                  placeholder:"Father's name",
                                   controller: fatherNameController,
                                   text1InputType: TextInputType.text,
                                 ),
@@ -301,7 +301,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           child: Column(
                             children: <Widget>[
                               Text(
-                                "Enter your mother name:",
+                                "Enter your mother's name:",
                                 style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.normal),
@@ -313,7 +313,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                                         bottom: BorderSide(
                                             color: Colors.grey[200]))),
                                 child: InputField(
-                                  placeholder: 'Mother name',
+                                  placeholder:"Mother's name",
                                   controller: motherNameController,
                                   text1InputType: TextInputType.text,
                                 ),
