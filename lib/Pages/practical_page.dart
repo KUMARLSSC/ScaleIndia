@@ -23,7 +23,7 @@ class PracticalPage extends StatelessWidget {
       key: _key,
       appBar: PreferredSize(
           child: header(context,
-              isAppTitle: false, isIcon: false, strTitle: "Practical Exam"),
+              isAppTitle: false, isIcon: false, strTitle: "Practical Assessment"),
           preferredSize: Size.fromHeight(50.0)),
       body: Center(
         child: Container(

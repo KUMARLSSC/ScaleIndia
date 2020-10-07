@@ -36,7 +36,7 @@ class FifthPage extends StatelessWidget {
                             children: [
                               Center(
                                 child: Text(
-                                  'Start Your Practical and Theory Exam',
+                                  'Start Your Practical and Theory Assessment',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Colors.limeAccent,
@@ -105,7 +105,7 @@ class FifthPage extends StatelessWidget {
                                       ),
                                       Center(
                                         child: Text(
-                                          "• It is a multiple choicequestion with no negative marking",
+                                          "• It is a multiple choice question with no negative marking",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               color: Colors.white,
@@ -118,7 +118,7 @@ class FifthPage extends StatelessWidget {
                                       ),
                                       Center(
                                         child: Text(
-                                          "• For any issue contact the invagilator",
+                                          "• For any issue contact the Assesor",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               color: Colors.white,

@@ -21,7 +21,7 @@ class TheoryPage extends StatelessWidget {
         key: _key,
         appBar: PreferredSize(
             child: header(context,
-                isAppTitle: false, isIcon: false, strTitle: "Theory Exam"),
+                isAppTitle: false, isIcon: false, strTitle: "Theory Assessment"),
             preferredSize: Size.fromHeight(50.0)),
         body: Center(
           child: Container(
