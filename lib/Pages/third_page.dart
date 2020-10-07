@@ -1,4 +1,5 @@
 import 'package:Scaleindia/ViewModels/thirdpage_viewmodel.dart';
+import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/thirdpage_widget.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,7 @@ class ThirdPage extends StatelessWidget {
                             child: RaisedButton(
                               splashColor: Colors.blue,
                               elevation: 5.0,
-                              color: Colors.blue,
+                              color: kBlackAccent,
                               child: Text(
                                 'Candidate List',
                                 style: TextStyle(

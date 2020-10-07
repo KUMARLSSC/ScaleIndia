@@ -1,8 +1,8 @@
 import 'package:Scaleindia/ApiModel/practical_api.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/ViewModels/practicalpage_viewmodel.dart';
+import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
-import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -29,7 +29,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
         children: [
           Container(
             height: 60,
-            color: Colors.lightBlue,
+            color: kBlack,
             child: Center(
               child: Text(
                 widget.practical[_currentIndex].pqNos,
@@ -45,14 +45,14 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
           ),
           Container(
             height: 80,
-            color: Colors.grey[350],
+            color: kBlackAccent,
             child: Center(
               child: Text(
                 widget.practical[_currentIndex].pqCommonQuestion,
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black),
+                    color: Colors.white),
               ),
             ),
           ),
@@ -104,7 +104,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
           ),
           Text(
             "Enter Marks:",
-            style: kTitleStyle,
+           style: TextStyle(fontSize: 17,fontWeight: FontWeight.w700),
           ),
           SizedBox(
             height: 15,

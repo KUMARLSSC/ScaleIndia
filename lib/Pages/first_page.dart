@@ -60,7 +60,7 @@ class FirstPage extends StatelessWidget {
                       children: <Widget>[
                         Center(
                             child: Text(
-                          "Request ID:",
+                          "Candidate Enrollment Number:",
                           style: kTitleStyle,
                         )),
                         SizedBox(
@@ -86,7 +86,7 @@ class FirstPage extends StatelessWidget {
                                         bottom: BorderSide(
                                             color: Colors.grey[200]))),
                                 child: InputField(
-                                  placeholder: 'Enter your request id',
+                                  placeholder: 'Enter enrollment number',
                                   text1InputType: TextInputType.number,
                                   controller: textController,
                                 ),

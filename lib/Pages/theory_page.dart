@@ -1,5 +1,6 @@
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ViewModels/theory_viewmodal.dart';
+import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/options_widget.dart';
 import 'package:Scaleindia/widgets/timer_widget.dart';
@@ -30,12 +31,7 @@ class TheoryPage extends StatelessWidget {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.0),
-                  gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-                    Colors.blue[900],
-                    Colors.blue[800],
-                    Colors.blue[400]
-                  ]),
+                  color: kBlack
                 ),
                 child: Column(
                   children: [

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -26,7 +27,7 @@ class _BottomShhetWidgetState extends State<BottomShhetWidget> {
         RaisedButton(
           splashColor: Colors.blue,
           elevation: 5.0,
-          color: Colors.black87,
+          color: kBlackAccent,
           child: Column(
             children: [
               SizedBox(
@@ -70,7 +71,7 @@ class _BottomShhetWidgetState extends State<BottomShhetWidget> {
         RaisedButton(
           splashColor: Colors.blue,
           elevation: 5.0,
-          color: Colors.black87,
+          color: kBlackAccent,
           child: Column(
             children: [
               SizedBox(

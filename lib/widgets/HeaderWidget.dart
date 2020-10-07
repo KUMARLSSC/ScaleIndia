@@ -1,3 +1,4 @@
+import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
 
 
@@ -17,15 +18,7 @@ AppBar header(context,{bool isAppTitle,bool isIcon,String strTitle, Widget icon,
     centerTitle: true,
     flexibleSpace: Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                colors: <Color>[
-                  Colors.blue[900],
-            Colors.blue[800],
-            Colors.blue[400]
-                ],
-              ),
+             color: kBlack
             ),
           ),
   );

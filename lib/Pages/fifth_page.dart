@@ -1,5 +1,6 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ViewModels/fifthpage_viewmodel.dart';
+import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -24,12 +25,7 @@ class FifthPage extends StatelessWidget {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.0),
-                  gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-                    Colors.blue[900],
-                    Colors.blue[800],
-                    Colors.blue[400]
-                  ]),
+                  color: kBlack
                 ),
                 child: Column(
                   children: [

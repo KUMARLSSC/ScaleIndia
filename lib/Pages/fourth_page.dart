@@ -1,6 +1,7 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ViewModels/fourthpage_viewmodel.dart';
+import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/participant_widget.dart';
 import 'package:flutter/material.dart';
@@ -26,17 +27,12 @@ class FourthPage extends StatelessWidget {
               child: Container(
                 width: MediaQuery.of(context).size.width - 5.0,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.0),
-                  gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-                    Colors.blue[900],
-                    Colors.blue[800],
-                    Colors.blue[400]
-                  ]),
+                  color:  kBlack
                 ),
                 child: Column(
                   children: [
                     Padding(
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(5),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

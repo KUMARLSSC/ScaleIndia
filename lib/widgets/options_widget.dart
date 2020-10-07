@@ -1,5 +1,6 @@
 import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
+import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../locator.dart';
@@ -26,7 +27,7 @@ class _OptionsState extends State<Options> {
     return Column(
       children: [
         Card(
-          color: Colors.black,
+          color: kBlackAccent,
           child: Padding(
             padding: const EdgeInsets.only(
                 top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
@@ -118,7 +119,7 @@ class _OptionsState extends State<Options> {
               child: RaisedButton(
                 splashColor: Colors.blue,
                 elevation: 5.0,
-                color: new Color(0xFFEA4335),
+                color: _currentIndex == (widget.theory.length+1 - widget.theory.length-1 )? Colors.white30:new Color(0xFFEA4335),
                 child: Text(
                   'Previous',
                   style: TextStyle(
@@ -142,7 +143,7 @@ class _OptionsState extends State<Options> {
                 elevation: 5.0,
                 color: new Color(0xFF34A853),
                 child: Text(
-                  'Next',
+                  _currentIndex == (widget.theory.length - 1)? "Submit":"Next",
                   style: TextStyle(
                     fontSize: 15.0,
                     color: Colors.white,
@@ -168,7 +169,7 @@ class _OptionsState extends State<Options> {
             child: RaisedButton(
               splashColor: Colors.blue,
               elevation: 5.0,
-              color: Colors.black87,
+              color: kBlackAccent,
               child: Text(
                 'Summary',
                 style: TextStyle(

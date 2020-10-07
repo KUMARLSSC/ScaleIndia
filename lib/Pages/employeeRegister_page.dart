@@ -20,21 +20,13 @@ class EmployeeRegisterPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Center(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30.0),
-                        topRight: Radius.circular(30.0),
-                        bottomLeft: Radius.circular(30.0),
-                        bottomRight: Radius.circular(30.0),
-                      ),
                       child: Image.asset(
                         "assets/img/logo.png",
                         fit: BoxFit.fill,
-                        height: 92,
+                        height: 80,
                         width: 150,
                       ),
                     ),
-                  )
                 ],
               ),
             ),
