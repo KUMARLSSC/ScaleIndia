@@ -111,7 +111,11 @@ class HomePage extends StatelessWidget {
                           color: Colors.green,
                           onPressed: () {},
                         ),
-                        new Padding(padding: EdgeInsets.only(bottom: 20.0)),
+                         SizedBox(
+                          height: 120,
+                        ),
+                        Text('About Scale India',style: TextStyle(fontStyle: FontStyle.italic,color: Colors.grey),),
+                        
                       ],
                     ),
                   ),
