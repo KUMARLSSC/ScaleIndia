@@ -1,4 +1,5 @@
 import 'package:Scaleindia/Pages/EmployeeDashBoard/profile_Page.dart';
+import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'elearning_page.dart';
@@ -41,11 +42,11 @@ class _EmployeeDashBoardPageState extends State<EmployeeDashBoardPage> {
       <Widget>[
       Icon(Icons.home, size: 30,color: Colors.white,),
       Icon(Icons.book, size: 30,color: Colors.white,),
-      Icon(Icons.add, size: 30,color: Colors.white,),
+      Icon(Icons.search, size: 30,color: Colors.white,),
       Icon(Icons.account_circle, size: 30,color: Colors.white,),
       ],
-      color:Colors.blue,
-      buttonBackgroundColor:Colors.blue,
+      color:kBlack,
+      buttonBackgroundColor:kBlackAccent,
       backgroundColor: Colors.white,
       animationCurve: Curves.bounceInOut,
       animationDuration: Duration(milliseconds: 300),
