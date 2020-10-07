@@ -14,7 +14,8 @@ class ThirdPageWidget extends StatelessWidget {
             label: Text(
               'Center :',
               style: TextStyle(
-                color: Colors.white,
+                fontWeight: FontWeight.w800,
+                color: Colors.black,
                 fontSize: 17.0,
               ),
             ),
@@ -24,7 +25,7 @@ class ThirdPageWidget extends StatelessWidget {
               centerAssesor.centerName,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Colors.black,
                 fontSize: 17.0,
               ),
               maxLines: 1,
@@ -36,7 +37,7 @@ class ThirdPageWidget extends StatelessWidget {
               DataCell(Text(
                 "Assesser Name :",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 17.0,
                 ),
@@ -45,7 +46,7 @@ class ThirdPageWidget extends StatelessWidget {
                 Text(
                   centerAssesor.asContactPerson,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 17.0,
                   ),
@@ -58,7 +59,7 @@ class ThirdPageWidget extends StatelessWidget {
               DataCell(Text(
                 "Request ID :",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 17.0,
                 ),
@@ -67,7 +68,7 @@ class ThirdPageWidget extends StatelessWidget {
                 Text(
                   centerAssesor.asId.toString(),
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 17.0,
                   ),
@@ -80,7 +81,7 @@ class ThirdPageWidget extends StatelessWidget {
               DataCell(Text(
                 "Batch ID :",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 17.0,
                 ),
@@ -89,7 +90,7 @@ class ThirdPageWidget extends StatelessWidget {
                 Text(
                   centerAssesor.asSdmsbatchName,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 17.0,
                   ),

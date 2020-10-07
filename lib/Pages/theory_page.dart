@@ -26,7 +26,7 @@ class TheoryPage extends StatelessWidget {
           child: Container(
             height: MediaQuery.of(context).size.height - 30.0,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(1.0),
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(

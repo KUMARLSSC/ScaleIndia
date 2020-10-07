@@ -112,7 +112,7 @@ class HomePage extends StatelessWidget {
                           onPressed: () {},
                         ),
                          SizedBox(
-                          height: 120,
+                          height: 80,
                         ),
                         Text('About Scale India',style: TextStyle(fontStyle: FontStyle.italic,color: Colors.grey),),
                         

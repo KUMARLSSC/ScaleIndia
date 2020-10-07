@@ -21,36 +21,20 @@ class ThirdPage extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   width: MediaQuery.of(context).size.width - 40.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.0),
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        colors: [
-                          Colors.blue[900],
-                          Colors.blue[800],
-                          Colors.blue[400]
-                        ]),
-                  ),
                   child: Column(
                     children: [
                       Padding(padding: EdgeInsets.all(7),
                       child:  Center(
-          child: ClipRRect(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(15.0),
-              topRight: Radius.circular(15.0),
-              bottomLeft: Radius.circular(15.0),
-              bottomRight: Radius.circular(15.0),
-            ),
+       
             child: Image.asset(
-              "assets/img/scale.png",
+              "assets/img/logo.png",
               fit: BoxFit.fill,
-              height: 155,
+              height: 120,
               width: 450,
             ),
           ),
         ),
-                      ),
+                      
         SizedBox(
           height: 10,
         ),
@@ -58,7 +42,7 @@ class ThirdPage extends StatelessWidget {
           child: Text(
             "Center and Assesser info",
             style: TextStyle(
-                color: Colors.white, fontSize: 27, fontWeight: FontWeight.bold),
+                color: Colors.black, fontSize: 27, fontWeight: FontWeight.bold),
           ),
         ),
         Divider(
@@ -79,12 +63,12 @@ class ThirdPage extends StatelessWidget {
                             child: RaisedButton(
                               splashColor: Colors.blue,
                               elevation: 5.0,
-                              color: new Color(0xffffffff),
+                              color: Colors.blue,
                               child: Text(
                                 'Candidate List',
                                 style: TextStyle(
                                   fontSize: 15.0,
-                                  color: Colors.blueAccent,
+                                  color: Colors.white,
                                 ),
                               ),
                               onPressed: () {

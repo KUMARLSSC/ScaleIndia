@@ -8,7 +8,7 @@ class FifthPageViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
 
   void navigateToTheory() {
-    _navigationService.navigateTo(LanguageViewRoute);
+    _navigationService.navigateTo(TheoryViewRoute);
   }
 
   void navigateToPractical() {
