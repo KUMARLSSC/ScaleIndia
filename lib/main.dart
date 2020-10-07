@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
             builder: (context) => DialogManager(child: child)),
       ),
       navigatorKey: locator<NavigationService>().navigationKey,
-      theme: new ThemeData(primaryColor: new Color(0xff09031D)),
+      theme: new ThemeData(primaryColor: new Color(0xff09031D), fontFamily: 'Avenir'),
       home: SplashPage(),
       onGenerateRoute: generateRoute,
     ),

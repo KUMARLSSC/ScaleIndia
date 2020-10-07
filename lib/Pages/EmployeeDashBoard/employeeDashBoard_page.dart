@@ -20,7 +20,7 @@ class _EmployeeDashBoardPageState extends State<EmployeeDashBoardPage> {
         return HomePage();
         break;
       case 1:
-        return ElearningPage();
+        return EmployeeElearningPage();
         break;
       case 2:
         return FindJobPage();
