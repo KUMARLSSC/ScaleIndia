@@ -23,7 +23,16 @@ class _ProfileWidgetState extends State<ProfileWidget> {
          radius: 50,
          backgroundImage: AssetImage('assets/img/boy1.png'),
        ),
-            )
+            ),
+             Center(
+                    child: Text(
+                      "Employee Name",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 23,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
           ],
         )
         )
