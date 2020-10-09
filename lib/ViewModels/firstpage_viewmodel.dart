@@ -41,8 +41,8 @@ class FirstPageViewModel extends BaseModel {
       }
     }else {
       await _dialogService.showDialog(
-        title: 'Login Failure',
-        description: result.toString(),
+        title: 'Request Id error',
+        description:'Please enter your registered request id',
       );
     }
     /* if (requestid == i) {

@@ -120,24 +120,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           children: [
                             SizedBox(width: 28,),
                             Text(
-                            "City:",
-                            style: kTitleStyle,
-                          ),
-                          SizedBox(width: 10,),
-                           Text(
-                            "Chennai",
-                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold,fontSize: 15),
-                          )
-                          ],
-                          )),
-                      SizedBox(
-                        height: 25,
-                      ),
-                       Center(
-                          child: Row(
-                          children: [
-                            SizedBox(width: 28,),
-                            Text(
                             "District:",
                             style: kTitleStyle,
                           ),
