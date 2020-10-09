@@ -14,7 +14,7 @@ class _TimerLeftState extends State<TimerLeft> {
       duration: _duration,
       separator: ':',
       textStyle: TextStyle(
-        color: Colors.limeAccent,
+        color: Colors.red,
         fontSize: 26.0,
         fontWeight: FontWeight.bold,
       ),

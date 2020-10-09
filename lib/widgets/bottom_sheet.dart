@@ -61,7 +61,7 @@ class _BottomShhetWidgetState extends State<BottomShhetWidget> {
         Text(
           '&',
           style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontSize: 25,
               fontWeight: FontWeight.bold),
         ),

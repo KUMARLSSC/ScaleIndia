@@ -32,7 +32,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             color: kBlack,
             child: Center(
               child: Text(
-                widget.practical[_currentIndex].pqNos,
+               widget.practical[_currentIndex].pqNos,
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -44,11 +44,11 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             height: 30,
           ),
           Container(
-            height: 80,
+            height: 92,
             color: kBlackAccent,
             child: Center(
               child: Text(
-                widget.practical[_currentIndex].pqCommonQuestion,
+               widget.practical[_currentIndex].pqCommonQuestion !=null? widget.practical[_currentIndex].pqCommonQuestion:"",
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,

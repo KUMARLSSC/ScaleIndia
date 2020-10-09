@@ -9,9 +9,10 @@ class ThirdPageWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        DataTable(columnSpacing: 10, columns: <DataColumn>[
-          DataColumn(
-            label: Text(
+      Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
               'Center :',
               style: TextStyle(
                 fontWeight: FontWeight.w800,
@@ -19,86 +20,112 @@ class ThirdPageWidget extends StatelessWidget {
                 fontSize: 17.0,
               ),
             ),
-          ),
-          DataColumn(
-            label: Text(
+            SizedBox(width: 5,),
+            Container(
+              width: MediaQuery.of(context).size.width -108,
+              child:Text(
               centerAssesor.centerName,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
                 fontSize: 17.0,
               ),
-              maxLines: 1,
+              
             ),
-          ),
-        ], rows: <DataRow>[
-          DataRow(
-            cells: <DataCell>[
-              DataCell(Text(
+            )
+        ],
+      ),
+      SizedBox(height: 10,),
+       Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+         Container(
+           width: 70,
+           child: Text(
                 "Assesser Name :",
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 17.0,
                 ),
-              )),
-              DataCell(
-                Text(
-                  centerAssesor.asContactPerson,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17.0,
-                  ),
-                ),
               ),
-            ],
-          ),
-          DataRow(
-            cells: <DataCell>[
-              DataCell(Text(
+         ),
+            Container(
+              width: MediaQuery.of(context).size.width -110,
+              child:Text(
+              centerAssesor.asContactPerson,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 17.0,
+              ),
+              
+            ),
+            )
+        ],
+      ),
+      SizedBox(height: 10,),
+       Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+         Container(
+           width: 70,
+           child: Text(
                 "Request ID :",
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 17.0,
                 ),
-              )),
-              DataCell(
-                Text(
-                  centerAssesor.asId.toString(),
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17.0,
-                  ),
-                ),
               ),
-            ],
-          ),
-          DataRow(
-            cells: <DataCell>[
-              DataCell(Text(
+         ),
+            Container(
+              width: MediaQuery.of(context).size.width -110,
+              child:Text(
+              centerAssesor.asId.toString(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 17.0,
+              ),
+              
+            ),
+            )
+        ],
+      ),
+      SizedBox(height: 10,),
+       Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+         Container(
+           width: 70,
+           child: Text(
                 "Batch ID :",
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 17.0,
                 ),
-              )),
-              DataCell(
-                Text(
-                  centerAssesor.asSdmsbatchName,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17.0,
-                  ),
-                ),
               ),
-            ],
-          ),
-        ]),
+         ),
+            Container(
+              width: MediaQuery.of(context).size.width -110,
+              child:Text(
+              centerAssesor.asSdmsbatchName,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 17.0,
+              ),
+              
+            ),
+            )
+        ],
+      ),
       ],
     );
   }

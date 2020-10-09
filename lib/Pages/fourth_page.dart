@@ -1,7 +1,6 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ViewModels/fourthpage_viewmodel.dart';
-import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/participant_widget.dart';
 import 'package:flutter/material.dart';
@@ -26,9 +25,7 @@ class FourthPage extends StatelessWidget {
               padding: const EdgeInsets.all(1.0),
               child: Container(
                 width: MediaQuery.of(context).size.width - 5.0,
-                decoration: BoxDecoration(
-                  color:  kBlack
-                ),
+                decoration: BoxDecoration(color: Colors.white),
                 child: Column(
                   children: [
                     Padding(
@@ -40,7 +37,7 @@ class FourthPage extends StatelessWidget {
                                 child: Text(
                                   'Participant List',
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontSize: 24.0,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -51,30 +48,32 @@ class FourthPage extends StatelessWidget {
                                 height: 15,
                               ),
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                
                                 children: [
+                                  SizedBox(width: 50,),
                                   Text(
                                     'ID',
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20.0,
                                     ),
                                   ),
+                                  SizedBox(width: 95,),
                                   Text(
                                     'Name',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       fontSize: 20.0,
                                     ),
                                   ),
+                                  SizedBox(width: 65,),
                                   Text(
                                     'Exam',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       fontSize: 20.0,
                                     ),
                                   ),
@@ -88,7 +87,9 @@ class FourthPage extends StatelessWidget {
                                       184.0,
                                   child: model.busy == false
                                       ? Center(
-                                          child: CircularProgressIndicator(backgroundColor: Colors.white,),
+                                          child: CircularProgressIndicator(
+                                            backgroundColor: Colors.white,
+                                          ),
                                         )
                                       : _getPostUi(model.posts))
                             ])),
@@ -108,7 +109,7 @@ class FourthPage extends StatelessWidget {
         ),
         itemCount: posts.length,
         itemBuilder: (BuildContext context, int index) => ParticipantWidget(
-            candidate: posts[index],
-            ),
+          candidate: posts[index],
+        ),
       );
 }

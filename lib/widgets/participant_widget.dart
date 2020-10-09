@@ -19,22 +19,29 @@ class ParticipantWidget extends StatelessWidget {
       builder: (context, model, child) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
+          Container(
+            width: 120,
+            child: Text(
             candidate.clEnrollmentNo,
             maxLines: 2,
             style: TextStyle(
-              color: Colors.orangeAccent,
+              color: Colors.orange,
               fontWeight: FontWeight.normal,
               fontSize: 16.0,
             ),
           ),
-          Text(
+          ),
+          Container(
+            width: 145,
+            child: Text(
             candidate.clName,
+            textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.red,
               fontWeight: FontWeight.normal,
               fontSize: 15.0,
             ),
+          ),
           ),
           Container(
               height: 30,

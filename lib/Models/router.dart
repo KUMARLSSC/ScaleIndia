@@ -1,10 +1,14 @@
 import 'package:Scaleindia/Models/route_names.dart';
+import 'package:Scaleindia/Pages/EmployerDashBoard/employerHome_page.dart';
+import 'package:Scaleindia/Pages/EmployerDashBoard/postJob_page.dart';
+import 'package:Scaleindia/Pages/EmployerDashBoard/viewJob_page.dart';
+import 'package:Scaleindia/Pages/assessor_page.dart';
 import 'package:Scaleindia/Pages/candidate_page.dart';
 import 'package:Scaleindia/Pages/elearning_page.dart';
 import 'package:Scaleindia/Pages/EmployeeDashBoard/employeeDashBoard_page.dart';
 import 'package:Scaleindia/Pages/employeeRegister_page.dart';
 import 'package:Scaleindia/Pages/employee_page.dart';
-import 'package:Scaleindia/Pages/employerDashBoard_page.dart';
+import 'package:Scaleindia/Pages/EmployerDashBoard/employerDashBoard_page.dart';
 import 'package:Scaleindia/Pages/employerRegister_page.dart';
 import 'package:Scaleindia/Pages/employer_page.dart';
 import 'package:Scaleindia/Pages/fifth_page.dart';
@@ -14,11 +18,13 @@ import 'package:Scaleindia/Pages/forgotPassword_Page2.dart';
 import 'package:Scaleindia/Pages/fourth_page.dart';
 import 'package:Scaleindia/Pages/home_page.dart';
 import 'package:Scaleindia/Pages/langugae_page.dart';
+import 'package:Scaleindia/Pages/onBoarding_page.dart';
 import 'package:Scaleindia/Pages/practical_page.dart';
 import 'package:Scaleindia/Pages/second_page.dart';
 import 'package:Scaleindia/Pages/summary_page.dart';
 import 'package:Scaleindia/Pages/theory_page.dart';
 import 'package:Scaleindia/Pages/third_page.dart';
+import 'package:Scaleindia/Pages/trainer_page.dart';
 import 'package:flutter/material.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -27,6 +33,36 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _pageRoute(
         routeName: settings.name,
         viewToShow: HomePage(),
+      );
+      case PostJobPageViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: PostJobPage(),
+      );
+      case EmployerHomePageViewRoute:
+       return _pageRoute(
+        routeName: settings.name,
+        viewToShow: EmployerHomePage(),
+      );
+      case ViewJobPageViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: ViewJobPage(),
+      );
+      case OnBoardingPageViewRoute:
+       return _pageRoute(
+        routeName: settings.name,
+        viewToShow:OnBoardingPage(),
+      );
+      case AssessorLoginPageViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: AssessorLoginPage(),
+      );
+       case TrainerLoginPageViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: TrainerLoginPage(),
       );
       case EmployerViewRoute:
       return _pageRoute(

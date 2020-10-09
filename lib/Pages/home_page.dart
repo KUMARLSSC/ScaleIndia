@@ -100,7 +100,9 @@ class HomePage extends StatelessWidget {
                           title: 'Trainer',
                           busy: model.busy,
                           color: Colors.green,
-                          onPressed: () {},
+                          onPressed: () {
+                            model.navigateToTrainerLoginPage();
+                          },
                         ),
                         SizedBox(
                           height: 15,
@@ -109,13 +111,18 @@ class HomePage extends StatelessWidget {
                           title: 'Assessor',
                           busy: model.busy,
                           color: Colors.green,
-                          onPressed: () {},
+                          onPressed: () {
+                            model.navigateToAssessorLoginPage();
+                          },
                         ),
-                         SizedBox(
+                        SizedBox(
                           height: 80,
                         ),
-                        Text('About Scale India',style: TextStyle(fontStyle: FontStyle.italic,color: Colors.grey),),
-                        
+                        Text(
+                          'About Scale India',
+                          style: TextStyle(
+                              fontStyle: FontStyle.italic, color: Colors.grey),
+                        ),
                       ],
                     ),
                   ),

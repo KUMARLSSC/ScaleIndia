@@ -18,7 +18,7 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Hello Employee Name", style: TextStyle(
+                Text("Hello Kumaresan", style: TextStyle(
                   fontSize: 20,
                   color: Colors.blueAccent
                 ),),
@@ -53,9 +53,9 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          courseWidget('Category1', 'type name', 'img1', Color(0xffff6a65), Color(0xffff5954)),
+                          courseWidget('LSS/Q2501', 'Stiching Operator Footwear', 'img1', Color(0xffff6a65), Color(0xffff5954)),
                           SizedBox(height: 20,),
-                          courseWidget('Category2', 'type', 'img2', Color(0xffe9eefa), Colors.white),
+                          courseWidget('LSS/Q5501', 'Stiching Operator Goods & Garments', 'img2', Color(0xffe9eefa), Colors.white),
                         ],
                       ),
                     ),
@@ -65,9 +65,9 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           SizedBox(height: 50,),
-                          courseWidget('Category3', 'type name', 'img3', Color(0xffe9eefa), Colors.white),
+                          courseWidget('LSS/Q25301', 'Cutting Operator Footwear', 'img3', Color(0xffe9eefa), Colors.white),
                           SizedBox(height: 20,),
-                          courseWidget('Category4', 'type name', 'img4', Color(0xffbdcddfa), Color(0xffcedaff)),
+                          courseWidget('LSS/Q3501', 'Cutting Operator Goods & Garments', 'img4', Color(0xffbdcddfa), Color(0xffcedaff)),
                         ],
                       ),
                     )
@@ -108,7 +108,7 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
             SizedBox(height: 10,),
             Text('$title', style: TextStyle(
               color: (bgColor == Color(0xffff5954)) ? Colors.white : Colors.black,
-              fontSize: 20,
+              fontSize: 16,
               height: 1,
             ),),
             SizedBox(height: 10,),

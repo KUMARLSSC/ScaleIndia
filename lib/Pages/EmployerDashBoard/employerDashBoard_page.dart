@@ -1,28 +1,34 @@
 import 'package:Scaleindia/Pages/EmployeeDashBoard/profile_Page.dart';
+import 'package:Scaleindia/Pages/EmployerDashBoard/viewJob_page.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'elearning_page.dart';
-import 'home_Page.dart';
 
-class EmployeeDashBoardPage extends StatefulWidget {
+import 'employerHome_page.dart';
+import 'postJob_page.dart';
+
+
+class EmployerDashBoardPage extends StatefulWidget {
   @override
-  _EmployeeDashBoardPageState createState() => _EmployeeDashBoardPageState();
+  _EmployerDashBoardPageState createState() => _EmployerDashBoardPageState();
 }
 
-class _EmployeeDashBoardPageState extends State<EmployeeDashBoardPage> {
+class _EmployerDashBoardPageState extends State<EmployerDashBoardPage> {
   int pageIndex = 0;
 
-  Widget _showPage = new HomePage();
+  Widget _showPage = new EmployerHomePage();
   Widget _pageChooser(int page) {
     switch (page) {
       case 0:
-        return HomePage();
+        return EmployerHomePage();
         break;
       case 1:
-        return EmployeeElearningPage();
+        return ViewJobPage();
         break;
       case 2:
+        return PostJobPage();
+        break;
+      case 3:
         return ProfilePage();
         break;
     }
@@ -38,6 +44,7 @@ class _EmployeeDashBoardPageState extends State<EmployeeDashBoardPage> {
       <Widget>[
       Icon(Icons.home, size: 30,color: Colors.white,),
       Icon(Icons.book, size: 30,color: Colors.white,),
+      Icon(Icons.search, size: 30,color: Colors.white,),
       Icon(Icons.account_circle, size: 30,color: Colors.white,),
       ],
       color:kBlack,

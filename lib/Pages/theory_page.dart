@@ -1,6 +1,5 @@
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ViewModels/theory_viewmodal.dart';
-import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/options_widget.dart';
 import 'package:Scaleindia/widgets/timer_widget.dart';
@@ -21,7 +20,9 @@ class TheoryPage extends StatelessWidget {
         key: _key,
         appBar: PreferredSize(
             child: header(context,
-                isAppTitle: false, isIcon: false, strTitle: "Theory Assessment"),
+                isAppTitle: false,
+                isIcon: false,
+                strTitle: "Theory Assessment"),
             preferredSize: Size.fromHeight(50.0)),
         body: Center(
           child: Container(
@@ -30,9 +31,7 @@ class TheoryPage extends StatelessWidget {
               padding: const EdgeInsets.all(1.0),
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: kBlack
-                ),
+                decoration: BoxDecoration(color: Colors.white),
                 child: Column(
                   children: [
                     Padding(
@@ -45,11 +44,11 @@ class TheoryPage extends StatelessWidget {
                                 TextSpan(
                                     text: "Candidate ID:",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 20)),
+                                        color: Colors.black, fontSize: 20)),
                                 TextSpan(
                                     text: "1234567890",
                                     style: TextStyle(
-                                        color: Colors.white,
+                                        color: Colors.black,
                                         fontSize: 25,
                                         fontStyle: FontStyle.normal,
                                         fontWeight: FontWeight.bold)),
@@ -64,7 +63,7 @@ class TheoryPage extends StatelessWidget {
                               children: [
                                 Text("Time Left:",
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 18)),
+                                        color: Colors.black, fontSize: 18)),
                                 SizedBox(
                                   width: 5.0,
                                 ),

@@ -34,11 +34,7 @@ class PracticalPage extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12.0),
-                gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-                  Colors.blue[900],
-                  Colors.blue[800],
-                  Colors.blue[400]
-                ]),
+        
               ),
               child: Card(
                 shape: RoundedRectangleBorder(

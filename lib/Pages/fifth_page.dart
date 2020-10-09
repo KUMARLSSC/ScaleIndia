@@ -1,6 +1,5 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ViewModels/fifthpage_viewmodel.dart';
-import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +24,7 @@ class FifthPage extends StatelessWidget {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                  color: kBlack
+                  color: Colors.white
                 ),
                 child: Column(
                   children: [
@@ -39,7 +38,7 @@ class FifthPage extends StatelessWidget {
                                   'Start Your Practical and Theory Assessment',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    color: Colors.limeAccent,
+                                    color: Colors.black,
                                     fontSize: 24.0,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -54,11 +53,11 @@ class FifthPage extends StatelessWidget {
                                   TextSpan(
                                       text: "Candidate ID:",
                                       style: TextStyle(
-                                          color: Colors.white, fontSize: 17)),
+                                          color: Colors.black, fontSize: 17)),
                                   TextSpan(
                                       text: candidate.clEnrollmentNo,
                                       style: TextStyle(
-                                          color: Colors.white,
+                                          color: Colors.black,
                                           fontSize: 20,
                                           fontStyle: FontStyle.italic,
                                           fontWeight: FontWeight.bold)),
@@ -82,7 +81,7 @@ class FifthPage extends StatelessWidget {
                                           child: Text(
                                         "Instruction",
                                         style: TextStyle(
-                                            color: Colors.white,
+                                            color: Colors.black,
                                             decoration:
                                                 TextDecoration.underline,
                                             fontSize: 25,
@@ -95,7 +94,7 @@ class FifthPage extends StatelessWidget {
                                         child: Text(
                                           "•The Assessment is of 60 mintues",
                                           style: TextStyle(
-                                              color: Colors.white,
+                                              color: Colors.black,
                                               fontSize: 18,
                                               fontWeight: FontWeight.normal),
                                         ),
@@ -108,7 +107,7 @@ class FifthPage extends StatelessWidget {
                                           "• It is a multiple choice question with no negative marking",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              color: Colors.white,
+                                              color: Colors.black,
                                               fontSize: 18,
                                               fontWeight: FontWeight.normal),
                                         ),
@@ -121,7 +120,7 @@ class FifthPage extends StatelessWidget {
                                           "• For any issue contact the Assessor",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              color: Colors.white,
+                                              color: Colors.black,
                                               fontSize: 18,
                                               fontWeight: FontWeight.normal),
                                         ),

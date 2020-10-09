@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class EmployerDashBoardPage extends StatelessWidget {
+class EmployerHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(child: Text("Employer DashBoard Page"),),
+      child: Center(child: Text("BlogPage"),),
     );
   }
 }

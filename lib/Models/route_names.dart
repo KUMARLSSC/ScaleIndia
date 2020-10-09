@@ -18,4 +18,10 @@ const String EmployeeDashBoardViewRoute = "EmployeeDashBoardScreen";
 const String EmployerDashBoardViewRoute = "EmployerDashBoardViewRoute";
 const String ForgotPage1ViewRoute = "ForgotPage1ViewRoute";
 const String ForgotPage2ViewRoute = "ForgotPage2ViewRoute";
+const String TrainerLoginPageViewRoute = "TrainerLoginPageViewRoute";
+const String AssessorLoginPageViewRoute = "AssessorLoginPageViewRoute";
+const String OnBoardingPageViewRoute = "OnBoardingPageViewRoute";
+const String EmployerHomePageViewRoute = "EmployerHomePageViewRoute";
+const String ViewJobPageViewRoute = "ViewJobPageViewRoute";
+const String PostJobPageViewRoute = "ViewJobPageViewRoute";
 //Generate the view here

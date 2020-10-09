@@ -3,7 +3,6 @@ import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-
 class SplashPage extends StatelessWidget {
   const SplashPage({Key key}) : super(key: key);
   @override
@@ -18,11 +17,11 @@ class SplashPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Image.asset(
-                          "assets/img/logo.png",
-                          fit: BoxFit.fill,
-                          height: 100,
-                          width: 200,
-                        ),
+                "assets/img/logo.png",
+                fit: BoxFit.fill,
+                height: 100,
+                width: 220,
+              ),
               ColorLoader3(
                 radius: 20.0,
                 dotRadius: 10.0,
