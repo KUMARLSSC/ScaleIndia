@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:Scaleindia/ApiModel/slider_model.dart';
 import 'package:Scaleindia/ViewModels/onBoardingPage_viewmodel.dart';
+import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -45,7 +46,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 const Color(0xff00EAFF)
               ])),
               child: Scaffold(
-                  backgroundColor: Colors.white,
+                  backgroundColor: kBlack,
                   body: Container(
                     height: MediaQuery.of(context).size.height - 100,
                     child: PageView(
@@ -91,7 +92,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   ),
                   bottomSheet: slideIndex != 5
                       ? Container(
-                          margin: EdgeInsets.symmetric(vertical: 16),
+                          margin: EdgeInsets.symmetric(vertical: 1),
+                          color: kBlackAccent,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -142,7 +144,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           },
                           child: Container(
                             height: Platform.isIOS ? 70 : 60,
-                            color: Colors.blue,
+                            color: kBlackAccent,
                             alignment: Alignment.center,
                             child: Text(
                               "GET STARTED NOW",
@@ -172,6 +174,7 @@ class SlideTile extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 20,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic),
           ),
@@ -185,7 +188,7 @@ class SlideTile extends StatelessWidget {
           Text(
             desc,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: 14,color: Colors.white, fontWeight: FontWeight.w500),
           ),
         ],
       ),
