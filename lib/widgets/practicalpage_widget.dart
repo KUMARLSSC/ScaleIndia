@@ -1,10 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:stacked/stacked.dart';
+
 import 'package:Scaleindia/ApiModel/practical_api.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/ViewModels/practicalpage_viewmodel.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
-import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
 
 import '../locator.dart';
 
@@ -17,7 +19,7 @@ class PracticalPageWidget extends StatefulWidget {
 
 class _PracticalPageWidgetState extends State<PracticalPageWidget> {
   final DialogService _dialogService = locator<DialogService>();
-  final textController = TextEditingController();
+  final TextEditingController textController = TextEditingController();
   int _currentIndex = 0;
 
   @override
@@ -128,6 +130,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
                   border: Border(bottom: BorderSide(color: Colors.grey[200]))),
               child: InputField(
                 placeholder: 'Mark',
+                text1InputType: TextInputType.number,
                 controller: textController,
               ),
             ),
@@ -178,7 +181,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
                     ),
                   ),
                   onPressed: () {
-                    _nextSubmit();
+                    _nextSubmit(mark: textController.text);
                   },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
@@ -192,8 +195,16 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
     );
   }
 
-  void _nextSubmit() {
+  void _nextSubmit({@required String mark}) {
     if ([_currentIndex] == null) {
+      _dialogService.showDialog(
+        title: 'Failed',
+        description: "You must select an answer to continue.",
+      );
+      return;
+    }else if(
+      mark.isEmpty
+    ){
       _dialogService.showDialog(
         title: 'Failed',
         description: "You must select an answer to continue.",
