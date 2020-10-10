@@ -113,7 +113,8 @@ class TrainerLoginPage extends StatelessWidget {
                         title: 'Login',
                         color: Colors.green,
                         onPressed: () {
-                          model.navigateToTrainerHomePage();
+                          model.login(
+                              email: emailController.text, password: passwordController.text);
                         },
                       ),
                       SizedBox(
