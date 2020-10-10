@@ -2,17 +2,18 @@ import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Services/authentication_service.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import '../locator.dart';
 import 'base_model.dart';
 
 class EmployerPageViewModel extends BaseModel {
-
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
   final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
-  
+
   Future login({
     @required String email,
     @required String password,
@@ -42,14 +43,21 @@ class EmployerPageViewModel extends BaseModel {
       );
     }
   }
+
+  Future _logOut() async {
+    await _firebaseAuth.signOut();
+    _navigationService.navigateTo(HomeViewRoute);
+  }
+
   void navigateToEmployerRegister() {
     _navigationService.navigateTo(EmployerRegisterViewRoute);
   }
- void navigateToForgotPage2() {
+
+  void navigateToForgotPage2() {
     _navigationService.navigateTo(ForgotPage2ViewRoute);
   }
 
-   Future<void> forgot({
+  Future<void> forgot({
     @required String email,
   }) async {
     _authenticationService.sendPasswordResetEmail(email: email);
@@ -57,7 +65,8 @@ class EmployerPageViewModel extends BaseModel {
         title: 'Reset Password',
         description: 'A password reset link has beeen sent to' + email);
   }
-   void navigateBackToLogin() {
+
+  void navigateBackToLogin() {
     _navigationService.navigateTo(EmployerViewRoute);
   }
 }

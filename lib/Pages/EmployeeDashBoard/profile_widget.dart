@@ -1,5 +1,8 @@
+import 'package:Scaleindia/ViewModels/employerPage_viewmodel.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
+import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 
 class ProfileWidget extends StatefulWidget {
   @override
@@ -9,7 +12,9 @@ class ProfileWidget extends StatefulWidget {
 class _ProfileWidgetState extends State<ProfileWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ViewModelBuilder<EmployerPageViewModel>.reactive(
+      viewModelBuilder: () => EmployerPageViewModel(),
+      builder: (context, model, child) =>Container(
       width: double.infinity,
       decoration: BoxDecoration(
          color: kBlack),
@@ -185,8 +190,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           ],
                           )),
                       SizedBox(
-                        height: 15,
+                        height:18,
                       ),
+                      BusyButton(title: 'Logout', busy: model.busy,onPressed: (){},color: kBlackAccent,)
                     ],
                   ),
                 ),
@@ -195,6 +201,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           )
         ],
       ),
+    ),
     );
   }
 }

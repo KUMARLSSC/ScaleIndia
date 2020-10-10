@@ -25,10 +25,10 @@ class _EmployerDashBoardPageState extends State<EmployerDashBoardPage> {
       case 1:
         return ViewJobPage();
         break;
-      case 2:
+      /*case 2:
         return PostJobPage();
-        break;
-      case 3:
+        break;*/
+      case 2:
         return ProfilePage();
         break;
     }
@@ -38,13 +38,14 @@ class _EmployerDashBoardPageState extends State<EmployerDashBoardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       bottomNavigationBar: CurvedNavigationBar(
         height:45.0,
         items: 
       <Widget>[
       Icon(Icons.home, size: 30,color: Colors.white,),
       Icon(Icons.book, size: 30,color: Colors.white,),
-      Icon(Icons.search, size: 30,color: Colors.white,),
       Icon(Icons.account_circle, size: 30,color: Colors.white,),
       ],
       color:kBlack,

@@ -46,14 +46,6 @@ class EmployerRegisterPage extends StatelessWidget {
                       children: <Widget>[
                         Center(
                             child: Text(
-                          "Leather Sector Skill Council",
-                          style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold),
-                        )),
-                         SizedBox(
-                          height: 3,
-                        ),
-                        Center(
-                            child: Text(
                           "Employer/Company Registration Form",
                           style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
                         )),

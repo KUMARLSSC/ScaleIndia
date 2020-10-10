@@ -123,7 +123,6 @@ class EmployerPage extends StatelessWidget {
                           ),
                           BusyButton(
                         title: 'Register',
-                        busy: model.busy,
                         color: Colors.blue[300],
                         onPressed: () {
                           model.navigateToEmployerRegister();
