@@ -66,18 +66,17 @@ class AuthenticationService {
       );
 
       _currentEmployer = Employer(
-        id: authResult.user.uid,
-        city: city,
-        companyAddress: companyAddress,
-        companyEmailAddress: companyEmailAddress,
-        pincode: pincode,
-        pointOfContactName: pointOfContactName,
-        pointOfContactNumber: pointOfContactNumber,
-        state: state,
-        companyPhoneNumber: companyPhoneNumber,
-        pocEmailAdress:pocEmailAdress,
-        companyName: companyName
-        );
+          id: authResult.user.uid,
+          city: city,
+          companyAddress: companyAddress,
+          companyEmailAddress: companyEmailAddress,
+          pincode: pincode,
+          pointOfContactName: pointOfContactName,
+          pointOfContactNumber: pointOfContactNumber,
+          state: state,
+          companyPhoneNumber: companyPhoneNumber,
+          pocEmailAdress: pocEmailAdress,
+          companyName: companyName);
 
       await _firestoreService.createEmployer(_currentEmployer);
 
@@ -109,7 +108,7 @@ class AuthenticationService {
   }) async {
     try {
       var authResult = await _firebaseAuth.createUserWithEmailAndPassword(
-        email:employeeEmailAddress,
+        email: employeeEmailAddress,
         password: password,
       );
 
@@ -172,6 +171,14 @@ class AuthenticationService {
   Future _populateCurrentUserEmployer(User user) async {
     if (user != null) {
       _currentEmployer = await _firestoreService.getEmployer(user.uid);
+    }
+  }
+
+  Future<void> signOut() async {
+    try {
+      await _firebaseAuth.signOut();
+    } catch (e) {
+      print(e); // TODO: show dialog with error
     }
   }
 }

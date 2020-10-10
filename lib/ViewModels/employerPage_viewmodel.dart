@@ -8,7 +8,6 @@ import '../locator.dart';
 import 'base_model.dart';
 
 class EmployerPageViewModel extends BaseModel {
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
   final DialogService _dialogService = locator<DialogService>();
@@ -44,8 +43,8 @@ class EmployerPageViewModel extends BaseModel {
     }
   }
 
-  Future _logOut() async {
-    await _firebaseAuth.signOut();
+  Future logOut() async {
+   await _authenticationService.signOut();
     _navigationService.navigateTo(HomeViewRoute);
   }
 
