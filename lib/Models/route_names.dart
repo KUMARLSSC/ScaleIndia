@@ -25,4 +25,5 @@ const String EmployerHomePageViewRoute = "EmployerHomePageViewRoute";
 const String ViewJobPageViewRoute = "ViewJobPageViewRoute";
 const String PostJobPageViewRoute = "ViewJobPageViewRoute";
 const String TrainerHomePageViewRoute = "TrainerHomePageViewRoute";
+const String AssessorHomePageViewRoute = "AssessorHomePageViewRoute";
 //Generate the view here

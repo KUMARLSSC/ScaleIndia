@@ -28,8 +28,5 @@ class TrainerPageViewModel extends BaseModel {
         description: 'Please re-enter your request id',
       );
     }
-    void navigateToTrainerHomePage() {
-      _navigationService.navigateTo(TrainerHomePageViewRoute);
-    }
   }
 }

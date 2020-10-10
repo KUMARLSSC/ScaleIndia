@@ -1,4 +1,5 @@
 import 'package:Scaleindia/Models/route_names.dart';
+import 'package:Scaleindia/Pages/Assessor/assessor_homepage.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/employerHome_page.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/postJob_page.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/viewJob_page.dart';
@@ -30,6 +31,11 @@ import 'package:flutter/material.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
+    case AssessorHomePageViewRoute:
+    return _pageRoute(
+        routeName: settings.name,
+        viewToShow: AssessorHomePage(),
+      );
     case HomeViewRoute:
       return _pageRoute(
         routeName: settings.name,
