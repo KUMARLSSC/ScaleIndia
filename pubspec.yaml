@@ -49,6 +49,7 @@ dependencies:
   showcaseview: ^0.1.6
   auto_size_text: ^2.1.0
   flutter_svg: ^0.19.0
+  simple_pdf_viewer: ^0.2.2
   
 
 dev_dependencies:

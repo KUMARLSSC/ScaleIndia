@@ -22,11 +22,11 @@ class HomePage extends StatelessWidget {
                     return Stack(
                       children: <Widget>[
                         Container(
-                          width: MediaQuery.of(context).size.width,
+                          width: MediaQuery.of(context).size.width - 10,
                           height: 350,
                           child: SingleChildScrollView(
                             child: Padding(
-                            padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
+                            padding: EdgeInsets.only(top: 5.0, bottom: 5.0,left: 10),
                             child: Material(
                               color: Colors.white,
                               elevation: 14.0,

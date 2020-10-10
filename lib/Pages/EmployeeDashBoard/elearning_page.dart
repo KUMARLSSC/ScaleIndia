@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_pdf_viewer/simple_pdf_viewer.dart';
 
 class EmployeeElearningPage extends StatefulWidget {
   @override
@@ -90,7 +91,21 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
         borderRadius: BorderRadius.all(Radius.circular(30)),
       ),
       child: InkWell(
-        onTap: (){openCoursePage('$img', '$title');},
+        onTap: (){Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) =>Scaffold(
+        appBar: AppBar(
+          title: const Text('LSS/Q2501'),
+        ),
+        body: SimplePdfViewerWidget(
+          completeCallback: (bool result){
+            print("completeCallback,result:$result");
+          },
+          initialUrl: "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/NAPS%20Presentation.pdf?alt=media&token=4b7ce913-1e84-4535-bb00-a6b0f66025ee",
+        ),
+      ),
+      ),
+  );},
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
