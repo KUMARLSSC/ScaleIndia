@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_pdf_viewer/simple_pdf_viewer.dart';
 
 class ELearningPage extends StatefulWidget {
   @override
@@ -18,7 +19,7 @@ class _ELearningPageState extends State<ELearningPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text("Hello Employees", style: TextStyle(
+                Text("Hello Employee", style: TextStyle(
                   fontSize: 20,
                   color: Colors.blueAccent
                 ),),
@@ -53,9 +54,27 @@ class _ELearningPageState extends State<ELearningPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          courseWidget('Category1', 'type name', 'img1', Color(0xffff6a65), Color(0xffff5954)),
+                          InkWell(
+                            child: courseWidget('LSS/Q2501', 'Stiching Operator Footwear', 'img1', Color(0xffff6a65), Color(0xffff5954)),
+                            onTap: (){Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) =>Scaffold(
+        appBar: AppBar(
+          title: const Text('LSS/Q2501'),
+        ),
+        body: SimplePdfViewerWidget(
+          completeCallback: (bool result){
+            print("completeCallback,result:$result");
+          },
+          initialUrl: "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/NAPS%20Presentation.pdf?alt=media&token=4b7ce913-1e84-4535-bb00-a6b0f66025ee",
+        ),
+      ),
+      ),
+  );},
+                          ),
+                          
                           SizedBox(height: 20,),
-                          courseWidget('Category2', 'type', 'img2', Color(0xffe9eefa), Colors.white),
+                          courseWidget('LSS/Q5501', 'Stiching Operator Goods & Garments', 'img2', Color(0xffe9eefa), Colors.white),
                         ],
                       ),
                     ),
@@ -65,9 +84,9 @@ class _ELearningPageState extends State<ELearningPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           SizedBox(height: 50,),
-                          courseWidget('Category3', 'type name', 'img3', Color(0xffe9eefa), Colors.white),
+                          courseWidget('LSS/Q25301', 'Cutting Operator Footwear', 'img3', Color(0xffe9eefa), Colors.white),
                           SizedBox(height: 20,),
-                          courseWidget('Category4', 'type name', 'img4', Color(0xffbdcddfa), Color(0xffcedaff)),
+                          courseWidget('LSS/Q3501', 'Cutting Operator Goods & Garments', 'img4', Color(0xffbdcddfa), Color(0xffcedaff)),
                         ],
                       ),
                     )
@@ -89,9 +108,7 @@ class _ELearningPageState extends State<ELearningPage> {
         color: bgColor,
         borderRadius: BorderRadius.all(Radius.circular(30)),
       ),
-      child: InkWell(
-        onTap: (){openCoursePage('$img', '$title');},
-        child: Column(
+      child:  Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
@@ -108,7 +125,7 @@ class _ELearningPageState extends State<ELearningPage> {
             SizedBox(height: 10,),
             Text('$title', style: TextStyle(
               color: (bgColor == Color(0xffff5954)) ? Colors.white : Colors.black,
-              fontSize: 20,
+              fontSize: 16,
               height: 1,
             ),),
             SizedBox(height: 10,),
@@ -141,7 +158,6 @@ class _ELearningPageState extends State<ELearningPage> {
             )
           ],
         ),
-      ),
     );
   }
   void openCoursePage(String img, String title)
