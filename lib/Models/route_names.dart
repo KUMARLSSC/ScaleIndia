@@ -24,4 +24,5 @@ const String OnBoardingPageViewRoute = "OnBoardingPageViewRoute";
 const String EmployerHomePageViewRoute = "EmployerHomePageViewRoute";
 const String ViewJobPageViewRoute = "ViewJobPageViewRoute";
 const String PostJobPageViewRoute = "ViewJobPageViewRoute";
+const String TrainerHomePageViewRoute = "TrainerHomePageViewRoute";
 //Generate the view here

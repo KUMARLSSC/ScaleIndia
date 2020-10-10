@@ -2,6 +2,7 @@ import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/employerHome_page.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/postJob_page.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/viewJob_page.dart';
+import 'package:Scaleindia/Pages/Trainer/trainer_homePage.dart';
 import 'package:Scaleindia/Pages/assessor_page.dart';
 import 'package:Scaleindia/Pages/candidate_page.dart';
 import 'package:Scaleindia/Pages/elearning_page.dart';
@@ -33,6 +34,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _pageRoute(
         routeName: settings.name,
         viewToShow: HomePage(),
+      );
+      case TrainerHomePageViewRoute:
+       return _pageRoute(
+        routeName: settings.name,
+        viewToShow: TrainerHomePage(),
       );
       case PostJobPageViewRoute:
       return _pageRoute(
