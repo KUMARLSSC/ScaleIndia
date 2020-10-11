@@ -11,6 +11,7 @@ class EmployeeRegisterWidget extends StatefulWidget {
 }
 
 class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
+ final  List<String> state = ['Male', 'Female', 'Other'];
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final nameController = TextEditingController();
@@ -125,7 +126,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                                         bottom: BorderSide(
                                             color: Colors.grey[200]))),
                                 child: ExpansionList<String>(
-                                    items: ['Male', 'Female', 'Other'],
+                                    items: state,
                                     title: model.selectedRole,
                                     onItemSelected: model.setSelectedRole),
                               ),
