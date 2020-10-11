@@ -1,6 +1,5 @@
-import 'package:Scaleindia/widgets/employerregister_widget.dart';
-
 import 'package:flutter/material.dart';
+import 'EmployerDashBoard/employerregister_widget.dart';
 
 class EmployerRegisterPage extends StatelessWidget {
   

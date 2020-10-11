@@ -1,5 +1,6 @@
-import 'package:Scaleindia/widgets/employeeregister_widget.dart';
 import 'package:flutter/material.dart';
+
+import 'EmployeeDashBoard/employeeregister_widget.dart';
 
 class EmployeeRegisterPage extends StatelessWidget {
   @override

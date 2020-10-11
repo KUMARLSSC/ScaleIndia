@@ -1,10 +1,8 @@
 import 'package:Scaleindia/ViewModels/employerRegister_viewmodel.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
+import 'package:Scaleindia/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
-import 'input_field.dart';
-
 class EmployerRegisterWidget extends StatefulWidget {
   @override
   _EmployerRegisterWidgetState createState() => _EmployerRegisterWidgetState();
