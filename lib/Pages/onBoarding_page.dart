@@ -46,7 +46,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 const Color(0xff00EAFF)
               ])),
               child: Scaffold(
-                  backgroundColor: kBlack,
+                  backgroundColor: Colors.white,
                   body: Container(
                     height: MediaQuery.of(context).size.height - 100,
                     child: PageView(
@@ -93,7 +93,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   bottomSheet: slideIndex != 5
                       ? Container(
                           margin: EdgeInsets.symmetric(vertical: 1),
-                          color: kBlackAccent,
+                          color: Colors.blue,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
