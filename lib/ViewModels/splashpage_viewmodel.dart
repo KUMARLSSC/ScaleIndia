@@ -12,17 +12,17 @@ class SplashPageViewModel extends BaseModel {
 
   Future handleStartUpLogic() async {
     Future.delayed(Duration(seconds: 3),
-        () => _navigationService.navigateTo(OnBoardingPageViewRoute));
+        () => onBoardLogic());
   }
 
   Future onBoardLogic() async {
     final prefs = await SharedPreferences.getInstance();
     bool _seen = (prefs.getBool('seen') ?? false);
     if (_seen) {
-      _navigationService.navigateTo(OnBoardingPageViewRoute);
+      _navigationService.navigateTo(HomeViewRoute);
     } else {
       prefs.setBool('seen', true);
-     _navigationService.navigateTo(HomeViewRoute);
+     _navigationService.navigateTo(OnBoardingPageViewRoute);
     }
   }
 }

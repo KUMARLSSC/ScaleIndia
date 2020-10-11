@@ -107,7 +107,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                 child: Text(
                                   "Skip",
                                   style: TextStyle(
-                                      color: Color(0xFF0074E4),
+                                      color: Colors.white,
                                       fontWeight: FontWeight.w600),
                                 ),
                               ),
@@ -131,7 +131,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                 child: Text(
                                   "Next",
                                   style: TextStyle(
-                                      color: Color(0xFF0074E4),
+                                      color: Colors.white,
                                       fontWeight: FontWeight.w600),
                                 ),
                               ),
@@ -144,7 +144,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           },
                           child: Container(
                             height: Platform.isIOS ? 70 : 60,
-                            color: kBlackAccent,
+                            color:Colors.blue,
                             alignment: Alignment.center,
                             child: Text(
                               "GET STARTED NOW",
@@ -174,7 +174,7 @@ class SlideTile extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 20,
-                color: Colors.white,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic),
           ),
@@ -188,7 +188,7 @@ class SlideTile extends StatelessWidget {
           Text(
             desc,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 14,color: Colors.white, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: 14,color: Colors.black, fontWeight: FontWeight.w500),
           ),
         ],
       ),
