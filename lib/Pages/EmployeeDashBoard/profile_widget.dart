@@ -179,7 +179,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               width: 10,
                             ),
                             Text(
-                              "TamilNadu",
+                              "Tamil Nadu",
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
