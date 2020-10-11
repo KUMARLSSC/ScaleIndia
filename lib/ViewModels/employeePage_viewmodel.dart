@@ -7,12 +7,11 @@ import '../locator.dart';
 import 'base_model.dart';
 
 class EmployeePageViewModel extends BaseModel {
-
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
   final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
-  
+
   Future login({
     @required String email,
     @required String password,
@@ -20,7 +19,7 @@ class EmployeePageViewModel extends BaseModel {
     setBusy(true);
 
     var result = await _authenticationService.loginWithEmailEmployee(
-     employeeEmailAddress: email,
+      employeeEmailAddress: email,
       password: password,
     );
 
@@ -51,15 +50,16 @@ class EmployeePageViewModel extends BaseModel {
         title: 'Reset Password',
         description: 'A password reset link has beeen sent to' + email);
   }
-   void navigateBackToLogin() {
+
+  void navigateBackToLogin() {
     _navigationService.navigateTo(EmployeeViewRoute);
   }
 
   void navigateToEmployeeRegister() {
     _navigationService.navigateTo(EmployeeRegisterViewRoute);
   }
- void navigateToForgotPage1() {
+
+  void navigateToForgotPage1() {
     _navigationService.navigateTo(ForgotPage1ViewRoute);
   }
- 
 }

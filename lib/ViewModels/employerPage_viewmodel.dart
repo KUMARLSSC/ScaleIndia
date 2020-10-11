@@ -2,7 +2,6 @@ import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Services/authentication_service.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import '../locator.dart';
 import 'base_model.dart';

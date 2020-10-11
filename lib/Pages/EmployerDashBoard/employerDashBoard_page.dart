@@ -5,7 +5,6 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'employerHome_page.dart';
-import 'postJob_page.dart';
 
 
 class EmployerDashBoardPage extends StatefulWidget {

@@ -178,7 +178,7 @@ class AuthenticationService {
     try {
       await _firebaseAuth.signOut();
     } catch (e) {
-      print(e); // TODO: show dialog with error
+      print(e); 
     }
   }
 }
