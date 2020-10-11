@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:Scaleindia/ApiModel/slider_model.dart';
 import 'package:Scaleindia/ViewModels/onBoardingPage_viewmodel.dart';
-import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
