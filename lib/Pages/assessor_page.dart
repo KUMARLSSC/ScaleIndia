@@ -20,7 +20,7 @@ class AssessorLoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const SizedBox(
-              height: 40,
+              height: 70,
             ),
             Center(
               child: ClipRRect(
