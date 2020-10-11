@@ -20,8 +20,9 @@ class SplashPage extends StatelessWidget {
                 "assets/img/logo.png",
                 fit: BoxFit.fill,
                 height: 100,
-                width: 220,
+                width: 250,
               ),
+              SizedBox(height: 30,),
               ColorLoader3(
                 radius: 20.0,
                 dotRadius: 10.0,

@@ -20,15 +20,15 @@ class EmployeePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const SizedBox(
-                height: 40,
+                height: 50,
               ),            
                     Center(
                       child: ClipRRect(
                         child: Image.asset(
                           "assets/img/logo.png",
                           fit: BoxFit.fill,
-                          height: 130,
-                          width: 300,
+                          height: 100,
+                          width: 250,
                         ),
                       ),
                     ),

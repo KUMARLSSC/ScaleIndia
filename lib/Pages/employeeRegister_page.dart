@@ -15,7 +15,7 @@ class EmployeeRegisterPage extends StatelessWidget {
               height: 10,
             ),
             Padding(
-              padding: EdgeInsets.all(30),
+              padding: EdgeInsets.all(22),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -23,8 +23,8 @@ class EmployeeRegisterPage extends StatelessWidget {
                       child: Image.asset(
                         "assets/img/logo.png",
                         fit: BoxFit.fill,
-                        height: 80,
-                        width: 150,
+                        height: 100,
+                        width: 250,
                       ),
                     ),
                 ],

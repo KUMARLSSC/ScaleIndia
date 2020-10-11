@@ -37,7 +37,7 @@ class FirstPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 50,
+                    height: 30,
                   ),
                   Center(
                     child: Text(
@@ -55,7 +55,7 @@ class FirstPage extends StatelessWidget {
               child: Container(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: EdgeInsets.all(5),
+                    padding: EdgeInsets.all(1),
                     child: Column(
                       children: <Widget>[
                         Center(

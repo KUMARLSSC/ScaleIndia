@@ -33,7 +33,7 @@ class CandidatePage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 40
+                      height: 30
                       ,
                     ),
                     Center(
@@ -46,11 +46,10 @@ class CandidatePage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: Container(
-                 
+                child: Container(                
                   child: SingleChildScrollView(
                     child: Padding(
-                      padding: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(1),
                       child: Column(
                         children: <Widget>[
                           Center(

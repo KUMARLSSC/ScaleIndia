@@ -30,8 +30,8 @@ class ThirdPage extends StatelessWidget {
             child: Image.asset(
               "assets/img/logo.png",
               fit: BoxFit.fill,
-              height: 120,
-              width: 450,
+              height: 100,
+              width: 250,
             ),
           ),
         ),

@@ -27,13 +27,13 @@ class AssessorLoginPage extends StatelessWidget {
                 child: Image.asset(
                   "assets/img/logo.png",
                   fit: BoxFit.fill,
-                  height: 130,
-                  width: 300,
+                  height: 100,
+                  width: 250,
                 ),
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 30,
             ),
             Center(
               child: Text(

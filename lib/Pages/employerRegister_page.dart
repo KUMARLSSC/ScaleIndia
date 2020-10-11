@@ -26,8 +26,8 @@ class EmployerRegisterPage extends StatelessWidget {
                       child: Image.asset(
                         "assets/img/logo.png",
                         fit: BoxFit.fill,
-                        height: 80,
-                        width: 200,
+                        height: 100,
+                        width: 250,
                       ),
                     ),
                   )
