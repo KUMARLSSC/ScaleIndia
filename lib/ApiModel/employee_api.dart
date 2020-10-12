@@ -10,7 +10,7 @@ class Employee {
   final String fatherName;
   final String pincode;
   final String state;
-  final String district;
+  final String city;
   final String dateOfBirth;
   final String educationalQualification;
   final String workExperiance;
@@ -28,7 +28,7 @@ class Employee {
       this.alternatePhoneNumber,
       this.aadharNumber,
       this.dateOfBirth,
-      this.district,
+      this.city,
       this.educationalQualification,
       this.fatherName,
       this.lastCompanyWorkedFor,
@@ -47,7 +47,7 @@ class Employee {
         phoneNumber = data['phoneNumber'],
         alternatePhoneNumber = data['alternatePhoneNumber'],
         dateOfBirth = data['dateOfBirth'],
-        district = data['district'],
+        city = data['city'],
         motherName = data['motherName'],
         fatherName = data['fatherName'],
         pincode = data['pincode'],
@@ -72,7 +72,7 @@ class Employee {
       'fatherName': fatherName,
       'pincode': pincode,
       'state': state,
-      'district': district,
+      'city': city,
       'dateOfBirth': dateOfBirth,
       'workExperiance': workExperiance,
       'lastCompanyWorkedFor': lastCompanyWorkedFor,

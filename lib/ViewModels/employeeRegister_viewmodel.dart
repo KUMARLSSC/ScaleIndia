@@ -30,7 +30,7 @@ String _selectedGender = 'Select a Gender';
     @required String fatherName,
     @required String phoneNumber,
     @required String alternatePhoneNumber,
-    @required String district,
+    @required String city,
     @required String pincode,
     @required String state,
     @required String educationalQualification,
@@ -45,7 +45,7 @@ String _selectedGender = 'Select a Gender';
 
     var result = await _authenticationService.signUpWithEmailEmployee(
      employeeEmailAddress:employeeEmailAddress,name: name,motherName: motherName,address: address,
-          fatherName: fatherName,dateOfBirth: dateOfBirth,district: district,gender: _selectedGender,
+          fatherName: fatherName,dateOfBirth: dateOfBirth,city: city,gender: _selectedGender,
           phoneNumber: phoneNumber,aadharNumber: aadharNumber,alternatePhoneNumber: alternatePhoneNumber,
           lastCompanyWorkedFor: lastCompanyWorkedFor,lastWorkingDesignation: lastWorkingDesignation,workExperiance: workExperiance,
           educationalQualification: educationalQualification,pincode: pincode,state: state, password: password
