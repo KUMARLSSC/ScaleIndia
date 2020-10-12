@@ -11,7 +11,24 @@ class EmployeeRegisterWidget extends StatefulWidget {
 }
 
 class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
- final  List<String> state = ['Male', 'Female', 'Other'];
+  final List<String> gender = ['Male', 'Female', 'Other'];
+
+  Map<String, String> stateCity = {
+    "Surat": "Gujarat",
+    "Ahmadabad": "Gujarat",
+    "Vadodara": "Gujarat",
+    "Mp1": "Mp",
+    "Mp2": "Mp",
+    "Up1": "Up",
+    "Up2": "Up",
+    "Up3": "Up",
+  };
+
+  List<String> state = ['Gujarat', 'Mp', 'Up'];
+  List<String> city = [];
+
+  String selectedState;
+  String selectedcity;
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final nameController = TextEditingController();
@@ -30,7 +47,6 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
   final lastWorkingDesignationController = TextEditingController();
   final addressController = TextEditingController();
   final genderController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +142,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                                         bottom: BorderSide(
                                             color: Colors.grey[200]))),
                                 child: ExpansionList<String>(
-                                    items: state,
+                                    items: gender,
                                     title: model.selectedRole,
                                     onItemSelected: model.setSelectedRole),
                               ),
@@ -152,8 +168,8 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
-                                            color: Colors.grey[200]))),                              
-                                  child:InputField(
+                                            color: Colors.grey[200]))),
+                                child: InputField(
                                   placeholder: 'Date of Birth',
                                   controller: dateOfBirthController,
                                   text1InputType: TextInputType.number,
@@ -282,7 +298,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                                         bottom: BorderSide(
                                             color: Colors.grey[200]))),
                                 child: InputField(
-                                  placeholder:"Father's name",
+                                  placeholder: "Father's name",
                                   controller: fatherNameController,
                                   text1InputType: TextInputType.text,
                                 ),
@@ -314,7 +330,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                                         bottom: BorderSide(
                                             color: Colors.grey[200]))),
                                 child: InputField(
-                                  placeholder:"Mother's name",
+                                  placeholder: "Mother's name",
                                   controller: motherNameController,
                                   text1InputType: TextInputType.text,
                                 ),
@@ -357,66 +373,94 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                         SizedBox(
                           height: 8,
                         ),
-                        Container(
-                          height: 114,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                "Enter District:",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                            color: Colors.grey[200]))),
-                                child: InputField(
-                                  placeholder: 'District',
-                                  controller: districtController,
-                                  text1InputType: TextInputType.text,
+                        Column(
+                          children: <Widget>[
+                            Text(
+                              "State:",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.normal),
+                            ),
+                            Container(
+                              width: 200,
+                              padding: const EdgeInsets.only(
+                                  left: 10.0, right: 10.0),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  color: Colors.grey[200],
+                                  border: Border.all()),
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton(
+                                  isExpanded: true,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedState = value;
+                                      selectedcity = null;
+                                      city.clear();
+                                      stateCity.forEach((k, v) {
+                                        print(k);
+                                        if (selectedState == v) {
+                                          city.add(k);
+                                        }
+                                      });
+                                    });
+                                  },
+                                  value: selectedState,
+                                  hint: Center(
+                                    child: Text('Select a state'),
+                                  ),
+                                  items: state
+                                      .map((state) => DropdownMenuItem(
+                                            child: Text(state),
+                                            value: state,
+                                          ))
+                                      .toList(),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           height: 1,
                         ),
-                        Container(
-                          height: 114,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                "Enter State:",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                            color: Colors.grey[200]))),
-                                child: InputField(
-                                  placeholder: 'State',
-                                  controller: stateController,
-                                  text1InputType: TextInputType.text,
+                        Column(
+                          children: <Widget>[
+                            Text(
+                              "City:",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.normal),
+                            ),
+                            Container(
+                              width: 200,
+                              padding: const EdgeInsets.only(
+                                  left: 10.0, right: 10.0),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  color: Colors.grey[200],
+                                  border: Border.all()),
+                              child: DropdownButtonHideUnderline(
+                                  child: DropdownButton(
+                                isExpanded: true,
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedcity = value;
+                                  });
+                                  print(value);
+                                },
+                                value: selectedcity,
+                                hint: Center(
+                                  child: Text('Select a city'),
                                 ),
-                              ),
-                            ],
-                          ),
+                                items: selectedState != null
+                                    ? city
+                                        .map((city) => DropdownMenuItem(
+                                              child: Text(city),
+                                              value: city,
+                                            ))
+                                        .toList()
+                                    : [],
+                              )),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           height: 1,
@@ -621,14 +665,14 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                   ),
                 ),
                 SizedBox(
-                  height: 1,
+                  height: 18,
                 ),
                 BusyButton(
                   busy: model.busy,
                   title: 'Submit',
                   onPressed: () {
                     model.signUp(
-                      address: addressController.text,
+                        address: addressController.text,
                         employeeEmailAddress: emailController.text,
                         password: passwordController.text,
                         name: nameController.text,
@@ -637,9 +681,9 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                         phoneNumber: phoneNumberController.text,
                         alternatePhoneNumber:
                             alternatePhoneNumberController.text,
-                        district: districtController.text,
+                        district: selectedcity,
                         pincode: pincodeController.text,
-                        state: stateController.text,
+                        state: selectedState,
                         educationalQualification:
                             educationQualificationController.text,
                         lastCompanyWorkedFor:

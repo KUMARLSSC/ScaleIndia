@@ -13,7 +13,7 @@ class EmployeeRegisterPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const SizedBox(
-              height: 10,
+              height: 30,
             ),
             Padding(
               padding: EdgeInsets.all(22),
@@ -42,14 +42,6 @@ class EmployeeRegisterPage extends StatelessWidget {
                     padding: EdgeInsets.all(1),
                     child: Column(
                       children: <Widget>[
-                        Center(
-                            child: Text(
-                          "Leather Sector Skill Council",
-                          style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
-                        )),
-                         SizedBox(
-                          height: 3,
-                        ),
                         Center(
                             child: Text(
                           "Employee Registration Form",
