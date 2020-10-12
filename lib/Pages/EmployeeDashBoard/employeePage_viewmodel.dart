@@ -1,6 +1,7 @@
 import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Services/authentication_service.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
+import 'package:Scaleindia/Services/firestore_service.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:flutter/foundation.dart';
 import '../../locator.dart';
@@ -10,6 +11,7 @@ class EmployeePageViewModel extends BaseModel {
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
   final DialogService _dialogService = locator<DialogService>();
+  final FirestoreService _firestoreService = locator<FirestoreService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
   Future login({
@@ -50,10 +52,12 @@ class EmployeePageViewModel extends BaseModel {
         title: 'Reset Password',
         description: 'A password reset link has beeen sent to' + email);
   }
- Future logOut() async {
-   await _authenticationService.signOut();
+
+  Future logOut() async {
+    await _authenticationService.signOut();
     _navigationService.navigateTo(HomeViewRoute);
   }
+
   void navigateBackToLogin() {
     _navigationService.navigateTo(EmployeeViewRoute);
   }
@@ -64,5 +68,9 @@ class EmployeePageViewModel extends BaseModel {
 
   void navigateToForgotPage1() {
     _navigationService.navigateTo(ForgotPage1ViewRoute);
+  }
+
+  void listenToPosts() {
+    _firestoreService.listenToPostRealtimeEmployee();
   }
 }
