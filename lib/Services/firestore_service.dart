@@ -62,7 +62,6 @@ Future getEmployer(String uid) async {
 
   Future getEmployee(String uid) async {
     try {
-      
       var userData = await _usersCollectionReferenceEmployee.doc(uid).get();
       return Employee.fromData(userData.data());
     } catch (e) {

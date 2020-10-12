@@ -34,7 +34,7 @@ List<SliderModel> getSlides() {
   SliderModel sliderModel = new SliderModel();
 
 //1
-  sliderModel.setDesc('Descripition');
+  sliderModel.setDesc('Map your Skills to Industry requirements');
   sliderModel.setTitle("Employee");
   sliderModel.setImageAssetPath("assets/img/employee.png");
   slides.add(sliderModel);
@@ -42,21 +42,21 @@ List<SliderModel> getSlides() {
   sliderModel = new SliderModel();
 
   //2
-  sliderModel.setDesc('Descripition');
+  sliderModel.setDesc('Know your Industry updates');
   sliderModel.setTitle("Employer");
   sliderModel.setImageAssetPath("assets/img/images.png");
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
   //3
-  sliderModel.setDesc('Descripition');
+  sliderModel.setDesc('Batches ready for assessment');
   sliderModel.setTitle("Assessor");
   sliderModel.setImageAssetPath("assets/img/assessor.png");
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
   //4
-  sliderModel.setDesc('Descripition');
+  sliderModel.setDesc('Training schedule for the day');
   sliderModel.setTitle("Trainer");
   sliderModel.setImageAssetPath("assets/img/trainer.png");
   slides.add(sliderModel);
@@ -64,14 +64,14 @@ List<SliderModel> getSlides() {
   sliderModel = new SliderModel();
 
   //5
-  sliderModel.setDesc('Descripition');
+  sliderModel.setDesc('Track your learning progress');
   sliderModel.setTitle("Elearning");
   sliderModel.setImageAssetPath("assets/img/elearning.png");
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
   //6
-  sliderModel.setDesc('Descripition');
+  sliderModel.setDesc('Assess and Upskill yourself');
   sliderModel.setTitle("Assessment");
   sliderModel.setImageAssetPath("assets/img/assessment.png");
   slides.add(sliderModel);
