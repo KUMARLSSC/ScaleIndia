@@ -1,8 +1,10 @@
-import 'package:Scaleindia/ViewModels/employerPage_viewmodel.dart';
+import 'package:Scaleindia/ApiModel/employee_api.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
+import 'employeePage_viewmodel.dart';
 
 class ProfileWidget extends StatefulWidget {
   @override
@@ -10,10 +12,11 @@ class ProfileWidget extends StatefulWidget {
 }
 
 class _ProfileWidgetState extends State<ProfileWidget> {
+  
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<EmployerPageViewModel>.reactive(
-      viewModelBuilder: () => EmployerPageViewModel(),
+    return ViewModelBuilder<EmployeePageViewModel>.reactive(
+      viewModelBuilder: () => EmployeePageViewModel(),
       builder: (context, model, child) => Container(
         width: double.infinity,
         decoration: BoxDecoration(color: kBlack),
@@ -46,7 +49,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   ),
                   Center(
                     child: Text(
-                      "Kumaresan J",
+                      "Kumaresan",
                       style: TextStyle(color: Colors.white, fontSize: 25),
                     ),
                   ),

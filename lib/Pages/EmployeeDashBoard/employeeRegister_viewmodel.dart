@@ -5,7 +5,7 @@ import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:Scaleindia/ViewModels/base_model.dart';
 import 'package:flutter/foundation.dart';
 
-import '../locator.dart';
+import '../../locator.dart';
 
 class EmployeeViewModel extends BaseModel{
   final AuthenticationService _authenticationService =

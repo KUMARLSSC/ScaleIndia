@@ -3,8 +3,8 @@ import 'package:Scaleindia/Services/authentication_service.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:flutter/foundation.dart';
-import '../locator.dart';
-import 'base_model.dart';
+import '../../locator.dart';
+import '../../ViewModels/base_model.dart';
 
 class EmployeePageViewModel extends BaseModel {
   final AuthenticationService _authenticationService =
@@ -50,7 +50,10 @@ class EmployeePageViewModel extends BaseModel {
         title: 'Reset Password',
         description: 'A password reset link has beeen sent to' + email);
   }
-
+ Future logOut() async {
+   await _authenticationService.signOut();
+    _navigationService.navigateTo(HomeViewRoute);
+  }
   void navigateBackToLogin() {
     _navigationService.navigateTo(EmployeeViewRoute);
   }
