@@ -2,6 +2,7 @@ import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import '../locator.dart';
 import 'base_model.dart';
 
@@ -33,7 +34,9 @@ class AssessorPageViewModel extends BaseModel {
   void navigateToActivate() {
     _dialogService.showDialog(
       title: 'Failed',
-        description: 'Please activate by uploading your image ',
+      description: 'Please activate by uploading your image ',
     );
   }
+
+  
 }

@@ -1,3 +1,4 @@
+import 'package:Scaleindia/Pages/Assessor/bottom_sheet.dart';
 import 'package:Scaleindia/ViewModels/assessor_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:flutter/material.dart';
@@ -231,7 +232,7 @@ class AssessorHomePage extends StatelessWidget {
                                   ),
                                 ),
                                 onPressed: () {
-                                  model.navigateToActivate();
+                                  _asyncSimpleDialog(context);
                                 },
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30.0),
@@ -244,5 +245,18 @@ class AssessorHomePage extends StatelessWidget {
                 ),
               ),
             )));
+  }
+
+  Future _asyncSimpleDialog(BuildContext context) async {
+    return await showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+              title: const Text('Please activate by uploading your image '),
+              children: [
+                BottomSheetWidget(),
+              ]);
+        });
   }
 }

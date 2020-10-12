@@ -66,7 +66,7 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
           completeCallback: (bool result){
             print("completeCallback,result:$result");
           },
-          initialUrl: "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/NAPS%20Presentation.pdf?alt=media&token=4b7ce913-1e84-4535-bb00-a6b0f66025ee",
+          initialUrl: "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stiching%20operator%20DEmo.pdf?alt=media&token=42463401-b76b-4344-a32a-360e72733208",
         ),
       ),
       ),
