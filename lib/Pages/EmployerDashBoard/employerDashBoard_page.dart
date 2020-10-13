@@ -1,4 +1,4 @@
-import 'package:Scaleindia/Pages/EmployeeDashBoard/profile_Page.dart';
+import 'package:Scaleindia/Pages/EmployerDashBoard/profile_Page.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/viewJob_page.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -28,7 +28,7 @@ class _EmployerDashBoardPageState extends State<EmployerDashBoardPage> {
         return PostJobPage();
         break;*/
       case 2:
-        return ProfilePage();
+        return ProfileEmployerPage();
         break;
     }
     return _pageChooser(page);
