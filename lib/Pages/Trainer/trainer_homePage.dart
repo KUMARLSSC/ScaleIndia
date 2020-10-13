@@ -6,7 +6,8 @@ class TrainerHomePage extends StatefulWidget {
   _TrainerHomePageState createState() => _TrainerHomePageState();
 }
 
-class _TrainerHomePageState extends State<TrainerHomePage> with SingleTickerProviderStateMixin{
+class _TrainerHomePageState extends State<TrainerHomePage>
+    with SingleTickerProviderStateMixin {
   TabController _tabController;
 
   @override
@@ -22,14 +23,16 @@ class _TrainerHomePageState extends State<TrainerHomePage> with SingleTickerProv
         });
       });
   }
-   @override
+
+  @override
   void dispose() {
     _tabController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
-    return  DefaultTabController(
+    return DefaultTabController(
       length: choices.length,
       child: new Scaffold(
         appBar: new AppBar(
@@ -44,7 +47,6 @@ class _TrainerHomePageState extends State<TrainerHomePage> with SingleTickerProv
                   color: choice.colorContainer,
                   child: new Tab(
                     text: choice.title,
-                    
                   ));
             }).toList(),
           ),
