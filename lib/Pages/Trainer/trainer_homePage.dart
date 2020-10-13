@@ -294,7 +294,7 @@ class ChoiceCard extends StatelessWidget {
                               print("completeCallback,result:$result");
                             },
                             initialUrl:
-                                "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stitching%20operator_Demo%20for%20trainer.pdf?alt=media&token=fcd8a434-e8fa-46f6-9069-07fbe02d102d",
+                                "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stitching%20operator_Demo%20for%20trainer.pdf?alt=media&token=34309bd6-a066-4347-bafa-1ccb66206a28",
                           ),
                         ),
                       ),
