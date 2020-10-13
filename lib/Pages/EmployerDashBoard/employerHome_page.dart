@@ -235,7 +235,7 @@ class _EmployerHomePageState extends State<EmployerHomePage> {
               height: 5,
             ),
             Padding(
-              padding: EdgeInsets.all(30),
+              padding: EdgeInsets.all(28),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
