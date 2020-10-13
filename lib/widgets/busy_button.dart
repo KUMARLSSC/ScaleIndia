@@ -27,8 +27,8 @@ class _BusyButtonState extends State<BusyButton> {
       onTap: widget.onPressed,
       child: InkWell(
         child: AnimatedContainer(
-            height: widget.busy ? 50 : 50,
-            width: widget.busy ? 50 : 150,
+            height: widget.busy ? 50 : MediaQuery.of(context).size.height -665,
+            width: widget.busy ? 50 : MediaQuery.of(context).size.width - 220,
             duration: const Duration(milliseconds: 300),
             alignment: Alignment.center,
             padding: EdgeInsets.symmetric(

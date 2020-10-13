@@ -15,18 +15,17 @@ class ThirdPage extends StatelessWidget {
               child: header(context, isAppTitle: true, isIcon: false),
               preferredSize: Size.fromHeight(50.0)),
           body: Padding(
-            padding: EdgeInsets.only(left: 13),
+            padding: EdgeInsets.all(1),
             child: Container(
-              height: MediaQuery.of(context).size.height - 170.0,
+              height: MediaQuery.of(context).size.height,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(1.0),
                 child: Container(
-                  width: MediaQuery.of(context).size.width - 40.0,
+                  width: MediaQuery.of(context).size.width ,
                   child: Column(
                     children: [
-                      Padding(padding: EdgeInsets.all(7),
-                      child:  Center(
-       
+                      SizedBox(height: 20,),
+                       Center(
             child: Image.asset(
               "assets/img/logo.png",
               fit: BoxFit.fill,
@@ -34,7 +33,6 @@ class ThirdPage extends StatelessWidget {
               width: 250,
             ),
           ),
-        ),
                       
         SizedBox(
           height: 10,
@@ -54,7 +52,7 @@ class ThirdPage extends StatelessWidget {
           height: 10,
         ),
                      
-               model.busy==false?ThirdPageWidget():Center(child: CircularProgressIndicator(backgroundColor: Colors.white,)),
+               model.busy==false?Row(children: [SizedBox(width: 35,),ThirdPageWidget()],):Center(child: CircularProgressIndicator(backgroundColor: Colors.white,)),
                       
                       Padding(
                           padding: const EdgeInsets.all(20.0),

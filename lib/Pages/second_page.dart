@@ -92,7 +92,7 @@ class SecondPage extends StatelessWidget {
                           SizedBox(
                             height: 15,
                           ),
-                          BusyButton(title: "తెలుగు", color: Colors.green,onPressed: () {
+                          BusyButton(title: "বাংলা", color: Colors.green,onPressed: () {
                                 model.navigateToThirdPage();
                               }),
                         new Padding(padding: EdgeInsets.only(bottom: 20.0)),

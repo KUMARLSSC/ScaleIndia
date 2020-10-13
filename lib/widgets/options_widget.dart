@@ -32,7 +32,8 @@ class _OptionsState extends State<Options> {
             padding: const EdgeInsets.only(
                 top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
             child: Text(
-              "${_currentIndex +1}: " + widget.theory[_currentIndex].tqQuestion,
+              "${_currentIndex + 1}: " +
+                  widget.theory[_currentIndex].tqQuestion,
               textAlign: TextAlign.justify,
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
@@ -114,12 +115,15 @@ class _OptionsState extends State<Options> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              height: 50,
-              width: 140,
+              height: MediaQuery.of(context).size.height - 665,
+              width: MediaQuery.of(context).size.width - 220,
               child: RaisedButton(
                 splashColor: Colors.blue,
                 elevation: 5.0,
-                color: _currentIndex == (widget.theory.length+1 - widget.theory.length-1 )? Colors.white30:new Color(0xFFEA4335),
+                color: _currentIndex ==
+                        (widget.theory.length + 1 - widget.theory.length - 1)
+                    ? Colors.white30
+                    : new Color(0xFFEA4335),
                 child: Text(
                   'Previous',
                   style: TextStyle(
@@ -136,14 +140,16 @@ class _OptionsState extends State<Options> {
               ),
             ),
             Container(
-              height: 50,
-              width: 140,
+              height: MediaQuery.of(context).size.height - 665,
+              width: MediaQuery.of(context).size.width - 220,
               child: RaisedButton(
                 splashColor: Colors.blue,
                 elevation: 5.0,
                 color: new Color(0xFF34A853),
                 child: Text(
-                  _currentIndex == (widget.theory.length - 1)? "Submit":"Next",
+                  _currentIndex == (widget.theory.length - 1)
+                      ? "Submit"
+                      : "Next",
                   style: TextStyle(
                     fontSize: 15.0,
                     color: Colors.white,
@@ -164,8 +170,8 @@ class _OptionsState extends State<Options> {
         ),
         Center(
           child: Container(
-            height: 50,
-            width: 140,
+            height: MediaQuery.of(context).size.height - 665,
+            width: MediaQuery.of(context).size.width - 220,
             child: RaisedButton(
               splashColor: Colors.blue,
               elevation: 5.0,
@@ -197,7 +203,7 @@ class _OptionsState extends State<Options> {
       );
       return;
     }
-    if (_currentIndex < (widget.theory.length )) {
+    if (_currentIndex < (widget.theory.length)) {
       setState(() {
         _currentIndex++;
       });

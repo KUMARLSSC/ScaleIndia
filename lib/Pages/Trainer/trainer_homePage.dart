@@ -43,7 +43,7 @@ class _TrainerHomePageState extends State<TrainerHomePage>
             indicatorColor: Colors.white,
             tabs: choices.map((Choice choice) {
               return Container(
-                  width: 120,
+                  width: MediaQuery.of(context).size.height - 600,
                   color: choice.colorContainer,
                   child: new Tab(
                     text: choice.title,
@@ -196,7 +196,7 @@ class ChoiceCard extends StatelessWidget {
                             width: 25,
                           ),
                           Container(
-                            height: 124,
+                            height: MediaQuery.of(context).size.height - 588,
                             width: 1,
                             color: Colors.black,
                           ),
@@ -222,7 +222,7 @@ class ChoiceCard extends StatelessWidget {
                             width: 25,
                           ),
                           Container(
-                            height: 124,
+                            height: MediaQuery.of(context).size.height - 588,
                             width: 1,
                             color: Colors.black,
                           ),

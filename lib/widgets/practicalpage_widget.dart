@@ -30,7 +30,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            height: 60,
+            height: MediaQuery.of(context).size.height - 650,
             color: kBlack,
             child: Center(
               child: Text(
@@ -43,14 +43,15 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             ),
           ),
           SizedBox(
-            height: 30,
+            height: 10,
           ),
           Container(
-            height: 92,
+            height: MediaQuery.of(context).size.height - 605,
+              width: MediaQuery.of(context).size.width ,
             color: kBlackAccent,
             child: Center(
               child: Text(
-               widget.practical[_currentIndex].pqCommonQuestion !=null? widget.practical[_currentIndex].pqCommonQuestion:"",
+               widget.practical[_currentIndex].pqCommonQuestion !=null? widget.practical[_currentIndex].pqCommonQuestion:"No Common Question for this ${widget.practical[_currentIndex].pqNos} ",
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
@@ -59,10 +60,11 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 5,
           ),
           Container(
-            height: 70,
+            
+            height: 100,
             child: Center(
               child: Text(
               "${_currentIndex + 1}: " + widget.practical[_currentIndex].pqQuestion,
@@ -74,7 +76,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             ),
           ),
           SizedBox(
-            height: 15,
+            height: 5,
           ),
           RaisedButton.icon(
             onPressed: () {

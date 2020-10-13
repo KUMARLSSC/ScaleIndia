@@ -16,12 +16,7 @@ class FifthPage extends StatelessWidget {
         appBar: PreferredSize(
             child: header(context, isAppTitle: true, isIcon: false),
             preferredSize: Size.fromHeight(50.0)),
-        body: Center(
-          child: Container(
-            height: MediaQuery.of(context).size.height - 30.0,
-            child: Padding(
-              padding: const EdgeInsets.all(1.0),
-              child: Container(
+        body: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   color: Colors.white
@@ -130,8 +125,8 @@ class FifthPage extends StatelessWidget {
                                       ),
                                       Center(
                                         child: Container(
-                                          height: 50,
-                                          width: 140,
+                                           height: MediaQuery.of(context).size.height - 665,
+                                          width:  MediaQuery.of(context).size.width - 220 ,
                                           child: RaisedButton(
                                             splashColor: Colors.blue,
                                             elevation: 5.0,
@@ -158,8 +153,8 @@ class FifthPage extends StatelessWidget {
                                       ),
                                       Center(
                                         child: Container(
-                                          height: 50,
-                                          width: 140,
+                                          height: MediaQuery.of(context).size.height - 665,
+                                          width:  MediaQuery.of(context).size.width - 220 ,
                                           child: RaisedButton(
                                             splashColor: Colors.blue,
                                             elevation: 5.0,
@@ -188,14 +183,13 @@ class FifthPage extends StatelessWidget {
                                         color: Colors.black38,
                                         height: 15,
                                       ),
-                                      SizedBox(
-                                        height: 15.0,
-                                      ),
+                                      
                                       Center(
                                         child: Container(
-                                          height: 150,
-                                          width: 220,
-                                          child: BottomShhetWidget(),
+                                          
+                                         height: MediaQuery.of(context).size.height ,
+                                          width:  MediaQuery.of(context).size.width  ,
+                                          child: BottomSheetWidget1(),
                                         ),
                                       ),
                                     ],
@@ -206,9 +200,6 @@ class FifthPage extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-          ),
-        ),
       ),
     );
   }
