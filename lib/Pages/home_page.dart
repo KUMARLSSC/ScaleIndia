@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
             Padding(
               padding: EdgeInsets.all(20),
