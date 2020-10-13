@@ -12,7 +12,7 @@ class ViewJobPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const SizedBox(
-              height: 10,
+              height: 5,
             ),
             Padding(
               padding: EdgeInsets.all(30),

@@ -232,7 +232,7 @@ class _EmployerHomePageState extends State<EmployerHomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const SizedBox(
-              height: 10,
+              height: 5,
             ),
             Padding(
               padding: EdgeInsets.all(30),
@@ -693,6 +693,7 @@ class _EmployerHomePageState extends State<EmployerHomePage> {
                   ],
                 ),
               ),
+              SizedBox(height: 120,)
             ],
           )),
         ),
