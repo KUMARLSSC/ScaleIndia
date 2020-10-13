@@ -253,7 +253,7 @@ class AssessorHomePage extends StatelessWidget {
         barrierDismissible: true,
         builder: (BuildContext context) {
           return SimpleDialog(
-              title: const Text('Please activate by uploading your image '),
+              title: const Text('Please activate by uploading photo '),
               children: [
                 BottomSheetWidget(),
               ]);
