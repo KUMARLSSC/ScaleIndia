@@ -202,7 +202,7 @@ class AssessorHomePage extends StatelessWidget {
                                   width:
                                       MediaQuery.of(context).size.width - 110,
                                   child: Text(
-                                    'Not Actived ',
+                                    'Not Activated ',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
