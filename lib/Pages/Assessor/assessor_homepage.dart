@@ -94,7 +94,7 @@ class AssessorHomePage extends StatelessWidget {
                                 Container(
                                   width: 70,
                                   child: Text(
-                                    "Assesser Name :",
+                                    "Assessor Name :",
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
