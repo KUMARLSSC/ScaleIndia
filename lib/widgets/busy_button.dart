@@ -14,8 +14,7 @@ class BusyButton extends StatefulWidget {
       this.busy = false,
       @required this.onPressed,
       this.enabled = true,
-      this.color
-      });
+      this.color});
 
   @override
   _BusyButtonState createState() => _BusyButtonState();
@@ -28,24 +27,26 @@ class _BusyButtonState extends State<BusyButton> {
       onTap: widget.onPressed,
       child: InkWell(
         child: AnimatedContainer(
-          height: widget.busy ? 50 : 50,
-          width: widget.busy ? 50 : 150,
-          duration: const Duration(milliseconds: 300),
-          alignment: Alignment.center,
-          padding: EdgeInsets.symmetric(
-              horizontal: widget.busy ? 10 : 15,
-              vertical: widget.busy ? 10 : 10),
-          decoration: BoxDecoration(
-            color: widget.enabled ?  widget.color: Colors.green[600],
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: !widget.busy
-              ? Text(
-                  widget.title,
-                  style: buttonTitleTextStyle,
-                )
-              : ColorLoader3(radius: 15,dotRadius: 5,)
-        ),
+            height: widget.busy ? 50 : 50,
+            width: widget.busy ? 50 : 150,
+            duration: const Duration(milliseconds: 300),
+            alignment: Alignment.center,
+            padding: EdgeInsets.symmetric(
+                horizontal: widget.busy ? 10 : 15,
+                vertical: widget.busy ? 10 : 10),
+            decoration: BoxDecoration(
+              color: widget.enabled ? widget.color : Colors.green[600],
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: !widget.busy
+                ? Text(
+                    widget.title,
+                    style: buttonTitleTextStyle,
+                  )
+                : ColorLoader3(
+                    radius: 15,
+                    dotRadius: 5,
+                  )),
       ),
     );
   }
