@@ -123,7 +123,7 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
                                                   "completeCallback,result:$result");
                                             },
                                             initialUrl:
-                                                "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stitching%20operator_Demo%20for%20trainer.pdf?alt=media&token=34309bd6-a066-4347-bafa-1ccb66206a28",
+                                                "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stiching%20operator%20DEmo.pdf?alt=media&token=42463401-b76b-4344-a32a-360e72733208",
                                           ),
                                         ),
                                       ),
