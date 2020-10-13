@@ -20,7 +20,7 @@ class _ELearningPageState extends State<ELearningPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "Hello Employee",
+                  "Hello Kumar",
                   style: TextStyle(fontSize: 20, color: Colors.blueAccent),
                 ),
                 Container(

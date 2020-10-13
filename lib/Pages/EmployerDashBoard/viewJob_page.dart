@@ -44,7 +44,7 @@ class ViewJobPage extends StatelessWidget {
                   children: <Widget>[
                     Center(
                         child: Text(
-                      "Naps Registration",
+                      "NAPS Registration",
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     )),
