@@ -1,3 +1,4 @@
+import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ViewModels/theory_viewmodal.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
@@ -9,7 +10,8 @@ import 'package:stacked/stacked.dart';
 
 class TheoryPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
-
+  final Candidate candidate;
+  TheoryPage({this.candidate});
   @override
   Widget build(BuildContext context) {
     CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
@@ -46,7 +48,7 @@ class TheoryPage extends StatelessWidget {
                                     style: TextStyle(
                                         color: Colors.black, fontSize: 20)),
                                 TextSpan(
-                                    text: "1234567890",
+                                    text: candidate.clEnrollmentNo,
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 25,

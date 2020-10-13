@@ -1,4 +1,5 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
+import 'package:Scaleindia/Pages/theory_page.dart';
 import 'package:Scaleindia/ViewModels/fifthpage_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/bottom_sheet.dart';
@@ -139,8 +140,13 @@ class FifthPage extends StatelessWidget {
                                               ),
                                             ),
                                             onPressed: () {
-                                              model.navigateToTheory();
-                                            },
+                                               Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    TheoryPage(candidate: candidate)));
+                      },
+                                            
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(30.0),
