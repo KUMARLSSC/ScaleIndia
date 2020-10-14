@@ -42,12 +42,13 @@ class _TrainerHomePageState extends State<TrainerHomePage>
             isScrollable: true,
             indicatorColor: Colors.white,
             tabs: choices.map((Choice choice) {
-              return Expanded(child: Container(
-                  width: MediaQuery.of(context).size.height - 600,
-                  color: choice.colorContainer,
-                  child: new Tab(
-                    text: choice.title,
-                  )));
+              return Expanded(
+                  child: Container(
+                      width: MediaQuery.of(context).size.height - 600,
+                      color: choice.colorContainer,
+                      child: new Tab(
+                        text: choice.title,
+                      )));
             }).toList(),
           ),
         ),
@@ -72,245 +73,261 @@ class ChoiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Expanded(child: Container(
-     height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width ,
-        color: Colors.yellow,
-        child: SingleChildScrollView(
-            child: Column(
-          children: [
-            Table(
-              border: TableBorder.all(width: 1.0, color: Colors.black),
-              children: <TableRow>[
-                TableRow(children: [
-                  Text(
-                    'Unit Title and course outcomes',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
-                  ),
-                  Text(
-                    'Key Learning Outcome of the Planned Content delivery',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
-                  ),
-                  Column(
-                    children: [
-                      TableCell(
-                          child: Text(
-                        'Planned date for content delivery (hrs)',
+    return new Expanded(
+        child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: Colors.yellow,
+            child: SingleChildScrollView(
+                child: Flex(
+              direction: Axis.vertical,
+              children: [
+                Table(
+                  border: TableBorder.all(width: 1.0, color: Colors.black),
+                  children: <TableRow>[
+                    TableRow(children: [
+                      Text(
+                        'Unit Title and course outcomes',
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w700),
-                      )),
-                      Divider(
-                        height: 5,
-                        color: Colors.black,
                       ),
-                      Row(
+                      Text(
+                        'Key Learning Outcome of the Planned Content delivery',
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w700),
+                      ),
+                      Flex(
+                        direction: Axis.vertical,
+                        children: [
+                          TableCell(
+                              child: Text(
+                            'Planned date for content delivery (hrs)',
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w700),
+                          )),
+                          Divider(
+                            height: 5,
+                            color: Colors.black,
+                          ),
+                          Flex(
+                            direction: Axis.horizontal,
+                            children: [
+                              TableCell(
+                                child: Text(
+                                  'Theory',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                height: 37,
+                                width: 1,
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              TableCell(
+                                child: Text(
+                                  'Practical',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      )
+                    ]),
+                    TableRow(children: [
+                      Flex(
+                        direction: Axis.vertical,
+                        children: [
+                          SizedBox(
+                            height: 200,
+                          ),
+                          TableCell(
+                            child: Text(
+                              'Overview on Leather Industry and Generic Skills Theory Duration (hh:mm) Pratctical Duration (hh:mm) Corrsponding Nos Code Bring ',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Flex(
+                        direction: Axis.vertical,
                         children: [
                           TableCell(
                             child: Text(
-                              'Theory',
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w700),
-                            ),
+                                '1.Discuss the leather industry,stiching operation in footwear sector and generic skills'),
                           ),
                           SizedBox(
-                            width: 5,
+                            height: 10,
                           ),
-                          Container(
-                            height: 37,
-                            width: 1,
+                          Divider(
+                            height: 5,
                             color: Colors.black,
                           ),
                           SizedBox(
-                            width: 5,
+                            height: 5,
                           ),
                           TableCell(
                             child: Text(
-                              'Practical',
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w700),
-                            ),
+                                '1.Explain importance of leather industry describe manufacturing processs'),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Divider(
+                            height: 5,
+                            color: Colors.black,
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          TableCell(
+                            child: Text(
+                                '1.Explain general hazards or risk that can lead to accidents\n\n2.Follow basic safty,healthy and hygenic measures\n\n3.Carry out communication effectively with co-workers in writing as well as orally\n\n4.Read the document that are necessary them to read to carry out operators task '),
+                          ),
+                        ],
+                      ),
+                      Flex(
+                        direction: Axis.vertical,
+                        children: [
+                          Flex(
+                            direction: Axis.horizontal,
+                            children: [
+                              TableCell(
+                                child: Text(
+                                  '    \t4',
+                                ),
+                              ),
+                              SizedBox(
+                                width: 25,
+                              ),
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.height - 588,
+                                width: 1,
+                                color: Colors.black,
+                              ),
+                              TableCell(
+                                child: Text(
+                                  '    \t2',
+                                ),
+                              ),
+                            ],
+                          ),
+                          Divider(
+                            height: 5,
+                            color: Colors.black,
+                          ),
+                          Flex(
+                            direction: Axis.horizontal,
+                            children: [
+                              TableCell(
+                                child: Text(
+                                  '    \t4',
+                                ),
+                              ),
+                              SizedBox(
+                                width: 25,
+                              ),
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.height - 588,
+                                width: 1,
+                                color: Colors.black,
+                              ),
+                              TableCell(
+                                child: Text(
+                                  '    \t2',
+                                ),
+                              ),
+                            ],
+                          ),
+                          Divider(
+                            height: 5,
+                            color: Colors.black,
+                          ),
+                          Flex(
+                            direction: Axis.horizontal,
+                            children: [
+                              TableCell(
+                                child: Text(
+                                  '    \t5',
+                                ),
+                              ),
+                              SizedBox(
+                                width: 25,
+                              ),
+                              Container(
+                                height: 500,
+                                width: 1,
+                                color: Colors.black,
+                              ),
+                              TableCell(
+                                child: Text(
+                                  '    \t5',
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       )
-                    ],
-                  )
-                ]),
-                TableRow(children: [
-                  Column(
-                    children: [
-                      SizedBox(
-                        height: 200,
-                      ),
-                      TableCell(
-                        child: Text(
-                          'Overview on Leather Industry and Generic Skills Theory Duration (hh:mm) Pratctical Duration (hh:mm) Corrsponding Nos Code Bring ',
-                          textAlign: TextAlign.center,
+                    ]),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                    height: 30,
+                    width: 150,
+                    child: RaisedButton(
+                      splashColor: Colors.blue,
+                      elevation: 3.0,
+                      color: Colors.green,
+                      child: Text(
+                        'Start',
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          color: Colors.white,
                         ),
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      TableCell(
-                        child: Text(
-                            '1.Discuss the leather industry,stiching operation in footwear sector and generic skills'),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Divider(
-                        height: 5,
-                        color: Colors.black,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      TableCell(
-                        child: Text(
-                            '1.Explain importance of leather industry describe manufacturing processs'),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Divider(
-                        height: 5,
-                        color: Colors.black,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      TableCell(
-                        child: Text(
-                            '1.Explain general hazards or risk that can lead to accidents\n\n2.Follow basic safty,healthy and hygenic measures\n\n3.Carry out communication effectively with co-workers in writing as well as orally\n\n4.Read the document that are necessary them to read to carry out operators task '),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          TableCell(
-                            child: Text(
-                              '    \t4',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Scaffold(
+                              appBar: AppBar(
+                                title: const Text('LSS/Q2501'),
+                              ),
+                              body: SimplePdfViewerWidget(
+                                completeCallback: (bool result) {
+                                  print("completeCallback,result:$result");
+                                },
+                                initialUrl:
+                                    "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stitching%20operator_Demo%20for%20trainer.pdf?alt=media&token=34309bd6-a066-4347-bafa-1ccb66206a28",
+                              ),
                             ),
                           ),
-                          SizedBox(
-                            width: 25,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height - 588,
-                            width: 1,
-                            color: Colors.black,
-                          ),
-                          TableCell(
-                            child: Text(
-                              '    \t2',
-                            ),
-                          ),
-                        ],
+                        );
+                      },
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
-                      Divider(
-                        height: 5,
-                        color: Colors.black,
-                      ),
-                      Row(
-                        children: [
-                          TableCell(
-                            child: Text(
-                              '    \t4',
-                            ),
-                          ),
-                          SizedBox(
-                            width: 25,
-                          ),
-                          Container(
-                            height: MediaQuery.of(context).size.height - 588,
-                            width: 1,
-                            color: Colors.black,
-                          ),
-                          TableCell(
-                            child: Text(
-                              '    \t2',
-                            ),
-                          ),
-                        ],
-                      ),
-                      Divider(
-                        height: 5,
-                        color: Colors.black,
-                      ),
-                      Row(
-                        children: [
-                          TableCell(
-                            child: Text(
-                              '    \t5',
-                            ),
-                          ),
-                          SizedBox(
-                            width: 25,
-                          ),
-                          Container(
-                            height: 500,
-                            width: 1,
-                            color: Colors.black,
-                          ),
-                          TableCell(
-                            child: Text(
-                              '    \t5',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
-                ]),
+                    )),
+                SizedBox(
+                  height: 10,
+                ),
               ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-                height: 30,
-                width: 150,
-                child: RaisedButton(
-                  splashColor: Colors.blue,
-                  elevation: 3.0,
-                  color: Colors.green,
-                  child: Text(
-                    'Start',
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      color: Colors.white,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Scaffold(
-                          appBar: AppBar(
-                            title: const Text('LSS/Q2501'),
-                          ),
-                          body: SimplePdfViewerWidget(
-                            completeCallback: (bool result) {
-                              print("completeCallback,result:$result");
-                            },
-                            initialUrl:
-                                "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stitching%20operator_Demo%20for%20trainer.pdf?alt=media&token=34309bd6-a066-4347-bafa-1ccb66206a28",
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                )),
-            SizedBox(
-              height: 10,
-            ),
-          ],
-        ))));
+            ))));
   }
 }
 
