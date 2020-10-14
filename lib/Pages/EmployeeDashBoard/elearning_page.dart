@@ -66,74 +66,78 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Expanded(child: Container(
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                InkWell(
-                                  child: courseWidget(
-                                      'LSS/Q2501',
-                                      'Stiching Operator Footwear',
-                                      'img1',
-                                      Color(0xffff6a65),
-                                      Color(0xffff5954)),
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Scaffold(
-                                          appBar: AppBar(
-                                            title: const Text('LSS/Q2501'),
-                                          ),
-                                          body: SimplePdfViewerWidget(
-                                            completeCallback: (bool result) {
-                                              print(
-                                                  "completeCallback,result:$result");
-                                            },
-                                            initialUrl:
-                                                "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stiching%20operator%20DEmo.pdf?alt=media&token=42463401-b76b-4344-a32a-360e72733208",
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                InkWell(
-                                  child: courseWidget(
-                                      'LSS/Q5501',
-                                      'Stiching Operator Goods & Garments',
-                                      'img2',
-                                      Color(0xffe9eefa),
-                                      Colors.white),
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Scaffold(
-                                          appBar: AppBar(
-                                            title: const Text('LSS/Q5501'),
-                                          ),
-                                          body: SimplePdfViewerWidget(
-                                            completeCallback: (bool result) {
-                                              print(
-                                                  "completeCallback,result:$result");
-                                            },
-                                            initialUrl:
-                                                "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stiching%20operator%20DEmo.pdf?alt=media&token=42463401-b76b-4344-a32a-360e72733208",
+                          Expanded(
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  InkWell(
+                                    child: courseWidget(
+                                        'LSS/Q2501',
+                                        'Stiching Operator Footwear',
+                                        'img1',
+                                        Color(0xffff6a65),
+                                        Color(0xffff5954)),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Scaffold(
+                                            appBar: AppBar(
+                                              title: const Text('LSS/Q2501'),
+                                            ),
+                                            body: SimplePdfViewerWidget(
+                                              completeCallback: (bool result) {
+                                                print(
+                                                    "completeCallback,result:$result");
+                                              },
+                                              initialUrl:
+                                                  "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stiching%20operator%20DEmo.pdf?alt=media&token=42463401-b76b-4344-a32a-360e72733208",
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ],
+                                      );
+                                    },
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  InkWell(
+                                    child: courseWidget(
+                                        'LSS/Q5501',
+                                        'Stiching Operator Goods & Garments',
+                                        'img2',
+                                        Color(0xffe9eefa),
+                                        Colors.white),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Scaffold(
+                                            appBar: AppBar(
+                                              title: const Text('LSS/Q5501'),
+                                            ),
+                                            body: SimplePdfViewerWidget(
+                                              completeCallback: (bool result) {
+                                                print(
+                                                    "completeCallback,result:$result");
+                                              },
+                                              initialUrl:
+                                                  "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stiching%20operator%20DEmo.pdf?alt=media&token=42463401-b76b-4344-a32a-360e72733208",
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),),
-                          Expanded(child: Container(
+                          ),
+                          Expanded(
+                              child: Container(
                             width: MediaQuery.of(context).size.width * 0.4,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
