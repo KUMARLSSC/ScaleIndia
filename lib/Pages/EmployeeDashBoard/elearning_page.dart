@@ -81,24 +81,6 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
                                         Color(0xffff6a65),
                                         Color(0xffff5954)),
                                     onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => Scaffold(
-                                            appBar: AppBar(
-                                              title: const Text('LSS/Q2501'),
-                                            ),
-                                            body: SimplePdfViewerWidget(
-                                              completeCallback: (bool result) {
-                                                print(
-                                                    "completeCallback,result:$result");
-                                              },
-                                              initialUrl:
-                                                  "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stiching%20operator%20DEmo.pdf?alt=media&token=42463401-b76b-4344-a32a-360e72733208",
-                                            ),
-                                          ),
-                                        ),
-                                      );
                                     },
                                   ),
                                   SizedBox(
@@ -112,24 +94,7 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
                                         Color(0xffe9eefa),
                                         Colors.white),
                                     onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => Scaffold(
-                                            appBar: AppBar(
-                                              title: const Text('LSS/Q5501'),
-                                            ),
-                                            body: SimplePdfViewerWidget(
-                                              completeCallback: (bool result) {
-                                                print(
-                                                    "completeCallback,result:$result");
-                                              },
-                                              initialUrl:
-                                                  "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stiching%20operator%20DEmo.pdf?alt=media&token=42463401-b76b-4344-a32a-360e72733208",
-                                            ),
-                                          ),
-                                        ),
-                                      );
+                                      
                                     },
                                   ),
                                 ],
@@ -153,24 +118,7 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
                                       Color(0xffe9eefa),
                                       Colors.white),
                                   onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Scaffold(
-                                          appBar: AppBar(
-                                            title: const Text('LSS/Q25301'),
-                                          ),
-                                          body: SimplePdfViewerWidget(
-                                            completeCallback: (bool result) {
-                                              print(
-                                                  "completeCallback,result:$result");
-                                            },
-                                            initialUrl:
-                                                "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Cutter%20(Footwear)%20PHB%20Eng.pdf?alt=media&token=57d82cb6-9a42-44d5-bec6-68f9ea7a0a02",
-                                          ),
-                                        ),
-                                      ),
-                                    );
+                                   
                                   },
                                 ),
                                 SizedBox(
@@ -184,24 +132,7 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
                                       Color(0xffbdcddfa),
                                       Color(0xffcedaff)),
                                   onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Scaffold(
-                                          appBar: AppBar(
-                                            title: const Text('LSS/Q3501'),
-                                          ),
-                                          body: SimplePdfViewerWidget(
-                                            completeCallback: (bool result) {
-                                              print(
-                                                  "completeCallback,result:$result");
-                                            },
-                                            initialUrl:
-                                                "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Cutter%20(G%26G)%20PHB%20Eng_FP.pdf?alt=media&token=7e8212f7-8721-4711-a41f-9bfc780f226c",
-                                          ),
-                                        ),
-                                      ),
-                                    );
+                                   
                                   },
                                 ),
                               ],

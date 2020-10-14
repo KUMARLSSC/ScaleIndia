@@ -68,30 +68,6 @@ class _ELearningPageState extends State<ELearningPage> {
                                     Color(0xffff6a65),
                                     Color(0xffff5954)),
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Scaffold(
-                                          appBar: AppBar(
-                                            title: const Text('LSS/Q2501'),
-                                          ),
-                                          body: model.busy
-                                              ? SimplePdfViewerWidget(
-                                                  completeCallback:
-                                                      (bool result) {
-                                                    print(
-                                                        "completeCallback,result:$result");
-                                                  },
-                                                  initialUrl:
-                                                      "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stiching%20operator%20DEmo.pdf?alt=media&token=42463401-b76b-4344-a32a-360e72733208",
-                                                )
-                                              : Center(
-                                                  child: ColorLoader3(
-                                                      radius: 20.0,
-                                                      dotRadius: 10.0),
-                                                )),
-                                    ),
-                                  );
                                 },
                               ),
                               SizedBox(
@@ -105,30 +81,6 @@ class _ELearningPageState extends State<ELearningPage> {
                                     Color(0xffe9eefa),
                                     Colors.white),
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Scaffold(
-                                          appBar: AppBar(
-                                            title: const Text('LSS/Q5501'),
-                                          ),
-                                          body: model.busy
-                                              ? SimplePdfViewerWidget(
-                                                  completeCallback:
-                                                      (bool result) {
-                                                    print(
-                                                        "completeCallback,result:$result");
-                                                  },
-                                                  initialUrl:
-                                                      "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stitching%20operator_Demo%20for%20trainer.pdf?alt=media&token=34309bd6-a066-4347-bafa-1ccb66206a28",
-                                                )
-                                              : Center(
-                                                  child: ColorLoader3(
-                                                      radius: 20.0,
-                                                      dotRadius: 10.0),
-                                                )),
-                                    ),
-                                  );
                                 },
                               ),
                             ],
@@ -152,30 +104,6 @@ class _ELearningPageState extends State<ELearningPage> {
                                   Color(0xffe9eefa),
                                   Colors.white),
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Scaffold(
-                                        appBar: AppBar(
-                                          title: const Text('LSS/Q25301'),
-                                        ),
-                                        body: model.busy
-                                            ? SimplePdfViewerWidget(
-                                                completeCallback:
-                                                    (bool result) {
-                                                  print(
-                                                      "completeCallback,result:$result");
-                                                },
-                                                initialUrl:
-                                                    "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Cutter%20(Footwear)%20PHB%20Eng.pdf?alt=media&token=57d82cb6-9a42-44d5-bec6-68f9ea7a0a02",
-                                              )
-                                            : Center(
-                                                child: ColorLoader3(
-                                                    radius: 20.0,
-                                                    dotRadius: 10.0),
-                                              )),
-                                  ),
-                                );
                               },
                             ),
                             SizedBox(
@@ -189,30 +117,6 @@ class _ELearningPageState extends State<ELearningPage> {
                                   Color(0xffbdcddfa),
                                   Color(0xffcedaff)),
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Scaffold(
-                                        appBar: AppBar(
-                                          title: const Text('LSS/Q3501'),
-                                        ),
-                                        body: model.busy
-                                            ? SimplePdfViewerWidget(
-                                                completeCallback:
-                                                    (bool result) {
-                                                  print(
-                                                      "completeCallback,result:$result");
-                                                },
-                                                initialUrl:
-                                                    "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Cutter%20(G%26G)%20PHB%20Eng_FP.pdf?alt=media&token=7e8212f7-8721-4711-a41f-9bfc780f226c",
-                                              )
-                                            : Center(
-                                                child: ColorLoader3(
-                                                    radius: 20.0,
-                                                    dotRadius: 10.0),
-                                              )),
-                                  ),
-                                );
                               },
                             ),
                           ],
