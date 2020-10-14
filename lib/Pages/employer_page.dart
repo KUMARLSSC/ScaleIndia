@@ -41,8 +41,8 @@ class EmployerPage extends StatelessWidget {
                         style: TextStyle(color: Colors.black, fontSize: 23,fontWeight: FontWeight.bold),
                       ),
                     ),             
-               Container( 
-                  child: SingleChildScrollView(
+                Expanded(
+                  child:                Container(                  
                     child: Padding(
                       padding: EdgeInsets.all(10),
                       child: Column(
@@ -133,7 +133,7 @@ class EmployerPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                ),
+                  )
             ],
           ),
       ),

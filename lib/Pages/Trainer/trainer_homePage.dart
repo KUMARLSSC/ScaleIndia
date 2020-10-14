@@ -42,12 +42,12 @@ class _TrainerHomePageState extends State<TrainerHomePage>
             isScrollable: true,
             indicatorColor: Colors.white,
             tabs: choices.map((Choice choice) {
-              return Container(
+              return Expanded(child: Container(
                   width: MediaQuery.of(context).size.height - 600,
                   color: choice.colorContainer,
                   child: new Tab(
                     text: choice.title,
-                  ));
+                  )));
             }).toList(),
           ),
         ),
@@ -72,7 +72,9 @@ class ChoiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
+    return new Expanded(child: Container(
+     height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width ,
         color: Colors.yellow,
         child: SingleChildScrollView(
             child: Column(
@@ -308,7 +310,7 @@ class ChoiceCard extends StatelessWidget {
               height: 10,
             ),
           ],
-        )));
+        ))));
   }
 }
 

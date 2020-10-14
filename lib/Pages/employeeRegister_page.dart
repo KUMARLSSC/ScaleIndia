@@ -9,17 +9,12 @@ class EmployeeRegisterPage extends StatelessWidget {
       resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: false,
       body: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const SizedBox(
-              height: 30,
-            ),
-            Padding(
-              padding: EdgeInsets.all(22),
-              child: Column(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width ,
+        child:SingleChildScrollView(child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  SizedBox(height: 50,),
                   Center(
                       child: Image.asset(
                         "assets/img/logo.png",
@@ -28,21 +23,8 @@ class EmployeeRegisterPage extends StatelessWidget {
                         width: 250,
                       ),
                     ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Color.fromRGBO(255, 255, 255, 15),
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(35),
-                        topRight: Radius.circular(35))),
-                child: Padding(
-                    padding: EdgeInsets.all(1),
-                    child: Column(
-                      children: <Widget>[
-                        Center(
+                    SizedBox(height: 10,),
+                     Center(
                             child: Text(
                           "Employee Registration Form",
                           style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
@@ -51,14 +33,10 @@ class EmployeeRegisterPage extends StatelessWidget {
                           height: 5,
                         ),
                         EmployeeRegisterWidget(),       
-                        new Padding(padding: EdgeInsets.only(bottom: 10.0)),
-                      ],
-                    ),
-                ),
-              ),
-            )
-          ],
-        ),
+                        new Padding(padding: EdgeInsets.only(bottom: 10.0)),            
+
+          ]
+        ),)
       ),
     );
   }

@@ -44,7 +44,7 @@ class AssessorLoginPage extends StatelessWidget {
                     fontWeight: FontWeight.bold),
               ),
             ),
-            Container(
+            Expanded(child: Container(
               child: SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.all(10),
@@ -125,7 +125,7 @@ class AssessorLoginPage extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
+            ),)
           ],
         ),
       ),

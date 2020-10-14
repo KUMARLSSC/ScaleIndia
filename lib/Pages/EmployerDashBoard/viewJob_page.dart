@@ -8,57 +8,36 @@ class ViewJobPage extends StatelessWidget {
       resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: false,
       body: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const SizedBox(
-              height: 5,
-            ),
-            Padding(
-              padding: EdgeInsets.all(28),
-              child: Column(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width ,
+        child:SingleChildScrollView(
+          child:  Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  SizedBox(height: 50,),
                   Center(
-                    child: ClipRRect(
                       child: Image.asset(
                         "assets/img/logo.png",
                         fit: BoxFit.fill,
-                        height: 80,
-                        width: 200,
+                        height: 100,
+                        width: 250,
                       ),
                     ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  color: Color.fromRGBO(255, 255, 255, 15),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(35),
-                      topRight: Radius.circular(35))),
-              child: Padding(
-                padding: EdgeInsets.all(1),
-                child: Column(
-                  children: <Widget>[
-                    Center(
-                        child: Text(
-                      "NAPS Registration",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    )),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    NapsRegisterWidget(),
-                    new Padding(padding: EdgeInsets.only(bottom: 10.0)),
-                  ],
-                ),
-              ),
-            )
-          ],
+                    SizedBox(height: 10,),
+                     Center(
+                            child: Text(
+                          "NAPS Registration",
+                          style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
+                        )),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        NapsRegisterWidget(),     
+                        new Padding(padding: EdgeInsets.only(bottom: 10.0)),            
+
+          ]
         ),
+        )
       ),
     );
   }

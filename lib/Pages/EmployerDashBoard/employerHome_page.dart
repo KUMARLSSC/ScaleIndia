@@ -228,40 +228,28 @@ class _EmployerHomePageState extends State<EmployerHomePage> {
       resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: false,
       body: Container(
-        child: Column(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width ,
+        child: SingleChildScrollView(
+          child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const SizedBox(
-              height: 5,
+              height: 50,
             ),
-            Padding(
-              padding: EdgeInsets.all(28),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
                   Center(
                     child: ClipRRect(
                       child: Image.asset(
                         "assets/img/logo.png",
                         fit: BoxFit.fill,
-                        height: 80,
-                        width: 200,
+                        height: 100,
+                        width: 250,
                       ),
                     ),
-                  )
-                ],
-              ),
             ),
-           Container(
-                decoration: BoxDecoration(
-                    color: Color.fromRGBO(255, 255, 255, 15),
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(35),
-                        topRight: Radius.circular(35))),
-                child: Padding(
-                    padding: EdgeInsets.all(1),
-                    child: Column(
-                      children: <Widget>[
+          const SizedBox(
+              height: 10,
+            ),
                         Center(
                             child: Text(
                           "Demand Aggregation",
@@ -710,13 +698,14 @@ class _EmployerHomePageState extends State<EmployerHomePage> {
                       
                         new Padding(padding: EdgeInsets.only(bottom: 10.0)),
                       ],
-                    ),
+                    
 
                 
-              ),
-            )
-          ],
+              
+        
+        
         ),
+        )
       ),
     );
   }

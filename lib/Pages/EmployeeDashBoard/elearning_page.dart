@@ -66,7 +66,7 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Container(
+                          Expanded(child: Container(
                             width: MediaQuery.of(context).size.width * 0.4,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -132,8 +132,8 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
                                 ),
                               ],
                             ),
-                          ),
-                          Container(
+                          ),),
+                          Expanded(child: Container(
                             width: MediaQuery.of(context).size.width * 0.4,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -202,7 +202,7 @@ class _EmployeeElearningPageState extends State<EmployeeElearningPage> {
                                 ),
                               ],
                             ),
-                          )
+                          ))
                         ],
                       ),
                     ),

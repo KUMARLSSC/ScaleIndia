@@ -13,27 +13,21 @@ class AssessorHomePage extends StatelessWidget {
             appBar: PreferredSize(
                 child: header(context, isAppTitle: true, isIcon: false),
                 preferredSize: Size.fromHeight(50.0)),
-            body: Padding(
-              padding: EdgeInsets.only(left: 13),
-              child: Container(
-                height: MediaQuery.of(context).size.height - 170.0,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width - 40.0,
-                    child: Column(
+            body:  Container(
+                    width: MediaQuery.of(context).size.width ,
+                    height: MediaQuery.of(context).size.height,
+                    child: SingleChildScrollView(
+                      child: Column(
                       children: [
-                        Padding(
-                          padding: EdgeInsets.all(7),
-                          child: Center(
+                        const SizedBox(height: 20,),
+                         Center(
                             child: Image.asset(
                               "assets/img/logo.png",
                               fit: BoxFit.fill,
-                              height: 120,
-                              width: 450,
+                              height: 100,
+                              width: 250,
                             ),
                           ),
-                        ),
                         SizedBox(
                           height: 10,
                         ),
@@ -53,7 +47,8 @@ class AssessorHomePage extends StatelessWidget {
                         SizedBox(
                           height: 10,
                         ),
-                        Column(
+                        Padding(padding: const EdgeInsets.only(left: 50),
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
@@ -70,7 +65,7 @@ class AssessorHomePage extends StatelessWidget {
                                 SizedBox(
                                   width: 5,
                                 ),
-                                Container(
+                               Expanded(child:  Container(
                                   width:
                                       MediaQuery.of(context).size.width - 108,
                                   child: Text(
@@ -82,7 +77,7 @@ class AssessorHomePage extends StatelessWidget {
                                       fontSize: 17.0,
                                     ),
                                   ),
-                                )
+                                ))
                               ],
                             ),
                             SizedBox(
@@ -102,7 +97,7 @@ class AssessorHomePage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Container(
+                                Expanded(child: Container(
                                   width:
                                       MediaQuery.of(context).size.width - 110,
                                   child: Text(
@@ -114,7 +109,7 @@ class AssessorHomePage extends StatelessWidget {
                                       fontSize: 17.0,
                                     ),
                                   ),
-                                )
+                                ))
                               ],
                             ),
                             SizedBox(
@@ -134,7 +129,7 @@ class AssessorHomePage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Container(
+                                Expanded(child: Container(
                                   width:
                                       MediaQuery.of(context).size.width - 110,
                                   child: Text(
@@ -146,7 +141,7 @@ class AssessorHomePage extends StatelessWidget {
                                       fontSize: 17.0,
                                     ),
                                   ),
-                                )
+                                ))
                               ],
                             ),
                             SizedBox(
@@ -166,7 +161,7 @@ class AssessorHomePage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Container(
+                                Expanded(child: Container(
                                   width:
                                       MediaQuery.of(context).size.width - 110,
                                   child: Text(
@@ -178,7 +173,7 @@ class AssessorHomePage extends StatelessWidget {
                                       fontSize: 17.0,
                                     ),
                                   ),
-                                )
+                                ))
                               ],
                             ),
                             SizedBox(
@@ -198,7 +193,7 @@ class AssessorHomePage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Container(
+                               Expanded(child:  Container(
                                   width:
                                       MediaQuery.of(context).size.width - 110,
                                   child: Text(
@@ -210,10 +205,11 @@ class AssessorHomePage extends StatelessWidget {
                                       fontSize: 17.0,
                                     ),
                                   ),
-                                )
+                                ))
                               ],
                             ),
                           ],
+                        ),
                         ),
                         Padding(
                             padding: const EdgeInsets.all(20.0),
@@ -241,10 +237,10 @@ class AssessorHomePage extends StatelessWidget {
                             )),
                       ],
                     ),
+                    )
                   ),
                 ),
-              ),
-            )));
+              );
   }
 
   Future _asyncSimpleDialog(BuildContext context) async {
