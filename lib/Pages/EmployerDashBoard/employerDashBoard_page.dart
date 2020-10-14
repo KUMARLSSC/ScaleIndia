@@ -25,9 +25,6 @@ class _EmployerDashBoardPageState extends State<EmployerDashBoardPage> {
       case 1:
         return ViewJobPage();
         break;
-      /*case 2:
-        return PostJobPage();
-        break;*/
       case 2:
         return ProfileEmployerPage();
         break;
