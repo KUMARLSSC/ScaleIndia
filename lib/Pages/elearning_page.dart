@@ -1,5 +1,8 @@
+import 'package:Scaleindia/ViewModels/elearnig_viewmodel.dart';
+import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_pdf_viewer/simple_pdf_viewer.dart';
+import 'package:stacked/stacked.dart';
 
 class ELearningPage extends StatefulWidget {
   @override
@@ -9,188 +12,218 @@ class ELearningPage extends StatefulWidget {
 class _ELearningPageState extends State<ELearningPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xfff4f6fd),
-      body: Container(
-        padding: EdgeInsets.only(top: 40, left: 30, right: 30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  "Hello Kumar",
-                  style: TextStyle(fontSize: 20, color: Colors.blueAccent),
-                ),
-                Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          image: AssetImage('assets/img/profilePic.png'))),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            Text(
-              'What do you \nwant to \nlearn today?',
-              style: TextStyle(
-                  fontSize: 35, height: 1.3, fontWeight: FontWeight.w700),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Expanded(child: Container(
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          InkWell(
-                            child: courseWidget(
-                                'LSS/Q2501',
-                                'Stiching Operator Footwear',
-                                'img1',
-                                Color(0xffff6a65),
-                                Color(0xffff5954)),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Scaffold(
-                                    appBar: AppBar(
-                                      title: const Text('LSS/Q2501'),
+    return ViewModelBuilder<ElearningPageViewModel>.reactive(
+      viewModelBuilder: () => ElearningPageViewModel(),
+      builder: (context, model, child) => Scaffold(
+        backgroundColor: Color(0xfff4f6fd),
+        body: Container(
+          padding: EdgeInsets.only(top: 40, left: 30, right: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    "Hello Kumar",
+                    style: TextStyle(fontSize: 20, color: Colors.blueAccent),
+                  ),
+                  Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage('assets/img/profilePic.png'))),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              Text(
+                'What do you \nwant to \nlearn today?',
+                style: TextStyle(
+                    fontSize: 35, height: 1.3, fontWeight: FontWeight.w700),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              InkWell(
+                                child: courseWidget(
+                                    'LSS/Q2501',
+                                    'Stiching Operator Footwear',
+                                    'img1',
+                                    Color(0xffff6a65),
+                                    Color(0xffff5954)),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Scaffold(
+                                          appBar: AppBar(
+                                            title: const Text('LSS/Q2501'),
+                                          ),
+                                          body: model.busy
+                                              ? SimplePdfViewerWidget(
+                                                  completeCallback:
+                                                      (bool result) {
+                                                    print(
+                                                        "completeCallback,result:$result");
+                                                  },
+                                                  initialUrl:
+                                                      "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stiching%20operator%20DEmo.pdf?alt=media&token=42463401-b76b-4344-a32a-360e72733208",
+                                                )
+                                              : Center(
+                                                  child: ColorLoader3(
+                                                      radius: 20.0,
+                                                      dotRadius: 10.0),
+                                                )),
                                     ),
-                                    body: SimplePdfViewerWidget(
-                                      completeCallback: (bool result) {
-                                        print(
-                                            "completeCallback,result:$result");
-                                      },
-                                      initialUrl:
-                                          "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stiching%20operator%20DEmo.pdf?alt=media&token=42463401-b76b-4344-a32a-360e72733208",
+                                  );
+                                },
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              InkWell(
+                                child: courseWidget(
+                                    'LSS/Q5501',
+                                    'Stiching Operator Goods & Garments',
+                                    'img2',
+                                    Color(0xffe9eefa),
+                                    Colors.white),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Scaffold(
+                                          appBar: AppBar(
+                                            title: const Text('LSS/Q5501'),
+                                          ),
+                                          body: model.busy
+                                              ? SimplePdfViewerWidget(
+                                                  completeCallback:
+                                                      (bool result) {
+                                                    print(
+                                                        "completeCallback,result:$result");
+                                                  },
+                                                  initialUrl:
+                                                      "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stitching%20operator_Demo%20for%20trainer.pdf?alt=media&token=34309bd6-a066-4347-bafa-1ccb66206a28",
+                                                )
+                                              : Center(
+                                                  child: ColorLoader3(
+                                                      radius: 20.0,
+                                                      dotRadius: 10.0),
+                                                )),
                                     ),
-                                  ),
-                                ),
-                              );
-                            },
+                                  );
+                                },
+                              ),
+                            ],
                           ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          InkWell(
-                            child: courseWidget(
-                                'LSS/Q5501',
-                                'Stiching Operator Goods & Garments',
-                                'img2',
-                                Color(0xffe9eefa),
-                                Colors.white),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Scaffold(
-                                    appBar: AppBar(
-                                      title: const Text('LSS/Q5501'),
-                                    ),
-                                    body: SimplePdfViewerWidget(
-                                      completeCallback: (bool result) {
-                                        print(
-                                            "completeCallback,result:$result");
-                                      },
-                                      initialUrl:
-                                          "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Stitching%20operator_Demo%20for%20trainer.pdf?alt=media&token=34309bd6-a066-4347-bafa-1ccb66206a28",
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ],
+                        ),
                       ),
-                    ),),
-                    Expanded(child: Container(
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          SizedBox(
-                            height: 50,
-                          ),
-                          InkWell(
-                            child: courseWidget(
-                                'LSS/Q25301',
-                                'Cutting Operator Footwear',
-                                'img3',
-                                Color(0xffe9eefa),
-                                Colors.white),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Scaffold(
-                                    appBar: AppBar(
-                                      title: const Text('LSS/Q25301'),
-                                    ),
-                                    body: SimplePdfViewerWidget(
-                                      completeCallback: (bool result) {
-                                        print(
-                                            "completeCallback,result:$result");
-                                      },
-                                      initialUrl:
-                                          "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Cutter%20(Footwear)%20PHB%20Eng.pdf?alt=media&token=57d82cb6-9a42-44d5-bec6-68f9ea7a0a02",
-                                    ),
+                      Expanded(
+                          child: Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            SizedBox(
+                              height: 50,
+                            ),
+                            InkWell(
+                              child: courseWidget(
+                                  'LSS/Q25301',
+                                  'Cutting Operator Footwear',
+                                  'img3',
+                                  Color(0xffe9eefa),
+                                  Colors.white),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Scaffold(
+                                        appBar: AppBar(
+                                          title: const Text('LSS/Q25301'),
+                                        ),
+                                        body: model.busy
+                                            ? SimplePdfViewerWidget(
+                                                completeCallback:
+                                                    (bool result) {
+                                                  print(
+                                                      "completeCallback,result:$result");
+                                                },
+                                                initialUrl:
+                                                    "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Cutter%20(Footwear)%20PHB%20Eng.pdf?alt=media&token=57d82cb6-9a42-44d5-bec6-68f9ea7a0a02",
+                                              )
+                                            : Center(
+                                                child: ColorLoader3(
+                                                    radius: 20.0,
+                                                    dotRadius: 10.0),
+                                              )),
                                   ),
-                                ),
-                              );
-                            },
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          InkWell(
-                            child: courseWidget(
-                                'LSS/Q3501',
-                                'Cutting Operator Goods & Garments',
-                                'img4',
-                                Color(0xffbdcddfa),
-                                Color(0xffcedaff)),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Scaffold(
-                                    appBar: AppBar(
-                                      title: const Text('LSS/Q3501'),
-                                    ),
-                                    body: SimplePdfViewerWidget(
-                                      completeCallback: (bool result) {
-                                        print(
-                                            "completeCallback,result:$result");
-                                      },
-                                      initialUrl:
-                                          "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Cutter%20(G%26G)%20PHB%20Eng_FP.pdf?alt=media&token=7e8212f7-8721-4711-a41f-9bfc780f226c",
-                                    ),
+                                );
+                              },
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            InkWell(
+                              child: courseWidget(
+                                  'LSS/Q3501',
+                                  'Cutting Operator Goods & Garments',
+                                  'img4',
+                                  Color(0xffbdcddfa),
+                                  Color(0xffcedaff)),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Scaffold(
+                                        appBar: AppBar(
+                                          title: const Text('LSS/Q3501'),
+                                        ),
+                                        body: model.busy
+                                            ? SimplePdfViewerWidget(
+                                                completeCallback:
+                                                    (bool result) {
+                                                  print(
+                                                      "completeCallback,result:$result");
+                                                },
+                                                initialUrl:
+                                                    "https://firebasestorage.googleapis.com/v0/b/scale-india.appspot.com/o/Cutter%20(G%26G)%20PHB%20Eng_FP.pdf?alt=media&token=7e8212f7-8721-4711-a41f-9bfc780f226c",
+                                              )
+                                            : Center(
+                                                child: ColorLoader3(
+                                                    radius: 20.0,
+                                                    dotRadius: 10.0),
+                                              )),
                                   ),
-                                ),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                    ))
-                  ],
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                      ))
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
