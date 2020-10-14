@@ -8,17 +8,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:912259751198:android:f3c0c336eafb3b4cb5fd0f",
+        "mobilesdk_app_id": "1:912259751198:android:7225855cd82bafd1b5fd0f",
         "android_client_info": {
-          "package_name": "com.example.Scaleindia"
+          "package_name": "com.scaleIndia.Scaleindia"
         }
       },
       "oauth_client": [
         {
-          "client_id": "912259751198-1idl9ig714tpm2mq6hbloi4bap9gp8ut.apps.googleusercontent.com",
+          "client_id": "912259751198-g2b14gdb2bq4nl958bta4nu751fskrc4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.Scaleindia",
+            "package_name": "com.scaleIndia.Scaleindia",
             "certificate_hash": "c8d90de5dfe03f6b2ac7d7920e9abe16d5a23220"
           }
         },

@@ -1,4 +1,4 @@
-package com.example.Scaleindia
+package com.scaleIndia.Scaleindia
 
 import io.flutter.embedding.android.FlutterActivity
 
