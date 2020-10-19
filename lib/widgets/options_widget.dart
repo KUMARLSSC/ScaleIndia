@@ -1,4 +1,5 @@
 import 'package:Scaleindia/ApiModel/theory_api.dart';
+import 'package:Scaleindia/Pages/summary_page.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,8 @@ import '../locator.dart';
 
 class Options extends StatefulWidget {
   final List<Theory> theory;
-  Options({this.theory});
+  Options({Key key,  this.theory,})
+      : super(key: key);
   @override
   _OptionsState createState() => _OptionsState();
 }
@@ -183,7 +185,13 @@ class _OptionsState extends State<Options> {
                   color: Colors.white,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+               Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    SummaryPage(theory: widget.theory,)));
+              },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0),
                 side: BorderSide(color: Colors.blueAccent),
