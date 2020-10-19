@@ -36,31 +36,14 @@ class PracticalPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.0),
         
               ),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                semanticContainer: true,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: Column(
-                  children: [
-                    Container(
-                      width: 330,
-                      height: 600,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black)),
-                      child:  model.busy == false
-                                      ? Center(
+              child:  Container(
+                              height: 500,
+                              child: model.busy == false
+                                  ?  Center(
                                           child: CircularProgressIndicator(),
                                         )
-                                      : PracticalPageWidget(practical:model.posts),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
-              ),
+                                      : PracticalPageWidget(practical:model.posts)
+                            ),
             ),
           ),
         ),

@@ -34,7 +34,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             color: kBlack,
             child: Center(
               child: Text(
-               widget.practical[_currentIndex].pqNos,
+                widget.practical[_currentIndex].pqNos,
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -45,36 +45,41 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
           SizedBox(
             height: 10,
           ),
-          Container(
-            height: MediaQuery.of(context).size.height - 605,
-              width: MediaQuery.of(context).size.width ,
-            color: kBlackAccent,
-            child: Center(
-              child: Text(
-               widget.practical[_currentIndex].pqCommonQuestion !=null? widget.practical[_currentIndex].pqCommonQuestion:"No Common Question for this ${widget.practical[_currentIndex].pqNos} ",
+                 Card(
+          color: kBlackAccent,
+          child: Padding(
+            padding: const EdgeInsets.only(
+                top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
+            child: Text(
+                widget.practical[_currentIndex].pqCommonQuestion != null
+                    ? widget.practical[_currentIndex].pqCommonQuestion
+                    : "No Common Question for this ${widget.practical[_currentIndex].pqNos} ",
+                    textAlign: TextAlign.justify,
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
-            ),
           ),
+        ),
           SizedBox(
             height: 5,
           ),
-          Container(
-            
-            height: 100,
-            child: Center(
-              child: Text(
-              "${_currentIndex + 1}: " + widget.practical[_currentIndex].pqQuestion,
+           Card(
+          child: Padding(
+            padding: const EdgeInsets.only(
+                top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
+            child: Text(
+                "${_currentIndex + 1}: " +
+                    widget.practical[_currentIndex].pqQuestion,
+                    textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
                     color: Colors.black),
               ),
-            ),
           ),
+        ),
           SizedBox(
             height: 5,
           ),
@@ -97,18 +102,18 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             color: Colors.black,
           ),
           SizedBox(
-            height: 15,
+            height: 8,
           ),
           Text(
             "Max Marks: 10",
             style: TextStyle(fontSize: 17),
           ),
           SizedBox(
-            height: 15,
+            height: 8,
           ),
           Text(
             "Enter Marks:",
-           style: TextStyle(fontSize: 17,fontWeight: FontWeight.w700),
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
           ),
           SizedBox(
             height: 15,
@@ -138,7 +143,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             ),
           ),
           SizedBox(
-            height: 35,
+            height: 8
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -149,7 +154,13 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
                 child: RaisedButton(
                   splashColor: Colors.blue,
                   elevation: 5.0,
-                  color: _currentIndex == (widget.practical.length+1 - widget.practical.length-1 )? Colors.white30:new Color(0xFFEA4335),
+                  color: _currentIndex ==
+                          (widget.practical.length +
+                              1 -
+                              widget.practical.length -
+                              1)
+                      ? Colors.white30
+                      : new Color(0xFFEA4335),
                   child: Text(
                     'Previous',
                     style: TextStyle(
@@ -176,7 +187,9 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
                   elevation: 5.0,
                   color: new Color(0xFF34A853),
                   child: Text(
-                   _currentIndex == (widget.practical.length - 1)? "Submit":"Next",
+                    _currentIndex == (widget.practical.length - 1)
+                        ? "Submit"
+                        : "Next",
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Colors.white,
@@ -204,9 +217,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
         description: "You must select an answer to continue.",
       );
       return;
-    }else if(
-      mark.isEmpty
-    ){
+    } else if (mark.isEmpty) {
       _dialogService.showDialog(
         title: 'Failed',
         description: "You must select an answer to continue.",
@@ -217,8 +228,8 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
       setState(() {
         _currentIndex++;
       });
-    }else {
-     _dialogService.showDialog(
+    } else {
+      _dialogService.showDialog(
         title: 'Completed',
         description: "Practical Exam Completed",
       );
@@ -226,11 +237,10 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
   }
 
   void _previous() {
-    if (_currentIndex < (widget.practical.length --)) {
+    if (_currentIndex < (widget.practical.length--)) {
       setState(() {
         _currentIndex--;
       });
     }
   }
-   
 }

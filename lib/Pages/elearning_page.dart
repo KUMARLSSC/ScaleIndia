@@ -1,7 +1,5 @@
 import 'package:Scaleindia/ViewModels/elearnig_viewmodel.dart';
-import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_pdf_viewer/simple_pdf_viewer.dart';
 import 'package:stacked/stacked.dart';
 
 class ELearningPage extends StatefulWidget {
