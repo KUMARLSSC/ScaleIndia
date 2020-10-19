@@ -190,7 +190,7 @@ class _OptionsState extends State<Options> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    SummaryPage(theory: widget.theory,)));
+                                    SummaryPage(theory: widget.theory,answers:_answers,)));
               },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0),
