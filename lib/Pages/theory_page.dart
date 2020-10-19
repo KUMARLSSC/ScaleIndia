@@ -28,7 +28,7 @@ class TheoryPage extends StatelessWidget {
             preferredSize: Size.fromHeight(50.0)),
         body: Center(
           child: Container(
-            height: MediaQuery.of(context).size.height - 30.0,
+            height: MediaQuery.of(context).size.height,
             child: Padding(
               padding: const EdgeInsets.all(1.0),
               child: Container(

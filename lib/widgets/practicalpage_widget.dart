@@ -81,7 +81,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
           ),
         ),
           SizedBox(
-            height: 5,
+            height: 15,
           ),
           RaisedButton.icon(
             onPressed: () {
@@ -102,7 +102,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             color: Colors.black,
           ),
           SizedBox(
-            height: 8,
+            height:15,
           ),
           Text(
             "Max Marks: 10",
@@ -143,7 +143,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             ),
           ),
           SizedBox(
-            height: 8
+            height: 20
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

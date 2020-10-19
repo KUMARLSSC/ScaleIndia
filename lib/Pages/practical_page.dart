@@ -27,7 +27,7 @@ class PracticalPage extends StatelessWidget {
           preferredSize: Size.fromHeight(50.0)),
       body: Center(
         child: Container(
-          height: MediaQuery.of(context).size.height - 30.0,
+          height: MediaQuery.of(context).size.height,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -36,14 +36,13 @@ class PracticalPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.0),
         
               ),
-              child:  Container(
-                              height: 500,
-                              child: model.busy == false
+              child:   model.busy == false
                                   ?  Center(
                                           child: CircularProgressIndicator(),
                                         )
-                                      : PracticalPageWidget(practical:model.posts)
-                            ),
+                                      :SingleChildScrollView(child:
+                                      PracticalPageWidget(practical:model.posts)),
+                            
             ),
           ),
         ),
