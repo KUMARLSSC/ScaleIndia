@@ -34,7 +34,7 @@ class _OptionsState extends State<Options> {
             child: Text(
               "${_currentIndex + 1}: " +
                   widget.theory[_currentIndex].tqQuestion,
-              textAlign: TextAlign.justify,
+              textAlign: TextAlign.center,
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
           ),
