@@ -124,7 +124,7 @@ class _OptionsState extends State<Options> {
           height: 10.0,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               height: MediaQuery.of(context).size.height - 665,
@@ -155,6 +155,7 @@ class _OptionsState extends State<Options> {
                 ),
               ),
             ),
+            const SizedBox(width: 20,),
             Container(
               height: MediaQuery.of(context).size.height - 665,
               width: MediaQuery.of(context).size.width - 220,
