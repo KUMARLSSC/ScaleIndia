@@ -21,7 +21,7 @@ class SummaryPage extends StatelessWidget {
       body: Container(
       child:  ListView.builder(
             padding: const EdgeInsets.all(16.0),
-            itemCount: theory.length+1,
+            itemCount: theory.length-1,
             itemBuilder: _buildTheory,
 
           ),
