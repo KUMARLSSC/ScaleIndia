@@ -1,5 +1,6 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
+import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/ViewModels/theory_viewmodal.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/options_widget.dart';
@@ -16,8 +17,8 @@ class TheoryPage extends StatefulWidget {
 }
 
 class _TheoryPageState extends State<TheoryPage> {
-  final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
-
+ final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
+  
   @override
   Widget build(BuildContext context) {
     CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
@@ -57,8 +58,7 @@ class _TheoryPageState extends State<TheoryPage> {
                                                 color: Colors.black,
                                                 fontSize: 20)),
                                         TextSpan(
-                                            text:
-                                                widget.candidate.clEnrollmentNo,
+                                            text: widget.candidate.clEnrollmentNo,
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 25,
@@ -115,7 +115,6 @@ class _TheoryPageState extends State<TheoryPage> {
               ),
             ));
   }
-
   Future<bool> _onWillPop() async {
     return showDialog<bool>(
         context: context,
@@ -140,6 +139,5 @@ class _TheoryPageState extends State<TheoryPage> {
             ],
           );
         });
-   
   }
 }
