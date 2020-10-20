@@ -9,6 +9,7 @@ class Theory {
   int tqMarks;
   String tqVersionOfQb;
   String tqLanguage;
+  String tqImg;
 
   Theory(
       {this.tqCode,
@@ -21,6 +22,7 @@ class Theory {
       this.tqMarks,
       this.tqVersionOfQb,
       this.tqLanguage,
+      this.tqImg,
       });
 
   Theory.fromJson(Map<String, dynamic> json) {
@@ -34,6 +36,7 @@ class Theory {
     tqMarks = json['tqMarks'];
     tqVersionOfQb = json['tqVersionOfQb'];
     tqLanguage = json['tqLanguage'];
+    tqImg = json['tqImg'];
     
   }
 
@@ -49,6 +52,7 @@ class Theory {
     data['tqMarks'] = this.tqMarks;
     data['tqVersionOfQb'] = this.tqVersionOfQb;
     data['tqLanguage'] = this.tqLanguage;
+    data['tqImg'] = this.tqImg;
     return data;
   }
 }

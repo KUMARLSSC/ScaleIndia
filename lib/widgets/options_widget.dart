@@ -136,7 +136,11 @@ class _OptionsState extends State<Options> {
                   ),
                 ),
                 onPressed: () {
-                  _previous();
+                  _currentIndex ==
+                          (widget.theory.length + 1 - widget.theory.length - 1)
+                      // ignore: unnecessary_statements
+                      ? null
+                      :_previous();
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0),

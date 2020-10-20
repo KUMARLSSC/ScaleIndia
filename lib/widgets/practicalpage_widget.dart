@@ -45,41 +45,41 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
           SizedBox(
             height: 10,
           ),
-                 Card(
-          color: kBlackAccent,
-          child: Padding(
-            padding: const EdgeInsets.only(
-                top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
-            child: Text(
+          Card(
+            color: kBlackAccent,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
+              child: Text(
                 widget.practical[_currentIndex].pqCommonQuestion != null
                     ? widget.practical[_currentIndex].pqCommonQuestion
                     : "No Common Question for this ${widget.practical[_currentIndex].pqNos} ",
-                    textAlign: TextAlign.justify,
+                textAlign: TextAlign.justify,
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
+            ),
           ),
-        ),
           SizedBox(
             height: 5,
           ),
-           Card(
-          child: Padding(
-            padding: const EdgeInsets.only(
-                top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
-            child: Text(
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
+              child: Text(
                 "${_currentIndex + 1}: " +
                     widget.practical[_currentIndex].pqQuestion,
-                    textAlign: TextAlign.center,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
                     color: Colors.black),
               ),
+            ),
           ),
-        ),
           SizedBox(
             height: 15,
           ),
@@ -102,7 +102,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             color: Colors.black,
           ),
           SizedBox(
-            height:15,
+            height: 15,
           ),
           Text(
             "Max Marks: 10",
@@ -142,9 +142,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
               ),
             ),
           ),
-          SizedBox(
-            height: 20
-          ),
+          SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -169,7 +167,14 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
                     ),
                   ),
                   onPressed: () {
-                    _previous();
+                    _currentIndex ==
+                            (widget.practical.length +
+                                1 -
+                                widget.practical.length -
+                                1)
+                        // ignore: unnecessary_statements
+                        ? null
+                        : _previous();
                   },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),

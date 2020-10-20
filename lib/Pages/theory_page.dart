@@ -1,6 +1,5 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
-import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/ViewModels/theory_viewmodal.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/options_widget.dart';
@@ -9,13 +8,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
-import '../locator.dart';
-
-class TheoryPage extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
-  final DialogService _dialogService = locator<DialogService>();
+class TheoryPage extends StatefulWidget {
   final Candidate candidate;
   TheoryPage({this.candidate});
+  @override
+  _TheoryPageState createState() => _TheoryPageState();
+}
+
+class _TheoryPageState extends State<TheoryPage> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
@@ -55,7 +57,8 @@ class TheoryPage extends StatelessWidget {
                                                 color: Colors.black,
                                                 fontSize: 20)),
                                         TextSpan(
-                                            text: candidate.clEnrollmentNo,
+                                            text:
+                                                widget.candidate.clEnrollmentNo,
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 25,
@@ -113,13 +116,30 @@ class TheoryPage extends StatelessWidget {
             ));
   }
 
-  // ignore: missing_return
   Future<bool> _onWillPop() async {
-    _dialogService.showConfirmationDialog(
-        title: "Warning!",
-        description:
-            "Are you sure you want to quit the exam? All your progress will be lost.",
-            );
-    
+    return showDialog<bool>(
+        context: context,
+        builder: (_) {
+          return AlertDialog(
+            content: Text(
+                "Are you sure you want to quit the Exam? All your progress will be lost."),
+            title: Text("Warning!"),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("Yes"),
+                onPressed: () {
+                  Navigator.pop(context, true);
+                },
+              ),
+              FlatButton(
+                child: Text("No"),
+                onPressed: () {
+                  Navigator.pop(context, false);
+                },
+              ),
+            ],
+          );
+        });
+   
   }
 }

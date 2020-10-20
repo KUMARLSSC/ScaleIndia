@@ -31,7 +31,7 @@ class SummaryPage extends StatelessWidget {
 
   Widget _buildTheory(BuildContext context, int index) {
     Theory question = theory[index];
-    bool correct = question.tqQuestion == answers[index];
+    bool correct = question.tqOption1 == answers[index];
     return Card(
         color: correct ? Colors.green : Colors.red,
         child: Padding(
