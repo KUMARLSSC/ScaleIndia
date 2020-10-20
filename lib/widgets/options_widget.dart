@@ -35,12 +35,20 @@ class _OptionsState extends State<Options> {
           child: Padding(
             padding: const EdgeInsets.only(
                 top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
-            child: Text(
+            child: Column(
+              children: [
+                Text(
               "${_currentIndex + 1}: " +
                   widget.theory[_currentIndex].tqQuestion,
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
+            widget.theory[_currentIndex].tqImg != null? Image.network(
+                                          widget.theory[_currentIndex].tqImg,
+                                          fit: BoxFit.fill,
+                                        ):Container()
+              ],
+            )
           ),
         ),
         SizedBox(
