@@ -113,12 +113,13 @@ class TheoryPage extends StatelessWidget {
             ));
   }
 
+  // ignore: missing_return
   Future<bool> _onWillPop() async {
     _dialogService.showConfirmationDialog(
         title: "Warning!",
         description:
             "Are you sure you want to quit the exam? All your progress will be lost.",
             );
-    return _onWillPop();
+    
   }
 }

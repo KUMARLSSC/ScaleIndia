@@ -8,8 +8,10 @@ import '../locator.dart';
 
 class Options extends StatefulWidget {
   final List<Theory> theory;
-  Options({Key key,  this.theory,})
-      : super(key: key);
+  Options({
+    Key key,
+    this.theory,
+  }) : super(key: key);
   @override
   _OptionsState createState() => _OptionsState();
 }
@@ -186,11 +188,13 @@ class _OptionsState extends State<Options> {
                 ),
               ),
               onPressed: () {
-               Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    SummaryPage(theory: widget.theory,answers:_answers,)));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SummaryPage(
+                              theory: widget.theory,
+                              answers: _answers,
+                            )));
               },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0),
