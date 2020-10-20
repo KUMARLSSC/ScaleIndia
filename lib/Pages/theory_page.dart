@@ -1,6 +1,5 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
-import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/ViewModels/theory_viewmodal.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/options_widget.dart';
