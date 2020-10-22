@@ -69,12 +69,11 @@ class _OptionsState extends State<Options> {
                       style: TextStyle(fontSize: 20),
                     ),
                     activeColor: Colors.green,
-                    value: 0,
+                    value: 1,
                     groupValue: _answers[_currentIndex],
                     onChanged: (val) {
                       setState(() {
-                        _answers[_currentIndex] = 0;
-                         print(val=1);
+                        _answers[_currentIndex] = 1;
                       });
                     },
                   ),
@@ -84,12 +83,11 @@ class _OptionsState extends State<Options> {
                       style: TextStyle(fontSize: 20),
                     ),
                     activeColor: Colors.green,
-                    value: 1,
+                    value: 2,
                     groupValue: _answers[_currentIndex],
                     onChanged: (val) {
                       setState(() {
-                        _answers[_currentIndex] = 1;
-                         print(val=2);
+                        _answers[_currentIndex] = 2;
                       });
                     },
                   ),
@@ -99,12 +97,12 @@ class _OptionsState extends State<Options> {
                       style: TextStyle(fontSize: 20),
                     ),
                     activeColor: Colors.green,
-                    value: 2,
+                    value: 3,
                     groupValue: _answers[_currentIndex],
                     onChanged: (val) {
                       setState(() {
-                        _answers[_currentIndex] = 2;
-                         print(val=3);
+                        _answers[_currentIndex] = 3;
+                         
                       });
                     },
                   ),
@@ -114,12 +112,11 @@ class _OptionsState extends State<Options> {
                       style: TextStyle(fontSize: 20),
                     ),
                     activeColor: Colors.green,
-                    value: 3,
+                    value: 4,
                     groupValue: _answers[_currentIndex],
                     onChanged: (val) {
                       setState(() {
-                        _answers[_currentIndex] = 3;
-                         print(val=4);
+                        _answers[_currentIndex] = 4;
                         
                       });
                     },
@@ -237,7 +234,7 @@ class _OptionsState extends State<Options> {
       );
       return;
     }
-    if (_currentIndex < (widget.theory.length - 58)) {
+    if (_currentIndex < (widget.theory.length - 1)) {
       setState(() {
         _currentIndex++;
       });
@@ -246,6 +243,7 @@ class _OptionsState extends State<Options> {
           builder: (_) => AnswerPage(
                 answers: _answers,
                 theory: widget.theory,
+                
               )));
     }
   }

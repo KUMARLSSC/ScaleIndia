@@ -5,14 +5,14 @@ import 'package:Scaleindia/ApiModel/theory_api.dart';
 class AnswerPage extends StatelessWidget {
   final List<Theory> theory;
   final Map<int, dynamic> answers;
+
   AnswerPage({Key key, @required this.theory, @required this.answers})
       : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     int correct = 0;
-    this.answers.forEach((key, value) {
-      if (this.theory[key].tqCorrectAnswer == value) correct++;
+    this.answers.forEach((index, value) {
+      if (this.theory[index].tqCorrectAnswer == value) correct++;
     });
     final TextStyle titleStyle = TextStyle(
         color: Colors.black87, fontSize: 16.0, fontWeight: FontWeight.w500);
