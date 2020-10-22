@@ -1,4 +1,5 @@
 import 'package:Scaleindia/ApiModel/theory_api.dart';
+import 'package:Scaleindia/Pages/answer_page.dart';
 import 'package:Scaleindia/Pages/summary_page.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
@@ -33,23 +34,24 @@ class _OptionsState extends State<Options> {
         Card(
           color: kBlackAccent,
           child: Padding(
-            padding: const EdgeInsets.only(
-                top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
-            child: Column(
-              children: [
-                Text(
-              "${_currentIndex + 1}: " +
-                  widget.theory[_currentIndex].tqQuestion,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            widget.theory[_currentIndex].tqImg != null? Image.network(
-                                          widget.theory[_currentIndex].tqImg,
-                                          fit: BoxFit.fill,
-                                        ):Container()
-              ],
-            )
-          ),
+              padding: const EdgeInsets.only(
+                  top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
+              child: Column(
+                children: [
+                  Text(
+                    "${_currentIndex + 1}: " +
+                        widget.theory[_currentIndex].tqQuestion,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  widget.theory[_currentIndex].tqImg != null
+                      ? Image.network(
+                          widget.theory[_currentIndex].tqImg,
+                          fit: BoxFit.fill,
+                        )
+                      : Container()
+                ],
+              )),
         ),
         SizedBox(
           height: 10.0,
@@ -72,6 +74,7 @@ class _OptionsState extends State<Options> {
                     onChanged: (val) {
                       setState(() {
                         _answers[_currentIndex] = 0;
+                         print(val=1);
                       });
                     },
                   ),
@@ -86,6 +89,7 @@ class _OptionsState extends State<Options> {
                     onChanged: (val) {
                       setState(() {
                         _answers[_currentIndex] = 1;
+                         print(val=2);
                       });
                     },
                   ),
@@ -100,6 +104,7 @@ class _OptionsState extends State<Options> {
                     onChanged: (val) {
                       setState(() {
                         _answers[_currentIndex] = 2;
+                         print(val=3);
                       });
                     },
                   ),
@@ -114,6 +119,8 @@ class _OptionsState extends State<Options> {
                     onChanged: (val) {
                       setState(() {
                         _answers[_currentIndex] = 3;
+                         print(val=4);
+                        
                       });
                     },
                   )
@@ -148,14 +155,16 @@ class _OptionsState extends State<Options> {
                           (widget.theory.length + 1 - widget.theory.length - 1)
                       // ignore: unnecessary_statements
                       ? null
-                      :_previous();
+                      : _previous();
                 },
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
               ),
             ),
-            const SizedBox(width: 20,),
+            const SizedBox(
+              width: 20,
+            ),
             Container(
               height: MediaQuery.of(context).size.height - 665,
               width: MediaQuery.of(context).size.width - 220,
@@ -228,15 +237,16 @@ class _OptionsState extends State<Options> {
       );
       return;
     }
-    if (_currentIndex < (widget.theory.length-1)) {
+    if (_currentIndex < (widget.theory.length - 58)) {
       setState(() {
         _currentIndex++;
       });
-    }else {
-      _dialogService.showDialog(
-        title: 'Completed',
-        description: "Theory Exam Completed",
-      );
+    } else {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (_) => AnswerPage(
+                answers: _answers,
+                theory: widget.theory,
+              )));
     }
   }
 
