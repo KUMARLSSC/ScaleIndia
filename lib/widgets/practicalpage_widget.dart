@@ -216,20 +216,14 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
   }
 
   void _nextSubmit({@required String mark}) {
-    if ([_currentIndex] == null) {
-      _dialogService.showDialog(
-        title: 'Failed',
-        description: "You must select an answer to continue.",
-      );
-      return;
-    } else if (mark.isEmpty) {
+    if (mark.isEmpty) {
       _dialogService.showDialog(
         title: 'Failed',
         description: "You must select an answer to continue.",
       );
       return;
     }
-    if (_currentIndex < (widget.practical.length)) {
+    if (_currentIndex < (widget.practical.length -1)) {
       setState(() {
         _currentIndex++;
       });

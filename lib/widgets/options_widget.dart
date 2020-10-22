@@ -228,10 +228,15 @@ class _OptionsState extends State<Options> {
       );
       return;
     }
-    if (_currentIndex < (widget.theory.length)) {
+    if (_currentIndex < (widget.theory.length-1)) {
       setState(() {
         _currentIndex++;
       });
+    }else {
+      _dialogService.showDialog(
+        title: 'Completed',
+        description: "Theory Exam Completed",
+      );
     }
   }
 
