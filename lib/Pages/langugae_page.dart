@@ -21,10 +21,22 @@ class LanguagePage extends StatelessWidget {
               body: model.busy==false?Center(child: CircularProgressIndicator(),):_getPostUi(model.posts)
             ));
   }
-  Widget _getPostUi(List<Theory> posts,) => ListView.builder(
+  Widget _getPostUi(List<Theory> posts,)=> ListView.builder(
         itemCount: 1,
-        itemBuilder: (BuildContext context, int index) => LanguageWidget(
-          theory: posts[index],
+        itemBuilder: (BuildContext context, int index,) =>  Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+             LanguageWidget(
+          theory: posts[1],
+        ),
+         LanguageWidget(
+          theory: posts[21],
+        ),
+         LanguageWidget(
+          theory: posts[41],
+        )
+          ],
         )
       );
 }

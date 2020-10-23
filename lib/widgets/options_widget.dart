@@ -9,8 +9,10 @@ import '../locator.dart';
 
 class Options extends StatefulWidget {
   final List<Theory> theory;
+  final Theory theory1;
   Options({
     Key key,
+    this.theory1,
     this.theory,
   }) : super(key: key);
   @override
@@ -29,6 +31,9 @@ class _OptionsState extends State<Options> {
 
   @override
   Widget build(BuildContext context) {
+    Theory question = this.widget.theory[_currentIndex];
+    this.widget.theory.retainWhere((element) =>
+        element.tqLanguage.contains(this.widget.theory1.tqLanguage));
     return Column(
       children: [
         Card(
@@ -102,7 +107,6 @@ class _OptionsState extends State<Options> {
                     onChanged: (val) {
                       setState(() {
                         _answers[_currentIndex] = 3;
-                         
                       });
                     },
                   ),
@@ -117,7 +121,6 @@ class _OptionsState extends State<Options> {
                     onChanged: (val) {
                       setState(() {
                         _answers[_currentIndex] = 4;
-                        
                       });
                     },
                   )
@@ -243,7 +246,6 @@ class _OptionsState extends State<Options> {
           builder: (_) => AnswerPage(
                 answers: _answers,
                 theory: widget.theory,
-                
               )));
     }
   }

@@ -1,5 +1,6 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
+import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/ViewModels/theory_viewmodal.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/options_widget.dart';
@@ -10,7 +11,8 @@ import 'package:stacked/stacked.dart';
 
 class TheoryPage extends StatefulWidget {
   final Candidate candidate;
-  TheoryPage({this.candidate});
+  final Theory theory;
+  TheoryPage({this.candidate,this.theory});
   @override
   _TheoryPageState createState() => _TheoryPageState();
 }
@@ -57,7 +59,7 @@ class _TheoryPageState extends State<TheoryPage> {
                                                 color: Colors.black,
                                                 fontSize: 20)),
                                         TextSpan(
-                                            text: widget.candidate.clEnrollmentNo,
+                                            text: "1234567890",
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 25,
@@ -101,6 +103,7 @@ class _TheoryPageState extends State<TheoryPage> {
                                           : SingleChildScrollView(
                                               child: Options(
                                               theory: modal.posts,
+                                              theory1:widget.theory,
                                             )),
                                     ),
                                   ]),

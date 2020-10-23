@@ -1,4 +1,5 @@
 import 'package:Scaleindia/ApiModel/theory_api.dart';
+import 'package:Scaleindia/Pages/theory_page.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -18,10 +19,13 @@ class LanguageWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   BusyButton(
-                    color: Colors.green,
+                      color: Colors.green,
                       title: theory.tqLanguage,
                       onPressed: () {
-                        model.navigateToTheoryPage();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TheoryPage(theory: theory,)));
                       }),
                 ],
               ),
