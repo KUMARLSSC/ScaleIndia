@@ -15,28 +15,43 @@ class LanguagePage extends StatelessWidget {
         onModelReady: (model) => model.getTheory(centerAssesor.asId),
         viewModelBuilder: () => LanguagePageViewModel(),
         builder: (context, model, child) => Scaffold(
-              appBar: PreferredSize(
-                  child: header(context, isAppTitle: true, isIcon: false),
-                  preferredSize: Size.fromHeight(50.0)),
-              body: model.busy==false?Center(child: CircularProgressIndicator(),):_getPostUi(model.posts)
-            ));
+            appBar: PreferredSize(
+                child: header(context, isAppTitle: true, isIcon: false),
+                preferredSize: Size.fromHeight(50.0)),
+            body: model.busy == false
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : _getPostUi(model.posts)));
   }
-  Widget _getPostUi(List<Theory> posts,)=> ListView.builder(
-        itemCount: 1,
-        itemBuilder: (BuildContext context, int index,) =>  Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-             LanguageWidget(
-          theory: posts[1],
-        ),
-         LanguageWidget(
-          theory: posts[21],
-        ),
-         LanguageWidget(
-          theory: posts[41],
-        )
-          ],
-        )
-      );
+
+  Widget _getPostUi(
+    List<Theory> posts,
+  ) =>
+      ListView.builder(
+          shrinkWrap: true,
+          itemCount: 1,
+          itemBuilder: (
+            BuildContext context,
+            int index,
+          ) =>
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  LanguageWidget(
+                      theory: posts.firstWhere(
+                    (element) => element.tqLanguage.contains("English"),
+                  )),
+                  LanguageWidget(
+                      theory: posts.firstWhere(
+                          (element) => element.tqLanguage.contains("Tamil"))),
+                  LanguageWidget(
+                      theory: posts.firstWhere(
+                          (element) => element.tqLanguage.contains("Hindi"))),
+                  LanguageWidget(
+                      theory: posts.firstWhere(
+                          (element) => element.tqLanguage.contains("Bangla"))),
+                ],
+              ));
 }

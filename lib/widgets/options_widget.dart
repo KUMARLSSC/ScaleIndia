@@ -31,7 +31,6 @@ class _OptionsState extends State<Options> {
 
   @override
   Widget build(BuildContext context) {
-    Theory question = this.widget.theory[_currentIndex];
     this.widget.theory.retainWhere((element) =>
         element.tqLanguage.contains(this.widget.theory1.tqLanguage));
     return Column(
