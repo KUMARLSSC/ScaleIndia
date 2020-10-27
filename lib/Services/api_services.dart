@@ -21,11 +21,10 @@ class Api {
   Future<List<Candidate>> getCandidateLiST(int resId) async {
     var _candidate = List<Candidate>();
     // Get user posts for id
-    var response =
-        await client.get('$theorypoint/api/CandidateList/$resId');
+    var response = await client.get('$theorypoint/api/CandidateList/$resId');
 
     // parse into List
-    var parsed = json.decode(response.body)  as List<dynamic>;
+    var parsed = json.decode(response.body) as List<dynamic>;
 
     // loop and convert each item to Post
     for (var candidate in parsed) {
@@ -34,30 +33,35 @@ class Api {
 
     return _candidate;
   }
+
   Future<List<Theory>> getTheory(int resId) async {
     var _theory = List<Theory>();
     // Get user posts for id
-    var response =
-        await client.get('$theorypoint/api/TheoryQuestion/$resId');
+    var response = await client.get('$theorypoint/api/TheoryQuestion/$resId');
 
     // parse into List
-    var parsed = json.decode(response.body)  as List<dynamic>;
+    var parsed = json.decode(response.body) as List<dynamic>;
 
     // loop and convert each item to Post
     for (var candidate in parsed) {
-      _theory.add(Theory.fromJson(candidate));
+      bool isPresent = false;
+      for (var language in _theory) {
+        if (language.tqLanguage == candidate['tqLanguage']) isPresent = true;
+      }
+      if (!isPresent) _theory.add(Theory.fromJson(candidate));
     }
 
     return _theory;
   }
-   Future<List<Practical>> getPractical(int resId) async {
+
+  Future<List<Practical>> getPractical(int resId) async {
     var _practical = List<Practical>();
     // Get user posts for id
     var response =
         await client.get('$theorypoint/api/PracticalQuestion/$resId');
 
     // parse into List
-    var parsed = json.decode(response.body)  as List<dynamic>;
+    var parsed = json.decode(response.body) as List<dynamic>;
 
     // loop and convert each item to Post
     for (var candidate in parsed) {

@@ -30,28 +30,10 @@ class LanguagePage extends StatelessWidget {
   ) =>
       ListView.builder(
           shrinkWrap: true,
-          itemCount: 1,
+          itemCount: posts.length,
           itemBuilder: (
             BuildContext context,
             int index,
           ) =>
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  LanguageWidget(
-                      theory: posts.firstWhere(
-                    (element) => element.tqLanguage.contains("English"),
-                  )),
-                  LanguageWidget(
-                      theory: posts.firstWhere(
-                          (element) => element.tqLanguage.contains("Tamil"))),
-                  LanguageWidget(
-                      theory: posts.firstWhere(
-                          (element) => element.tqLanguage.contains("Hindi"))),
-                  LanguageWidget(
-                      theory: posts.firstWhere(
-                          (element) => element.tqLanguage.contains("Bangla"))),
-                ],
-              ));
+              LanguageWidget(theory: posts[index]));
 }

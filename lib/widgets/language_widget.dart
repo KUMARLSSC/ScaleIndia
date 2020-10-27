@@ -25,7 +25,9 @@ class LanguageWidget extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => TheoryPage(theory: theory,)));
+                                builder: (context) => TheoryPage(
+                                      theory: theory,
+                                    )));
                       }),
                 ],
               ),
