@@ -30,10 +30,41 @@ class LanguagePage extends StatelessWidget {
   ) =>
       ListView.builder(
           shrinkWrap: true,
-          itemCount: posts.length,
+          itemCount: 1,
           itemBuilder: (
             BuildContext context,
             int index,
-          ) =>
-              LanguageWidget(theory: posts[index]));
+          ) {
+            final String english = "English";
+            final String tamil = "Tamil";
+            final String hindi = "hindi";
+            final String bangla = "Bangla";
+            return Column(
+              children: [
+                posts.first.tqLanguage == english
+                    ? LanguageWidget(
+                        theory: posts.first,
+                      )
+                    : Container(),
+                posts[index].tqLanguage == tamil
+                    ? Container()
+                    : LanguageWidget(
+                        theory: posts.firstWhere(
+                            (element) => element.tqLanguage.contains("Tamil")),
+                      ),
+                posts.last.tqLanguage == tamil
+                    ? Container()
+                    : LanguageWidget(
+                        theory: posts.firstWhere(
+                            (element) => element.tqLanguage.contains("Hindi")),
+                      ),
+                posts.last.tqLanguage != bangla
+                    ? Container()
+                    : LanguageWidget(
+                        theory: posts.firstWhere(
+                            (element) => element.tqLanguage.contains("Bangla")),
+                      )
+              ],
+            );
+          });
 }

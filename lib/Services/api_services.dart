@@ -44,11 +44,7 @@ class Api {
 
     // loop and convert each item to Post
     for (var candidate in parsed) {
-      bool isPresent = false;
-      for (var language in _theory) {
-        if (language.tqLanguage == candidate['tqLanguage']) isPresent = true;
-      }
-      if (!isPresent) _theory.add(Theory.fromJson(candidate));
+      _theory.add(Theory.fromJson(candidate));
     }
 
     return _theory;
