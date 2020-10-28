@@ -1,4 +1,5 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
+import 'package:Scaleindia/Pages/language_page1.dart';
 import 'package:Scaleindia/Pages/langugae_page.dart';
 import 'package:Scaleindia/ViewModels/fifthpage_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
@@ -172,7 +173,11 @@ class FifthPage extends StatelessWidget {
                                         ),
                                       ),
                                       onPressed: () {
-                                        model.navigateToPractical();
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LanguagePage1()));
                                       },
                                       shape: RoundedRectangleBorder(
                                         borderRadius:

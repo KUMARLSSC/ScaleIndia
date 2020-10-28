@@ -12,7 +12,9 @@ import '../locator.dart';
 
 class PracticalPageWidget extends StatefulWidget {
   final List<Practical> practical;
-  PracticalPageWidget({this.practical});
+  final Practical practical1;
+  PracticalPageWidget({Key key, this.practical, this.practical1})
+      : super(key: key);
   @override
   _PracticalPageWidgetState createState() => _PracticalPageWidgetState();
 }
@@ -20,10 +22,15 @@ class PracticalPageWidget extends StatefulWidget {
 class _PracticalPageWidgetState extends State<PracticalPageWidget> {
   final DialogService _dialogService = locator<DialogService>();
   final TextEditingController textController = TextEditingController();
+  String _text = "Mark";
+
   int _currentIndex = 0;
+  int a = 0;
 
   @override
   Widget build(BuildContext context) {
+    this.widget.practical.retainWhere(
+        (element) => element.pqLang.contains(this.widget.practical1.pqLang));
     return ViewModelBuilder<PracticalPageViewModel>.reactive(
       viewModelBuilder: () => PracticalPageViewModel(),
       builder: (context, model, child) => Column(
@@ -136,9 +143,12 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
               decoration: BoxDecoration(
                   border: Border(bottom: BorderSide(color: Colors.grey[200]))),
               child: InputField(
-                placeholder: 'Mark',
+                placeholder: _text,
                 text1InputType: TextInputType.number,
                 controller: textController,
+                onChanged: (v) => setState(() {
+                  _text = v;
+                }),
               ),
             ),
           ),
@@ -223,9 +233,13 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
       );
       return;
     }
-    if (_currentIndex < (widget.practical.length -1)) {
+    if (_currentIndex < (widget.practical.length - 1)) {
       setState(() {
         _currentIndex++;
+      });
+      setState(() {
+        a = int.parse(textController.text);
+        textController.text = " ";
       });
     } else {
       _dialogService.showDialog(

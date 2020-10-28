@@ -14,7 +14,6 @@ class FirstPage extends StatelessWidget {
       viewModelBuilder: () => FirstPageViewModel(),
       builder: (context, model, child) => Scaffold(
         resizeToAvoidBottomPadding: false,
-      resizeToAvoidBottomInset: false,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[

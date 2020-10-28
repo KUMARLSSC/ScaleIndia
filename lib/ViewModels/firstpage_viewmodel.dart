@@ -32,17 +32,17 @@ class FirstPageViewModel extends BaseModel {
 
     if (result is bool) {
       if (result) {
-        _navigationService.navigateTo(SecondViewRoute);
+        _navigationService.navigateTo(ThirdViewRoute);
       } else {
         await _dialogService.showDialog(
           title: 'Request Id error',
           description: 'Please enter your registered request id',
         );
       }
-    }else {
+    } else {
       await _dialogService.showDialog(
         title: 'Request Id error',
-        description:'Please enter your registered request id',
+        description: 'Please enter your registered request id',
       );
     }
     /* if (requestid == i) {

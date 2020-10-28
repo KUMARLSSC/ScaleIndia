@@ -1,19 +1,19 @@
 import 'package:Scaleindia/ApiModel/center_api.dart';
-import 'package:Scaleindia/ApiModel/theory_api.dart';
+import 'package:Scaleindia/ApiModel/practical_api.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
-import 'package:Scaleindia/widgets/language_widget.dart';
+import 'package:Scaleindia/widgets/language_widget1.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
-class LanguagePage extends StatelessWidget {
+class LanguagePage1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
     return ViewModelBuilder<LanguagePageViewModel>.reactive(
-        onModelReady: (model) => model.getTheory(centerAssesor.asId),
+        onModelReady: (model) => model.getPractical(centerAssesor.asId),
         viewModelBuilder: () => LanguagePageViewModel(),
         builder: (context, model, child) => Scaffold(
             appBar: PreferredSize(
@@ -33,13 +33,13 @@ class LanguagePage extends StatelessWidget {
                         "Select an Language to continue:",
                         style: kTitleStyle,
                       )),
-                      _getPostUi(model.posts)
+                      _getPostUi1(model.posts1)
                     ],
                   )));
   }
 
-  Widget _getPostUi(
-    List<Theory> posts,
+  Widget _getPostUi1(
+    List<Practical> posts,
   ) =>
       ListView.builder(
           shrinkWrap: true,
@@ -53,28 +53,28 @@ class LanguagePage extends StatelessWidget {
             final String bangla = "Bangla";
             return Column(
               children: [
-                posts.first.tqLanguage == english
-                    ? LanguageWidget(
-                        theory: posts.first,
+                posts.first.pqLang == english
+                    ? LanguageWidget1(
+                        practical: posts.first,
                       )
                     : Container(),
-                posts[index].tqLanguage == tamil
+                posts[index].pqLang == tamil
                     ? Container()
-                    : LanguageWidget(
-                        theory: posts.firstWhere(
-                            (element) => element.tqLanguage.contains("Tamil")),
+                    : LanguageWidget1(
+                        practical: posts.firstWhere(
+                            (element) => element.pqLang.contains("Tamil")),
                       ),
-                posts.last.tqLanguage == tamil
+                posts.last.pqLang == tamil
                     ? Container()
-                    : LanguageWidget(
-                        theory: posts.firstWhere(
-                            (element) => element.tqLanguage.contains("Hindi")),
+                    : LanguageWidget1(
+                        practical: posts.firstWhere(
+                            (element) => element.pqLang.contains("Hindi")),
                       ),
-                posts.last.tqLanguage != bangla
+                posts.last.pqLang != bangla
                     ? Container()
-                    : LanguageWidget(
-                        theory: posts.firstWhere(
-                            (element) => element.tqLanguage.contains("Bangla")),
+                    : LanguageWidget1(
+                        practical: posts.firstWhere(
+                            (element) => element.pqLang.contains("Bangla")),
                       )
               ],
             );
