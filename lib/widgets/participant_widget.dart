@@ -1,4 +1,5 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
+import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/Pages/fifth_page.dart';
 import 'package:Scaleindia/ViewModels/fourthpage_viewmodel.dart';
 
@@ -7,9 +8,8 @@ import 'package:stacked/stacked.dart';
 
 class ParticipantWidget extends StatelessWidget {
   final Candidate candidate;
-  ParticipantWidget({
-    this.candidate,
-  });
+  final CenterAssesor centerAssesor;
+  ParticipantWidget({this.candidate, this.centerAssesor});
   @override
   Widget build(BuildContext context) {
     final theory = true;
@@ -22,26 +22,26 @@ class ParticipantWidget extends StatelessWidget {
           Container(
             width: 120,
             child: Text(
-            candidate.clEnrollmentNo,
-            maxLines: 2,
-            style: TextStyle(
-              color: Colors.orange,
-              fontWeight: FontWeight.normal,
-              fontSize: 16.0,
+              candidate.clEnrollmentNo,
+              maxLines: 2,
+              style: TextStyle(
+                color: Colors.orange,
+                fontWeight: FontWeight.normal,
+                fontSize: 16.0,
+              ),
             ),
-          ),
           ),
           Container(
             width: 145,
             child: Text(
-            candidate.clName,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.red,
-              fontWeight: FontWeight.normal,
-              fontSize: 15.0,
+              candidate.clName,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.red,
+                fontWeight: FontWeight.normal,
+                fontSize: 15.0,
+              ),
             ),
-          ),
           ),
           Container(
               height: 30,
@@ -81,8 +81,10 @@ class ParticipantWidget extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    FifthPage(candidate: candidate)));
+                                builder: (context) => FifthPage(
+                                      candidate: candidate,
+                                      centerAssesor: centerAssesor,
+                                    )));
                       },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),

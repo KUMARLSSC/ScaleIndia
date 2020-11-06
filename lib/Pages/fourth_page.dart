@@ -8,6 +8,8 @@ import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
 class FourthPage extends StatelessWidget {
+  final CenterAssesor centerAssesor;
+  FourthPage({this.centerAssesor});
   @override
   Widget build(BuildContext context) {
     CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
@@ -48,9 +50,10 @@ class FourthPage extends StatelessWidget {
                                 height: 15,
                               ),
                               Row(
-                                
                                 children: [
-                                  SizedBox(width: 50,),
+                                  SizedBox(
+                                    width: 50,
+                                  ),
                                   Text(
                                     'ID',
                                     style: TextStyle(
@@ -59,7 +62,9 @@ class FourthPage extends StatelessWidget {
                                       fontSize: 20.0,
                                     ),
                                   ),
-                                  SizedBox(width: 95,),
+                                  SizedBox(
+                                    width: 95,
+                                  ),
                                   Text(
                                     'Name',
                                     style: TextStyle(
@@ -68,7 +73,9 @@ class FourthPage extends StatelessWidget {
                                       fontSize: 20.0,
                                     ),
                                   ),
-                                  SizedBox(width: 65,),
+                                  SizedBox(
+                                    width: 65,
+                                  ),
                                   Text(
                                     'Exam',
                                     style: TextStyle(
@@ -110,6 +117,7 @@ class FourthPage extends StatelessWidget {
         itemCount: posts.length,
         itemBuilder: (BuildContext context, int index) => ParticipantWidget(
           candidate: posts[index],
+          centerAssesor: centerAssesor,
         ),
       );
 }

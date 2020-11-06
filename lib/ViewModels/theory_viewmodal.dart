@@ -6,6 +6,7 @@ import 'base_model.dart';
 
 class TheoryPageViewModel extends BaseModel {
   final TheoryService _theoryService = locator<TheoryService>();
+
   // ignore: unused_field
   final DialogService _dialogService = locator<DialogService>();
   List<Theory> get posts => _theoryService.theory;
@@ -16,7 +17,6 @@ class TheoryPageViewModel extends BaseModel {
     setBusy(true);
   }
 
-
   // ignore: missing_return
   Future<bool> navigateToSummary() async {
     _dialogService.showConfirmationDialog(
@@ -24,6 +24,5 @@ class TheoryPageViewModel extends BaseModel {
       description:
           "Are you sure you want to quit the exam? All your progress will be lost.",
     );
-   
   }
 }

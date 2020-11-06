@@ -1,3 +1,4 @@
+import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/Assessor/assessor_homepage.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/employerHome_page.dart';
@@ -29,10 +30,11 @@ import 'package:Scaleindia/Pages/third_page.dart';
 import 'package:Scaleindia/Pages/trainer_page.dart';
 import 'package:flutter/material.dart';
 
+CenterAssesor centerAssesor;
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case AssessorHomePageViewRoute:
-    return _pageRoute(
+      return _pageRoute(
         routeName: settings.name,
         viewToShow: AssessorHomePage(),
       );
@@ -41,77 +43,77 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         routeName: settings.name,
         viewToShow: HomePage(),
       );
-      case TrainerHomePageViewRoute:
-       return _pageRoute(
+    case TrainerHomePageViewRoute:
+      return _pageRoute(
         routeName: settings.name,
         viewToShow: TrainerHomePage(),
       );
-      case PostJobPageViewRoute:
+    case PostJobPageViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: PostJobPage(),
       );
-      case EmployerHomePageViewRoute:
-       return _pageRoute(
+    case EmployerHomePageViewRoute:
+      return _pageRoute(
         routeName: settings.name,
         viewToShow: EmployerHomePage(),
       );
-      case ViewJobPageViewRoute:
+    case ViewJobPageViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: ViewJobPage(),
       );
-      case OnBoardingPageViewRoute:
-       return _pageRoute(
+    case OnBoardingPageViewRoute:
+      return _pageRoute(
         routeName: settings.name,
-        viewToShow:OnBoardingPage(),
+        viewToShow: OnBoardingPage(),
       );
-      case AssessorLoginPageViewRoute:
+    case AssessorLoginPageViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: AssessorLoginPage(),
       );
-       case TrainerLoginPageViewRoute:
+    case TrainerLoginPageViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: TrainerLoginPage(),
       );
-      case EmployerViewRoute:
+    case EmployerViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: EmployerPage(),
       );
-       case EmployerRegisterViewRoute:
+    case EmployerRegisterViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: EmployerRegisterPage(),
       );
-       case ForgotPage1ViewRoute:
+    case ForgotPage1ViewRoute:
       return _pageRoute(
         routeName: settings.name,
-        viewToShow:ForgotPage1(),
+        viewToShow: ForgotPage1(),
       );
-      case ForgotPage2ViewRoute:
+    case ForgotPage2ViewRoute:
       return _pageRoute(
         routeName: settings.name,
-        viewToShow:ForgotPage2(),
+        viewToShow: ForgotPage2(),
       );
-       case EmployeeViewRoute:
+    case EmployeeViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: EmployeePage(),
       );
-       case EmployeeRegisterViewRoute:
+    case EmployeeRegisterViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: EmployeeRegisterPage(),
       );
-      case EmployerDashBoardViewRoute:
+    case EmployerDashBoardViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: EmployerDashBoardPage(),
       );
-       case EmployeeDashBoardViewRoute:
+    case EmployeeDashBoardViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: EmployeeDashBoardPage(),
@@ -121,7 +123,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         routeName: settings.name,
         viewToShow: CandidatePage(),
       );
-      case ElearningViewRoute:
+    case ElearningViewRoute:
       return _pageRoute(
         routeName: settings.name,
         viewToShow: ELearningPage(),
@@ -139,12 +141,16 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case ThirdViewRoute:
       return _pageRoute(
         routeName: settings.name,
-        viewToShow: ThirdPage(),
+        viewToShow: ThirdPage(
+          centerAssesor: centerAssesor,
+        ),
       );
     case FourthViewRoute:
       return _pageRoute(
         routeName: settings.name,
-        viewToShow: FourthPage(),
+        viewToShow: FourthPage(
+          centerAssesor: centerAssesor,
+        ),
       );
     case FifthViewRoute:
       return _pageRoute(

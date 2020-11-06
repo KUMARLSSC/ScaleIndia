@@ -5,7 +5,6 @@ import 'base_model.dart';
 
 class ThirdPageViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
- 
 
   void navigateToFourthPage() {
     _navigationService.navigateTo(FourthViewRoute);

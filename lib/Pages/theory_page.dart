@@ -12,14 +12,15 @@ import 'package:stacked/stacked.dart';
 class TheoryPage extends StatefulWidget {
   final Candidate candidate;
   final Theory theory;
-  TheoryPage({this.candidate,this.theory});
+  final CenterAssesor centerAssesor;
+  TheoryPage({this.candidate, this.theory, this.centerAssesor});
   @override
   _TheoryPageState createState() => _TheoryPageState();
 }
 
 class _TheoryPageState extends State<TheoryPage> {
- final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
-  
+  final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
@@ -59,7 +60,10 @@ class _TheoryPageState extends State<TheoryPage> {
                                                 color: Colors.black,
                                                 fontSize: 20)),
                                         TextSpan(
-                                            text: "1234567890",
+                                            text: this
+                                                .widget
+                                                .candidate
+                                                .clEnrollmentNo,
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 25,
@@ -103,7 +107,8 @@ class _TheoryPageState extends State<TheoryPage> {
                                           : SingleChildScrollView(
                                               child: Options(
                                               theory: modal.posts,
-                                              theory1:widget.theory,
+                                              theory1: widget.theory,
+                                              candidate: widget.candidate,
                                             )),
                                     ),
                                   ]),
@@ -117,6 +122,7 @@ class _TheoryPageState extends State<TheoryPage> {
               ),
             ));
   }
+
   Future<bool> _onWillPop() async {
     return showDialog<bool>(
         context: context,

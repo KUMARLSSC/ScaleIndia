@@ -1,4 +1,5 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
+import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/Pages/language_page1.dart';
 import 'package:Scaleindia/Pages/langugae_page.dart';
 import 'package:Scaleindia/ViewModels/fifthpage_viewmodel.dart';
@@ -9,7 +10,8 @@ import 'package:stacked/stacked.dart';
 
 class FifthPage extends StatelessWidget {
   final Candidate candidate;
-  FifthPage({this.candidate});
+  final CenterAssesor centerAssesor;
+  FifthPage({this.candidate, this.centerAssesor});
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<FifthPageViewModel>.reactive(
@@ -143,7 +145,11 @@ class FifthPage extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    LanguagePage()));
+                                                    LanguagePage(
+                                                      candidate: candidate,
+                                                      centerAssesor:
+                                                          centerAssesor,
+                                                    )));
                                       },
                                       shape: RoundedRectangleBorder(
                                         borderRadius:

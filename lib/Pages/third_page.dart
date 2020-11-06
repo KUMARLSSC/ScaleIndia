@@ -1,3 +1,5 @@
+import 'package:Scaleindia/ApiModel/center_api.dart';
+import 'package:Scaleindia/Pages/fourth_page.dart';
 import 'package:Scaleindia/ViewModels/thirdpage_viewmodel.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
@@ -6,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class ThirdPage extends StatelessWidget {
+  final CenterAssesor centerAssesor;
+  ThirdPage({this.centerAssesor});
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ThirdPageViewModel>.reactive(
@@ -57,7 +61,9 @@ class ThirdPage extends StatelessWidget {
                             SizedBox(
                               width: 35,
                             ),
-                            ThirdPageWidget()
+                            ThirdPageWidget(
+                              centerAssesor: centerAssesor,
+                            )
                           ],
                         ),
                       )
@@ -82,7 +88,12 @@ class ThirdPage extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          model.navigateToFourthPage();
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => FourthPage(
+                                        centerAssesor: centerAssesor,
+                                      )));
                         },
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),

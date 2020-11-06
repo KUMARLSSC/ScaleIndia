@@ -1,3 +1,4 @@
+import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
@@ -9,6 +10,9 @@ import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
 class LanguagePage extends StatelessWidget {
+  final Candidate candidate;
+  final CenterAssesor centerAssesor;
+  LanguagePage({this.candidate, this.centerAssesor});
   @override
   Widget build(BuildContext context) {
     CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
@@ -55,24 +59,32 @@ class LanguagePage extends StatelessWidget {
               children: [
                 posts.first.tqLanguage == english
                     ? LanguageWidget(
+                        candidate: candidate,
                         theory: posts.first,
+                        centerAssesor: centerAssesor,
                       )
                     : Container(),
                 posts[index].tqLanguage == tamil
                     ? Container()
                     : LanguageWidget(
+                        candidate: candidate,
+                        centerAssesor: centerAssesor,
                         theory: posts.firstWhere(
                             (element) => element.tqLanguage.contains("Tamil")),
                       ),
                 posts.last.tqLanguage == tamil
                     ? Container()
                     : LanguageWidget(
+                        candidate: candidate,
+                        centerAssesor: centerAssesor,
                         theory: posts.firstWhere(
                             (element) => element.tqLanguage.contains("Hindi")),
                       ),
                 posts.last.tqLanguage != bangla
                     ? Container()
                     : LanguageWidget(
+                        centerAssesor: centerAssesor,
+                        candidate: candidate,
                         theory: posts.firstWhere(
                             (element) => element.tqLanguage.contains("Bangla")),
                       )
