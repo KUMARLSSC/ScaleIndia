@@ -113,7 +113,7 @@ class Api {
 
       return practicalResultFromJson(responseString);
     } else {
-      return throw Exception(response.body);
+      return null;
     }
   }
 }

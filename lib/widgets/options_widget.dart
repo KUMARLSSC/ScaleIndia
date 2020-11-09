@@ -2,6 +2,7 @@ import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
+import 'package:Scaleindia/Pages/first_page.dart';
 import 'package:Scaleindia/Pages/summary_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
@@ -278,7 +279,23 @@ class _OptionsState extends State<Options> {
         }
         list.add(value);
       });
-      _api.updateTheory(list);
+      await _api.updateTheory(list).whenComplete(() => showDialog(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+                title: Text("Completed"),
+                content: Text("Theory exam was completed successfully"),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text('Ok'),
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => FirstPage()),
+                      );
+                    },
+                  )
+                ],
+              )));
     }
   }
 
