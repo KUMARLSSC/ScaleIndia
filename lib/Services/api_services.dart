@@ -67,37 +67,19 @@ class Api {
   }
 
   Future<List<PracticalResult>> updatePractical(
-    int prbatchId,
-    String prCandidateId,
-    int prQuestionId,
-    int prMarks,
-    String prNos,
-    bool prType,
-    dynamic prNosNavigation,
-    dynamic prQuestion,
-    dynamic prbatch,
-  ) async {
-    var body = {
-      "prbatchId": prbatchId,
-      "prCandidateId": prCandidateId,
-      "prQuestionId": prQuestionId.toString(),
-      "prMarks": prMarks.toString(),
-      "prNos": prNos,
-      "prType": prType,
-      "prNosNavigation": prNosNavigation,
-      "prQuestion": prQuestion,
-      "prbatch": prbatch
-    };
-    final response = await http.post(
+      List<PracticalResult> list) async {
+    var body = json.encode(list);
+    final response = await client.post(
         'https://webapplication320200218110357.azurewebsites.net/api/PracticalResult',
-        body: [body]);
-    print(response.body);
+        body: body,
+        headers: {'Content-type': 'application/json; charset=UTF-8'});
+    print(response.headers);
     if (response.statusCode == 201) {
       final String responseString = response.body;
 
       return practicalResultFromJson(responseString);
     } else {
-      return throw Exception(response.body);
+      return null;
     }
   }
 
