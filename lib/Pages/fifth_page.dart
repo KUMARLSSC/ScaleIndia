@@ -183,7 +183,9 @@ class FifthPage extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    LanguagePage1()));
+                                                    LanguagePage1(
+                                                      candidate: candidate,
+                                                    )));
                                       },
                                       shape: RoundedRectangleBorder(
                                         borderRadius:

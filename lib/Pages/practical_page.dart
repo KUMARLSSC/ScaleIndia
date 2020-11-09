@@ -1,3 +1,4 @@
+import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_api.dart';
 import 'package:Scaleindia/ViewModels/practicalpage_viewmodel.dart';
@@ -9,7 +10,8 @@ import 'package:stacked/stacked.dart';
 
 class PracticalPage extends StatefulWidget {
   final Practical practical;
-  PracticalPage({this.practical});
+  final Candidate candidate;
+  PracticalPage({this.practical, this.candidate});
   @override
   _PracticalPageState createState() => _PracticalPageState();
 }
@@ -52,6 +54,7 @@ class _PracticalPageState extends State<PracticalPage> {
                               child: PracticalPageWidget(
                               practical: model.posts,
                               practical1: widget.practical,
+                              candidate: widget.candidate,
                             )),
                     ),
                   ),
@@ -61,15 +64,6 @@ class _PracticalPageState extends State<PracticalPage> {
             onWillPop: _onWillPop));
   }
 
-  /*Widget _getPostUi(List<Practical> practical) => ListView.separated(
-        separatorBuilder: (context, index) => Divider(
-          color: Colors.black,
-        ),
-        itemCount: practical.length,
-        itemBuilder: (BuildContext context, int index) => PracticalPageWidget(
-            practical: practical[index],
-            ),
-      );*/
   Future<bool> _onWillPop() async {
     return showDialog<bool>(
         context: context,

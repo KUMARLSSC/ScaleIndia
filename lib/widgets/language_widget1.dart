@@ -1,3 +1,4 @@
+import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/practical_api.dart';
 import 'package:Scaleindia/Pages/practical_page.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
@@ -7,7 +8,8 @@ import 'busy_button.dart';
 
 class LanguageWidget1 extends StatelessWidget {
   final Practical practical;
-  LanguageWidget1({this.practical});
+  final Candidate candidate;
+  LanguageWidget1({this.practical, this.candidate});
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LanguagePageViewModel>.reactive(
@@ -27,6 +29,7 @@ class LanguageWidget1 extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => PracticalPage(
                                       practical: practical,
+                                      candidate: candidate,
                                     )));
                       }),
                 ],

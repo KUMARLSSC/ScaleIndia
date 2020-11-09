@@ -2,8 +2,6 @@ import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/shared/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-
 import 'note_text.dart';
 
 class InputField extends StatefulWidget {
@@ -71,7 +69,9 @@ class _InputFieldState extends State<InputField> {
               Expanded(
                 child: TextFormField(
                   controller: widget.controller,
-                  keyboardType: isKeyboardType == false ?widget.textInputType:widget.text1InputType,
+                  keyboardType: isKeyboardType == false
+                      ? widget.textInputType
+                      : widget.text1InputType,
                   focusNode: widget.fieldFocusNode,
                   textInputAction: widget.textInputAction,
                   onChanged: widget.onChanged,

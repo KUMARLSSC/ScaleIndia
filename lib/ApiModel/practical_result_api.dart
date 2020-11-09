@@ -30,7 +30,7 @@ class PracticalResult {
   String prCandidateId;
   int prQuestionId;
   int prMarks;
-  PrNos prNos;
+  String prNos;
   bool prType;
   dynamic prNosNavigation;
   dynamic prQuestion;
@@ -43,7 +43,7 @@ class PracticalResult {
         prCandidateId: json["prCandidateId"],
         prQuestionId: json["prQuestionId"],
         prMarks: json["prMarks"] == null ? null : json["prMarks"],
-        prNos: json["prNos"] == null ? null : prNosValues.map[json["prNos"]],
+        prNos: json["prNos"] == null ? null : json["prNos"],
         prType: json["prType"],
         prNosNavigation: json["prNosNavigation"],
         prQuestion: json["prQuestion"],
@@ -56,7 +56,7 @@ class PracticalResult {
         "prCandidateId": prCandidateId,
         "prQuestionId": prQuestionId,
         "prMarks": prMarks == null ? null : prMarks,
-        "prNos": prNos == null ? null : prNosValues.reverse[prNos],
+        "prNos": prNos,
         "prType": prType,
         "prNosNavigation": prNosNavigation,
         "prQuestion": prQuestion,
@@ -64,15 +64,15 @@ class PracticalResult {
       };
 }
 
-enum PrNos { LSS_N5501, LSS_N8501, LSS_N5502, LSS_N8701, LSS_N8601 }
+//enum PrNos { LSS_N5501, LSS_N8501, LSS_N5502, LSS_N8701, LSS_N8601 }
 
-final prNosValues = EnumValues({
-  "LSS/N5501": PrNos.LSS_N5501,
-  "LSS/N5502": PrNos.LSS_N5502,
-  "LSS/N8501": PrNos.LSS_N8501,
-  "LSS/N8601": PrNos.LSS_N8601,
-  "LSS/N8701": PrNos.LSS_N8701
-});
+// final prNosValues = EnumValues({
+//   "LSS/N5501": PrNos.LSS_N5501,
+//   "LSS/N5502": PrNos.LSS_N5502,
+//   "LSS/N8501": PrNos.LSS_N8501,
+//   "LSS/N8601": PrNos.LSS_N8601,
+//   "LSS/N8701": PrNos.LSS_N8701
+// });
 
 class EnumValues<T> {
   Map<String, T> map;

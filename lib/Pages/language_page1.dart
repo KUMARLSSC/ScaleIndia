@@ -1,3 +1,4 @@
+import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_api.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
@@ -9,6 +10,8 @@ import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
 class LanguagePage1 extends StatelessWidget {
+  final Candidate candidate;
+  LanguagePage1({this.candidate});
   @override
   Widget build(BuildContext context) {
     CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
@@ -56,23 +59,27 @@ class LanguagePage1 extends StatelessWidget {
                 posts.first.pqLang == english
                     ? LanguageWidget1(
                         practical: posts.first,
+                        candidate: candidate,
                       )
                     : Container(),
                 posts[index].pqLang == tamil
                     ? Container()
                     : LanguageWidget1(
+                        candidate: candidate,
                         practical: posts.firstWhere(
                             (element) => element.pqLang.contains("Tamil")),
                       ),
                 posts.last.pqLang == tamil
                     ? Container()
                     : LanguageWidget1(
+                        candidate: candidate,
                         practical: posts.firstWhere(
                             (element) => element.pqLang.contains("Hindi")),
                       ),
                 posts.last.pqLang != bangla
                     ? Container()
                     : LanguageWidget1(
+                        candidate: candidate,
                         practical: posts.firstWhere(
                             (element) => element.pqLang.contains("Bangla")),
                       )

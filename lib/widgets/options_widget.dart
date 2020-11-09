@@ -1,25 +1,20 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
+import 'package:Scaleindia/ApiModel/practical_result_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
-import 'package:Scaleindia/ApiModel/theory_result_api.dart';
-import 'package:Scaleindia/Pages/first_page.dart';
 import 'package:Scaleindia/Pages/summary_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../locator.dart';
 
 class Options extends StatefulWidget {
   final List<Theory> theory;
   final Theory theory1;
   final Candidate candidate;
-
-  final TheoryResult theoryResult;
-  Options(
-      {Key key, this.theory1, this.theoryResult, this.theory, this.candidate})
+  Options({Key key, this.theory1, this.theory, this.candidate})
       : super(key: key);
   @override
   _OptionsState createState() => _OptionsState();
@@ -248,99 +243,42 @@ class _OptionsState extends State<Options> {
         _currentIndex++;
       });
     } else {
-      int correct = 0;
-      List tableResult = [];
-      this._answers.forEach((index, value) {
-        if (this.widget.theory[index].tqCorrectAnswer == value) correct++;
-      });
-      Theory question1 = this.widget.theory[0];
-      bool correct1 = question1.tqCorrectAnswer == _answers[0];
-      Theory question2 = this.widget.theory[1];
-      bool correct2 = question2.tqCorrectAnswer == _answers[1];
-      Theory question3 = this.widget.theory[2];
-      bool correct3 = question3.tqCorrectAnswer == _answers[2];
-      Theory question4 = this.widget.theory[3];
-      bool correct4 = question4.tqCorrectAnswer == _answers[3];
-      Theory question5 = this.widget.theory[4];
-      bool correct5 = question5.tqCorrectAnswer == _answers[4];
-      Theory question6 = this.widget.theory[5];
-      bool correct6 = question6.tqCorrectAnswer == _answers[5];
-      Theory question7 = this.widget.theory[6];
-      bool correct7 = question7.tqCorrectAnswer == _answers[6];
-      Theory question8 = this.widget.theory[7];
-      bool correct8 = question8.tqCorrectAnswer == _answers[7];
-      Theory question9 = this.widget.theory[8];
-      bool correct9 = question9.tqCorrectAnswer == _answers[8];
-      Theory question10 = this.widget.theory[9];
-      bool correct10 = question10.tqCorrectAnswer == _answers[9];
-      Theory question11 = this.widget.theory[10];
-      bool correct11 = question11.tqCorrectAnswer == _answers[10];
-      Theory question12 = this.widget.theory[11];
-      bool correct12 = question12.tqCorrectAnswer == _answers[11];
-      Theory question13 = this.widget.theory[12];
-      bool correct13 = question13.tqCorrectAnswer == _answers[12];
-      Theory question14 = this.widget.theory[13];
-      bool correct14 = question14.tqCorrectAnswer == _answers[13];
-      Theory question15 = this.widget.theory[14];
-      bool correct15 = question15.tqCorrectAnswer == _answers[14];
-      Theory question16 = this.widget.theory[15];
-      bool correct16 = question16.tqCorrectAnswer == _answers[15];
-      Theory question17 = this.widget.theory[16];
-      bool correct17 = question17.tqCorrectAnswer == _answers[16];
-      Theory question18 = this.widget.theory[17];
-      bool correct18 = question18.tqCorrectAnswer == _answers[17];
-      Theory question19 = this.widget.theory[18];
-      bool correct19 = question19.tqCorrectAnswer == _answers[18];
-      Theory question20 = this.widget.theory[19];
-      bool correct20 = question20.tqCorrectAnswer == _answers[19];
+      var tempManipulatedData = {};
       CenterAssesor centerAssesor =
           Provider.of<CenterAssesor>(context, listen: false);
+      this._answers.forEach((index, value) {
+        var quesObj = this.widget.theory[index];
+        String tqNos = quesObj.tqNos;
+        if (tqNos == null) {
+          tqNos = "0";
+        }
+        if (tempManipulatedData[tqNos] == null) {
+          tempManipulatedData[tqNos] = PracticalResult.fromJson({
+            'prId': 0,
+            'prbatchId': centerAssesor.asId,
+            'prCandidateId': this.widget.candidate.clEnrollmentNo,
+            'prQuestionId': 0,
+            'prMarks': 0,
+            'prNos': tqNos,
+            'prType': true,
+          });
+        }
+        tempManipulatedData[tqNos].prQuestionId =
+            tempManipulatedData[tqNos].prQuestionId + 1;
+        if (quesObj.tqCorrectAnswer == value)
+          tempManipulatedData[tqNos].prMarks =
+              tempManipulatedData[tqNos].prMarks + 1;
+      });
+      print(tempManipulatedData);
 
-      await _api
-          .updateTheory(
-              this.widget.candidate.clEnrollmentNo,
-              centerAssesor.asId,
-              correct1 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct2 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct3 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct4 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct5 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct6 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct7 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct8 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct9 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct10 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct11 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct12 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct13 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct14 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct15 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct16 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct17 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct18 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct19 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct20 ? this.widget.theory[_currentIndex].tqMarks : 0,
-              correct,
-              null,
-              tableResult)
-          .whenComplete(() => showDialog(
-              context: context,
-              builder: (BuildContext context) => AlertDialog(
-                    title: Text("Completed"),
-                    content: Text("Theory exam was completed successfully"),
-                    actions: <Widget>[
-                      FlatButton(
-                        child: Text('Ok'),
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => FirstPage()),
-                          );
-                        },
-                      )
-                    ],
-                  )));
+      var list = new List<PracticalResult>();
+      tempManipulatedData.forEach((key, value) {
+        if (value.prNos == "0") {
+          value['prNos'] = null;
+        }
+        list.add(value);
+      });
+      _api.updateTheory(list);
     }
   }
 

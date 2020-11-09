@@ -1,19 +1,20 @@
+import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
-
 import 'package:Scaleindia/ApiModel/practical_api.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/ViewModels/practicalpage_viewmodel.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
-
 import '../locator.dart';
 
 class PracticalPageWidget extends StatefulWidget {
   final List<Practical> practical;
   final Practical practical1;
-  PracticalPageWidget({Key key, this.practical, this.practical1})
+  final Candidate candidate;
+  PracticalPageWidget(
+      {Key key, this.practical, this.candidate, this.practical1})
       : super(key: key);
   @override
   _PracticalPageWidgetState createState() => _PracticalPageWidgetState();
@@ -22,13 +23,19 @@ class PracticalPageWidget extends StatefulWidget {
 class _PracticalPageWidgetState extends State<PracticalPageWidget> {
   final DialogService _dialogService = locator<DialogService>();
   final TextEditingController textController = TextEditingController();
-  String _text = "Mark";
+  final Map<int, dynamic> _answers = {};
+  setSelectedUser(int val) {
+    setState(() {
+      _currentIndex = val;
+    });
+  }
 
   int _currentIndex = 0;
   int a = 0;
 
   @override
   Widget build(BuildContext context) {
+    String _text = "";
     this.widget.practical.retainWhere(
         (element) => element.pqLang.contains(this.widget.practical1.pqLang));
     return ViewModelBuilder<PracticalPageViewModel>.reactive(
@@ -112,7 +119,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             height: 15,
           ),
           Text(
-            "Max Marks: 10",
+            "Max Marks:${widget.practical[_currentIndex].pqMarks.toString()}",
             style: TextStyle(fontSize: 17),
           ),
           SizedBox(
@@ -126,7 +133,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             height: 15,
           ),
           Container(
-            height: 80,
+            height: 85,
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
@@ -137,7 +144,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
                       offset: Offset(0, 10))
                 ]),
             child: Container(
-              height: 70,
+              height: 80,
               width: 150,
               padding: EdgeInsets.fromLTRB(10, 10, 10, 1),
               decoration: BoxDecoration(
@@ -148,6 +155,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
                 controller: textController,
                 onChanged: (v) => setState(() {
                   _text = v;
+                  _answers[_currentIndex] = v;
                 }),
               ),
             ),
@@ -226,7 +234,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
   }
 
   void _nextSubmit({@required String mark}) {
-    if (mark.isEmpty) {
+    if (_answers[_currentIndex] == null) {
       _dialogService.showDialog(
         title: 'Failed',
         description: "You must select an answer to continue.",
@@ -241,16 +249,11 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
         a = int.parse(textController.text);
         textController.text = " ";
       });
-    } else {
-      _dialogService.showDialog(
-        title: 'Completed',
-        description: "Practical Exam Completed",
-      );
-    }
+    } else {}
   }
 
   void _previous() {
-    if (_currentIndex < (widget.practical.length--)) {
+    if (_currentIndex <= (widget.practical.length - 1)) {
       setState(() {
         _currentIndex--;
       });
