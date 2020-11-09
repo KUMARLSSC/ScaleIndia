@@ -1,6 +1,11 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
+import 'package:Scaleindia/ApiModel/center_api.dart';
+import 'package:Scaleindia/ApiModel/practical_result_api.dart';
+import 'package:Scaleindia/Pages/first_page.dart';
+import 'package:Scaleindia/Services/api_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 import 'package:Scaleindia/ApiModel/practical_api.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
@@ -24,6 +29,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
   final DialogService _dialogService = locator<DialogService>();
   final TextEditingController textController = TextEditingController();
   final Map<int, dynamic> _answers = {};
+  final Api _api = locator<Api>();
   setSelectedUser(int val) {
     setState(() {
       _currentIndex = val;
@@ -233,7 +239,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
     );
   }
 
-  void _nextSubmit({@required String mark}) {
+  Future<void> _nextSubmit({@required String mark}) async {
     if (_answers[_currentIndex] == null) {
       _dialogService.showDialog(
         title: 'Failed',
@@ -249,7 +255,60 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
         a = int.parse(textController.text);
         textController.text = " ";
       });
-    } else {}
+    } else {
+      var tempManipulatedData = {};
+      CenterAssesor centerAssesor =
+          Provider.of<CenterAssesor>(context, listen: false);
+      this._answers.forEach((index, value) {
+        var quesObj = this.widget.practical[index];
+        String tqNos = quesObj.pqNos;
+        if (tqNos == null) {
+          tqNos = "0";
+        }
+        if (tempManipulatedData[tqNos] == null) {
+          tempManipulatedData[tqNos] = PracticalResult.fromJson({
+            'prId': 0,
+            'prbatchId': centerAssesor.asId,
+            'prCandidateId': this.widget.candidate.clEnrollmentNo,
+            'prQuestionId': 0,
+            'prMarks': 0,
+            'prNos': tqNos,
+            'prType': true,
+          });
+        }
+        tempManipulatedData[tqNos].prQuestionId =
+            tempManipulatedData[tqNos].prQuestionId + 1;
+        if (textController.text != value)
+          tempManipulatedData[tqNos].prMarks =
+              tempManipulatedData[tqNos].prMarks + 1;
+      });
+      print(tempManipulatedData);
+
+      var list = new List<PracticalResult>();
+      tempManipulatedData.forEach((key, value) {
+        if (value.prNos == "0") {
+          value['prNos'] = null;
+        }
+        list.add(value);
+      });
+      await _api.updateTheory(list).whenComplete(() => showDialog(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+                title: Text("Completed"),
+                content: Text("Theory exam was completed successfully"),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text('Ok'),
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => FirstPage()),
+                      );
+                    },
+                  )
+                ],
+              )));
+    }
   }
 
   void _previous() {
