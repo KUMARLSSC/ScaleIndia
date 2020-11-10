@@ -273,7 +273,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             'prQuestionId': 0,
             'prMarks': 0,
             'prNos': tqNos,
-            'prType': true,
+            'prType': false,
           });
         }
         tempManipulatedData[tqNos].prQuestionId =
