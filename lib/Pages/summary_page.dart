@@ -19,13 +19,12 @@ class SummaryPage extends StatelessWidget {
               isAppTitle: false, isIcon: false, strTitle: "Summary"),
           preferredSize: Size.fromHeight(50.0)),
       body: Container(
-      child:  ListView.builder(
-            padding: const EdgeInsets.all(16.0),
-            itemCount: theory.length-1,
-            itemBuilder: _buildTheory,
-
-          ),
-    ),
+        child: ListView.builder(
+          padding: const EdgeInsets.all(16.0),
+          itemCount: theory.length - 1,
+          itemBuilder: _buildTheory,
+        ),
+      ),
     );
   }
 
