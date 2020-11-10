@@ -28,7 +28,7 @@ class _TheoryPageState extends State<TheoryPage> {
         onModelReady: (model) => model.getTheory(centerAssesor.asId),
         viewModelBuilder: () => TheoryPageViewModel(),
         builder: (context, modal, child) => WillPopScope(
-              onWillPop: _onWillPop,
+              onWillPop: () => _onWillPop(),
               child: Scaffold(
                 key: _key,
                 appBar: PreferredSize(
@@ -124,28 +124,30 @@ class _TheoryPageState extends State<TheoryPage> {
   }
 
   Future<bool> _onWillPop() async {
-    return showDialog<bool>(
-        context: context,
-        builder: (_) {
-          return AlertDialog(
-            content: Text(
-                "Are you sure you want to quit the Exam? All your progress will be lost."),
-            title: Text("Warning!"),
-            actions: <Widget>[
-              FlatButton(
-                child: Text("Yes"),
-                onPressed: () {
-                  Navigator.pop(context, true);
-                },
-              ),
-              FlatButton(
-                child: Text("No"),
-                onPressed: () {
-                  Navigator.pop(context, false);
-                },
-              ),
-            ],
-          );
-        });
+    return (await showDialog<bool>(
+            context: context,
+            barrierDismissible: false,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                content: Text(
+                    "Are you sure you want to quit the Exam? All your progress will be lost."),
+                title: Text("Warning!"),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text("Yes"),
+                    onPressed: () {
+                      Navigator.pop(context, true);
+                    },
+                  ),
+                  FlatButton(
+                    child: Text("No"),
+                    onPressed: () {
+                      Navigator.pop(context, false);
+                    },
+                  ),
+                ],
+              );
+            })) ??
+        false;
   }
 }
