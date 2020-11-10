@@ -247,6 +247,13 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
       );
       return;
     }
+    if (int.parse(mark) > widget.practical[_currentIndex].pqMarks) {
+      _dialogService.showDialog(
+        title: 'Failed',
+        description: "Input value is greater than Maximum Marks",
+      );
+      return;
+    }
     if (_currentIndex < (widget.practical.length - 1)) {
       setState(() {
         _currentIndex++;
