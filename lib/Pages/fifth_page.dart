@@ -14,6 +14,8 @@ class FifthPage extends StatelessWidget {
   FifthPage({this.candidate, this.centerAssesor});
   @override
   Widget build(BuildContext context) {
+    final theory = true;
+    final practical = true;
     return ViewModelBuilder<FifthPageViewModel>.reactive(
       viewModelBuilder: () => FifthPageViewModel(),
       builder: (context, model, child) => Scaffold(
@@ -129,33 +131,54 @@ class FifthPage extends StatelessWidget {
                                         665,
                                     width:
                                         MediaQuery.of(context).size.width - 220,
-                                    child: RaisedButton(
-                                      splashColor: Colors.blue,
-                                      elevation: 5.0,
-                                      color: new Color(0xFFEA4335),
-                                      child: Text(
-                                        'Theory',
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LanguagePage(
-                                                      candidate: candidate,
-                                                      centerAssesor:
-                                                          centerAssesor,
-                                                    )));
-                                      },
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(30.0),
-                                      ),
-                                    ),
+                                    child: candidate.clTheoryDeone == theory
+                                        ? RaisedButton(
+                                            splashColor: Colors.blue,
+                                            elevation: 3.0,
+                                            color: Colors.black12,
+                                            child: Text(
+                                              'Theory',
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              model.navigateToTheory();
+                                            },
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(30.0),
+                                            ),
+                                          )
+                                        : RaisedButton(
+                                            splashColor: Colors.blue,
+                                            elevation: 5.0,
+                                            color: new Color(0xFFEA4335),
+                                            child: Text(
+                                              'Theory',
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          LanguagePage(
+                                                            candidate:
+                                                                candidate,
+                                                            centerAssesor:
+                                                                centerAssesor,
+                                                          )));
+                                            },
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(30.0),
+                                            ),
+                                          ),
                                   ),
                                 ),
                                 SizedBox(
@@ -167,31 +190,53 @@ class FifthPage extends StatelessWidget {
                                         665,
                                     width:
                                         MediaQuery.of(context).size.width - 220,
-                                    child: RaisedButton(
-                                      splashColor: Colors.blue,
-                                      elevation: 5.0,
-                                      color: new Color(0xFF34A853),
-                                      child: Text(
-                                        'Practical',
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LanguagePage1(
-                                                      candidate: candidate,
-                                                    )));
-                                      },
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(30.0),
-                                      ),
-                                    ),
+                                    child: candidate.clPracticalDone ==
+                                            practical
+                                        ? RaisedButton(
+                                            splashColor: Colors.blue,
+                                            elevation: 3.0,
+                                            color: Colors.black12,
+                                            child: Text(
+                                              'Practical',
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              model.navigateToPractical();
+                                            },
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(30.0),
+                                            ),
+                                          )
+                                        : RaisedButton(
+                                            splashColor: Colors.blue,
+                                            elevation: 5.0,
+                                            color: new Color(0xFF34A853),
+                                            child: Text(
+                                              'Practical',
+                                              style: TextStyle(
+                                                fontSize: 15.0,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          LanguagePage1(
+                                                            candidate:
+                                                                candidate,
+                                                          )));
+                                            },
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(30.0),
+                                            ),
+                                          ),
                                   ),
                                 ),
                                 SizedBox(

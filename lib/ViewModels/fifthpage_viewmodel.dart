@@ -1,17 +1,21 @@
-import 'package:Scaleindia/Models/route_names.dart';
-import 'package:Scaleindia/Services/navigation_service.dart';
+import 'package:Scaleindia/Services/dialog_service.dart';
 import '../locator.dart';
 import 'base_model.dart';
 
 class FifthPageViewModel extends BaseModel {
-
-  final NavigationService _navigationService = locator<NavigationService>();
+  final DialogService _dialogService = locator<DialogService>();
 
   void navigateToTheory() {
-    _navigationService.navigateTo(TheoryViewRoute);
+    _dialogService.showDialog(
+      title: 'Completed',
+      description: 'Theory was completed successfully',
+    );
   }
 
   void navigateToPractical() {
-    _navigationService.navigateTo(PracticalViewRoute);
+    _dialogService.showDialog(
+      title: 'Completed',
+      description: 'Practical was completed successfully',
+    );
   }
 }
