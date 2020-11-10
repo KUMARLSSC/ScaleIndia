@@ -243,7 +243,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
     if (_answers[_currentIndex] == null) {
       _dialogService.showDialog(
         title: 'Failed',
-        description: "You must select an answer to continue.",
+        description: "You must enter a mark to continue",
       );
       return;
     }
