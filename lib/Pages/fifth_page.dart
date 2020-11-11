@@ -250,7 +250,9 @@ class FifthPage extends StatelessWidget {
                                   child: Container(
                                     height: MediaQuery.of(context).size.height,
                                     width: MediaQuery.of(context).size.width,
-                                    child: BottomSheetWidget1(),
+                                    child: BottomSheetWidget1(
+                                      candidate: candidate,
+                                    ),
                                   ),
                                 ),
                               ],
