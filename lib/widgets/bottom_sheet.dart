@@ -18,7 +18,6 @@ class BottomSheetWidget1 extends StatefulWidget {
 
 class _BottomSheetWidget1State extends State<BottomSheetWidget1> {
   String url;
-  bool _inProcess = false;
   Future<void> uploadImage(File image) async {
     try {
       int randomNumber = Random().nextInt(10000000);
