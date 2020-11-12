@@ -14,6 +14,7 @@ class FifthPage extends StatelessWidget {
   FifthPage({this.candidate, this.centerAssesor});
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration.zero, () => _asyncSimpleDialog(context));
     final theory = true;
     final practical = true;
     return ViewModelBuilder<FifthPageViewModel>.reactive(
@@ -239,22 +240,6 @@ class FifthPage extends StatelessWidget {
                                           ),
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 15.0,
-                                ),
-                                Divider(
-                                  color: Colors.black38,
-                                  height: 15,
-                                ),
-                                Center(
-                                  child: Container(
-                                    height: MediaQuery.of(context).size.height,
-                                    width: MediaQuery.of(context).size.width,
-                                    child: BottomSheetWidget1(
-                                      candidate: candidate,
-                                    ),
-                                  ),
-                                ),
                               ],
                             ),
                           ),
@@ -265,5 +250,27 @@ class FifthPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _asyncSimpleDialog(BuildContext context) async {
+    return await showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+              title: const Text(
+                  'Please upload your Aadharcard & photo to continue '),
+              children: [
+                BottomSheetWidget1(
+                  candidate: candidate,
+                ),
+                FlatButton(
+                  child: Text('Ok'),
+                  onPressed: () {
+                    Navigator.pop(context, true);
+                  },
+                )
+              ]);
+        });
   }
 }
