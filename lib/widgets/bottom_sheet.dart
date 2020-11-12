@@ -7,8 +7,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-File imageFile;
-
 class BottomSheetWidget1 extends StatefulWidget {
   final Candidate candidate;
   BottomSheetWidget1({this.candidate});
