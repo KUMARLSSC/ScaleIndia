@@ -171,8 +171,6 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 50,
-                width: 140,
                 child: RaisedButton(
                   splashColor: Colors.blue,
                   elevation: 5.0,
@@ -209,8 +207,6 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
                 width: 10,
               ),
               Container(
-                height: 50,
-                width: 140,
                 child: RaisedButton(
                   splashColor: Colors.blue,
                   elevation: 5.0,

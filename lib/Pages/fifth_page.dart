@@ -128,10 +128,6 @@ class FifthPage extends StatelessWidget {
                                 ),
                                 Center(
                                   child: Container(
-                                    height: MediaQuery.of(context).size.height -
-                                        665,
-                                    width:
-                                        MediaQuery.of(context).size.width - 220,
                                     child: candidate.clTheoryDeone == theory
                                         ? RaisedButton(
                                             splashColor: Colors.blue,
@@ -187,10 +183,6 @@ class FifthPage extends StatelessWidget {
                                 ),
                                 Center(
                                   child: Container(
-                                    height: MediaQuery.of(context).size.height -
-                                        665,
-                                    width:
-                                        MediaQuery.of(context).size.width - 220,
                                     child: candidate.clPracticalDone ==
                                             practical
                                         ? RaisedButton(

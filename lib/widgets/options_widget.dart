@@ -136,8 +136,6 @@ class _OptionsState extends State<Options> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: MediaQuery.of(context).size.height - 665,
-              width: MediaQuery.of(context).size.width - 220,
               child: RaisedButton(
                 splashColor: Colors.blue,
                 elevation: 5.0,
@@ -168,8 +166,6 @@ class _OptionsState extends State<Options> {
               width: 20,
             ),
             Container(
-              height: MediaQuery.of(context).size.height - 665,
-              width: MediaQuery.of(context).size.width - 220,
               child: RaisedButton(
                 splashColor: Colors.blue,
                 elevation: 5.0,
@@ -198,8 +194,6 @@ class _OptionsState extends State<Options> {
         ),
         Center(
           child: Container(
-            height: MediaQuery.of(context).size.height - 665,
-            width: MediaQuery.of(context).size.width - 220,
             child: RaisedButton(
               splashColor: Colors.blue,
               elevation: 5.0,

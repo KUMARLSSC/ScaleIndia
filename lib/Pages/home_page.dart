@@ -48,80 +48,82 @@ class HomePage extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: ConnectionCheck(
                 child: Padding(
-                  padding: EdgeInsets.all(1),
-                  child: Column(
-                    children: <Widget>[
-                      Center(
-                          child: Text(
-                        "Select your role in ScaleIndia",
-                        style: kTitleStyle,
-                      )),
-                      SizedBox(
-                        height: 15,
+                    padding: EdgeInsets.all(1),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: <Widget>[
+                          Center(
+                              child: Text(
+                            "Select your role in ScaleIndia",
+                            style: kTitleStyle,
+                          )),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          BusyButton(
+                            title: "Employer",
+                            color: Colors.green,
+                            busy: model.busy,
+                            onPressed: () {
+                              model.handleStartUpLogicEmployer();
+                            },
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          BusyButton(
+                            title: 'Candidate',
+                            color: Colors.green,
+                            busy: model.busy,
+                            onPressed: () {
+                              model.navigateToFirstPage();
+                            },
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          BusyButton(
+                            title: 'Employee',
+                            busy: model.busy,
+                            color: Colors.green,
+                            onPressed: () {
+                              model.handleStartUpLogicEmployee();
+                            },
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          BusyButton(
+                            title: 'Trainer',
+                            busy: model.busy,
+                            color: Colors.green,
+                            onPressed: () {
+                              model.navigateToTrainerLoginPage();
+                            },
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          BusyButton(
+                            title: 'Assessor',
+                            busy: model.busy,
+                            color: Colors.green,
+                            onPressed: () {
+                              model.navigateToAssessorLoginPage();
+                            },
+                          ),
+                          SizedBox(
+                            height: 80,
+                          ),
+                          Text(
+                            'About Scale India',
+                            style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                color: Colors.grey),
+                          ),
+                        ],
                       ),
-                      BusyButton(
-                        title: "Employer",
-                        color: Colors.green,
-                        busy: model.busy,
-                        onPressed: () {
-                          model.handleStartUpLogicEmployer();
-                        },
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      BusyButton(
-                        title: 'Candidate',
-                        color: Colors.green,
-                        busy: model.busy,
-                        onPressed: () {
-                          model.navigateToFirstPage();
-                        },
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      BusyButton(
-                        title: 'Employee',
-                        busy: model.busy,
-                        color: Colors.green,
-                        onPressed: () {
-                          model.handleStartUpLogicEmployee();
-                        },
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      BusyButton(
-                        title: 'Trainer',
-                        busy: model.busy,
-                        color: Colors.green,
-                        onPressed: () {
-                          model.navigateToTrainerLoginPage();
-                        },
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      BusyButton(
-                        title: 'Assessor',
-                        busy: model.busy,
-                        color: Colors.green,
-                        onPressed: () {
-                          model.navigateToAssessorLoginPage();
-                        },
-                      ),
-                      SizedBox(
-                        height: 80,
-                      ),
-                      Text(
-                        'About Scale India',
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic, color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                ),
+                    )),
               ),
             )),
           ],
