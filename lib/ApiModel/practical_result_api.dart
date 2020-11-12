@@ -63,27 +63,3 @@ class PracticalResult {
         "prbatch": prbatch,
       };
 }
-
-//enum PrNos { LSS_N5501, LSS_N8501, LSS_N5502, LSS_N8701, LSS_N8601 }
-
-// final prNosValues = EnumValues({
-//   "LSS/N5501": PrNos.LSS_N5501,
-//   "LSS/N5502": PrNos.LSS_N5502,
-//   "LSS/N8501": PrNos.LSS_N8501,
-//   "LSS/N8601": PrNos.LSS_N8601,
-//   "LSS/N8701": PrNos.LSS_N8701
-// });
-
-class EnumValues<T> {
-  Map<String, T> map;
-  Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
-    }
-    return reverseMap;
-  }
-}
