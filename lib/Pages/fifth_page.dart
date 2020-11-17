@@ -27,6 +27,7 @@ class _FifthPageState extends State<FifthPage> {
   bool _isloading = false;
   double _progress;
   bool _isloading2 = false;
+  // ignore: unused_field
   double _progress2;
   final theory = true;
   final practical = true;

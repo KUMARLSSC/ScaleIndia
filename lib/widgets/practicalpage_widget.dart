@@ -2,7 +2,6 @@ import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
 import 'package:Scaleindia/Models/route_names.dart';
-import 'package:Scaleindia/Pages/first_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:flutter/material.dart';
