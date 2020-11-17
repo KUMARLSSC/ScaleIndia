@@ -33,7 +33,37 @@ class _FifthPageState extends State<FifthPage> {
   progress(loading) {
     if (loading) {
       return Center(
-        child: Text('photo uploaded'),
+        child: RaisedButton(
+          splashColor: Colors.blue,
+          elevation: 5.0,
+          color: kBlackAccent,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                'Upload Aadhar card',
+                style: TextStyle(
+                  fontSize: 15.0,
+                  color: Colors.white,
+                ),
+              ),
+              Icon(
+                Icons.camera_alt,
+                color: Colors.white,
+                size: 24.0,
+              ),
+            ],
+          ),
+          onPressed: () {
+            takePhotoByCamera2();
+          },
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+            side: BorderSide(color: Colors.blueAccent),
+          ),
+        ),
       );
     } else {
       return Text('');
@@ -380,7 +410,7 @@ class _FifthPageState extends State<FifthPage> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 15,
+                                  height: 18,
                                 ),
                                 progress2(_isloading2),
                                 RaisedButton(
@@ -416,40 +446,6 @@ class _FifthPageState extends State<FifthPage> {
                                   height: 5.0,
                                 ),
                                 progress(_isloading),
-                                SizedBox(
-                                  height: 5.0,
-                                ),
-                                RaisedButton(
-                                  splashColor: Colors.blue,
-                                  elevation: 5.0,
-                                  color: kBlackAccent,
-                                  child: Column(
-                                    children: [
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        'Upload Aadhar card',
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      Icon(
-                                        Icons.camera_alt,
-                                        color: Colors.white,
-                                        size: 24.0,
-                                      ),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    takePhotoByCamera2();
-                                  },
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    side: BorderSide(color: Colors.blueAccent),
-                                  ),
-                                ),
                               ],
                             ),
                           ),
