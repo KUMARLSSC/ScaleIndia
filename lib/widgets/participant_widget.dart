@@ -2,7 +2,6 @@ import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/Pages/fifth_page.dart';
 import 'package:Scaleindia/ViewModels/fourthpage_viewmodel.dart';
-
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 

@@ -3,7 +3,6 @@ import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/Models/route_names.dart';
-import 'package:Scaleindia/Pages/first_page.dart';
 import 'package:Scaleindia/Pages/summary_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';

@@ -56,7 +56,7 @@ class PracticalResult {
         "prCandidateId": prCandidateId,
         "prQuestionId": prQuestionId,
         "prMarks": prMarks == null ? null : prMarks,
-        "prNos": prNos,
+        "prNos": prNos == null ? null : prNos,
         "prType": prType,
         "prNosNavigation": prNosNavigation,
         "prQuestion": prQuestion,
