@@ -256,7 +256,7 @@ class _OptionsState extends State<Options> {
             'prCandidateId': this.widget.candidate.clEnrollmentNo,
             'prQuestionId': 0,
             'prMarks': 0,
-            'prNos': tqNos,
+            'prNos': tqNos == null ? tqNos : "null",
             'prType': true,
           });
         }
