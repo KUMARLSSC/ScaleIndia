@@ -2,10 +2,12 @@ import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
+import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/first_page.dart';
 import 'package:Scaleindia/Pages/summary_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
+import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +24,7 @@ class Options extends StatefulWidget {
 }
 
 class _OptionsState extends State<Options> {
+  final NavigationService _navigationService = locator<NavigationService>();
   final DialogService _dialogService = locator<DialogService>();
   final Map<int, dynamic> _answers = {};
   final Api _api = locator<Api>();
@@ -282,10 +285,7 @@ class _OptionsState extends State<Options> {
                   FlatButton(
                     child: Text('Ok'),
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => FirstPage()),
-                      );
+                      _navigationService.navigateTo(FourthViewRoute);
                     },
                   )
                 ],

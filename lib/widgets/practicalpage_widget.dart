@@ -1,8 +1,10 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
+import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/first_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
+import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +28,7 @@ class PracticalPageWidget extends StatefulWidget {
 }
 
 class _PracticalPageWidgetState extends State<PracticalPageWidget> {
+  final NavigationService _navigationService = locator<NavigationService>();
   final DialogService _dialogService = locator<DialogService>();
   final TextEditingController textController = TextEditingController();
   final Map<int, dynamic> _answers = {};
@@ -298,15 +301,12 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
           context: context,
           builder: (BuildContext context) => AlertDialog(
                 title: Text("Completed"),
-                content: Text("Theory exam was completed successfully"),
+                content: Text("Practical exam was completed successfully"),
                 actions: <Widget>[
                   FlatButton(
                     child: Text('Ok'),
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => FirstPage()),
-                      );
+                      _navigationService.navigateTo(FourthViewRoute);
                     },
                   )
                 ],

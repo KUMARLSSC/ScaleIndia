@@ -5,6 +5,7 @@ import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class BottomSheetWidget1 extends StatefulWidget {
@@ -16,6 +17,65 @@ class BottomSheetWidget1 extends StatefulWidget {
 
 class _BottomSheetWidget1State extends State<BottomSheetWidget1> {
   String url;
+  bool _isloading = false;
+  double _progress;
+  bool _isloading2 = false;
+  double _progress2;
+  progress(loading) {
+    if (loading) {
+      return Column(
+        children: <Widget>[
+          LinearProgressIndicator(
+            value: _progress,
+            backgroundColor: Colors.grey,
+          ),
+          Text('${(_progress * 100).toStringAsFixed(2)} % photo uploaded')
+        ],
+      );
+    } else {
+      return Text(' ');
+    }
+  }
+
+  progress2(loading) {
+    if (loading) {
+      return Column(
+        children: <Widget>[
+          LinearProgressIndicator(
+            value: _progress2,
+            backgroundColor: Colors.grey,
+          ),
+          Text('${(_progress2 * 100).toStringAsFixed(2)} % aadhar uploaded'),
+          SizedBox(
+            height: 5,
+          ),
+          Container(
+            child: RaisedButton(
+              splashColor: Colors.blue,
+              elevation: 5.0,
+              color: new Color(0xFF34A853),
+              child: Text(
+                "OK",
+                style: TextStyle(
+                  fontSize: 15.0,
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {
+                Navigator.pop(context, true);
+              },
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+            ),
+          ),
+        ],
+      );
+    } else {
+      return Text(' ');
+    }
+  }
+
   Future<void> uploadImage(File image) async {
     try {
       int randomNumber = Random().nextInt(10000000);
@@ -27,21 +87,14 @@ class _BottomSheetWidget1State extends State<BottomSheetWidget1> {
               .ref()
               .child(imageLocation);
       final UploadTask uploadTask = reference.putFile(image);
-      TaskSnapshot taskSnapshot =
-          await uploadTask.whenComplete(() => showDialog(
-              context: context,
-              builder: (BuildContext context) => AlertDialog(
-                    title: Text("Completed"),
-                    content: Text("Photo was successfully uploaded"),
-                    actions: <Widget>[
-                      FlatButton(
-                        child: Text('Ok'),
-                        onPressed: () {
-                          Navigator.pop(context, true);
-                        },
-                      )
-                    ],
-                  )));
+      uploadTask.snapshotEvents.listen((event) {
+        setState(() {
+          _isloading = true;
+          _progress = event.bytesTransferred / event.totalBytes.toDouble();
+          print(_progress);
+        });
+      });
+      TaskSnapshot taskSnapshot = await uploadTask;
       _addImageToDatabase(imageLocation);
       String url = await taskSnapshot.ref.getDownloadURL();
       print('url$url');
@@ -78,7 +131,8 @@ class _BottomSheetWidget1State extends State<BottomSheetWidget1> {
   Future takePhotoByCamera() async {
     // ignore: deprecated_member_use
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
-    uploadImage(image);
+    File cropped = await ImageCropper.cropImage(sourcePath: image.path);
+    uploadImage(cropped);
   }
 
   Future<void> uploadImage2(File image2) async {
@@ -92,21 +146,14 @@ class _BottomSheetWidget1State extends State<BottomSheetWidget1> {
               .ref()
               .child(imageLocation2);
       final UploadTask uploadTask = reference2.putFile(image2);
-      TaskSnapshot taskSnapshot =
-          await uploadTask.whenComplete(() => showDialog(
-              context: context,
-              builder: (BuildContext context) => AlertDialog(
-                    title: Text("Completed"),
-                    content: Text("Aadhar was successfully uploaded"),
-                    actions: <Widget>[
-                      FlatButton(
-                        child: Text('Ok'),
-                        onPressed: () {
-                          Navigator.pop(context, true);
-                        },
-                      )
-                    ],
-                  )));
+      uploadTask.snapshotEvents.listen((event) {
+        setState(() {
+          _isloading2 = true;
+          _progress2 = event.bytesTransferred / event.totalBytes.toDouble();
+          print(_progress);
+        });
+      });
+      TaskSnapshot taskSnapshot = await uploadTask;
       _addImageToDatabase2(imageLocation2);
       String url = await taskSnapshot.ref.getDownloadURL();
       print('url$url');
@@ -143,7 +190,8 @@ class _BottomSheetWidget1State extends State<BottomSheetWidget1> {
   Future takePhotoByCamera2() async {
     // ignore: deprecated_member_use
     var image2 = await ImagePicker.pickImage(source: ImageSource.camera);
-    uploadImage2(image2);
+    File cropped = await ImageCropper.cropImage(sourcePath: image2.path);
+    uploadImage2(cropped);
   }
 
   @override
@@ -182,11 +230,7 @@ class _BottomSheetWidget1State extends State<BottomSheetWidget1> {
         SizedBox(
           height: 5.0,
         ),
-        Text(
-          '&',
-          style: TextStyle(
-              color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
-        ),
+        progress(_isloading),
         SizedBox(
           height: 5.0,
         ),
@@ -221,6 +265,10 @@ class _BottomSheetWidget1State extends State<BottomSheetWidget1> {
             side: BorderSide(color: Colors.blueAccent),
           ),
         ),
+        SizedBox(
+          height: 5,
+        ),
+        progress2(_isloading2),
       ],
     );
   }

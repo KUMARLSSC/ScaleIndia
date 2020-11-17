@@ -256,12 +256,6 @@ class FifthPage extends StatelessWidget {
                 BottomSheetWidget1(
                   candidate: candidate,
                 ),
-                FlatButton(
-                  child: Text('Ok'),
-                  onPressed: () {
-                    Navigator.pop(context, true);
-                  },
-                )
               ]);
         });
   }
