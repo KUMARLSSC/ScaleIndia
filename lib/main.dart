@@ -2,6 +2,7 @@ import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'Manager/dialog_manager.dart';
 import 'Models/router.dart';
@@ -14,7 +15,9 @@ import 'locator.dart';
 Future<void> main() async {
   setupLocator();
   WidgetsFlutterBinding.ensureInitialized();
- await Firebase.initializeApp();
+  await Firebase.initializeApp();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
   runApp(MyApp());
 }
 
@@ -26,18 +29,19 @@ class MyApp extends StatelessWidget {
       create: (BuildContext context) =>
           locator<RequestService>().requestController.stream,
       child: MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Scale India',
-      builder: (context, child) => Navigator(
-        key: locator<DialogService>().dialogNavigationKey,
-        onGenerateRoute: (settings) => MaterialPageRoute(
-            builder: (context) => DialogManager(child: child)),
+        debugShowCheckedModeBanner: false,
+        title: 'Scale India',
+        builder: (context, child) => Navigator(
+          key: locator<DialogService>().dialogNavigationKey,
+          onGenerateRoute: (settings) => MaterialPageRoute(
+              builder: (context) => DialogManager(child: child)),
+        ),
+        navigatorKey: locator<NavigationService>().navigationKey,
+        theme: new ThemeData(
+            primaryColor: new Color(0xff09031D), fontFamily: 'Avenir'),
+        home: SplashPage(),
+        onGenerateRoute: generateRoute,
       ),
-      navigatorKey: locator<NavigationService>().navigationKey,
-      theme: new ThemeData(primaryColor: new Color(0xff09031D), fontFamily: 'Avenir'),
-      home: SplashPage(),
-      onGenerateRoute: generateRoute,
-    ),
-      );
+    );
   }
 }

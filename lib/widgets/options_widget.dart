@@ -2,11 +2,9 @@ import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
-import 'package:Scaleindia/Models/route_names.dart';
+import 'package:Scaleindia/Pages/fourth_page.dart';
 import 'package:Scaleindia/Pages/summary_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
-import 'package:Scaleindia/Services/dialog_service.dart';
-import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,8 +21,6 @@ class Options extends StatefulWidget {
 }
 
 class _OptionsState extends State<Options> {
-  final NavigationService _navigationService = locator<NavigationService>();
-  final DialogService _dialogService = locator<DialogService>();
   final Map<int, dynamic> _answers = {};
   final Api _api = locator<Api>();
   int _currentIndex = 0;
@@ -229,11 +225,9 @@ class _OptionsState extends State<Options> {
 
   void _next() async {
     if (_answers[_currentIndex] == null) {
-      _dialogService.showDialog(
-        title: 'Failed',
-        description: "You must select an answer to continue.",
-      );
-      return;
+      setState(() {
+        _answers[_currentIndex] = 0;
+      });
     }
     if (_currentIndex < (widget.theory.length - 1)) {
       setState(() {
@@ -256,7 +250,7 @@ class _OptionsState extends State<Options> {
             'prCandidateId': this.widget.candidate.clEnrollmentNo,
             'prQuestionId': 0,
             'prMarks': 0,
-            'prNos': tqNos == null ? tqNos : "null",
+            'prNos': tqNos,
             'prType': true,
           });
         }
@@ -277,6 +271,7 @@ class _OptionsState extends State<Options> {
       });
       await _api.updateTheory(list).whenComplete(() => showDialog(
           context: context,
+          barrierDismissible: true,
           builder: (BuildContext context) => AlertDialog(
                 title: Text("Completed"),
                 content: Text("Theory exam was completed successfully"),
@@ -284,7 +279,10 @@ class _OptionsState extends State<Options> {
                   FlatButton(
                     child: Text('Ok'),
                     onPressed: () {
-                      _navigationService.navigateTo(FourthViewRoute);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FourthPage()),
+                      );
                     },
                   )
                 ],

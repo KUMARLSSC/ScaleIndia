@@ -21,7 +21,7 @@ class SummaryPage extends StatelessWidget {
       body: Container(
         child: ListView.builder(
           padding: const EdgeInsets.all(16.0),
-          itemCount: theory.length - 1,
+          itemCount: theory.length,
           itemBuilder: _buildTheory,
         ),
       ),
@@ -32,7 +32,11 @@ class SummaryPage extends StatelessWidget {
     Theory question = theory[index];
 
     return Card(
-        color: answers[index] != null ? Colors.green : Colors.red,
+        color: answers[index] != null
+            ? answers[index] == 0
+                ? Colors.red
+                : Colors.green
+            : Colors.red,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(

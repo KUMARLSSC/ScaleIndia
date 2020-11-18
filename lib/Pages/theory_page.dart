@@ -37,85 +37,73 @@ class _TheoryPageState extends State<TheoryPage> {
                         isIcon: false,
                         strTitle: "Theory Assessment"),
                     preferredSize: Size.fromHeight(50.0)),
-                body: Center(
-                  child: Container(
-                    height: MediaQuery.of(context).size.height,
-                    child: Padding(
-                      padding: const EdgeInsets.all(1.0),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(color: Colors.white),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(7),
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                body: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(7),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Center(
+                                  child: Text.rich(TextSpan(children: [
+                                    TextSpan(
+                                        text: "Candidate ID:",
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 20)),
+                                    TextSpan(
+                                        text: this
+                                            .widget
+                                            .candidate
+                                            .clEnrollmentNo,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 25,
+                                            fontStyle: FontStyle.normal,
+                                            fontWeight: FontWeight.bold)),
+                                  ])),
+                                ),
+                                Divider(
+                                  color: Colors.black38,
+                                  height: 15,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Center(
-                                      child: Text.rich(TextSpan(children: [
-                                        TextSpan(
-                                            text: "Candidate ID:",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 20)),
-                                        TextSpan(
-                                            text: this
-                                                .widget
-                                                .candidate
-                                                .clEnrollmentNo,
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 25,
-                                                fontStyle: FontStyle.normal,
-                                                fontWeight: FontWeight.bold)),
-                                      ])),
-                                    ),
-                                    Divider(
-                                      color: Colors.black38,
-                                      height: 15,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text("Time Left:",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 18)),
-                                        SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        TimerLeft()
-                                      ],
-                                    ),
-                                    Divider(
-                                      color: Colors.black38,
-                                      height: 15,
-                                    ),
+                                    Text("Time Left:",
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 18)),
                                     SizedBox(
-                                      height: 10.0,
+                                      width: 5.0,
                                     ),
-                                    Container(
-                                      height: 500,
-                                      child: modal.busy == false
-                                          ? Center(
-                                              child: CircularProgressIndicator(
-                                                backgroundColor: Colors.white,
-                                              ),
-                                            )
-                                          : SingleChildScrollView(
-                                              child: Options(
-                                              theory: modal.posts,
-                                              theory1: widget.theory,
-                                              candidate: widget.candidate,
-                                            )),
-                                    ),
-                                  ]),
-                            ),
-                          ],
+                                    TimerLeft()
+                                  ],
+                                ),
+                                Divider(
+                                  color: Colors.black38,
+                                  height: 15,
+                                ),
+                                SizedBox(
+                                  height: 10.0,
+                                ),
+                                modal.busy == false
+                                    ? Center(
+                                        child: CircularProgressIndicator(
+                                          backgroundColor: Colors.white,
+                                        ),
+                                      )
+                                    : SingleChildScrollView(
+                                        child: Options(
+                                        theory: modal.posts,
+                                        theory1: widget.theory,
+                                        candidate: widget.candidate,
+                                      )),
+                              ]),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ),
