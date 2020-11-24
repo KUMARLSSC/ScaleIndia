@@ -1044,8 +1044,6 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
     "Rae Bareli": "Uttar Pradesh",
     "Rampur": "Uttar Pradesh",
     "Rampur Maniharan": "Uttar Pradesh",
-    // ignore: equal_keys_in_map
-    "Rampur Maniharan": "Uttar Pradesh",
     "Rasra": "Uttar Pradesh",
     "Rath": "Uttar Pradesh",
     "Renukoot": "Uttar Pradesh",
