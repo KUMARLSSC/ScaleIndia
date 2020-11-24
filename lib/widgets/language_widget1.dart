@@ -1,6 +1,6 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/practical_api.dart';
-import 'package:Scaleindia/Pages/practical_page.dart';
+import 'package:Scaleindia/Pages/assessment/practical_page.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';

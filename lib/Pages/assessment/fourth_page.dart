@@ -2,9 +2,9 @@ import 'dart:io';
 import 'dart:math';
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
-import 'package:Scaleindia/Pages/language_page1.dart';
-import 'package:Scaleindia/Pages/langugae_page.dart';
-import 'package:Scaleindia/ViewModels/fifthpage_viewmodel.dart';
+import 'package:Scaleindia/Pages/assessment/language_page1.dart';
+import 'package:Scaleindia/Pages/assessment/langugae_page.dart';
+import 'package:Scaleindia/Pages/assessment/fifthpage_viewmodel.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -14,15 +14,15 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 
-class FifthPage extends StatefulWidget {
+class FourthPage extends StatefulWidget {
   final Candidate candidate;
   final CenterAssesor centerAssesor;
-  FifthPage({this.candidate, this.centerAssesor});
+  FourthPage({this.candidate, this.centerAssesor});
   @override
   _FifthPageState createState() => _FifthPageState();
 }
 
-class _FifthPageState extends State<FifthPage> {
+class _FifthPageState extends State<FourthPage> {
   String url;
   bool _isloading = false;
   double _progress;
@@ -311,150 +311,141 @@ class _FifthPageState extends State<FifthPage> {
             child: header(context, isAppTitle: true, isIcon: false),
             preferredSize: Size.fromHeight(50.0)),
         body: Container(
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(color: Colors.white),
-          child: Column(
-            children: [
-              Padding(
-                  padding: EdgeInsets.all(7),
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(color: Colors.white),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Center(
+                child: Text(
+                  'Start Your Practical and Theory Assessment',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Divider(
+                color: Colors.black38,
+                height: 15,
+              ),
+              Center(
+                child: Text.rich(TextSpan(children: [
+                  TextSpan(
+                      text: "Candidate ID:",
+                      style: TextStyle(color: Colors.black, fontSize: 17)),
+                  TextSpan(
+                      text: widget.candidate.clEnrollmentNo,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold)),
+                ])),
+              ),
+              Divider(
+                color: Colors.black38,
+                height: 15,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height - 240.0,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
                   child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Center(
+                    children: [
+                      Center(
                           child: Text(
-                            'Start Your Practical and Theory Assessment',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
+                        "Instruction",
+                        style: TextStyle(
+                            color: Colors.black,
+                            decoration: TextDecoration.underline,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                      )),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Center(
+                        child: Text(
+                          "•The Assessment is of 60 mintues",
+                          style: TextStyle(
                               color: Colors.black,
-                              fontSize: 24.0,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              fontWeight: FontWeight.normal),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Center(
+                        child: Text(
+                          "• It is a multiple choice question with no negative marking",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.normal),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Center(
+                        child: Text(
+                          "• For any issue contact the Assessor",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.normal),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 18,
+                      ),
+                      progress2(_isloading2),
+                      RaisedButton(
+                        splashColor: Colors.blue,
+                        elevation: 5.0,
+                        color: kBlackAccent,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 5,
                             ),
-                          ),
-                        ),
-                        Divider(
-                          color: Colors.black38,
-                          height: 15,
-                        ),
-                        Center(
-                          child: Text.rich(TextSpan(children: [
-                            TextSpan(
-                                text: "Candidate ID:",
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 17)),
-                            TextSpan(
-                                text: widget.candidate.clEnrollmentNo,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontStyle: FontStyle.italic,
-                                    fontWeight: FontWeight.bold)),
-                          ])),
-                        ),
-                        Divider(
-                          color: Colors.black38,
-                          height: 15,
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.height - 240.0,
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.vertical,
-                            child: Column(
-                              children: [
-                                Center(
-                                    child: Text(
-                                  "Instruction",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      decoration: TextDecoration.underline,
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                )),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Center(
-                                  child: Text(
-                                    "•The Assessment is of 60 mintues",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.normal),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Center(
-                                  child: Text(
-                                    "• It is a multiple choice question with no negative marking",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.normal),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Center(
-                                  child: Text(
-                                    "• For any issue contact the Assessor",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.normal),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 18,
-                                ),
-                                progress2(_isloading2),
-                                RaisedButton(
-                                  splashColor: Colors.blue,
-                                  elevation: 5.0,
-                                  color: kBlackAccent,
-                                  child: Column(
-                                    children: [
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        'Upload your photo',
-                                        style: TextStyle(
-                                          fontSize: 15.0,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      Icon(
-                                        Icons.camera_alt,
-                                        color: Colors.white,
-                                        size: 24.0,
-                                      ),
-                                    ],
-                                  ),
-                                  onPressed: takePhotoByCamera,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    side: BorderSide(color: Colors.blueAccent),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5.0,
-                                ),
-                                progress(_isloading),
-                              ],
+                            Text(
+                              'Upload your photo',
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
+                            Icon(
+                              Icons.camera_alt,
+                              color: Colors.white,
+                              size: 24.0,
+                            ),
+                          ],
                         ),
-                      ])),
-            ],
-          ),
-        ),
+                        onPressed: takePhotoByCamera,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                          side: BorderSide(color: Colors.blueAccent),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5.0,
+                      ),
+                      progress(_isloading),
+                    ],
+                  ),
+                ),
+              ),
+            ])),
       ),
     );
   }

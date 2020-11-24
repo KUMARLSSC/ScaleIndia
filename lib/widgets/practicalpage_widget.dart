@@ -1,7 +1,7 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
-import 'package:Scaleindia/Pages/fourth_page.dart';
+import 'package:Scaleindia/Pages/assessment/third_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 import 'package:Scaleindia/ApiModel/practical_api.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
-import 'package:Scaleindia/ViewModels/practicalpage_viewmodel.dart';
+import 'package:Scaleindia/Pages/assessment/practicalpage_viewmodel.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
 import '../locator.dart';
@@ -306,7 +306,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => FourthPage()),
+                        MaterialPageRoute(builder: (context) => ThirdPage()),
                       );
                     },
                   )

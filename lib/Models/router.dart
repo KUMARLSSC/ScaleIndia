@@ -14,19 +14,18 @@ import 'package:Scaleindia/Pages/employee_page.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/employerDashBoard_page.dart';
 import 'package:Scaleindia/Pages/employerRegister_page.dart';
 import 'package:Scaleindia/Pages/employer_page.dart';
-import 'package:Scaleindia/Pages/fifth_page.dart';
-import 'package:Scaleindia/Pages/first_page.dart';
+import 'package:Scaleindia/Pages/assessment/fourth_page.dart';
+import 'package:Scaleindia/Pages/assessment/first_page.dart';
 import 'package:Scaleindia/Pages/forgotPassword_Page1.dart';
 import 'package:Scaleindia/Pages/forgotPassword_Page2.dart';
-import 'package:Scaleindia/Pages/fourth_page.dart';
+import 'package:Scaleindia/Pages/assessment/third_page.dart';
 import 'package:Scaleindia/Pages/home_page.dart';
-import 'package:Scaleindia/Pages/langugae_page.dart';
+import 'package:Scaleindia/Pages/assessment/langugae_page.dart';
 import 'package:Scaleindia/Pages/onBoarding_page.dart';
-import 'package:Scaleindia/Pages/practical_page.dart';
-import 'package:Scaleindia/Pages/second_page.dart';
-import 'package:Scaleindia/Pages/summary_page.dart';
-import 'package:Scaleindia/Pages/theory_page.dart';
-import 'package:Scaleindia/Pages/third_page.dart';
+import 'package:Scaleindia/Pages/assessment/practical_page.dart';
+import 'package:Scaleindia/Pages/assessment/summary_page.dart';
+import 'package:Scaleindia/Pages/assessment/theory_page.dart';
+import 'package:Scaleindia/Pages/assessment/second_page.dart';
 import 'package:Scaleindia/Pages/trainer_page.dart';
 import 'package:flutter/material.dart';
 
@@ -136,7 +135,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case SecondViewRoute:
       return _pageRoute(
         routeName: settings.name,
-        viewToShow: SecondPage(),
+        viewToShow: SecondPage(
+          centerAssesor: centerAssesor,
+        ),
       );
     case ThirdViewRoute:
       return _pageRoute(
@@ -148,14 +149,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case FourthViewRoute:
       return _pageRoute(
         routeName: settings.name,
-        viewToShow: FourthPage(
-          centerAssesor: centerAssesor,
-        ),
-      );
-    case FifthViewRoute:
-      return _pageRoute(
-        routeName: settings.name,
-        viewToShow: FifthPage(),
+        viewToShow: FourthPage(),
       );
     case TheoryViewRoute:
       return _pageRoute(

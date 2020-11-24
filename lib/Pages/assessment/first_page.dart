@@ -1,4 +1,4 @@
-import 'package:Scaleindia/ViewModels/firstpage_viewmodel.dart';
+import 'package:Scaleindia/Pages/assessment/firstpage_viewmodel.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';

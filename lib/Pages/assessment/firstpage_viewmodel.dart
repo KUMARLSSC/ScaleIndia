@@ -4,8 +4,8 @@ import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:Scaleindia/Services/request_service.dart';
 import 'package:flutter/foundation.dart';
 
-import '../locator.dart';
-import 'base_model.dart';
+import '../../locator.dart';
+import '../../ViewModels/base_model.dart';
 
 class FirstPageViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
@@ -32,7 +32,7 @@ class FirstPageViewModel extends BaseModel {
 
     if (result is bool) {
       if (result) {
-        _navigationService.navigateTo(ThirdViewRoute);
+        _navigationService.navigateTo(SecondViewRoute);
       } else {
         await _dialogService.showDialog(
           title: 'Request Id error',

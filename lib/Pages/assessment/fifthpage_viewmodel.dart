@@ -1,6 +1,6 @@
 import 'package:Scaleindia/Services/dialog_service.dart';
-import '../locator.dart';
-import 'base_model.dart';
+import '../../locator.dart';
+import '../../ViewModels/base_model.dart';
 
 class FifthPageViewModel extends BaseModel {
   final DialogService _dialogService = locator<DialogService>();
