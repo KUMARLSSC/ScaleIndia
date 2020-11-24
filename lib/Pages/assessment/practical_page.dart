@@ -4,6 +4,7 @@ import 'package:Scaleindia/ApiModel/practical_api.dart';
 import 'package:Scaleindia/Pages/assessment/practicalpage_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/Pages/assessment/practicalpage_widget.dart';
+import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
@@ -47,8 +48,9 @@ class _PracticalPageState extends State<PracticalPage> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: model.busy == false
-                          ? Center(
-                              child: CircularProgressIndicator(),
+                          ? ColorLoader3(
+                              radius: 20.0,
+                              dotRadius: 10.0,
                             )
                           : SingleChildScrollView(
                               child: PracticalPageWidget(

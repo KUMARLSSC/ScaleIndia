@@ -4,6 +4,7 @@ import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/Pages/assessment/theory_viewmodal.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/Pages/assessment/options_widget.dart';
+import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:Scaleindia/widgets/timer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -91,10 +92,10 @@ class _TheoryPageState extends State<TheoryPage> {
                                 ),
                                 modal.busy == false
                                     ? Center(
-                                        child: CircularProgressIndicator(
-                                          backgroundColor: Colors.white,
-                                        ),
-                                      )
+                                        child: ColorLoader3(
+                                        radius: 20.0,
+                                        dotRadius: 10.0,
+                                      ))
                                     : SingleChildScrollView(
                                         child: Options(
                                         theory: modal.posts,

@@ -4,6 +4,7 @@ import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/language_widget.dart';
+import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +26,10 @@ class LanguagePage extends StatelessWidget {
                 preferredSize: Size.fromHeight(50.0)),
             body: model.busy == false
                 ? Center(
-                    child: CircularProgressIndicator(),
+                    child: ColorLoader3(
+                      radius: 20.0,
+                      dotRadius: 10.0,
+                    ),
                   )
                 : Column(
                     children: [
