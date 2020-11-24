@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
- final User user =  _auth.currentUser;
+final User user = _auth.currentUser;
+
 class ProfileEmployerWidget extends StatefulWidget {
   @override
   _ProfileEmployerWidgetState createState() => _ProfileEmployerWidgetState();
@@ -93,7 +94,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                                     width: 10,
                                   ),
                                   Text(
-                                     "${snapshot.data['companyEmailAddress']}",
+                                    "${snapshot.data['companyEmailAddress']}",
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
@@ -143,7 +144,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                                     width: 10,
                                   ),
                                   Text(
-                                   "${snapshot.data['companyAddress']}",
+                                    "${snapshot.data['companyAddress']}",
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,

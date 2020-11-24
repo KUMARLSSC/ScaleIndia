@@ -112,9 +112,7 @@ class TrainerLoginPage extends StatelessWidget {
                       BusyButton(
                         title: 'Login',
                         color: Colors.green,
-                        onPressed: () {
-                         
-                        },
+                        onPressed: () {},
                       ),
                       SizedBox(
                         height: 30,

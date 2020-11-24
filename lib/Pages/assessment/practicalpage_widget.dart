@@ -12,7 +12,7 @@ import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/Pages/assessment/practicalpage_viewmodel.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
-import '../locator.dart';
+import '../../locator.dart';
 
 class PracticalPageWidget extends StatefulWidget {
   final List<Practical> practical;

@@ -8,7 +8,7 @@ import 'package:Scaleindia/Services/api_services.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../locator.dart';
+import '../../locator.dart';
 
 class Options extends StatefulWidget {
   final List<Theory> theory;

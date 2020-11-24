@@ -3,7 +3,7 @@ import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/Pages/assessment/fourthpage_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';
-import 'package:Scaleindia/widgets/participant_widget.dart';
+import 'package:Scaleindia/Pages/assessment/participant_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
