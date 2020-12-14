@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
@@ -21,6 +23,13 @@ class TheoryPage extends StatefulWidget {
 
 class _TheoryPageState extends State<TheoryPage> {
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
+  @override
+  void initState() {
+    super.initState();
+    Timer.run(() {
+      _neverSatisfied();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -138,5 +147,34 @@ class _TheoryPageState extends State<TheoryPage> {
               );
             })) ??
         false;
+  }
+
+  Future<void> _neverSatisfied() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Rules'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text("- Do not atten any call during exam"),
+                Text(
+                    " - Do not interact with any other apps during exam Eg:whats app,gmail etc.."),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
