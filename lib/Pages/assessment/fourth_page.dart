@@ -27,7 +27,6 @@ class _FifthPageState extends State<FourthPage> {
   bool _isloading = false;
   double _progress;
   bool _isloading2 = false;
-  // ignore: unused_field
   double _progress2;
   final theory = true;
   final practical = true;
@@ -190,8 +189,7 @@ class _FifthPageState extends State<FourthPage> {
       String imageLocation = 'images/image$randomNumber.jpg';
       // ignore: deprecated_member_use
       final Reference reference =
-          // ignore: deprecated_member_use
-          FirebaseStorage(storageBucket: "gs://scale-india.appspot.com")
+          FirebaseStorage.instanceFor(bucket: "gs://scale-india.appspot.com")
               .ref()
               .child(imageLocation);
       final UploadTask uploadTask = reference.putFile(image);
@@ -214,8 +212,7 @@ class _FifthPageState extends State<FourthPage> {
   Future<void> _addImageToDatabase(String text) async {
     try {
       // Get image URL from firebase
-      // ignore: deprecated_member_use
-      final ref = FirebaseStorage().ref().child(text);
+      final ref = FirebaseStorage.instance.ref().child(text);
       var imageString = await ref.getDownloadURL();
 
       // Add location and url to database
@@ -237,8 +234,7 @@ class _FifthPageState extends State<FourthPage> {
   }
 
   Future takePhotoByCamera() async {
-    // ignore: deprecated_member_use
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    var image = await ImagePicker().getImage(source: ImageSource.camera);
     File cropped = await ImageCropper.cropImage(sourcePath: image.path);
     uploadImage(cropped);
   }
@@ -247,10 +243,8 @@ class _FifthPageState extends State<FourthPage> {
     try {
       int randomNumber2 = Random().nextInt(10000000);
       String imageLocation2 = 'Aadhar/image$randomNumber2.jpg';
-      // ignore: deprecated_member_use
       final Reference reference2 =
-          // ignore: deprecated_member_use
-          FirebaseStorage(storageBucket: "gs://scale-india.appspot.com")
+          FirebaseStorage.instanceFor(bucket: "gs://scale-india.appspot.com")
               .ref()
               .child(imageLocation2);
       final UploadTask uploadTask = reference2.putFile(image2);
@@ -258,7 +252,7 @@ class _FifthPageState extends State<FourthPage> {
         setState(() {
           _isloading2 = true;
           _progress2 = event.bytesTransferred / event.totalBytes.toDouble();
-          print(_progress);
+          print(_progress2);
         });
       });
       TaskSnapshot taskSnapshot = await uploadTask;
@@ -273,8 +267,7 @@ class _FifthPageState extends State<FourthPage> {
   Future<void> _addImageToDatabase2(String text2) async {
     try {
       // Get image URL from firebase
-      // ignore: deprecated_member_use
-      final ref = FirebaseStorage().ref().child(text2);
+      final ref = FirebaseStorage.instance.ref().child(text2);
       var imageString = await ref.getDownloadURL();
 
       // Add location and url to database
@@ -296,8 +289,7 @@ class _FifthPageState extends State<FourthPage> {
   }
 
   Future takePhotoByCamera2() async {
-    // ignore: deprecated_member_use
-    var image2 = await ImagePicker.pickImage(source: ImageSource.camera);
+    var image2 = await ImagePicker().getImage(source: ImageSource.camera);
     File cropped = await ImageCropper.cropImage(sourcePath: image2.path);
     uploadImage2(cropped);
   }
