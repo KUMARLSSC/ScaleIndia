@@ -41,10 +41,9 @@ class ThirdPage extends StatelessWidget {
                 height: 15,
               ),
               Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
-                    width: 50,
-                  ),
                   Text(
                     'ID',
                     style: TextStyle(
@@ -53,9 +52,6 @@ class ThirdPage extends StatelessWidget {
                       fontSize: 20.0,
                     ),
                   ),
-                  SizedBox(
-                    width: 95,
-                  ),
                   Text(
                     'Name',
                     style: TextStyle(
@@ -63,9 +59,6 @@ class ThirdPage extends StatelessWidget {
                       color: Colors.black,
                       fontSize: 20.0,
                     ),
-                  ),
-                  SizedBox(
-                    width: 85,
                   ),
                   Text(
                     'Exam',

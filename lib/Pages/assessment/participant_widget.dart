@@ -16,6 +16,7 @@ class ParticipantWidget extends StatelessWidget {
     return ViewModelBuilder<FourthPageViewModel>.reactive(
       viewModelBuilder: () => FourthPageViewModel(),
       builder: (context, model, child) => Row(
+        mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
