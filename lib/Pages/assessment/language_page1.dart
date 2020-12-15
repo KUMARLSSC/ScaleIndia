@@ -3,7 +3,7 @@ import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_api.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
-import 'package:Scaleindia/widgets/language_widget1.dart';
+import 'package:Scaleindia/Pages/assessment/language_widget1.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:flutter/material.dart';

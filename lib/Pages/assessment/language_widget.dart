@@ -1,15 +1,17 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
-import 'package:Scaleindia/ApiModel/practical_api.dart';
-import 'package:Scaleindia/Pages/assessment/practical_page.dart';
+import 'package:Scaleindia/ApiModel/center_api.dart';
+import 'package:Scaleindia/ApiModel/theory_api.dart';
+import 'package:Scaleindia/Pages/assessment/theory_page.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'busy_button.dart';
+import '../../widgets/busy_button.dart';
 
-class LanguageWidget1 extends StatelessWidget {
-  final Practical practical;
+class LanguageWidget extends StatelessWidget {
+  final Theory theory;
   final Candidate candidate;
-  LanguageWidget1({this.practical, this.candidate});
+  final CenterAssesor centerAssesor;
+  LanguageWidget({this.theory, this.candidate, this.centerAssesor});
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LanguagePageViewModel>.reactive(
@@ -22,13 +24,14 @@ class LanguageWidget1 extends StatelessWidget {
                 children: <Widget>[
                   BusyButton(
                       color: Colors.green,
-                      title: practical.pqLang,
+                      title: theory.tqLanguage,
                       onPressed: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => PracticalPage(
-                                      practical: practical,
+                                builder: (context) => TheoryPage(
+                                      theory: theory,
+                                      centerAssesor: centerAssesor,
                                       candidate: candidate,
                                     )));
                       }),
