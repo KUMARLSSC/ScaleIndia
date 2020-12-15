@@ -78,5 +78,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:multidex:1.0.3'
+    implementation platform('com.google.firebase:firebase-bom:26.1.1')
+    implementation 'com.google.android.gms:play-services-mlkit-face-detection:16.1.2'
 }
 apply plugin: 'com.google.gms.google-services'
