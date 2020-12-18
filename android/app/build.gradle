@@ -82,3 +82,4 @@ dependencies {
     implementation 'com.google.android.gms:play-services-mlkit-face-detection:16.1.2'
 }
 apply plugin: 'com.google.gms.google-services'
+googleServices.disableVersionCheck = true

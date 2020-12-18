@@ -1,7 +1,7 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
-import 'package:Scaleindia/Pages/assessment/theory_page.dart';
+import 'package:Scaleindia/Pages/assessment/face_deduction.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -29,10 +29,10 @@ class LanguageWidget extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => TheoryPage(
+                                builder: (context) => FaceDeduction(
                                       theory: theory,
-                                      centerAssesor: centerAssesor,
                                       candidate: candidate,
+                                      centerAssesor: centerAssesor,
                                     )));
                       }),
                 ],
