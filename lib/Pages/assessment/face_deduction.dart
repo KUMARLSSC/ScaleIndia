@@ -5,13 +5,10 @@ import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/Pages/assessment/theory_page.dart';
 import 'package:Scaleindia/widgets/timer_widget.dart';
-import 'package:image_cropper/image_cropper.dart';
-import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:camera/camera.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/material.dart';
-import 'deductor_painters.dart';
 import 'utils.dart';
 import 'package:image/image.dart' as imglib;
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
@@ -99,6 +96,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
               _faceFound = false;
             else
               _faceFound = true;
+            print(_faceFound.toString());
             Face _face;
             imglib.Image convertedImage =
                 _convertCameraImage(image, _direction);
@@ -119,6 +117,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
             }
             setState(() {
               _scanResults = finalResult;
+              print(_scanResults);
             });
 
             _isDetecting = false;
@@ -139,25 +138,6 @@ class _FaceDeductionState extends State<FaceDeduction> {
       ),
     );
     return faceDetector.processImage;
-  }
-
-  Widget _buildResults() {
-    const Text noResultsText = const Text('');
-    if (_scanResults == null ||
-        _camera == null ||
-        !_camera.value.isInitialized) {
-      return noResultsText;
-    }
-    CustomPainter painter;
-
-    final Size imageSize = Size(
-      _camera.value.previewSize.height,
-      _camera.value.previewSize.width,
-    );
-    painter = FaceDetectorPainter(imageSize, _scanResults);
-    return CustomPaint(
-      painter: painter,
-    );
   }
 
   Widget _buildImage() {
@@ -252,11 +232,5 @@ class _FaceDeductionState extends State<FaceDeduction> {
     }
     print(minDist.toString() + " " + predRes);
     return predRes;
-  }
-
-  void _handle(String text, BuildContext context) async {
-    data[text] = e1;
-    jsonFile.writeAsStringSync(json.encode(data));
-    _initializeCamera();
   }
 }

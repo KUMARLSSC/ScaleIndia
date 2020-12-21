@@ -3,7 +3,6 @@ import 'dart:io';
 import 'dart:math';
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
-import 'package:Scaleindia/Pages/assessment/deductor_painters.dart';
 import 'package:Scaleindia/Pages/assessment/language_page1.dart';
 import 'package:Scaleindia/Pages/assessment/langugae_page.dart';
 import 'package:Scaleindia/Pages/assessment/fifthpage_viewmodel.dart';
@@ -133,6 +132,7 @@ class _FourthPageState extends State<FourthPage> {
             }
             setState(() {
               _scanResults = finalResult;
+              print(_scanResults);
             });
 
             _isDetecting = false;
