@@ -152,7 +152,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
             ? const Center(child: null)
             : Center(
                 child: Text(
-                  "Dont turn your ",
+                  "Dont turn your Head during Exam",
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
               ));

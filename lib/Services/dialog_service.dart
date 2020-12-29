@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:Scaleindia/Models/dialog_models.dart';
 import 'package:flutter/cupertino.dart';
 
-
 class DialogService {
   GlobalKey<NavigatorState> _dialogNavigationKey = GlobalKey<NavigatorState>();
   Function(DialogRequest) _showDialogListener;
