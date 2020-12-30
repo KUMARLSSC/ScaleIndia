@@ -42,6 +42,7 @@ class _FourthPageState extends State<FourthPage> {
   final theory = true;
   final practical = true;
   File jsonFile;
+  // ignore: unused_field
   dynamic _scanResults;
   CameraController _camera;
   var interpreter;
@@ -132,7 +133,6 @@ class _FourthPageState extends State<FourthPage> {
             }
             setState(() {
               _scanResults = finalResult;
-              print(_scanResults);
             });
 
             _isDetecting = false;
@@ -379,25 +379,6 @@ class _FourthPageState extends State<FourthPage> {
 
     _initializeCamera();
   }
-
-  /*Widget _buildResults() {
-    const Text noResultsText = const Text('');
-    if (_scanResults == null ||
-        _camera == null ||
-        !_camera.value.isInitialized) {
-      return noResultsText;
-    }
-    CustomPainter painter;
-
-    final Size imageSize = Size(
-      _camera.value.previewSize.height,
-      _camera.value.previewSize.width,
-    );
-    painter = FaceDetectorPainter(imageSize, _scanResults);
-    return CustomPaint(
-      painter: painter,
-    );
-  }*/
 
   Widget _buildImage(BuildContext context) {
     if (_camera == null || !_camera.value.isInitialized) {

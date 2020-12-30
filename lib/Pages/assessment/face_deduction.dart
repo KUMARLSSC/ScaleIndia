@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
@@ -26,6 +27,7 @@ class FaceDeduction extends StatefulWidget {
 
 class _FaceDeductionState extends State<FaceDeduction> {
   File jsonFile;
+  // ignore: unused_field
   dynamic _scanResults;
   CameraController _camera;
   var interpreter;
@@ -38,6 +40,9 @@ class _FaceDeductionState extends State<FaceDeduction> {
   Directory tempDir;
   List e1;
   bool _faceFound = false;
+  // ignore: non_constant_identifier_names
+  int notRec_count = 0;
+  String result;
   @override
   void initState() {
     super.initState();
@@ -90,6 +95,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
         _isDetecting = true;
         String res;
         dynamic finalResult = Multimap<String, Face>();
+        print(notRec_count);
         detect(image, _getDetectionMethod(), rotation).then(
           (dynamic result) async {
             if (result.length == 0)
@@ -113,11 +119,11 @@ class _FaceDeductionState extends State<FaceDeduction> {
               res = _recog(croppedImage);
               // int endTime = new DateTime.now().millisecondsSinceEpoch;
               // print("Inference took ${endTime - startTime}ms");
+              result = res;
               finalResult.add(res, _face);
             }
             setState(() {
               _scanResults = finalResult;
-              print(_scanResults);
             });
 
             _isDetecting = false;
@@ -140,38 +146,27 @@ class _FaceDeductionState extends State<FaceDeduction> {
     return faceDetector.processImage;
   }
 
-  Widget _buildImage() {
-    if (_camera == null || !_camera.value.isInitialized) {
-      return Center(
-        child: CircularProgressIndicator(),
-      );
-    }
-    return Container(
-        constraints: const BoxConstraints.expand(),
-        child: _camera == null
-            ? const Center(child: null)
-            : Center(
-                child: Text(
-                  "Dont turn your Head during Exam",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                ),
-              ));
-  }
-
   @override
   Widget build(BuildContext context) {
+    if (notRec_count == 10) {
+      Timer.run(() => _warningAleart1());
+    }
+    if (notRec_count == 20) {
+      Timer.run(() => _warningAleart2());
+    }
+    if (notRec_count == 30) {
+      Timer.run(() => _warningAleart3());
+    }
     return Scaffold(
         appBar: AppBar(
           title: const Text('Theory'),
           actions: [TimerLeft()],
         ),
-        body: compare(e1) != "NOT RECOGNIZED"
-            ? TheoryPage(
-                candidate: widget.candidate,
-                centerAssesor: widget.centerAssesor,
-                theory: widget.theory,
-              )
-            : _buildImage());
+        body: TheoryPage(
+          candidate: widget.candidate,
+          centerAssesor: widget.centerAssesor,
+          theory: widget.theory,
+        ));
   }
 
   imglib.Image _convertCameraImage(
@@ -231,6 +226,227 @@ class _FaceDeductionState extends State<FaceDeduction> {
       }
     }
     print(minDist.toString() + " " + predRes);
+    if (predRes == "NOT RECOGNIZED") {
+      notRec_count++;
+    }
+    if (notRec_count == 10) {
+      print("disqualified");
+    }
     return predRes;
+  }
+
+  Future<void> _warningAleart1() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'First Warning !',
+            style: TextStyle(
+                color: Colors.redAccent,
+                fontSize: 20,
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.green,
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  "-Please Dont turn your Head during Exam",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w700),
+                ),
+                Text(" - This is your First Warning !",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w700)),
+                Text(
+                    " -If you get Three Warnings.You will be diaqualified from the exam",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w700)),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text(
+                'OK',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w800),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _warningAleart2() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Second Warning !!',
+            style: TextStyle(
+                color: Colors.red,
+                fontSize: 20,
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.yellow,
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  "-Please Dont turn your Head during Exam",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w700),
+                ),
+                Text(" - This is your Second Warning !",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w700)),
+                Text(
+                    " -If you get Three Warnings.You will be diaqualified from the exam automatically",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w700)),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text(
+                'OK',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w800),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _warningAleart3() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Final Warning !!!',
+            style: TextStyle(
+                color: Colors.yellow,
+                fontSize: 20,
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.red,
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  "-Please Dont turn your Head during Exam",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w700),
+                ),
+                Text(" - This is your Final Warning !",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w700)),
+                Text(
+                    " -If you again turn your head.You will be diaqualified from the exam automatically",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w700)),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text(
+                'OK',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w700),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _neverSatisfied() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Rules'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text("- Do not atten any call during exam"),
+                Text(
+                    " - Do not interact with any other apps during exam Eg:whats app,gmail etc.."),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
