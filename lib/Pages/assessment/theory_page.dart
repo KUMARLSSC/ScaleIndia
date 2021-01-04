@@ -13,7 +13,9 @@ class TheoryPage extends StatefulWidget {
   final Candidate candidate;
   final Theory theory;
   final CenterAssesor centerAssesor;
-  TheoryPage({this.candidate, this.theory, this.centerAssesor});
+  int notReccount = 0;
+  TheoryPage(
+      {this.candidate, this.theory, this.centerAssesor, this.notReccount});
   @override
   _TheoryPageState createState() => _TheoryPageState();
 }
@@ -75,6 +77,7 @@ class _TheoryPageState extends State<TheoryPage> {
                                 theory: modal.posts,
                                 theory1: widget.theory,
                                 candidate: widget.candidate,
+                                notReccount: this.widget.notReccount,
                               )),
                       ]),
                 ),

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
@@ -10,11 +11,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../locator.dart';
 
+// ignore: must_be_immutable
 class Options extends StatefulWidget {
   final List<Theory> theory;
   final Theory theory1;
   final Candidate candidate;
-  Options({Key key, this.theory1, this.theory, this.candidate})
+  int notReccount = 0;
+  Options(
+      {Key key, this.theory1, this.theory, this.candidate, this.notReccount})
       : super(key: key);
   @override
   _OptionsState createState() => _OptionsState();
@@ -32,6 +36,9 @@ class _OptionsState extends State<Options> {
 
   @override
   Widget build(BuildContext context) {
+    if (this.widget.notReccount == 40) {
+      Timer.run(() => _disqualified());
+    }
     this.widget.theory.retainWhere((element) =>
         element.tqLanguage.contains(this.widget.theory1.tqLanguage));
     return Column(
@@ -296,5 +303,119 @@ class _OptionsState extends State<Options> {
         _currentIndex--;
       });
     }
+  }
+
+  void notRec() async {
+    if (_answers[_currentIndex] == null) {
+      setState(() {
+        _answers[_currentIndex] = 0;
+      });
+    }
+    if (_currentIndex < (widget.theory.length - 1)) {
+      var tempManipulatedData = {};
+      CenterAssesor centerAssesor =
+          Provider.of<CenterAssesor>(context, listen: false);
+      this._answers.forEach((index, value) {
+        var quesObj = this.widget.theory[index];
+        String tqNos = quesObj.tqNos;
+        if (tqNos == null) {
+          tqNos = "0";
+        }
+        if (tempManipulatedData[tqNos] == null) {
+          tempManipulatedData[tqNos] = PracticalResult.fromJson({
+            'prId': 0,
+            'prbatchId': centerAssesor.asId,
+            'prCandidateId': this.widget.candidate.clEnrollmentNo,
+            'prQuestionId': 0,
+            'prMarks': 0,
+            'prNos': tqNos,
+            'prType': true,
+          });
+        }
+        tempManipulatedData[tqNos].prQuestionId =
+            tempManipulatedData[tqNos].prQuestionId + 1;
+        if (quesObj.tqCorrectAnswer == value)
+          tempManipulatedData[tqNos].prMarks =
+              tempManipulatedData[tqNos].prMarks + 1;
+      });
+      print(tempManipulatedData);
+
+      var list = new List<PracticalResult>();
+      tempManipulatedData.forEach((key, value) {
+        if (value.prNos == "0") {
+          value['prNos'] = null;
+        }
+        list.add(value);
+      });
+      await _api.updateTheory(list).whenComplete(() => showDialog(
+          context: context,
+          barrierDismissible: true,
+          builder: (BuildContext context) => AlertDialog(
+                title: Text("Completed"),
+                content: Text("Theory exam was completed successfully"),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text('Ok'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ThirdPage()),
+                      );
+                    },
+                  )
+                ],
+              )));
+    } else {
+      print("vkugkgv");
+    }
+  }
+
+  Future<void> _disqualified() async {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'You are disqualified !',
+            style: TextStyle(
+                color: Colors.redAccent,
+                fontSize: 20,
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.green,
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  "Sorry",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text(
+                'OK',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w800),
+              ),
+              onPressed: () {
+                notRec();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }

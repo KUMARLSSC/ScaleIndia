@@ -41,7 +41,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
   List e1;
   bool _faceFound = false;
   // ignore: non_constant_identifier_names
-  int notRec_count = 0;
+  int notReccount = 0;
   String result;
   @override
   void initState() {
@@ -95,7 +95,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
         _isDetecting = true;
         String res;
         dynamic finalResult = Multimap<String, Face>();
-        print(notRec_count);
+        print(notReccount);
         detect(image, _getDetectionMethod(), rotation).then(
           (dynamic result) async {
             if (result.length == 0)
@@ -148,13 +148,13 @@ class _FaceDeductionState extends State<FaceDeduction> {
 
   @override
   Widget build(BuildContext context) {
-    if (notRec_count == 10) {
+    if (notReccount == 10) {
       Timer.run(() => _warningAleart1());
     }
-    if (notRec_count == 20) {
+    if (notReccount == 20) {
       Timer.run(() => _warningAleart2());
     }
-    if (notRec_count == 30) {
+    if (notReccount == 30) {
       Timer.run(() => _warningAleart3());
     }
     return Scaffold(
@@ -166,6 +166,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
           candidate: widget.candidate,
           centerAssesor: widget.centerAssesor,
           theory: widget.theory,
+          notReccount: notReccount,
         ));
   }
 
@@ -227,16 +228,16 @@ class _FaceDeductionState extends State<FaceDeduction> {
     }
     print(minDist.toString() + " " + predRes);
     if (predRes == "NOT RECOGNIZED") {
-      notRec_count++;
+      notReccount++;
     }
-    if (notRec_count == 10) {
+    if (notReccount == 10) {
       print("disqualified");
     }
     return predRes;
   }
 
   Future<void> _warningAleart1() async {
-    return showDialog<void>(
+    showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
@@ -298,7 +299,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
   }
 
   Future<void> _warningAleart2() async {
-    return showDialog<void>(
+    showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
@@ -360,7 +361,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
   }
 
   Future<void> _warningAleart3() async {
-    return showDialog<void>(
+    showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
@@ -421,8 +422,8 @@ class _FaceDeductionState extends State<FaceDeduction> {
     );
   }
 
-  Future<void> _neverSatisfied() async {
-    return showDialog<void>(
+  Future<void> _rules() async {
+    showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
