@@ -8,6 +8,7 @@ import 'package:Scaleindia/Pages/assessment/summary_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../../locator.dart';
 
@@ -286,10 +287,7 @@ class _OptionsState extends State<Options> {
                   FlatButton(
                     child: Text('Ok'),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ThirdPage()),
-                      );
+                      SystemNavigator.pop();
                     },
                   )
                 ],
@@ -357,10 +355,7 @@ class _OptionsState extends State<Options> {
                   FlatButton(
                     child: Text('Ok'),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ThirdPage()),
-                      );
+                      SystemNavigator.pop();
                     },
                   )
                 ],
