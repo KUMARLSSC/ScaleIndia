@@ -13,6 +13,7 @@ import 'package:stacked/stacked.dart';
 class LanguagePage1 extends StatelessWidget {
   final Candidate candidate;
   LanguagePage1({this.candidate});
+
   @override
   Widget build(BuildContext context) {
     CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);

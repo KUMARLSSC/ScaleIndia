@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
@@ -14,8 +16,38 @@ class LanguagePage extends StatelessWidget {
   final Candidate candidate;
   final CenterAssesor centerAssesor;
   LanguagePage({this.candidate, this.centerAssesor});
+  Future<void> _rules(BuildContext context) async {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Rules'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text("- Do not atten any call during exam"),
+                Text(
+                    " - Do not interact with any other apps during exam Eg:whats app,gmail etc.."),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    Timer.run(() => _rules(context));
     CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
     return ViewModelBuilder<LanguagePageViewModel>.reactive(
         onModelReady: (model) => model.getTheory(centerAssesor.asId),

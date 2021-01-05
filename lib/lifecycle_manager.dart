@@ -19,17 +19,26 @@ class LifeCycleManager extends StatefulWidget {
 class _LifeCycleManagerState extends State<LifeCycleManager>
     with WidgetsBindingObserver {
   final DialogService _dialogService = locator<DialogService>();
-
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  int count = 0;
   List<StoppableService> servicesToManage = [
     locator<LocationService>(),
     locator<BackgroundFetchService>(),
   ];
 
   // Get all services
+  void _showScaffold(String message) {
+    _scaffoldKey.currentState.showSnackBar(SnackBar(
+      content: Text(message),
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
-    return widget.child;
+    return Scaffold(
+      key: _scaffoldKey,
+      body: widget.child,
+    );
   }
 
   @override
@@ -78,6 +87,9 @@ class _LifeCycleManagerState extends State<LifeCycleManager>
     servicesToManage.forEach((service) {
       if (state == AppLifecycleState.resumed) {
         service.start();
+        Navigator.of(context, rootNavigator: true).pop();
+        count++;
+        print(count);
       } else {
         service.stop();
         _showNotification();
@@ -85,12 +97,35 @@ class _LifeCycleManagerState extends State<LifeCycleManager>
     });
   }
 
-  Future<void> payLoad() {
-    return _dialogService.showDialog(
-      title: "Warning!!!",
-      description:
-          "Dot not minimize the app during exam.If you did more than 2 times you will be disqualified ",
-      buttonTitle: 'OK',
+  Future<void> payLoad() async {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: true, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Rules'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text("- Do not atten any call during exam"),
+                Text(
+                    " - Do not interact with any other apps during exam Eg:whats app,gmail etc.."),
+                Text(
+                    " - Do not minimize the app during exam.If you did more than 2 times you will be disqualified")
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _showScaffold("Press OK again to close the dialog box");
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

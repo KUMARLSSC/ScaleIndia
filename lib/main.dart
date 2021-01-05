@@ -1,5 +1,4 @@
 import 'package:Scaleindia/ApiModel/center_api.dart';
-import 'package:Scaleindia/lifecycle_manager.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,21 +28,19 @@ class MyApp extends StatelessWidget {
         initialData: CenterAssesor.initial(),
         create: (BuildContext context) =>
             locator<RequestService>().requestController.stream,
-        child: LifeCycleManager(
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Scale India',
-            builder: (context, child) => Navigator(
-              key: locator<DialogService>().dialogNavigationKey,
-              onGenerateRoute: (settings) => MaterialPageRoute(
-                  builder: (context) => DialogManager(child: child)),
-            ),
-            navigatorKey: locator<NavigationService>().navigationKey,
-            theme: new ThemeData(
-                primaryColor: new Color(0xff09031D), fontFamily: 'Avenir'),
-            home: SplashPage(),
-            onGenerateRoute: generateRoute,
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Scale India',
+          builder: (context, child) => Navigator(
+            key: locator<DialogService>().dialogNavigationKey,
+            onGenerateRoute: (settings) => MaterialPageRoute(
+                builder: (context) => DialogManager(child: child)),
           ),
+          navigatorKey: locator<NavigationService>().navigationKey,
+          theme: new ThemeData(
+              primaryColor: new Color(0xff09031D), fontFamily: 'Avenir'),
+          home: SplashPage(),
+          onGenerateRoute: generateRoute,
         ));
   }
 }

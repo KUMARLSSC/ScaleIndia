@@ -421,33 +421,4 @@ class _FaceDeductionState extends State<FaceDeduction> {
       },
     );
   }
-
-  Future<void> _rules() async {
-    showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Rules'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text("- Do not atten any call during exam"),
-                Text(
-                    " - Do not interact with any other apps during exam Eg:whats app,gmail etc.."),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            FlatButton(
-              child: Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
 }

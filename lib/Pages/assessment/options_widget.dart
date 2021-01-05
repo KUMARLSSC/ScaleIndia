@@ -3,7 +3,6 @@ import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
-import 'package:Scaleindia/Pages/assessment/third_page.dart';
 import 'package:Scaleindia/Pages/assessment/summary_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
