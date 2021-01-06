@@ -8,6 +8,8 @@ import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/Pages/assessment/language_widget.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
@@ -15,7 +17,18 @@ import 'package:stacked/stacked.dart';
 class LanguagePage extends StatelessWidget {
   final Candidate candidate;
   final CenterAssesor centerAssesor;
-  LanguagePage({this.candidate, this.centerAssesor});
+  LanguagePage({
+    this.candidate,
+    this.centerAssesor,
+  });
+  void initPlayer() {
+    AudioPlayer advancedPlayer;
+    AudioCache audioCache;
+    advancedPlayer = new AudioPlayer();
+    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
+    audioCache.play('rules.mp3');
+  }
+
   Future<void> _rules(BuildContext context) async {
     showDialog<void>(
       context: context,
@@ -28,7 +41,8 @@ class LanguagePage extends StatelessWidget {
               children: <Widget>[
                 Text("- Do not atten any call during exam"),
                 Text(
-                    " - Do not interact with any other apps during exam Eg:whats app,gmail etc.."),
+                    " - Do not interact with any other apps during exam Eg:whats app,gmail,facebooketc.."),
+                Text(" - Do not minimize the app during exam"),
               ],
             ),
           ),
@@ -47,6 +61,7 @@ class LanguagePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Timer.run(() => initPlayer());
     Timer.run(() => _rules(context));
     CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
     return ViewModelBuilder<LanguagePageViewModel>.reactive(

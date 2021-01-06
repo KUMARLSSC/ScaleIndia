@@ -1,30 +1,49 @@
 import 'dart:async';
+import 'package:Scaleindia/Pages/assessment/options_widget.dart';
 import 'package:Scaleindia/Services/background_fetch_service.dart';
 import 'package:Scaleindia/Services/location_service.dart';
 import 'package:Scaleindia/Services/stoppable_service.dart';
 import 'package:Scaleindia/locator.dart';
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-
-import 'Services/dialog_service.dart';
 
 /// Stop and start long running services
 class LifeCycleManager extends StatefulWidget {
   final Widget child;
-  LifeCycleManager({Key key, this.child}) : super(key: key);
+  final Options options;
+  LifeCycleManager({
+    Key key,
+    this.child,
+    this.options,
+  }) : super(key: key);
 
   _LifeCycleManagerState createState() => _LifeCycleManagerState();
 }
 
 class _LifeCycleManagerState extends State<LifeCycleManager>
     with WidgetsBindingObserver {
-  final DialogService _dialogService = locator<DialogService>();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  AudioPlayer advancedPlayer;
+  AudioCache audioCache;
+
   int count = 0;
   List<StoppableService> servicesToManage = [
     locator<LocationService>(),
     locator<BackgroundFetchService>(),
   ];
+  Future<void> initPlayer() async {
+    advancedPlayer = new AudioPlayer();
+    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
+    audioCache.play('background.mp3');
+  }
+
+  void initPlayer1() {
+    advancedPlayer = new AudioPlayer();
+    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
+    audioCache.play('disqualified.mp3');
+  }
 
   // Get all services
   void _showScaffold(String message) {
@@ -70,9 +89,13 @@ class _LifeCycleManagerState extends State<LifeCycleManager>
     // await fltrNotification.show(
     //     0, "Task", "You created a Task", generalNotificationDetails, payload: "Task");
     var fltrNotification = new FlutterLocalNotificationsPlugin();
-    await fltrNotification.show(0, 'Warning!!!',
-        'Do not minimize the app during exam', generalNotificationDetails,
-        payload: payLoad().toString());
+    await fltrNotification.show(
+      0,
+      'Warning!!!',
+      'Do not minimize the app during exam',
+      generalNotificationDetails,
+      payload: count == 6 ? _warningAleart1() : payLoad().toString(),
+    );
   }
 
   @override
@@ -103,7 +126,7 @@ class _LifeCycleManagerState extends State<LifeCycleManager>
       barrierDismissible: true, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Rules'),
+          title: Text('Warning!!!'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
@@ -111,7 +134,7 @@ class _LifeCycleManagerState extends State<LifeCycleManager>
                 Text(
                     " - Do not interact with any other apps during exam Eg:whats app,gmail etc.."),
                 Text(
-                    " - Do not minimize the app during exam.If you did more than 2 times you will be disqualified")
+                    " - Do not minimize the app during exam.If you did more than 3 times you will be disqualified")
               ],
             ),
           ),
@@ -121,6 +144,49 @@ class _LifeCycleManagerState extends State<LifeCycleManager>
               onPressed: () {
                 Navigator.of(context).pop();
                 _showScaffold("Press OK again to close the dialog box");
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _warningAleart1() async {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        Timer.run(() {
+          initPlayer1();
+        });
+        return AlertDialog(
+          title: Text(
+            'You are Disqualified!',
+            style: TextStyle(
+                color: Colors.redAccent,
+                fontSize: 20,
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.green,
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text(
+                'OK',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontStyle: FontStyle.normal,
+                    fontWeight: FontWeight.w800),
+              ),
+              onPressed: () {
+                Options.globalKey.currentState.notRec();
               },
             ),
           ],

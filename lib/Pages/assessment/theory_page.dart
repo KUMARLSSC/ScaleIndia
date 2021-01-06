@@ -6,6 +6,7 @@ import 'package:Scaleindia/Pages/assessment/theory_viewmodal.dart';
 import 'package:Scaleindia/Pages/assessment/options_widget.dart';
 import 'package:Scaleindia/lifecycle_manager.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
@@ -14,9 +15,14 @@ class TheoryPage extends StatefulWidget {
   final Candidate candidate;
   final Theory theory;
   final CenterAssesor centerAssesor;
+  CameraController cameraController;
   int notReccount = 0;
   TheoryPage(
-      {this.candidate, this.theory, this.centerAssesor, this.notReccount});
+      {this.candidate,
+      this.theory,
+      this.centerAssesor,
+      this.notReccount,
+      this.cameraController});
   @override
   _TheoryPageState createState() => _TheoryPageState();
 }
@@ -83,6 +89,8 @@ class _TheoryPageState extends State<TheoryPage> {
                                         theory1: widget.theory,
                                         candidate: widget.candidate,
                                         notReccount: this.widget.notReccount,
+                                        cameraController:
+                                            this.widget.cameraController,
                                       )),
                               ]),
                         ),

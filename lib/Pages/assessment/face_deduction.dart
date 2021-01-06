@@ -6,6 +6,8 @@ import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/Pages/assessment/theory_page.dart';
 import 'package:Scaleindia/widgets/timer_widget.dart';
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:camera/camera.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
@@ -40,9 +42,10 @@ class _FaceDeductionState extends State<FaceDeduction> {
   Directory tempDir;
   List e1;
   bool _faceFound = false;
-  // ignore: non_constant_identifier_names
   int notReccount = 0;
   String result;
+  AudioPlayer advancedPlayer;
+  AudioCache audioCache;
   @override
   void initState() {
     super.initState();
@@ -50,6 +53,31 @@ class _FaceDeductionState extends State<FaceDeduction> {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     _initializeCamera();
+    initPlayer();
+  }
+
+  void initPlayer() {
+    advancedPlayer = new AudioPlayer();
+    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
+    audioCache.play('start.mp3');
+  }
+
+  void warning1() {
+    advancedPlayer = new AudioPlayer();
+    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
+    audioCache.play('1stwarning.mp3');
+  }
+
+  void warning2() {
+    advancedPlayer = new AudioPlayer();
+    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
+    audioCache.play('2ndwarning.mp3');
+  }
+
+  void finalwarning() {
+    advancedPlayer = new AudioPlayer();
+    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
+    audioCache.play('finalwarning.mp3');
   }
 
   Future loadModel() async {
@@ -149,13 +177,25 @@ class _FaceDeductionState extends State<FaceDeduction> {
   @override
   Widget build(BuildContext context) {
     if (notReccount == 10) {
-      Timer.run(() => _warningAleart1());
+      Timer.run(() => [
+            _warningAleart1(),
+            warning1(),
+            _camera.stopImageStream(),
+          ]);
     }
     if (notReccount == 20) {
-      Timer.run(() => _warningAleart2());
+      Timer.run(() => [
+            _warningAleart2(),
+            warning2(),
+            _camera.stopImageStream(),
+          ]);
     }
     if (notReccount == 30) {
-      Timer.run(() => _warningAleart3());
+      Timer.run(() => [
+            _warningAleart3(),
+            finalwarning(),
+            _camera.stopImageStream(),
+          ]);
     }
     return Scaffold(
         appBar: AppBar(
@@ -167,6 +207,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
           centerAssesor: widget.centerAssesor,
           theory: widget.theory,
           notReccount: notReccount,
+          cameraController: _camera,
         ));
   }
 
@@ -290,6 +331,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
               ),
               onPressed: () {
                 Navigator.of(context).pop();
+                _initializeCamera.call();
               },
             ),
           ],
@@ -352,6 +394,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
               ),
               onPressed: () {
                 Navigator.of(context).pop();
+                _initializeCamera.call();
               },
             ),
           ],
@@ -414,6 +457,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
               ),
               onPressed: () {
                 Navigator.of(context).pop();
+                _initializeCamera.call();
               },
             ),
           ],

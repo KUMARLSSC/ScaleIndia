@@ -10,6 +10,8 @@ import 'package:Scaleindia/Pages/assessment/utils.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:camera/camera.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
@@ -55,6 +57,8 @@ class _FourthPageState extends State<FourthPage> {
   Directory tempDir;
   List e1;
   bool _faceFound = false;
+  AudioPlayer advancedPlayer;
+  AudioCache audioCache;
   @override
   void initState() {
     super.initState();
@@ -62,6 +66,13 @@ class _FourthPageState extends State<FourthPage> {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     _initializeCamera();
+    initPlayer();
+  }
+
+  void initPlayer() {
+    advancedPlayer = new AudioPlayer();
+    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
+    audioCache.play('4th.mp3');
   }
 
   Future loadModel() async {

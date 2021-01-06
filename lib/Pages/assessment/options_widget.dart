@@ -3,9 +3,13 @@ import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
+import 'package:Scaleindia/Pages/assessment/face_deduction.dart';
 import 'package:Scaleindia/Pages/assessment/summary_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -16,10 +20,17 @@ class Options extends StatefulWidget {
   final List<Theory> theory;
   final Theory theory1;
   final Candidate candidate;
+  CameraController cameraController;
   int notReccount = 0;
+  static final GlobalKey<_OptionsState> globalKey = GlobalKey();
   Options(
-      {Key key, this.theory1, this.theory, this.candidate, this.notReccount})
-      : super(key: key);
+      {Key key,
+      this.theory1,
+      this.theory,
+      this.candidate,
+      this.notReccount,
+      this.cameraController})
+      : super(key: globalKey);
   @override
   _OptionsState createState() => _OptionsState();
 }
@@ -27,6 +38,8 @@ class Options extends StatefulWidget {
 class _OptionsState extends State<Options> {
   final Map<int, dynamic> _answers = {};
   final Api _api = locator<Api>();
+  AudioPlayer advancedPlayer;
+  AudioCache audioCache;
   int _currentIndex = 0;
   setSelectedUser(int val) {
     setState(() {
@@ -34,10 +47,20 @@ class _OptionsState extends State<Options> {
     });
   }
 
+  void initPlayer() {
+    advancedPlayer = new AudioPlayer();
+    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
+    audioCache.play('disqualified.mp3');
+  }
+
   @override
   Widget build(BuildContext context) {
     if (this.widget.notReccount == 40) {
-      Timer.run(() => _disqualified());
+      Timer.run(() => [
+            _disqualified(),
+            initPlayer(),
+            this.widget.cameraController.stopImageStream(),
+          ]);
     }
     this.widget.theory.retainWhere((element) =>
         element.tqLanguage.contains(this.widget.theory1.tqLanguage));
@@ -278,7 +301,7 @@ class _OptionsState extends State<Options> {
       });
       await _api.updateTheory(list).whenComplete(() => showDialog(
           context: context,
-          barrierDismissible: true,
+          barrierDismissible: false,
           builder: (BuildContext context) => AlertDialog(
                 title: Text("Completed"),
                 content: Text("Theory exam was completed successfully"),
@@ -346,7 +369,7 @@ class _OptionsState extends State<Options> {
       });
       await _api.updateTheory(list).whenComplete(() => showDialog(
           context: context,
-          barrierDismissible: true,
+          barrierDismissible: false,
           builder: (BuildContext context) => AlertDialog(
                 title: Text("Completed"),
                 content: Text("Theory exam was completed successfully"),
