@@ -5,6 +5,7 @@ import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/Pages/assessment/theory_page.dart';
+import 'package:Scaleindia/lifecycle_manager.dart';
 import 'package:Scaleindia/widgets/timer_widget.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -197,18 +198,20 @@ class _FaceDeductionState extends State<FaceDeduction> {
             _camera.stopImageStream(),
           ]);
     }
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Theory'),
-          actions: [TimerLeft()],
-        ),
-        body: TheoryPage(
-          candidate: widget.candidate,
-          centerAssesor: widget.centerAssesor,
-          theory: widget.theory,
-          notReccount: notReccount,
-          cameraController: _camera,
-        ));
+    return LifeCycleManager(
+      child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Theory'),
+            actions: [TimerLeft()],
+          ),
+          body: TheoryPage(
+            candidate: widget.candidate,
+            centerAssesor: widget.centerAssesor,
+            theory: widget.theory,
+            notReccount: notReccount,
+            cameraController: _camera,
+          )),
+    );
   }
 
   imglib.Image _convertCameraImage(

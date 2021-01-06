@@ -1,9 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
-import 'package:Scaleindia/Pages/assessment/face_deduction.dart';
 import 'package:Scaleindia/Pages/assessment/summary_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
@@ -51,6 +51,7 @@ class _OptionsState extends State<Options> {
     advancedPlayer = new AudioPlayer();
     audioCache = new AudioCache(fixedPlayer: advancedPlayer);
     audioCache.play('disqualified.mp3');
+    print(widget.theory.length);
   }
 
   @override
@@ -309,7 +310,7 @@ class _OptionsState extends State<Options> {
                   FlatButton(
                     child: Text('Ok'),
                     onPressed: () {
-                      SystemNavigator.pop();
+                      exit(0);
                     },
                   )
                 ],
@@ -377,7 +378,7 @@ class _OptionsState extends State<Options> {
                   FlatButton(
                     child: Text('Ok'),
                     onPressed: () {
-                      SystemNavigator.pop();
+                      exit(0);
                     },
                   )
                 ],

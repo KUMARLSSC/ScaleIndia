@@ -125,6 +125,9 @@ class _LifeCycleManagerState extends State<LifeCycleManager>
       context: context,
       barrierDismissible: true, // user must tap button!
       builder: (BuildContext context) {
+        Timer.run(() {
+          initPlayer();
+        });
         return AlertDialog(
           title: Text('Warning!!!'),
           content: SingleChildScrollView(
