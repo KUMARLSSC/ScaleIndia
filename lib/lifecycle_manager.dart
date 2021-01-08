@@ -167,15 +167,24 @@ class _LifeCycleManagerState extends State<LifeCycleManager>
           title: Text(
             'You are Disqualified!',
             style: TextStyle(
-                color: Colors.redAccent,
+                color: Colors.red,
                 fontSize: 20,
                 fontStyle: FontStyle.normal,
                 fontWeight: FontWeight.bold),
           ),
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.white,
           content: SingleChildScrollView(
             child: ListBody(
-              children: <Widget>[],
+              children: <Widget>[
+                Text(
+                  "Sorry",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w700),
+                ),
+              ],
             ),
           ),
           actions: <Widget>[
@@ -183,7 +192,7 @@ class _LifeCycleManagerState extends State<LifeCycleManager>
               child: Text(
                 'OK',
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 18,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.w800),

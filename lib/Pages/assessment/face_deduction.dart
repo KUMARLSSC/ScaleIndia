@@ -289,33 +289,33 @@ class _FaceDeductionState extends State<FaceDeduction> {
           title: Text(
             'First Warning !',
             style: TextStyle(
-                color: Colors.redAccent,
+                color: Colors.green,
                 fontSize: 20,
                 fontStyle: FontStyle.normal,
                 fontWeight: FontWeight.bold),
           ),
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.white,
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 Text(
                   "-Please Dont turn your Head during Exam",
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 16,
                       fontStyle: FontStyle.normal,
                       fontWeight: FontWeight.w700),
                 ),
                 Text(" - This is your First Warning !",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 16,
                         fontStyle: FontStyle.normal,
                         fontWeight: FontWeight.w700)),
                 Text(
                     " -If you get Three Warnings.You will be diaqualified from the exam",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 16,
                         fontStyle: FontStyle.normal,
                         fontWeight: FontWeight.w700)),
@@ -327,7 +327,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
               child: Text(
                 'OK',
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 18,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.w800),
@@ -352,33 +352,33 @@ class _FaceDeductionState extends State<FaceDeduction> {
           title: Text(
             'Second Warning !!',
             style: TextStyle(
-                color: Colors.red,
+                color: Colors.yellow,
                 fontSize: 20,
                 fontStyle: FontStyle.normal,
                 fontWeight: FontWeight.bold),
           ),
-          backgroundColor: Colors.yellow,
+          backgroundColor: Colors.white,
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 Text(
                   "-Please Dont turn your Head during Exam",
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 16,
                       fontStyle: FontStyle.normal,
                       fontWeight: FontWeight.w700),
                 ),
                 Text(" - This is your Second Warning !",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 16,
                         fontStyle: FontStyle.normal,
                         fontWeight: FontWeight.w700)),
                 Text(
                     " -If you get Three Warnings.You will be diaqualified from the exam automatically",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 16,
                         fontStyle: FontStyle.normal,
                         fontWeight: FontWeight.w700)),
@@ -390,7 +390,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
               child: Text(
                 'OK',
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 18,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.w800),
@@ -415,33 +415,33 @@ class _FaceDeductionState extends State<FaceDeduction> {
           title: Text(
             'Final Warning !!!',
             style: TextStyle(
-                color: Colors.yellow,
+                color: Colors.red,
                 fontSize: 20,
                 fontStyle: FontStyle.normal,
                 fontWeight: FontWeight.bold),
           ),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.white,
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 Text(
                   "-Please Dont turn your Head during Exam",
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 16,
                       fontStyle: FontStyle.normal,
                       fontWeight: FontWeight.w700),
                 ),
                 Text(" - This is your Final Warning !",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 16,
                         fontStyle: FontStyle.normal,
                         fontWeight: FontWeight.w700)),
                 Text(
                     " -If you again turn your head.You will be diaqualified from the exam automatically",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 16,
                         fontStyle: FontStyle.normal,
                         fontWeight: FontWeight.w700)),
@@ -453,7 +453,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
               child: Text(
                 'OK',
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 18,
                     fontStyle: FontStyle.normal,
                     fontWeight: FontWeight.w700),
