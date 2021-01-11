@@ -1,11 +1,12 @@
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/Assessor/assessor_homepage.dart';
+import 'package:Scaleindia/Pages/Assessor/sop_page.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/employerHome_page.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/postJob_page.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/viewJob_page.dart';
 import 'package:Scaleindia/Pages/Trainer/trainer_homePage.dart';
-import 'package:Scaleindia/Pages/assessor_page.dart';
+import 'package:Scaleindia/Pages/Assessor/assessor_page.dart';
 import 'package:Scaleindia/Pages/candidate_page.dart';
 import 'package:Scaleindia/Pages/elearning_page.dart';
 import 'package:Scaleindia/Pages/EmployeeDashBoard/employeeDashBoard_page.dart';
@@ -32,6 +33,11 @@ import 'package:flutter/material.dart';
 CenterAssesor centerAssesor;
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
+    case SOPViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: SOP(),
+      );
     case AssessorHomePageViewRoute:
       return _pageRoute(
         routeName: settings.name,

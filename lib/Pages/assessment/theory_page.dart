@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
+// ignore: must_be_immutable
 class TheoryPage extends StatefulWidget {
   final Candidate candidate;
   final Theory theory;

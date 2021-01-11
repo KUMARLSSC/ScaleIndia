@@ -3,8 +3,8 @@ import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../locator.dart';
-import 'base_model.dart';
+import '../../locator.dart';
+import '../../ViewModels/base_model.dart';
 
 class AssessorPageViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
@@ -38,5 +38,7 @@ class AssessorPageViewModel extends BaseModel {
     );
   }
 
-  
+  void navigateToSop() {
+    _navigationService.navigateTo(SOPViewRoute);
+  }
 }

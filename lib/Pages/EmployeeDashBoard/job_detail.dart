@@ -2,9 +2,7 @@ import 'package:Scaleindia/List/company.dart';
 import 'package:Scaleindia/Pages/EmployeeDashBoard/company_tab.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
-
 import 'description_tab.dart';
-
 
 class JobDetail extends StatelessWidget {
   final Company company;

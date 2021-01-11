@@ -34,16 +34,11 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
                 height: 5,
               ),
               Text(
-                'Upload center photo',
+                'Upload photo',
                 style: TextStyle(
                   fontSize: 15.0,
                   color: Colors.white,
                 ),
-              ),
-              Icon(
-                Icons.camera_alt,
-                color: Colors.white,
-                size: 24.0,
               ),
             ],
           ),
@@ -55,7 +50,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
             side: BorderSide(color: Colors.blueAccent),
           ),
         ),
-        SizedBox(
+        /*SizedBox(
           height: 5.0,
         ),
         Text(
@@ -98,7 +93,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
             borderRadius: BorderRadius.circular(30.0),
             side: BorderSide(color: Colors.blueAccent),
           ),
-        ),
+        ),*/
       ],
     );
   }
