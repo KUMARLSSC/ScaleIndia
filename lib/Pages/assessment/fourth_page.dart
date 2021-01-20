@@ -232,7 +232,7 @@ class _FourthPageState extends State<FourthPage> {
       String imageLocation = 'images/image$randomNumber.jpg';
       // ignore: deprecated_member_use
       final Reference reference =
-          FirebaseStorage.instanceFor(bucket: "gs://scale-india.appspot.com")
+          FirebaseStorage.instanceFor(bucket: "gs://scaleindia.appspot.com")
               .ref()
               .child(imageLocation);
       final UploadTask uploadTask = reference.putFile(image);
@@ -257,7 +257,7 @@ class _FourthPageState extends State<FourthPage> {
       int randomNumber2 = Random().nextInt(10000000);
       String imageLocation2 = 'Aadhar/image$randomNumber2.jpg';
       final Reference reference2 =
-          FirebaseStorage.instanceFor(bucket: "gs://scale-india.appspot.com")
+          FirebaseStorage.instanceFor(bucket: "gs://scaleindia.appspot.com")
               .ref()
               .child(imageLocation2);
       final UploadTask uploadTask = reference2.putFile(image2);

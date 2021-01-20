@@ -1,42 +1,41 @@
 {
   "project_info": {
-    "project_number": "912259751198",
-    "firebase_url": "https://scale-india.firebaseio.com",
-    "project_id": "scale-india",
-    "storage_bucket": "scale-india.appspot.com"
+    "project_number": "712057379073",
+    "project_id": "scaleindia",
+    "storage_bucket": "scaleindia.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:912259751198:android:7225855cd82bafd1b5fd0f",
+        "mobilesdk_app_id": "1:712057379073:android:2475e8484fd0a3a5976300",
         "android_client_info": {
           "package_name": "com.scaleIndia.Scaleindia"
         }
       },
       "oauth_client": [
         {
-          "client_id": "912259751198-g2b14gdb2bq4nl958bta4nu751fskrc4.apps.googleusercontent.com",
+          "client_id": "712057379073-sponlnh6jsi5cb1n1k3586cr637uk0ou.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.scaleIndia.Scaleindia",
-            "certificate_hash": "c8d90de5dfe03f6b2ac7d7920e9abe16d5a23220"
+            "certificate_hash": "5afb0dbfd4ae81d8fa6ab6d8172accdebec0d54d"
           }
         },
         {
-          "client_id": "912259751198-d39vkto3f2povr2qt7bo3ob32b7c40n0.apps.googleusercontent.com",
+          "client_id": "712057379073-hrvbk46jg7vt62jn79cugg5qpdiu3ip5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDl9eokouCCUzXk70Zu78BxcKoMduE_dcs"
+          "current_key": "AIzaSyAPhUbm2SwI1O1cSn2PHpkCRmOgAwsYtao"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "912259751198-d39vkto3f2povr2qt7bo3ob32b7c40n0.apps.googleusercontent.com",
+              "client_id": "712057379073-hrvbk46jg7vt62jn79cugg5qpdiu3ip5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

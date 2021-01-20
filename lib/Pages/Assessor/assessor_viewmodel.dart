@@ -34,7 +34,14 @@ class AssessorPageViewModel extends BaseModel {
   void navigateToActivate() {
     _dialogService.showDialog(
       title: 'Failed',
-      description: 'Please activate by uploading your image ',
+      description: 'Please Complete all the task to activate ',
+    );
+  }
+
+  void task1() {
+    _dialogService.showDialog(
+      title: 'Task 2',
+      description: 'Please upload all the photos to activate task 2 ',
     );
   }
 
