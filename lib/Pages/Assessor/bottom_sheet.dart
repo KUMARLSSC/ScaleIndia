@@ -1,25 +1,17 @@
 import 'dart:io';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 File imageFile;
 
 class BottomSheetWidget extends StatefulWidget {
+  final Function onPressed;
+  const BottomSheetWidget({this.onPressed});
   @override
   _BottomSheetWidgetState createState() => _BottomSheetWidgetState();
 }
 
 class _BottomSheetWidgetState extends State<BottomSheetWidget> {
-  void takePhotoByCamera() async {
-    // ignore: deprecated_member_use
-    File image = await ImagePicker.pickImage(source: ImageSource.camera);
-
-    setState(() {
-      imageFile = image;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -42,9 +34,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
               ),
             ],
           ),
-          onPressed: () {
-            takePhotoByCamera();
-          },
+          onPressed: this.widget.onPressed,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
             side: BorderSide(color: Colors.blueAccent),

@@ -67,8 +67,6 @@ class SOP extends StatelessWidget {
                     ],
                     strTitle: "SOP TASK"),
                 preferredSize: Size.fromHeight(50.0)),
-            body: ListView(
-              children: [SopTask(), Tasks()],
-            )));
+            body: Tasks()));
   }
 }

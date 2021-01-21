@@ -46,7 +46,7 @@ dependencies:
   google_fonts: ^1.1.0
   connectivity: ^0.4.9+3
   flutter_offline: ^0.3.0
-  image_picker: ^0.6.7+7
+  image_picker: ^0.6.7+21
   slide_countdown_clock: ^1.0.3
   flutter_svg: ^0.19.0
   simple_pdf_viewer: ^0.2.2

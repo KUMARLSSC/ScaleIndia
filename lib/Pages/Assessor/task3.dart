@@ -1,8 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'package:Scaleindia/Pages/Assessor/task2.dart';
-import 'package:Scaleindia/Pages/Assessor/task3.dart';
+import 'package:Scaleindia/Pages/Assessor/bottom_sheet.dart';
 import 'package:Scaleindia/Pages/assessment/utils.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';
@@ -16,14 +15,15 @@ import 'package:path_provider/path_provider.dart';
 import 'package:stacked/stacked.dart';
 
 import 'assessor_viewmodel.dart';
-import 'bottom_sheet.dart';
 
-class Tasks extends StatefulWidget {
+class Task3 extends StatefulWidget {
+  final Function onPressed;
+  Task3({this.onPressed});
   @override
-  _TasksState createState() => _TasksState();
+  _Task3State createState() => _Task3State();
 }
 
-class _TasksState extends State<Tasks> {
+class _Task3State extends State<Task3> {
   bool _isloading1 = false;
   double _progress1;
   bool _isloading2 = false;
@@ -33,9 +33,6 @@ class _TasksState extends State<Tasks> {
   bool _isloading4 = false;
   double _progress4;
   CameraController _camera;
-  bool task3 = false;
-  bool task2 = false;
-  bool task4 = false;
   bool showCapturedPhoto = false;
   CameraLensDirection _direction = CameraLensDirection.back;
   Future initializecamera() async {
@@ -105,7 +102,7 @@ class _TasksState extends State<Tasks> {
       var imageString = await ref.getDownloadURL();
 
       // Add location and url to database
-      await FirebaseFirestore.instance.collection('Task1').doc().set({
+      await FirebaseFirestore.instance.collection('Task3').doc().set({
         'url1': imageString,
         'one': text,
       });
@@ -117,7 +114,7 @@ class _TasksState extends State<Tasks> {
   Future<void> uploadImage1(File image) async {
     try {
       int randomNumber = Random().nextInt(10000000);
-      String imageLocation = 'Sop-task-1/image$randomNumber.jpg';
+      String imageLocation = 'Sop-task-3/image$randomNumber.jpg';
       final Reference reference =
           FirebaseStorage.instanceFor(bucket: "gs://scaleindia.appspot.com")
               .ref()
@@ -231,7 +228,7 @@ class _TasksState extends State<Tasks> {
       var imageString = await ref.getDownloadURL();
 
       // Add location and url to database
-      await FirebaseFirestore.instance.collection('Task1').doc().set({
+      await FirebaseFirestore.instance.collection('Task3').doc().set({
         'url2': imageString,
         'Two2': text,
       });
@@ -243,7 +240,7 @@ class _TasksState extends State<Tasks> {
   Future<void> uploadImage2(File image) async {
     try {
       int randomNumber = Random().nextInt(10000000);
-      String imageLocation = 'Sop-task-1/image$randomNumber.jpg';
+      String imageLocation = 'Sop-task-3/image$randomNumber.jpg';
       final Reference reference =
           FirebaseStorage.instanceFor(bucket: "gs://scaleindia.appspot.com")
               .ref()
@@ -301,201 +298,66 @@ class _TasksState extends State<Tasks> {
   Widget build(BuildContext context) {
     return ViewModelBuilder<AssessorPageViewModel>.reactive(
         viewModelBuilder: () => AssessorPageViewModel(),
-        builder: (context, model, child) => ListView(
-              children: [
-                Container(
-                  width: 280.0,
-                  margin: const EdgeInsets.all(15.0),
-                  padding: EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.0),
-                    color: kBlack,
+        builder: (context, model, child) => Container(
+              width: 280.0,
+              margin: const EdgeInsets.all(15.0),
+              padding: EdgeInsets.all(15.0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.0),
+                  color: Colors.grey),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Center(
+                    child: Text(
+                      "TASK 3",
+                      style: kTitleStyle.copyWith(
+                          color: Colors.yellowAccent,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30),
+                    ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Center(
-                        child: Text(
-                          "SOP TASK",
-                          style: kTitleStyle.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30),
-                        ),
-                      ),
-                      SizedBox(height: 15.0),
-                      Center(
-                        child: RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "Task 1 :    ",
-                                style: kSubtitleStyle.copyWith(
-                                    color: Colors.white, fontSize: 20),
+                  SizedBox(height: 15.0),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 50),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              '1:',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w800,
+                                color: Colors.white,
+                                fontSize: 17.0,
                               ),
-                              TextSpan(
-                                text: task2 ? "Completed" : "Pending",
-                                style: kSubtitleStyle.copyWith(
-                                    color: task2
-                                        ? new Color(0xFF34A853)
-                                        : Colors.red,
-                                    fontSize: 20),
-                              ),
-                            ],
-                          ),
+                            ),
+                            _isloading1 == true
+                                ? Text(
+                                    'Uploaded successfully',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.greenAccent,
+                                      fontSize: 17.0,
+                                    ),
+                                  )
+                                : BottomSheetWidget(onPressed: () {
+                                    opencamera1(context);
+                                  })
+                          ],
                         ),
-                      ),
-                      SizedBox(height: 15.0),
-                      Center(
-                        child: RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "Task 2 :    ",
-                                style: kSubtitleStyle.copyWith(
-                                    color: Colors.white, fontSize: 20),
-                              ),
-                              TextSpan(
-                                text: task3 ? "Completed" : "Pending",
-                                style: kSubtitleStyle.copyWith(
-                                    color: task3
-                                        ? new Color(0xFF34A853)
-                                        : Colors.red,
-                                    fontSize: 20),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 15.0),
-                      Center(
-                        child: RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "Task 3 :    ",
-                                style: kSubtitleStyle.copyWith(
-                                    color: Colors.white, fontSize: 20),
-                              ),
-                              TextSpan(
-                                text: task4 ? "Completed" : "Pending",
-                                style: kSubtitleStyle.copyWith(
-                                    color: task4
-                                        ? new Color(0xFF34A853)
-                                        : Colors.red,
-                                    fontSize: 20),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 15.0),
-                      Center(
-                          child: RaisedButton(
-                        splashColor: Colors.blue,
-                        elevation: 10.0,
-                        color: task4 ? new Color(0xFF34A853) : Colors.grey,
-                        child: Text(
-                          'Start',
-                          style: TextStyle(fontSize: 15.0, color: Colors.white),
-                        ),
-                        onPressed: () {
-                          model.navigateToActivate();
-                        },
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ))
-                    ],
+                        progress1(_isloading1, context),
+                        progress2(_isloading2, context),
+                        progress3(_isloading3, context),
+                      ],
+                    ),
                   ),
-                ),
-                task3
-                    ? Task3(
-                        onPressed: () {
-                          setState(() {
-                            task4 = !task4;
-                          });
-                        },
-                      )
-                    : Container(
-                        child: task2
-                            ? Task2(
-                                onPressed: () {
-                                  setState(() {
-                                    task3 = !task3;
-                                  });
-                                },
-                              )
-                            : Container(
-                                width: 280.0,
-                                margin: const EdgeInsets.all(15.0),
-                                padding: EdgeInsets.all(15.0),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    color: Colors.grey),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Center(
-                                      child: Text(
-                                        "TASK 1",
-                                        style: kTitleStyle.copyWith(
-                                            color: Colors.yellowAccent,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 30),
-                                      ),
-                                    ),
-                                    SizedBox(height: 15.0),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 50),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              Text(
-                                                '1:',
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w800,
-                                                  color: Colors.white,
-                                                  fontSize: 17.0,
-                                                ),
-                                              ),
-                                              _isloading1 == true
-                                                  ? Text(
-                                                      'Uploaded successfully',
-                                                      style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w800,
-                                                        color:
-                                                            Colors.greenAccent,
-                                                        fontSize: 17.0,
-                                                      ),
-                                                    )
-                                                  : BottomSheetWidget(
-                                                      onPressed: () {
-                                                      opencamera1(context);
-                                                    })
-                                            ],
-                                          ),
-                                          progress1(_isloading1, context),
-                                          progress2(_isloading2, context),
-                                          progress3(_isloading3, context),
-                                        ],
-                                      ),
-                                    ),
-                                    Center(
-                                        child: progress4(_isloading4, context))
-                                  ],
-                                ),
-                              ))
-              ],
+                  Center(child: progress4(_isloading4, context))
+                ],
+              ),
             ));
   }
 
@@ -559,7 +421,7 @@ class _TasksState extends State<Tasks> {
       var imageString = await ref.getDownloadURL();
 
       // Add location and url to database
-      await FirebaseFirestore.instance.collection('Task1').doc().set({
+      await FirebaseFirestore.instance.collection('Task3').doc().set({
         'url3': imageString,
         'three': text,
       });
@@ -571,7 +433,7 @@ class _TasksState extends State<Tasks> {
   Future<void> uploadImage3(File image) async {
     try {
       int randomNumber = Random().nextInt(10000000);
-      String imageLocation = 'Sop-task-1/image$randomNumber.jpg';
+      String imageLocation = 'Sop-task-3/image$randomNumber.jpg';
       final Reference reference =
           FirebaseStorage.instanceFor(bucket: "gs://scaleindia.appspot.com")
               .ref()
@@ -685,7 +547,7 @@ class _TasksState extends State<Tasks> {
       var imageString = await ref.getDownloadURL();
 
       // Add location and url to database
-      await FirebaseFirestore.instance.collection('Task1').doc().set({
+      await FirebaseFirestore.instance.collection('Task3').doc().set({
         'url4': imageString,
         'four': text,
       });
@@ -697,7 +559,7 @@ class _TasksState extends State<Tasks> {
   Future<void> uploadImage4(File image) async {
     try {
       int randomNumber = Random().nextInt(10000000);
-      String imageLocation = 'Sop-task-1/image$randomNumber.jpg';
+      String imageLocation = 'Sop-task-3/image$randomNumber.jpg';
       final Reference reference =
           FirebaseStorage.instanceFor(bucket: "gs://scaleindia.appspot.com")
               .ref()
@@ -726,17 +588,13 @@ class _TasksState extends State<Tasks> {
         elevation: 5.0,
         color: new Color(0xFF34A853),
         child: Text(
-          'Task 2',
+          'Activate',
           style: TextStyle(
             fontSize: 15.0,
             color: Colors.white,
           ),
         ),
-        onPressed: () {
-          setState(() {
-            task2 = !task2;
-          });
-        },
+        onPressed: this.widget.onPressed,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
@@ -747,7 +605,7 @@ class _TasksState extends State<Tasks> {
   }
 }
 
-class Task1 {
+class TaskThree {
   final String one;
   final String url1;
   final String two;
@@ -759,7 +617,7 @@ class Task1 {
 
   final DocumentReference reference;
 
-  Task1.fromMap(Map<String, dynamic> map, {this.reference})
+  TaskThree.fromMap(Map<String, dynamic> map, {this.reference})
       : assert(map['one'] != null),
         assert(map['url1'] != null),
         one = map['one'],
@@ -771,9 +629,9 @@ class Task1 {
         four = map['four'],
         url4 = map['url4'];
 
-  Task1.fromSnapshot(DocumentSnapshot snapshot)
+  TaskThree.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data(), reference: snapshot.reference);
 
   @override
-  String toString() => "Task1<$one:$url1>";
+  String toString() => "Task3<$one:$url1>";
 }
