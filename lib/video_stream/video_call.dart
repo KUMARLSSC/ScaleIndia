@@ -177,9 +177,39 @@ class _VideoCallState extends State<VideoCall> {
 
   @override
   Widget build(BuildContext context) {
-    return PracticalPage(
-      practical: widget.practical,
-      candidate: widget.candidate,
-    );
+    return WillPopScope(
+        child: PracticalPage(
+          practical: widget.practical,
+          candidate: widget.candidate,
+        ),
+        onWillPop: _onWillPop);
+  }
+
+  Future<bool> _onWillPop() async {
+    return (await showDialog<bool>(
+            context: context,
+            barrierDismissible: false,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                content: Text(
+                    "Are you sure you want to quit the Exam? All your progress will be lost."),
+                title: Text("Warning!"),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text("Yes"),
+                    onPressed: () {
+                      Navigator.pop(context, true);
+                    },
+                  ),
+                  FlatButton(
+                    child: Text("No"),
+                    onPressed: () {
+                      Navigator.pop(context, false);
+                    },
+                  ),
+                ],
+              );
+            })) ??
+        false;
   }
 }
