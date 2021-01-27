@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           navigatorKey: locator<NavigationService>().navigationKey,
           theme: new ThemeData(
               primaryColor: new Color(0xff09031D), fontFamily: 'Avenir'),
-          home: SplashPage(),
+          home: SplashPage(key),
           onGenerateRoute: generateRoute,
         ));
   }
