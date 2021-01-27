@@ -1,8 +1,5 @@
 import 'dart:async';
-
-import 'package:Scaleindia/Pages/Assessor/sop_task.dart';
 import 'package:Scaleindia/Pages/Assessor/tasks.dart';
-import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
