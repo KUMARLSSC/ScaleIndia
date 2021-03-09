@@ -1,16 +1,32 @@
 import 'package:Scaleindia/Models/route_names.dart';
+import 'package:Scaleindia/Services/authentication_service.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
 import '../../locator.dart';
 import '../../ViewModels/base_model.dart';
 
 class CandidatePageViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
-
+  final AuthenticationService _authenticationService =
+      locator<AuthenticationService>();
   void navigateToFirstPage() {
     _navigationService.navigateTo(FirstViewRoute);
   }
 
   void navigateToELearningPage() {
     _navigationService.navigateTo(ElearningViewRoute);
+  }
+
+  Future handleStartUpLogicRPL4() async {
+    var hasLoggedInUser = await _authenticationService.isUserLoggedInRPL4();
+
+    if (hasLoggedInUser) {
+      _navigationService.navigateTo(RPL4HomePageViewRoute);
+    } else {
+      _navigationService.navigateTo(EmployerViewRoute);
+    }
+  }
+
+  void navigateToRPL4LoginPage() {
+    _navigationService.navigateTo(RPL4PageViewRoute);
   }
 }

@@ -13,8 +13,8 @@ import 'Services/request_service.dart';
 import 'locator.dart';
 
 Future<void> main() async {
-  setupLocator();
   WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
   await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);

@@ -26,4 +26,16 @@ const String PostJobPageViewRoute = "ViewJobPageViewRoute";
 const String TrainerHomePageViewRoute = "TrainerHomePageViewRoute";
 const String AssessorHomePageViewRoute = "AssessorHomePageViewRoute";
 const String SOPViewRoute = "SOPViewRoute";
+const String VideoHomePageViewRoute = "VideoHomePageViewRoute";
+const String RPL4PageViewRoute = "RPL4PageViewRoute";
+const String RPL4HomePageViewRoute = "RPL4HomePageViewRoute";
+const String RPL4RegisterPageViewRoute = "RPL4RegisterPageViewRoute";
+const String RPL4OTPPageViewRoute = "RPL4OTPPageViewRoute ";
+const String ECASCreatePageViewRoute = "ECASCreatePageViewRoute ";
+const String CompanyCreatePageViewRoute = "CompanyCreatePageViewRoute ";
+const String ECASHomePageViewRoute = "ECASHomePageViewRoute";
+const String CompanyHomePageViewRoute = "CompanyHomePageViewRoute";
+const String SouringPageViewRoute = "SouringPageViewRoute ";
+const String CandidateSouringPageViewRoute = "CandidateSouringPageViewRoute";
+const String CompanySouringPageViewRoute = "CompanySouringPageViewRoute";
 //Generate the view here

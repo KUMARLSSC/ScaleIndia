@@ -46,6 +46,6 @@ class AssessorPageViewModel extends BaseModel {
   }
 
   void navigateToSop() {
-    _navigationService.navigateTo(SOPViewRoute);
+    _navigationService.navigateTo(VideoHomePageViewRoute);
   }
 }

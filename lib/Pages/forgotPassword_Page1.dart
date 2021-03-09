@@ -13,7 +13,6 @@ class ForgotPage1 extends StatelessWidget {
     return ViewModelBuilder<EmployeePageViewModel>.reactive(
       viewModelBuilder: () => EmployeePageViewModel(),
       builder: (context, model, child) => Scaffold(
-        resizeToAvoidBottomPadding: false,
         resizeToAvoidBottomInset: false,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

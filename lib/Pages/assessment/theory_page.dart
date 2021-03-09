@@ -107,12 +107,14 @@ class _TheoryPageState extends State<TheoryPage> {
                     "Are you sure you want to quit the Exam? All your progress will be lost."),
                 title: Text("Warning!"),
                 actions: <Widget>[
+                  // ignore: deprecated_member_use
                   FlatButton(
                     child: Text("Yes"),
                     onPressed: () {
                       Navigator.pop(context, true);
                     },
                   ),
+                  // ignore: deprecated_member_use
                   FlatButton(
                     child: Text("No"),
                     onPressed: () {

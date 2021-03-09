@@ -14,7 +14,6 @@ class AssessorLoginPage extends StatelessWidget {
     return ViewModelBuilder<AssessorPageViewModel>.reactive(
       viewModelBuilder: () => AssessorPageViewModel(),
       builder: (context, model, child) => Scaffold(
-        resizeToAvoidBottomPadding: false,
         resizeToAvoidBottomInset: false,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

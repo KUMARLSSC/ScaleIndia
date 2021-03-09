@@ -27,7 +27,6 @@ class _PracticalPageState extends State<PracticalPage> {
       onModelReady: (model) => model.getPractical(centerAssesor.asId),
       viewModelBuilder: () => PracticalPageViewModel(),
       builder: (context, model, child) => Scaffold(
-        resizeToAvoidBottomPadding: false,
         resizeToAvoidBottomInset: false,
         key: _key,
         appBar: PreferredSize(

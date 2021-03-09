@@ -7,16 +7,17 @@ import 'package:permission_handler/permission_handler.dart';
 
 import './video_call.dart';
 
-class HomePage extends StatefulWidget {
+class VideoHomePage extends StatefulWidget {
   final Practical practical;
   final Candidate candidate;
 
-  const HomePage({Key key, this.practical, this.candidate}) : super(key: key);
+  const VideoHomePage({Key key, this.practical, this.candidate})
+      : super(key: key);
   @override
   State<StatefulWidget> createState() => IndexState();
 }
 
-class IndexState extends State<HomePage> {
+class IndexState extends State<VideoHomePage> {
   final _channelController = TextEditingController(text: "Kumar");
   // ignore: unused_field
   bool _validateError = false;

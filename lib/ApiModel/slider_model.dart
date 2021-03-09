@@ -30,6 +30,7 @@ class SliderModel {
 }
 
 List<SliderModel> getSlides() {
+  // ignore: deprecated_member_use
   List<SliderModel> slides = new List<SliderModel>();
   SliderModel sliderModel = new SliderModel();
 

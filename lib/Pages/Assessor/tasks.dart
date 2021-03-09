@@ -1,8 +1,5 @@
 import 'dart:io';
 import 'dart:math';
-
-import 'package:Scaleindia/Pages/Assessor/task2.dart';
-import 'package:Scaleindia/Pages/Assessor/task3.dart';
 import 'package:Scaleindia/Pages/assessment/utils.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';
@@ -24,6 +21,7 @@ class Tasks extends StatefulWidget {
 }
 
 class _TasksState extends State<Tasks> {
+  // ignore: unused_field
   bool _isloading1 = false;
   double _progress1;
   bool _isloading2 = false;
@@ -392,6 +390,7 @@ class _TasksState extends State<Tasks> {
                       ),
                       SizedBox(height: 15.0),
                       Center(
+                          // ignore: deprecated_member_use
                           child: RaisedButton(
                         splashColor: Colors.blue,
                         elevation: 10.0,
@@ -410,7 +409,7 @@ class _TasksState extends State<Tasks> {
                     ],
                   ),
                 ),
-                task3
+                /*task3
                     ? Task3(
                         onPressed: () {
                           setState(() {
@@ -494,7 +493,7 @@ class _TasksState extends State<Tasks> {
                                         child: progress4(_isloading4, context))
                                   ],
                                 ),
-                              ))
+                              ))*/
               ],
             ));
   }
@@ -721,6 +720,7 @@ class _TasksState extends State<Tasks> {
 
   progress4(loading, BuildContext context) {
     if (loading) {
+      // ignore: deprecated_member_use
       return RaisedButton(
         splashColor: Colors.blue,
         elevation: 5.0,

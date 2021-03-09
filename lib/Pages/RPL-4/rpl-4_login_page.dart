@@ -1,20 +1,18 @@
-import 'package:Scaleindia/Pages/EmployeeDashBoard/employeePage_viewmodel.dart';
+import 'package:Scaleindia/Pages/RPL-4/rpl-4_viewmodel.dart';
+import 'package:Scaleindia/Pages/RPL-4/rpl_otp.dart';
+import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
-import 'package:Scaleindia/widgets/style_constants.dart';
-import 'package:Scaleindia/widgets/text_link.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class EmployeePage extends StatelessWidget {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+class RPL4LoginPage extends StatelessWidget {
+  final phoneNumberController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<EmployeePageViewModel>.reactive(
-      viewModelBuilder: () => EmployeePageViewModel(),
+    return ViewModelBuilder<RPL4ViewModel>.reactive(
+      viewModelBuilder: () => RPL4ViewModel(),
       builder: (context, model, child) => Scaffold(
-        resizeToAvoidBottomPadding: false,
         resizeToAvoidBottomInset: false,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +50,7 @@ class EmployeePage extends StatelessWidget {
                     children: <Widget>[
                       Center(
                           child: Text(
-                        "Employee Login",
+                        " RPL-4 Login",
                         style: kTitleStyle,
                       )),
                       SizedBox(
@@ -78,22 +76,9 @@ class EmployeePage extends StatelessWidget {
                                       bottom:
                                           BorderSide(color: Colors.grey[200]))),
                               child: InputField(
-                                placeholder: 'Email',
-                                controller: emailController,
-                                text1InputType: TextInputType.emailAddress,
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom:
-                                          BorderSide(color: Colors.grey[200]))),
-                              child: InputField(
-                                placeholder: 'Password',
-                                password: true,
-                                text1InputType: TextInputType.text,
-                                controller: passwordController,
+                                placeholder: '  Phone',
+                                controller: phoneNumberController,
+                                text1InputType: TextInputType.phone,
                               ),
                             ),
                           ],
@@ -102,23 +87,13 @@ class EmployeePage extends StatelessWidget {
                       SizedBox(
                         height: 15,
                       ),
-                      TextLink(
-                        'Forgot Password',
-                        onPressed: () {
-                          model.navigateToForgotPage1();
-                        },
-                      ),
-                      SizedBox(
-                        height: 25,
-                      ),
                       BusyButton(
                         title: 'Login',
-                        busy: model.busy,
                         color: Colors.green,
                         onPressed: () {
-                          model.login(
-                              email: emailController.text,
-                              password: passwordController.text);
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  OTPScreen(phoneNumberController.text)));
                         },
                       ),
                       SizedBox(
@@ -128,7 +103,7 @@ class EmployeePage extends StatelessWidget {
                         title: 'Register',
                         color: Colors.blue[300],
                         onPressed: () {
-                          model.navigateToEmployeeRegister();
+                          model.navigateToRPL4LRegisterPage();
                         },
                       ),
                       new Padding(padding: EdgeInsets.only(bottom: 20.0)),

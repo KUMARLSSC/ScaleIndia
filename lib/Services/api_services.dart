@@ -19,6 +19,7 @@ class Api {
   }
 
   Future<List<Candidate>> getCandidateLiST(int resId) async {
+    // ignore: deprecated_member_use
     var _candidate = List<Candidate>();
     // Get user posts for id
     var response = await client.get('$urlpoint/api/CandidateList/$resId');
@@ -35,6 +36,7 @@ class Api {
   }
 
   Future<List<Theory>> getTheory(int resId) async {
+    // ignore: deprecated_member_use
     var _theory = List<Theory>();
     // Get user posts for id
     var response = await client.get('$urlpoint/api/TheoryQuestion/$resId');
@@ -51,6 +53,7 @@ class Api {
   }
 
   Future<List<Practical>> getPractical(int resId) async {
+    // ignore: deprecated_member_use
     var _practical = List<Practical>();
     // Get user posts for id
     var response = await client.get('$urlpoint/api/PracticalQuestion/$resId');

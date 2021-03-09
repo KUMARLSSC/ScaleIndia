@@ -164,6 +164,7 @@ class _OptionsState extends State<Options> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
+              // ignore: deprecated_member_use
               child: RaisedButton(
                 splashColor: Colors.blue,
                 elevation: 5.0,
@@ -194,6 +195,7 @@ class _OptionsState extends State<Options> {
               width: 20,
             ),
             Container(
+              // ignore: deprecated_member_use
               child: RaisedButton(
                 splashColor: Colors.blue,
                 elevation: 5.0,
@@ -222,6 +224,7 @@ class _OptionsState extends State<Options> {
         ),
         Center(
           child: Container(
+            // ignore: deprecated_member_use
             child: RaisedButton(
               splashColor: Colors.blue,
               elevation: 5.0,
@@ -292,6 +295,7 @@ class _OptionsState extends State<Options> {
       });
       print(tempManipulatedData);
 
+      // ignore: deprecated_member_use
       var list = new List<PracticalResult>();
       tempManipulatedData.forEach((key, value) {
         if (value.prNos == "0") {
@@ -306,6 +310,7 @@ class _OptionsState extends State<Options> {
                 title: Text("Completed"),
                 content: Text("Theory exam was completed successfully"),
                 actions: <Widget>[
+                  // ignore: deprecated_member_use
                   FlatButton(
                     child: Text('Ok'),
                     onPressed: () {
@@ -360,6 +365,7 @@ class _OptionsState extends State<Options> {
       });
       print(tempManipulatedData);
 
+      // ignore: deprecated_member_use
       var list = new List<PracticalResult>();
       tempManipulatedData.forEach((key, value) {
         if (value.prNos == "0") {
@@ -374,6 +380,7 @@ class _OptionsState extends State<Options> {
                 title: Text("Completed"),
                 content: Text("Theory exam was completed successfully"),
                 actions: <Widget>[
+                  // ignore: deprecated_member_use
                   FlatButton(
                     child: Text('Ok'),
                     onPressed: () {
@@ -417,6 +424,7 @@ class _OptionsState extends State<Options> {
             ),
           ),
           actions: <Widget>[
+            // ignore: deprecated_member_use
             FlatButton(
               child: Text(
                 'OK',

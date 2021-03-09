@@ -53,8 +53,6 @@ class _FaceDeductionState extends State<FaceDeduction> {
 
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    _initializeCamera();
-    initPlayer();
   }
 
   void initPlayer() {
@@ -251,7 +249,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
   String _recog(imglib.Image img) {
     List input = imageToByteListFloat32(img, 112, 128, 128);
     input = input.reshape([1, 112, 112, 3]);
-    List output = List(1 * 192).reshape([1, 192]);
+    List output = List.filled(1 * 192, []).reshape([1, 192]);
     interpreter.run(input, output);
     output = output.reshape([192]);
     e1 = List.from(output);
@@ -323,7 +321,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text(
                 'OK',
                 style: TextStyle(
@@ -386,7 +384,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text(
                 'OK',
                 style: TextStyle(
@@ -449,7 +447,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text(
                 'OK',
                 style: TextStyle(

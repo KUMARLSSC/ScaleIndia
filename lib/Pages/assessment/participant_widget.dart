@@ -48,6 +48,7 @@ class ParticipantWidget extends StatelessWidget {
               width: 80,
               child: (candidate.clPracticalDone && candidate.clTheoryDeone) ==
                       (practical == theory)
+                  // ignore: deprecated_member_use
                   ? RaisedButton(
                       splashColor: Colors.blue,
                       elevation: 3.0,
@@ -66,6 +67,7 @@ class ParticipantWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     )
+                  // ignore: deprecated_member_use
                   : RaisedButton(
                       splashColor: Colors.blue,
                       elevation: 3.0,

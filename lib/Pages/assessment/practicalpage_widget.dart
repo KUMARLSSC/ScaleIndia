@@ -103,6 +103,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
           SizedBox(
             height: 15,
           ),
+          // ignore: deprecated_member_use
           RaisedButton.icon(
             onPressed: () {
               print('Button Clicked.');
@@ -171,6 +172,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
+                // ignore: deprecated_member_use
                 child: RaisedButton(
                   splashColor: Colors.blue,
                   elevation: 5.0,
@@ -207,6 +209,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
                 width: 10,
               ),
               Container(
+                // ignore: deprecated_member_use
                 child: RaisedButton(
                   splashColor: Colors.blue,
                   elevation: 5.0,
@@ -287,6 +290,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
       });
       print(tempManipulatedData);
 
+      // ignore: deprecated_member_use
       var list = new List<PracticalResult>();
       tempManipulatedData.forEach((key, value) {
         if (value.prNos == "0") {
@@ -301,6 +305,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
                 title: Text("Completed"),
                 content: Text("Practical exam was completed successfully"),
                 actions: <Widget>[
+                  // ignore: deprecated_member_use
                   FlatButton(
                     child: Text('Ok'),
                     onPressed: () {

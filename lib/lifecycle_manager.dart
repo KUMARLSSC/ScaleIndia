@@ -47,6 +47,7 @@ class _LifeCycleManagerState extends State<LifeCycleManager>
 
   // Get all services
   void _showScaffold(String message) {
+    // ignore: deprecated_member_use
     _scaffoldKey.currentState.showSnackBar(SnackBar(
       content: Text(message),
     ));
@@ -142,7 +143,7 @@ class _LifeCycleManagerState extends State<LifeCycleManager>
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -188,7 +189,7 @@ class _LifeCycleManagerState extends State<LifeCycleManager>
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text(
                 'OK',
                 style: TextStyle(

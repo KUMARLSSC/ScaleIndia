@@ -22,6 +22,7 @@ class SOP extends StatelessWidget {
             ),
           ),
           actions: <Widget>[
+            // ignore: deprecated_member_use
             FlatButton(
               child: Text('OK'),
               onPressed: () {

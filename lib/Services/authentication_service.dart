@@ -1,5 +1,6 @@
 import 'package:Scaleindia/ApiModel/employee_api.dart';
 import 'package:Scaleindia/ApiModel/employer_api.dart';
+import 'package:Scaleindia/ApiModel/rpl-4_api.dart';
 import 'package:Scaleindia/Services/firestore_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -13,6 +14,9 @@ class AuthenticationService {
   Employee get currentEmployee => _currentEmployee;
   Employer _currentEmployer;
   Employer get currentEmployer => _currentEmployer;
+  Rpl4 get currentRpl4 => _currentRpl4;
+  Rpl4 _currentRpl4;
+  String verificationId;
 
   Future loginWithEmailEmployee({
     @required String employeeEmailAddress,
@@ -178,7 +182,59 @@ class AuthenticationService {
     try {
       await _firebaseAuth.signOut();
     } catch (e) {
-      print(e); 
+      print(e);
+    }
+  }
+
+  Future<void> verifyPhone({
+    @required String phoneNo,
+    @required String smsCode,
+  }) async {
+    try {
+      final PhoneCodeAutoRetrievalTimeout autoRetrievalTimeout =
+          (String verId) {
+        this.verificationId = verId;
+      };
+      final PhoneCodeSent smsCodeSent = (String verId, [int forceCodeResend]) {
+        this.verificationId = verId;
+      };
+      final PhoneVerificationCompleted verificationCompleted =
+          (AuthCredential credential) {
+        print('Verified');
+      };
+      final PhoneVerificationFailed phoneVerificationFailed =
+          (FirebaseAuthException authException) {
+        print('${authException.message}');
+      };
+      await _firebaseAuth.verifyPhoneNumber(
+          phoneNumber: '+91$phoneNo',
+          timeout: const Duration(seconds: 30),
+          verificationCompleted: verificationCompleted,
+          verificationFailed: phoneVerificationFailed,
+          codeSent: smsCodeSent,
+          codeAutoRetrievalTimeout: autoRetrievalTimeout);
+      final AuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: verificationId, smsCode: smsCode);
+      UserCredential _authResult =
+          await _firebaseAuth.signInWithCredential(credential);
+      if (_authResult.additionalUserInfo.isNewUser)
+        _currentRpl4 = Rpl4(id: _authResult.user.uid, phoneNumber: phoneNo);
+      await _populateCurrentUserRpl4(_authResult.user);
+      return _authResult.user != null;
+    } catch (e) {
+      return e.message;
+    }
+  }
+
+  Future<bool> isUserLoggedInRPL4() async {
+    var user = _firebaseAuth.currentUser;
+    await _populateCurrentUserRpl4(user);
+    return user != null;
+  }
+
+  Future _populateCurrentUserRpl4(User user) async {
+    if (user != null) {
+      _currentRpl4 = await _firestoreService.getRPL4(user.uid);
     }
   }
 }

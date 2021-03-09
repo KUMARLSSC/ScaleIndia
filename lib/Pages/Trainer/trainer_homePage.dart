@@ -289,6 +289,7 @@ class ChoiceCard extends StatelessWidget {
                 Container(
                     height: 30,
                     width: 150,
+                    // ignore: deprecated_member_use
                     child: RaisedButton(
                       splashColor: Colors.blue,
                       elevation: 3.0,

@@ -1225,7 +1225,6 @@ class _EmployerHomePageState extends State<EmployerHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: false,
       body: Container(
           height: MediaQuery.of(context).size.height,

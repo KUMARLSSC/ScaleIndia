@@ -43,7 +43,7 @@ class EmployerPageViewModel extends BaseModel {
   }
 
   Future logOut() async {
-   await _authenticationService.signOut();
+    await _authenticationService.signOut();
     _navigationService.navigateTo(HomeViewRoute);
   }
 
@@ -51,8 +51,24 @@ class EmployerPageViewModel extends BaseModel {
     _navigationService.navigateTo(EmployerRegisterViewRoute);
   }
 
+  void navigateToSourcingView() async {
+    _navigationService.navigateTo(SouringPageViewRoute);
+  }
+
   void navigateToForgotPage2() {
     _navigationService.navigateTo(ForgotPage2ViewRoute);
+  }
+
+  Future navigateToCsCreateView() async {
+    await _navigationService.navigateTo(CompanyCreatePageViewRoute);
+  }
+
+  void navigateToCompanySourcingView() async {
+    _navigationService.navigateTo(CompanySouringPageViewRoute);
+  }
+
+  Future navigateToCsHomeView() async {
+    await _navigationService.navigateTo(CompanyHomePageViewRoute);
   }
 
   Future<void> forgot({

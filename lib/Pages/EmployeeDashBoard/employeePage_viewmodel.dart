@@ -53,6 +53,18 @@ class EmployeePageViewModel extends BaseModel {
         description: 'A password reset link has beeen sent to' + email);
   }
 
+  Future navigateToECASCreateView() async {
+    await _navigationService.navigateTo(ECASCreatePageViewRoute);
+  }
+
+  Future navigateToECASHomeView() async {
+    await _navigationService.navigateTo(ECASHomePageViewRoute);
+  }
+
+  void navigateToCandidateSourcingView() async {
+    _navigationService.navigateTo(CandidateSouringPageViewRoute);
+  }
+
   Future logOut() async {
     await _authenticationService.signOut();
     _navigationService.navigateTo(HomeViewRoute);

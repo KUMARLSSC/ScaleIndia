@@ -27,7 +27,7 @@ class LanguageWidget1 extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => HomePage(
+                                builder: (context) => VideoHomePage(
                                       practical: practical,
                                       candidate: candidate,
                                     )));

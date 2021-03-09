@@ -69,11 +69,6 @@ class CandidatePage extends StatelessWidget {
                             model.navigateToFirstPage();
                           },
                         ),
-                        Center(
-                            child: Text(
-                          "&",
-                          style: kTitleStyle,
-                        )),
                         SizedBox(
                           height: 5,
                         ),
@@ -83,6 +78,17 @@ class CandidatePage extends StatelessWidget {
                           color: Colors.green,
                           onPressed: () {
                             model.navigateToELearningPage();
+                          },
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        BusyButton(
+                          title: 'RPL-4',
+                          busy: model.busy,
+                          color: Colors.green,
+                          onPressed: () {
+                            model.navigateToRPL4LoginPage();
                           },
                         ),
                         new Padding(padding: EdgeInsets.only(bottom: 20.0)),

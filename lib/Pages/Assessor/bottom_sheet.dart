@@ -16,6 +16,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // ignore: deprecated_member_use
         RaisedButton(
           splashColor: Colors.blue,
           elevation: 5.0,

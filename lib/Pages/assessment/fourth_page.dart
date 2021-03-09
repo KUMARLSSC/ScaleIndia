@@ -203,7 +203,10 @@ class _FourthPageState extends State<FourthPage> {
   String _recog(imglib.Image img) {
     List input = imageToByteListFloat32(img, 112, 128, 128);
     input = input.reshape([1, 112, 112, 3]);
-    List output = List(1 * 192).reshape([1, 192]);
+    // ignore: deprecated_member_use
+    List output = List(
+      1 * 192,
+    ).reshape([1, 192]);
     interpreter.run(input, output);
     output = output.reshape([192]);
     e1 = List.from(output);
@@ -236,6 +239,7 @@ class _FourthPageState extends State<FourthPage> {
               .ref()
               .child(imageLocation);
       final UploadTask uploadTask = reference.putFile(image);
+
       uploadTask.snapshotEvents.listen((event) {
         setState(() {
           _isloading = true;
@@ -375,6 +379,7 @@ class _FourthPageState extends State<FourthPage> {
     onCaptureButtonPressed2(context);
   }
 
+  // ignore: unused_element
   void _toggleCameraDirection() async {
     if (_direction == CameraLensDirection.back) {
       _direction = CameraLensDirection.front;
@@ -461,6 +466,7 @@ class _FourthPageState extends State<FourthPage> {
   progress(loading, BuildContext context) {
     if (loading) {
       return Center(
+        // ignore: deprecated_member_use
         child: RaisedButton(
           splashColor: Colors.blue,
           elevation: 5.0,
@@ -505,6 +511,7 @@ class _FourthPageState extends State<FourthPage> {
           Center(
             child: Container(
               child: widget.candidate.clTheoryDeone == theory
+                  // ignore: deprecated_member_use
                   ? RaisedButton(
                       splashColor: Colors.blue,
                       elevation: 3.0,
@@ -521,6 +528,7 @@ class _FourthPageState extends State<FourthPage> {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     )
+                  // ignore: deprecated_member_use
                   : RaisedButton(
                       splashColor: Colors.blue,
                       elevation: 5.0,
@@ -553,6 +561,7 @@ class _FourthPageState extends State<FourthPage> {
           Center(
             child: Container(
               child: widget.candidate.clPracticalDone == practical
+                  // ignore: deprecated_member_use
                   ? RaisedButton(
                       splashColor: Colors.blue,
                       elevation: 3.0,
@@ -569,6 +578,7 @@ class _FourthPageState extends State<FourthPage> {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     )
+                  // ignore: deprecated_member_use
                   : RaisedButton(
                       splashColor: Colors.blue,
                       elevation: 5.0,
@@ -717,6 +727,7 @@ class _FourthPageState extends State<FourthPage> {
                         height: 18,
                       ),
                       progress2(_isloading2, context),
+                      // ignore: deprecated_member_use
                       RaisedButton(
                         splashColor: Colors.blue,
                         elevation: 5.0,

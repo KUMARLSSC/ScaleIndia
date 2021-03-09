@@ -76,6 +76,7 @@ class SecondPage extends StatelessWidget {
                         child: Container(
                           height: 50,
                           width: 140,
+                          // ignore: deprecated_member_use
                           child: RaisedButton(
                             splashColor: Colors.blue,
                             elevation: 5.0,

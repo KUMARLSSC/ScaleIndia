@@ -1,8 +1,8 @@
 import 'dart:async';
-
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/practical_api.dart';
-import 'package:Scaleindia/Pages/assessment/practical_page.dart';
+import 'package:Scaleindia/Pages/Assessor/sop_page.dart';
+import 'package:Scaleindia/video_stream/activate_widget.dart';
 import 'package:Scaleindia/video_stream/settings.dart';
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
@@ -64,6 +64,7 @@ class _VideoCallState extends State<VideoCall> {
 
     await _initAgoraRtcEngine();
     _addAgoraEventHandlers();
+    // ignore: deprecated_member_use
     await _engine.enableWebSdkInteroperability(true);
     VideoEncoderConfiguration configuration = VideoEncoderConfiguration();
     configuration.dimensions = VideoDimensions(1920, 1080);
@@ -93,11 +94,11 @@ class _VideoCallState extends State<VideoCall> {
       setState(() {
         _infoStrings.add('onLeaveChannel');
         _users.clear();
+        Navigator.push(context,
+            new MaterialPageRoute(builder: (context) => new ActivateWidget()));
       });
     }, userJoined: (uid, elapsed) {
       setState(() {
-        final info = 'userJoined: $uid';
-        _infoStrings.add(info);
         _users.add(uid);
       });
     }, userOffline: (uid, elapsed) {
@@ -105,6 +106,8 @@ class _VideoCallState extends State<VideoCall> {
         final info = 'userOffline: $uid';
         _infoStrings.add(info);
         _users.remove(uid);
+        Navigator.push(
+            context, new MaterialPageRoute(builder: (context) => new SOP()));
       });
     }, firstRemoteVideoFrame: (uid, width, height, elapsed) {
       setState(() {
@@ -153,7 +156,13 @@ class _VideoCallState extends State<VideoCall> {
           children: <Widget>[_videoView(views[0])],
         ));
       case 2:
-        return Container(child: _expandedVideoRow([views[1]]));
+        return Container(
+            child: Column(
+          children: <Widget>[
+            _expandedVideoRow([views[0]]),
+            _expandedVideoRow([views[1]])
+          ],
+        ));
       case 3:
         return Container(
             child: Column(
@@ -177,14 +186,22 @@ class _VideoCallState extends State<VideoCall> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        child: PracticalPage(
-          practical: widget.practical,
-          candidate: widget.candidate,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Scale Admin'),
+      ),
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Stack(
+          children: <Widget>[
+            _viewRows(),
+          ],
         ),
-        onWillPop: _onWillPop);
+      ),
+    );
   }
 
+  // ignore: unused_element
   Future<bool> _onWillPop() async {
     return (await showDialog<bool>(
             context: context,
@@ -195,12 +212,14 @@ class _VideoCallState extends State<VideoCall> {
                     "Are you sure you want to quit the Exam? All your progress will be lost."),
                 title: Text("Warning!"),
                 actions: <Widget>[
+                  // ignore: deprecated_member_use
                   FlatButton(
                     child: Text("Yes"),
                     onPressed: () {
                       Navigator.pop(context, true);
                     },
                   ),
+                  // ignore: deprecated_member_use
                   FlatButton(
                     child: Text("No"),
                     onPressed: () {

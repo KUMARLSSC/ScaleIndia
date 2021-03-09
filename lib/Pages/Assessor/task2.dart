@@ -582,6 +582,7 @@ class _Task2State extends State<Task2> {
 
   progress4(loading, BuildContext context) {
     if (loading) {
+      // ignore: deprecated_member_use
       return RaisedButton(
         splashColor: Colors.blue,
         elevation: 5.0,

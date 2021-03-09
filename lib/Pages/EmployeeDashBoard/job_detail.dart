@@ -158,6 +158,7 @@ class JobDetail extends StatelessWidget {
               Expanded(
                 child: SizedBox(
                   height: 50.0,
+                  // ignore: deprecated_member_use
                   child: RaisedButton(
                     onPressed: () {},
                     color: kBlack,

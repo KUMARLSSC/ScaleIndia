@@ -14,7 +14,6 @@ class TrainerLoginPage extends StatelessWidget {
     return ViewModelBuilder<TrainerPageViewModel>.reactive(
       viewModelBuilder: () => TrainerPageViewModel(),
       builder: (context, model, child) => Scaffold(
-        resizeToAvoidBottomPadding: false,
         resizeToAvoidBottomInset: false,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

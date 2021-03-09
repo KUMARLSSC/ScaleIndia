@@ -13,8 +13,8 @@ class AssessorWidget extends StatefulWidget {
 }
 
 class _AssessorWidgetState extends State<AssessorWidget> {
-  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
-      new GlobalKey<RefreshIndicatorState>();
+  /* final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      new GlobalKey<RefreshIndicatorState>();*/
   String lati = "";
   String longi = "";
   String currentlocation = "";
@@ -111,6 +111,7 @@ class _AssessorWidgetState extends State<AssessorWidget> {
             ),
             SizedBox(height: 15.0),
             Center(
+                // ignore: deprecated_member_use
                 child: RaisedButton(
               splashColor: Colors.blue,
               elevation: 10.0,
@@ -134,11 +135,11 @@ class _AssessorWidgetState extends State<AssessorWidget> {
     );
   }
 
-  Future<Null> _refresh() async {
+  /* Future<Null> _refresh() async {
     //Holding pull to refresh loader widget for 2 sec.
     //You can fetch data from server.
     await new Future.delayed(const Duration(seconds: 2));
     setState(() => getCurrentLocation());
     return null;
-  }
+  }*/
 }

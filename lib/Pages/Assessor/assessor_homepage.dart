@@ -1,5 +1,4 @@
 import 'package:Scaleindia/Pages/Assessor/assessor_widget.dart';
-import 'package:Scaleindia/Pages/Assessor/bottom_sheet.dart';
 import 'package:Scaleindia/Pages/Assessor/assessor_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +64,7 @@ class AssessorHomePage extends StatelessWidget {
     );
   }
 
-  Future _asyncSimpleDialog(BuildContext context) async {
+  /* Future _asyncSimpleDialog(BuildContext context) async {
     return await showDialog(
         context: context,
         barrierDismissible: true,
@@ -76,5 +75,5 @@ class AssessorHomePage extends StatelessWidget {
                 BottomSheetWidget(),
               ]);
         });
-  }
+  }*/
 }

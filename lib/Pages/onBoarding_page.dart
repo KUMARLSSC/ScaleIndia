@@ -10,6 +10,7 @@ class OnBoardingPage extends StatefulWidget {
 }
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
+  // ignore: deprecated_member_use
   List<SliderModel> mySlides = new List<SliderModel>();
   int slideIndex = 0;
   PageController controller;
@@ -95,6 +96,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+                              // ignore: deprecated_member_use
                               FlatButton(
                                 onPressed: () {
                                   controller.animateToPage(5,
@@ -119,6 +121,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                   ],
                                 ),
                               ),
+                              // ignore: deprecated_member_use
                               FlatButton(
                                 onPressed: () {
                                   controller.animateToPage(slideIndex + 1,
@@ -142,7 +145,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           },
                           child: Container(
                             height: Platform.isIOS ? 70 : 60,
-                            color:Colors.blue,
+                            color: Colors.blue,
                             alignment: Alignment.center,
                             child: Text(
                               "GET STARTED NOW",
@@ -186,7 +189,8 @@ class SlideTile extends StatelessWidget {
           Text(
             desc,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 14,color: Colors.black, fontWeight: FontWeight.w500),
+            style: TextStyle(
+                fontSize: 14, color: Colors.black, fontWeight: FontWeight.w500),
           ),
         ],
       ),
