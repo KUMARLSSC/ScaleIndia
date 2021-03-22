@@ -3,8 +3,8 @@ import 'dart:io';
 import 'dart:math';
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
-import 'package:Scaleindia/Pages/assessment/language_page1.dart';
-import 'package:Scaleindia/Pages/assessment/langugae_page.dart';
+import 'package:Scaleindia/Pages/assessment/practical_language_page.dart';
+import 'package:Scaleindia/Pages/assessment/theory_langugae_page.dart';
 import 'package:Scaleindia/Pages/assessment/fifthpage_viewmodel.dart';
 import 'package:Scaleindia/Pages/assessment/utils.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
@@ -19,6 +19,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:stacked/stacked.dart';
@@ -351,7 +352,7 @@ class _FourthPageState extends State<FourthPage> {
     onCaptureButtonPressed(context);
   }
 
-  Future<void> onCaptureButtonPressed2(BuildContext context) async {
+  /* Future<void> onCaptureButtonPressed2(BuildContext context) async {
     //on camera button press
     try {
       if (_camera?.value?.isStreamingImages == true && mounted) {
@@ -371,13 +372,13 @@ class _FourthPageState extends State<FourthPage> {
     } catch (e) {
       print(e);
     }
-  }
+  }*/
 
-  void _handle2(String text, BuildContext context) async {
+  /* void _handle2(String text, BuildContext context) async {
     data[text] = e1;
     jsonFile.writeAsStringSync(json.encode(data));
     onCaptureButtonPressed2(context);
-  }
+  }*/
 
   // ignore: unused_element
   void _toggleCameraDirection() async {
@@ -424,7 +425,7 @@ class _FourthPageState extends State<FourthPage> {
     );
   }
 
-  Widget _buildImage2(BuildContext context) {
+  /*Widget _buildImage2(BuildContext context) {
     if (_camera == null || !_camera.value.isInitialized) {
       return Center(
         child: CircularProgressIndicator(),
@@ -447,7 +448,7 @@ class _FourthPageState extends State<FourthPage> {
         heroTag: null,
       ),
     );
-  }
+  }*/
 
   Future<void> opencamera(BuildContext context) async {
     Navigator.push(
@@ -457,10 +458,9 @@ class _FourthPageState extends State<FourthPage> {
   }
 
   Future<void> opencamera2(BuildContext context) async {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => _buildImage2(context)),
-    );
+    final pickedFile = await ImagePicker().getImage(source: ImageSource.camera);
+    File cropped = await ImageCropper.cropImage(sourcePath: pickedFile.path);
+    uploadImage2(cropped);
   }
 
   progress(loading, BuildContext context) {

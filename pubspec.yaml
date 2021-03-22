@@ -69,6 +69,7 @@ dependencies:
   progress_dialog:
   flutter_full_pdf_viewer: ^1.0.6
   cached_network_image: ^2.5.0
+  video_compress: ^2.1.1
   
 
 dev_dependencies:

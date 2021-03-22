@@ -32,7 +32,7 @@ import 'package:Scaleindia/Pages/forgotPassword_Page1.dart';
 import 'package:Scaleindia/Pages/forgotPassword_Page2.dart';
 import 'package:Scaleindia/Pages/assessment/third_page.dart';
 import 'package:Scaleindia/Pages/home_page.dart';
-import 'package:Scaleindia/Pages/assessment/langugae_page.dart';
+import 'package:Scaleindia/Pages/assessment/theory_langugae_page.dart';
 import 'package:Scaleindia/Pages/onBoarding_page.dart';
 import 'package:Scaleindia/Pages/assessment/practical_page.dart';
 import 'package:Scaleindia/Pages/assessment/summary_page.dart';

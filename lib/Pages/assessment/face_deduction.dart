@@ -17,7 +17,6 @@ import 'utils.dart';
 import 'package:image/image.dart' as imglib;
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 import 'package:quiver/collection.dart';
-import 'package:flutter/services.dart';
 
 class FaceDeduction extends StatefulWidget {
   final Theory theory;
@@ -50,9 +49,6 @@ class _FaceDeductionState extends State<FaceDeduction> {
   @override
   void initState() {
     super.initState();
-
-    SystemChrome.setPreferredOrientations(
-        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   }
 
   void initPlayer() {
@@ -175,21 +171,21 @@ class _FaceDeductionState extends State<FaceDeduction> {
 
   @override
   Widget build(BuildContext context) {
-    if (notReccount == 10) {
+    if (notReccount == 20) {
       Timer.run(() => [
             _warningAleart1(),
             warning1(),
             _camera.stopImageStream(),
           ]);
     }
-    if (notReccount == 20) {
+    if (notReccount == 40) {
       Timer.run(() => [
             _warningAleart2(),
             warning2(),
             _camera.stopImageStream(),
           ]);
     }
-    if (notReccount == 30) {
+    if (notReccount == 60) {
       Timer.run(() => [
             _warningAleart3(),
             finalwarning(),
@@ -249,7 +245,10 @@ class _FaceDeductionState extends State<FaceDeduction> {
   String _recog(imglib.Image img) {
     List input = imageToByteListFloat32(img, 112, 128, 128);
     input = input.reshape([1, 112, 112, 3]);
-    List output = List.filled(1 * 192, []).reshape([1, 192]);
+    // ignore: deprecated_member_use
+    List output = List(
+      1 * 192,
+    ).reshape([1, 192]);
     interpreter.run(input, output);
     output = output.reshape([192]);
     e1 = List.from(output);

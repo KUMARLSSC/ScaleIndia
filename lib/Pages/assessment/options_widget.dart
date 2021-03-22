@@ -4,9 +4,12 @@ import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
+import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/assessment/summary_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
+import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
+import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:camera/camera.dart';
@@ -35,6 +38,7 @@ class Options extends StatefulWidget {
 }
 
 class _OptionsState extends State<Options> {
+  final NavigationService _navigationService = locator<NavigationService>();
   final Map<int, dynamic> _answers = {};
   final Api _api = locator<Api>();
   AudioPlayer advancedPlayer;
@@ -55,13 +59,14 @@ class _OptionsState extends State<Options> {
 
   @override
   Widget build(BuildContext context) {
-    if (this.widget.notReccount == 40) {
+    if (this.widget.notReccount == 80) {
       Timer.run(() => [
             _disqualified(),
             initPlayer(),
             this.widget.cameraController.stopImageStream(),
           ]);
     }
+
     this.widget.theory.retainWhere((element) =>
         element.tqLanguage.contains(this.widget.theory1.tqLanguage));
     return Column(
@@ -303,22 +308,25 @@ class _OptionsState extends State<Options> {
         }
         list.add(value);
       });
-      await _api.updateTheory(list).whenComplete(() => showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (BuildContext context) => AlertDialog(
-                title: Text("Completed"),
-                content: Text("Theory exam was completed successfully"),
-                actions: <Widget>[
-                  // ignore: deprecated_member_use
-                  FlatButton(
-                    child: Text('Ok'),
-                    onPressed: () {
-                      exit(0);
-                    },
-                  )
-                ],
-              )));
+      await _loading()
+          .then((value) => _api.updateTheory(list))
+          .whenComplete(() => showDialog(
+              context: context,
+              barrierDismissible: true,
+              builder: (BuildContext context) => AlertDialog(
+                    title: Text("Completed"),
+                    content: Text("Theory exam was completed successfully"),
+                    actions: <Widget>[
+                      // ignore: deprecated_member_use
+                      FlatButton(
+                        child: Text('Ok'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          _navigationService.navigateTo(ThirdViewRoute);
+                        },
+                      )
+                    ],
+                  )));
     }
   }
 
@@ -440,6 +448,39 @@ class _OptionsState extends State<Options> {
             ),
           ],
         );
+      },
+    );
+  }
+
+  Future<void> _loading() async {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: true, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+            actions: [
+              // ignore: deprecated_member_use
+              FlatButton(
+                child: Text("OK"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+            title: Text(
+              'Please wait loading',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.bold),
+            ),
+            backgroundColor: Colors.white,
+            content: Center(
+                child: ColorLoader3(
+              radius: 20.0,
+              dotRadius: 10.0,
+            )));
       },
     );
   }

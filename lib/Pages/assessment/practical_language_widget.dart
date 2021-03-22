@@ -1,7 +1,7 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/practical_api.dart';
+import 'package:Scaleindia/Pages/assessment/practical_page.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
-import 'package:Scaleindia/video_stream/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../widgets/busy_button.dart';
@@ -27,7 +27,7 @@ class LanguageWidget1 extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => VideoHomePage(
+                                builder: (context) => PracticalPage(
                                       practical: practical,
                                       candidate: candidate,
                                     )));

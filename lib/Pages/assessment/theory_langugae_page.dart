@@ -5,7 +5,7 @@ import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
-import 'package:Scaleindia/Pages/assessment/language_widget.dart';
+import 'package:Scaleindia/Pages/assessment/theory_language_widget.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:audioplayers/audio_cache.dart';
@@ -67,30 +67,62 @@ class LanguagePage extends StatelessWidget {
     return ViewModelBuilder<LanguagePageViewModel>.reactive(
         onModelReady: (model) => model.getTheory(centerAssesor.asId),
         viewModelBuilder: () => LanguagePageViewModel(),
-        builder: (context, model, child) => Scaffold(
-            appBar: PreferredSize(
-                child: header(context, isAppTitle: true, isIcon: false),
-                preferredSize: Size.fromHeight(50.0)),
-            body: model.busy == false
-                ? Center(
-                    child: ColorLoader3(
-                      radius: 20.0,
-                      dotRadius: 10.0,
-                    ),
-                  )
-                : Column(
-                    children: [
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Center(
-                          child: Text(
-                        "Select an Language to continue:",
-                        style: kTitleStyle,
+        builder: (context, model, child) => WillPopScope(
+            child: Scaffold(
+                appBar: PreferredSize(
+                    child: header(context, isAppTitle: true, isIcon: false),
+                    preferredSize: Size.fromHeight(50.0)),
+                body: model.busy == false
+                    ? Center(
+                        child: ColorLoader3(
+                          radius: 20.0,
+                          dotRadius: 10.0,
+                        ),
+                      )
+                    : Column(
+                        children: [
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Center(
+                              child: Text(
+                            "Select an Language to continue:",
+                            style: kTitleStyle,
+                          )),
+                          _getPostUi(model.posts)
+                        ],
                       )),
-                      _getPostUi(model.posts)
-                    ],
-                  )));
+            onWillPop: () => _onWillPop(context)));
+  }
+
+  Future<bool> _onWillPop(BuildContext context) async {
+    return (await showDialog<bool>(
+            context: context,
+            barrierDismissible: false,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                content: Text(
+                    "Are you sure you want to quit the Exam? All your progress will be lost."),
+                title: Text("Warning!"),
+                actions: <Widget>[
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    child: Text("Yes"),
+                    onPressed: () {
+                      Navigator.pop(context, true);
+                    },
+                  ),
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    child: Text("No"),
+                    onPressed: () {
+                      Navigator.pop(context, false);
+                    },
+                  ),
+                ],
+              );
+            })) ??
+        false;
   }
 
   Widget _getPostUi(
@@ -98,7 +130,7 @@ class LanguagePage extends StatelessWidget {
   ) =>
       ListView.builder(
           shrinkWrap: true,
-          itemCount: 1,
+          itemCount: posts.length,
           itemBuilder: (
             BuildContext context,
             int index,
@@ -106,40 +138,16 @@ class LanguagePage extends StatelessWidget {
             final String english = "English";
             final String tamil = "Tamil";
             final String bangla = "Bangla";
-            return Column(
-              children: [
-                posts.first.tqLanguage == english
-                    ? LanguageWidget(
-                        candidate: candidate,
-                        theory: posts.first,
-                        centerAssesor: centerAssesor,
-                      )
-                    : Container(),
-                posts[index].tqLanguage == tamil
-                    ? Container()
-                    : LanguageWidget(
-                        candidate: candidate,
-                        centerAssesor: centerAssesor,
-                        theory: posts.firstWhere(
-                            (element) => element.tqLanguage.contains("Tamil")),
-                      ),
-                posts.last.tqLanguage == tamil
-                    ? Container()
-                    : LanguageWidget(
-                        candidate: candidate,
-                        centerAssesor: centerAssesor,
-                        theory: posts.firstWhere(
-                            (element) => element.tqLanguage.contains("Hindi")),
-                      ),
-                posts.last.tqLanguage != bangla
-                    ? Container()
-                    : LanguageWidget(
-                        centerAssesor: centerAssesor,
-                        candidate: candidate,
-                        theory: posts.firstWhere(
-                            (element) => element.tqLanguage.contains("Bangla")),
-                      )
-              ],
+            final Map<String, Theory> profileMap = new Map();
+            posts.forEach((item) {
+              profileMap[item.tqLanguage] = item;
+            });
+            posts = profileMap.values.toList();
+            final r = posts[index];
+            return LanguageWidget(
+              candidate: candidate,
+              theory: r,
+              centerAssesor: centerAssesor,
             );
           });
 }

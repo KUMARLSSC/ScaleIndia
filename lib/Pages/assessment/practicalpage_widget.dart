@@ -1,10 +1,15 @@
+import 'dart:io';
+import 'dart:math';
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
 import 'package:Scaleindia/Pages/assessment/third_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 import 'package:Scaleindia/ApiModel/practical_api.dart';
@@ -12,6 +17,7 @@ import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/Pages/assessment/practicalpage_viewmodel.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
+import 'package:video_compress/video_compress.dart';
 import '../../locator.dart';
 
 class PracticalPageWidget extends StatefulWidget {
@@ -30,9 +36,12 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
   final TextEditingController textController = TextEditingController();
   final Map<int, dynamic> _answers = {};
   final Api _api = locator<Api>();
+  bool _isloading = false;
+  double _progress;
   setSelectedUser(int val) {
     setState(() {
       _currentIndex = val;
+      _currentIndex = _isloading as int;
     });
   }
 
@@ -104,24 +113,27 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             height: 15,
           ),
           // ignore: deprecated_member_use
-          RaisedButton.icon(
-            onPressed: () {
-              print('Button Clicked.');
-            },
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10.0))),
-            label: Text(
-              'Observation',
-              style: TextStyle(color: Colors.white),
-            ),
-            icon: Icon(
-              Icons.videocam,
-              color: Colors.white,
-            ),
-            textColor: Colors.white,
-            splashColor: Colors.blue,
-            color: Colors.black,
-          ),
+          _isloading == true
+              ? progress(_isloading)
+              // ignore: deprecated_member_use
+              : RaisedButton.icon(
+                  onPressed: () {
+                    // opencamera();
+                  },
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                  label: Text(
+                    'Observation',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  icon: Icon(
+                    Icons.videocam,
+                    color: Colors.white,
+                  ),
+                  textColor: Colors.white,
+                  splashColor: Colors.blue,
+                  color: Colors.green,
+                ),
           SizedBox(
             height: 15,
           ),
@@ -233,6 +245,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
               ),
             ],
           ),
+          new Padding(padding: EdgeInsets.only(bottom: 300.0)),
         ],
       ),
     );
@@ -244,7 +257,6 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
         title: 'Failed',
         description: "You must enter a mark to continue",
       );
-      return;
     }
     if (int.parse(mark) > widget.practical[_currentIndex].pqMarks) {
       _dialogService.showDialog(
@@ -253,6 +265,13 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
       );
       return;
     }
+    /* if (_isloading == false) {
+      _dialogService.showDialog(
+        title: 'Failed ',
+        description: "Please upload a video to continue",
+      );
+      return;
+    }*/
     if (_currentIndex < (widget.practical.length - 1)) {
       setState(() {
         _currentIndex++;
@@ -327,4 +346,114 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
       });
     }
   }
+
+  Future<void> uploadImage(File video) async {
+    try {
+      int randomNumber = Random().nextInt(10000000);
+      String videoLocation = 'practical/video$randomNumber.jpg';
+      // ignore: deprecated_member_use
+      final Reference reference =
+          FirebaseStorage.instanceFor(bucket: "gs://scaleindia.appspot.com")
+              .ref()
+              .child(videoLocation);
+      final UploadTask uploadTask = reference.putFile(video);
+
+      uploadTask.snapshotEvents.listen((event) {
+        setState(() {
+          _isloading = true;
+          _progress = event.bytesTransferred / event.totalBytes.toDouble();
+          print(_progress);
+        });
+      });
+      TaskSnapshot taskSnapshot = await uploadTask;
+      _addImageToDatabase(videoLocation);
+      String url = await taskSnapshot.ref.getDownloadURL();
+      print('url$url');
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> _addImageToDatabase(String text) async {
+    try {
+      // Get image URL from firebase
+      final ref = FirebaseStorage.instance.ref().child(text);
+      var videoString = await ref.getDownloadURL();
+
+      // Add location and url to database
+      await FirebaseFirestore.instance.collection('PracticalVideo').doc().set({
+        'url': videoString,
+        'location': text,
+        'candidateID': widget.candidate.clEnrollmentNo,
+        'candidateName': widget.candidate.clName,
+      });
+    } catch (e) {
+      print(e.message);
+      /*showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text(e.message),
+            );
+          });*/
+    }
+  }
+
+  void opencamera() async {
+    final pickedFile = await ImagePicker().getVideo(source: ImageSource.camera);
+    await VideoCompress.setLogLevel(0);
+    MediaInfo compress = await VideoCompress.compressVideo(
+      pickedFile.path,
+      quality: VideoQuality.MediumQuality,
+      deleteOrigin: false,
+      includeAudio: true,
+    );
+    uploadImage(compress.file);
+  }
+
+  progress(loading) {
+    if (loading) {
+      // ignore: deprecated_member_use
+      return RaisedButton.icon(
+        onPressed: () {
+          print('Button Clicked.');
+        },
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        label: Text(
+          'Uploaded',
+          style: TextStyle(color: Colors.white),
+        ),
+        icon: Icon(
+          Icons.videocam,
+          color: Colors.white,
+        ),
+        textColor: Colors.white,
+        splashColor: Colors.blue,
+        color: Colors.grey,
+      );
+    } else {
+      return Text('');
+    }
+  }
+}
+
+class PracticalVide0Storage {
+  final String location;
+  final String url;
+  final String candidateID;
+  final DocumentReference reference;
+
+  PracticalVide0Storage.fromMap(Map<String, dynamic> map, {this.reference})
+      : assert(map['location'] != null),
+        assert(map['url'] != null),
+        location = map['location'],
+        candidateID = map['candidateID'],
+        url = map['url'];
+
+  PracticalVide0Storage.fromSnapshot(DocumentSnapshot snapshot)
+      : this.fromMap(snapshot.data(), reference: snapshot.reference);
+
+  @override
+  String toString() => "PracticalVide0Storage<$location:$url>";
 }
