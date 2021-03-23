@@ -7,7 +7,7 @@ import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class CandidatePage extends StatelessWidget {
+class Rpl4Category extends StatelessWidget {
   final NavigationService _navigationService = locator<NavigationService>();
   @override
   Widget build(BuildContext context) {
@@ -60,41 +60,33 @@ class CandidatePage extends StatelessWidget {
                             children: <Widget>[
                               Center(
                                   child: Text(
-                                "Select:",
+                                "Rpl-4 Users",
                                 style: kTitleStyle,
                               )),
                               SizedBox(
                                 height: 15,
                               ),
                               BusyButton(
-                                title: 'Assessment',
+                                title: 'Candidate',
                                 busy: model.busy,
                                 color: Colors.green,
                                 onPressed: () {
-                                  model.navigateToFirstPage();
+                                  model.navigateToRPL4CandidateLoginPage();
+                                },
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              BusyButton(
+                                title: 'Admin',
+                                busy: model.busy,
+                                color: Colors.green,
+                                onPressed: () {
+                                  model.navigateToRPL4AdminLogin();
                                 },
                               ),
                               SizedBox(
                                 height: 5,
-                              ),
-                              BusyButton(
-                                title: 'E-Learning',
-                                busy: model.busy,
-                                color: Colors.green,
-                                onPressed: () {
-                                  model.navigateToELearningPage();
-                                },
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              BusyButton(
-                                title: 'RPL-4',
-                                busy: model.busy,
-                                color: Colors.green,
-                                onPressed: () {
-                                  model.navigateToRPL4Category();
-                                },
                               ),
                               new Padding(
                                   padding: EdgeInsets.only(bottom: 20.0)),
@@ -111,6 +103,6 @@ class CandidatePage extends StatelessWidget {
   }
 
   Future<bool> _onWillPop() async {
-    return _navigationService.navigateTo(HomeViewRoute);
+    return _navigationService.navigateTo(CandidateViewRoute);
   }
 }

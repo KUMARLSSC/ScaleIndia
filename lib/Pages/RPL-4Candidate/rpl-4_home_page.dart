@@ -84,7 +84,7 @@ class _RPL4HomePageState extends State<RPL4HomePage> {
     return Scaffold(
       backgroundColor: Colors.white70,
       appBar: AppBar(
-        title: Text("RPL-4"),
+        title: Text("RPL-4 Candidate"),
         backgroundColor: kBlack,
         centerTitle: true,
       ),

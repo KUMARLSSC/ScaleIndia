@@ -1,15 +1,16 @@
-import 'package:Scaleindia/Pages/RPL-4/rpl_otp.dart';
+import 'package:Scaleindia/Pages/RPL-4Admin/rpl_otp.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/expansion_list.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 
-class RPL4RegisterWidget extends StatefulWidget {
+class RPL4RegisterWidgetAdmin extends StatefulWidget {
   @override
-  _RPL4RegisterWidgetState createState() => _RPL4RegisterWidgetState();
+  _RPL4RegisterWidgetAdminState createState() =>
+      _RPL4RegisterWidgetAdminState();
 }
 
-class _RPL4RegisterWidgetState extends State<RPL4RegisterWidget> {
+class _RPL4RegisterWidgetAdminState extends State<RPL4RegisterWidgetAdmin> {
   final List<String> gender = ['Male', 'Female', 'Other'];
   final candidatenamecontroller = TextEditingController();
   final phoneNumberController = TextEditingController();
@@ -94,7 +95,7 @@ class _RPL4RegisterWidgetState extends State<RPL4RegisterWidget> {
               child: Column(
                 children: <Widget>[
                   Text(
-                    "Enter Candidate Name:",
+                    "Enter Admin Name:",
                     style:
                         TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
                   ),
@@ -104,7 +105,7 @@ class _RPL4RegisterWidgetState extends State<RPL4RegisterWidget> {
                         border: Border(
                             bottom: BorderSide(color: Colors.grey[200]))),
                     child: InputField(
-                      placeholder: 'CandidateName',
+                      placeholder: 'Admin Name',
                       controller: candidatenamecontroller,
                       text1InputType: TextInputType.text,
                     ),
@@ -320,7 +321,7 @@ class _RPL4RegisterWidgetState extends State<RPL4RegisterWidget> {
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
-                        OTPScreen(phoneNumberController.text)));
+                        OTPScreenAdmin(phoneNumberController.text)));
               },
               color: Colors.blue,
             ),

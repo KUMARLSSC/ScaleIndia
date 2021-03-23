@@ -1,4 +1,4 @@
-import 'package:Scaleindia/Pages/RPL-4/rpl-4_register_widget.dart';
+import 'package:Scaleindia/Pages/RPL-4Candidate/rpl-4_register_widget.dart';
 import 'package:flutter/material.dart';
 
 class RPL4RegisterPage extends StatelessWidget {

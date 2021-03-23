@@ -12,10 +12,12 @@ import 'package:Scaleindia/Pages/EmployeeDashBoard/sourcing.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/employerHome_page.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/postJob_page.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/viewJob_page.dart';
-import 'package:Scaleindia/Pages/RPL-4/rpl-4_home_page.dart';
-import 'package:Scaleindia/Pages/RPL-4/rpl-4_login_page.dart';
-import 'package:Scaleindia/Pages/RPL-4/rpl-4_register_page.dart';
-import 'package:Scaleindia/Pages/RPL-4/rpl_otp.dart';
+import 'package:Scaleindia/Pages/RPL-4Admin/rpl-4_home_page.dart';
+import 'package:Scaleindia/Pages/RPL-4Admin/rpl-4_login_page.dart';
+import 'package:Scaleindia/Pages/RPL-4Candidate/rpl-4_home_page.dart';
+import 'package:Scaleindia/Pages/RPL-4Candidate/rpl-4_login_page.dart';
+import 'package:Scaleindia/Pages/RPL-4Candidate/rpl-4_register_page.dart';
+import 'package:Scaleindia/Pages/RPL-4Candidate/rpl_otp.dart';
 import 'package:Scaleindia/Pages/Trainer/trainer_homePage.dart';
 import 'package:Scaleindia/Pages/Assessor/assessor_page.dart';
 import 'package:Scaleindia/Pages/candidate_page.dart';
@@ -38,6 +40,7 @@ import 'package:Scaleindia/Pages/assessment/practical_page.dart';
 import 'package:Scaleindia/Pages/assessment/summary_page.dart';
 import 'package:Scaleindia/Pages/assessment/theory_page.dart';
 import 'package:Scaleindia/Pages/assessment/second_page.dart';
+import 'package:Scaleindia/Pages/rpl-4_category.dart';
 import 'package:Scaleindia/Pages/trainer_page.dart';
 import 'package:Scaleindia/video_stream/home_page.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +50,21 @@ String phoneNo;
 String sms;
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
+    case RPL4AdminHomePageViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: RPL4HomePageAdmin(),
+      );
+    case Rpl4AdminViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: RPL4AdminLoginPage(),
+      );
+    case Rpl4CategoryViewRoute:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: Rpl4Category(),
+      );
     case CompanySouringPageViewRoute:
       return _pageRoute(
         routeName: settings.name,

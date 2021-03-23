@@ -26,7 +26,15 @@ class CandidatePageViewModel extends BaseModel {
     }
   }
 
-  void navigateToRPL4LoginPage() {
+  void navigateToRPL4CandidateLoginPage() {
     _navigationService.navigateTo(RPL4PageViewRoute);
+  }
+
+  void navigateToRPL4Category() {
+    _navigationService.navigateTo(Rpl4CategoryViewRoute);
+  }
+
+  void navigateToRPL4AdminLogin() {
+    _navigationService.navigateTo(Rpl4AdminViewRoute);
   }
 }

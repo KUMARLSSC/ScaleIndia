@@ -1,5 +1,6 @@
 import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Services/authentication_service.dart';
+import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:Scaleindia/ViewModels/base_model.dart';
 import 'package:Scaleindia/locator.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/foundation.dart';
 
 class RPL4ViewModel extends BaseModel {
   final NavigationService _navigationService = locator<NavigationService>();
+
   final AuthenticationService _authenticationService =
       locator<AuthenticationService>();
   void navigateToRPL4LRegisterPage() {

@@ -79,6 +79,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation platform('com.google.firebase:firebase-bom:26.1.1')
     implementation 'com.google.android.gms:play-services-mlkit-face-detection:16.1.4'
+    implementation "androidx.browser:browser:1.2.0"
 }
 apply plugin: 'com.google.gms.google-services'
 googleServices.disableVersionCheck = true

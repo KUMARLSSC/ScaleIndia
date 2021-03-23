@@ -1,5 +1,5 @@
-import 'package:Scaleindia/Pages/RPL-4/rpl-4_viewmodel.dart';
-import 'package:Scaleindia/Pages/RPL-4/rpl_otp.dart';
+import 'package:Scaleindia/Pages/RPL-4Candidate/rpl-4_viewmodel.dart';
+import 'package:Scaleindia/Pages/RPL-4Candidate/rpl_otp.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
@@ -50,7 +50,7 @@ class RPL4LoginPage extends StatelessWidget {
                     children: <Widget>[
                       Center(
                           child: Text(
-                        " RPL-4 Login",
+                        " RPL-4 Candidate",
                         style: kTitleStyle,
                       )),
                       SizedBox(
