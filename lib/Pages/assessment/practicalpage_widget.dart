@@ -3,8 +3,11 @@ import 'dart:math';
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
+import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/assessment/third_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
+import 'package:Scaleindia/Services/navigation_service.dart';
+import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +37,7 @@ class PracticalPageWidget extends StatefulWidget {
 class _PracticalPageWidgetState extends State<PracticalPageWidget> {
   final DialogService _dialogService = locator<DialogService>();
   final TextEditingController textController = TextEditingController();
+  final NavigationService _navigationService = locator<NavigationService>();
   final Map<int, dynamic> _answers = {};
   final Api _api = locator<Api>();
   bool _isloading = false;
@@ -54,204 +58,208 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
     this.widget.practical.retainWhere(
         (element) => element.pqLang.contains(this.widget.practical1.pqLang));
     return ViewModelBuilder<PracticalPageViewModel>.reactive(
-      viewModelBuilder: () => PracticalPageViewModel(),
-      builder: (context, model, child) => Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height - 650,
-            color: kBlack,
-            child: Center(
-              child: Text(
-                widget.practical[_currentIndex].pqNos,
-                style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Card(
-            color: kBlackAccent,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
-              child: Text(
-                widget.practical[_currentIndex].pqCommonQuestion != null
-                    ? widget.practical[_currentIndex].pqCommonQuestion
-                    : "No Common Question for this ${widget.practical[_currentIndex].pqNos} ",
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                  top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
-              child: Text(
-                "${_currentIndex + 1}: " +
-                    widget.practical[_currentIndex].pqQuestion,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          // ignore: deprecated_member_use
-          _isloading == true
-              ? progress(_isloading)
-              // ignore: deprecated_member_use
-              : RaisedButton.icon(
-                  onPressed: () {
-                    // opencamera();
-                  },
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                  label: Text(
-                    'Observation',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  icon: Icon(
-                    Icons.videocam,
-                    color: Colors.white,
-                  ),
-                  textColor: Colors.white,
-                  splashColor: Colors.blue,
-                  color: Colors.green,
-                ),
-          SizedBox(
-            height: 15,
-          ),
-          Text(
-            "Max Marks:${widget.practical[_currentIndex].pqMarks.toString()}",
-            style: TextStyle(fontSize: 17),
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          Text(
-            "Enter Marks:",
-            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Container(
-            height: 85,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                      color: Color.fromRGBO(32, 132, 232, .3),
-                      blurRadius: 20,
-                      offset: Offset(0, 10))
-                ]),
-            child: Container(
-              height: 80,
-              width: 150,
-              padding: EdgeInsets.fromLTRB(10, 10, 10, 1),
-              decoration: BoxDecoration(
-                  border: Border(bottom: BorderSide(color: Colors.grey[200]))),
-              child: InputField(
-                placeholder: _text,
-                text1InputType: TextInputType.number,
-                controller: textController,
-                onChanged: (v) => setState(() {
-                  _text = v;
-                  _answers[_currentIndex] = v;
-                }),
-              ),
-            ),
-          ),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                // ignore: deprecated_member_use
-                child: RaisedButton(
-                  splashColor: Colors.blue,
-                  elevation: 5.0,
-                  color: _currentIndex ==
-                          (widget.practical.length +
-                              1 -
-                              widget.practical.length -
-                              1)
-                      ? Colors.white30
-                      : new Color(0xFFEA4335),
-                  child: Text(
-                    'Previous',
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      color: Colors.white,
+        viewModelBuilder: () => PracticalPageViewModel(),
+        builder: (context, model, child) => Scaffold(
+                body: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height - 650,
+                    color: kBlack,
+                    child: Center(
+                      child: Text(
+                        widget.practical[_currentIndex].pqNos,
+                        style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
                     ),
                   ),
-                  onPressed: () {
-                    _currentIndex ==
-                            (widget.practical.length +
-                                1 -
-                                widget.practical.length -
-                                1)
-                        // ignore: unnecessary_statements
-                        ? null
-                        : _previous();
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
+                  SizedBox(
+                    height: 10,
                   ),
-                ),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Container(
-                // ignore: deprecated_member_use
-                child: RaisedButton(
-                  splashColor: Colors.blue,
-                  elevation: 5.0,
-                  color: new Color(0xFF34A853),
-                  child: Text(
-                    _currentIndex == (widget.practical.length - 1)
-                        ? "Submit"
-                        : "Next",
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      color: Colors.white,
+                  Card(
+                    color: kBlackAccent,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
+                      child: Text(
+                        widget.practical[_currentIndex].pqCommonQuestion != null
+                            ? widget.practical[_currentIndex].pqCommonQuestion
+                            : "No Common Question for this ${widget.practical[_currentIndex].pqNos} ",
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
                     ),
                   ),
-                  onPressed: () {
-                    _nextSubmit(mark: textController.text);
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
+                  SizedBox(
+                    height: 5,
                   ),
-                ),
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          top: 10.0, bottom: 15.0, left: 16.0, right: 16.0),
+                      child: Text(
+                        "${_currentIndex + 1}: " +
+                            widget.practical[_currentIndex].pqQuestion,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  // ignore: deprecated_member_use
+                  _isloading == true
+                      ? progress(_isloading)
+                      // ignore: deprecated_member_use
+                      : RaisedButton.icon(
+                          onPressed: () {
+                            // opencamera();
+                          },
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10.0))),
+                          label: Text(
+                            'Observation',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          icon: Icon(
+                            Icons.videocam,
+                            color: Colors.white,
+                          ),
+                          textColor: Colors.white,
+                          splashColor: Colors.blue,
+                          color: Colors.green,
+                        ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    "Max Marks:${widget.practical[_currentIndex].pqMarks.toString()}",
+                    style: TextStyle(fontSize: 17),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    "Enter Marks:",
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    height: 85,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Color.fromRGBO(32, 132, 232, .3),
+                              blurRadius: 20,
+                              offset: Offset(0, 10))
+                        ]),
+                    child: Container(
+                      height: 80,
+                      width: 150,
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 1),
+                      decoration: BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(color: Colors.grey[200]))),
+                      child: InputField(
+                        placeholder: _text,
+                        text1InputType: TextInputType.number,
+                        controller: textController,
+                        onChanged: (v) => setState(() {
+                          _text = v;
+                          _answers[_currentIndex] = v;
+                        }),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        // ignore: deprecated_member_use
+                        child: RaisedButton(
+                          splashColor: Colors.blue,
+                          elevation: 5.0,
+                          color: _currentIndex ==
+                                  (widget.practical.length +
+                                      1 -
+                                      widget.practical.length -
+                                      1)
+                              ? Colors.white30
+                              : new Color(0xFFEA4335),
+                          child: Text(
+                            'Previous',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                          onPressed: () {
+                            _currentIndex ==
+                                    (widget.practical.length +
+                                        1 -
+                                        widget.practical.length -
+                                        1)
+                                // ignore: unnecessary_statements
+                                ? null
+                                : _previous();
+                          },
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        // ignore: deprecated_member_use
+                        child: RaisedButton(
+                          splashColor: Colors.blue,
+                          elevation: 5.0,
+                          color: new Color(0xFF34A853),
+                          child: Text(
+                            _currentIndex == (widget.practical.length - 1)
+                                ? "Submit"
+                                : "Next",
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              color: Colors.white,
+                            ),
+                          ),
+                          onPressed: () {
+                            _nextSubmit(mark: textController.text);
+                          },
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  new Padding(padding: EdgeInsets.only(bottom: 300.0)),
+                ],
               ),
-            ],
-          ),
-          new Padding(padding: EdgeInsets.only(bottom: 300.0)),
-        ],
-      ),
-    );
+            )));
   }
 
-  Future<void> _nextSubmit({@required String mark}) async {
+  void _nextSubmit({@required String mark}) async {
     if (_answers[_currentIndex] == null) {
       _dialogService.showDialog(
         title: 'Failed',
@@ -317,26 +325,59 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
         }
         list.add(value);
       });
-      await _api.updateTheory(list).whenComplete(() => showDialog(
-          barrierDismissible: true,
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-                title: Text("Completed"),
-                content: Text("Practical exam was completed successfully"),
-                actions: <Widget>[
-                  // ignore: deprecated_member_use
-                  FlatButton(
-                    child: Text('Ok'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ThirdPage()),
-                      );
-                    },
-                  )
-                ],
-              )));
+      await _loading()
+          .then((value) => _api.updateTheory(list))
+          .whenComplete(() => showDialog(
+              barrierDismissible: true,
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                    title: Text("Completed"),
+                    content: Text("Practical exam was completed successfully"),
+                    actions: <Widget>[
+                      // ignore: deprecated_member_use
+                      FlatButton(
+                        child: Text('Ok'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          _navigationService.navigateTo(ThirdViewRoute);
+                        },
+                      )
+                    ],
+                  )));
     }
+  }
+
+  Future<void> _loading() async {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: true, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+            actions: [
+              // ignore: deprecated_member_use
+              FlatButton(
+                child: Text("OK"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+            title: Text(
+              'Please wait loading',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.bold),
+            ),
+            backgroundColor: Colors.white,
+            content: Center(
+                child: ColorLoader3(
+              radius: 20.0,
+              dotRadius: 10.0,
+            )));
+      },
+    );
   }
 
   void _previous() {

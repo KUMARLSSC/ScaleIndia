@@ -50,12 +50,11 @@ class _PracticalPageState extends State<PracticalPage> {
                         radius: 20.0,
                         dotRadius: 10.0,
                       )
-                    : SingleChildScrollView(
-                        child: PracticalPageWidget(
+                    : PracticalPageWidget(
                         practical: model.posts,
                         practical1: widget.practical,
                         candidate: widget.candidate,
-                      )),
+                      ),
               ),
             ),
           ),
