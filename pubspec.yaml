@@ -71,7 +71,8 @@ dependencies:
   cached_network_image: ^2.5.0
   video_compress: ^2.1.1
   file_picker: ^1.13.0+1
-  
+  csv: ^5.0.0  
+  csv_reader: ^1.0.2
 
 dev_dependencies:
   flutter_test:

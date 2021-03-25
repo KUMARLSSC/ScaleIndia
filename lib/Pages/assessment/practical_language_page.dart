@@ -88,9 +88,9 @@ class LanguagePage1 extends StatelessWidget {
             BuildContext context,
             int index,
           ) {
-            final String english = "English";
+            /* final String english = "English";
             final String tamil = "Tamil";
-            final String bangla = "Bangla";
+            final String bangla = "Bangla";*/
             final Map<String, Practical> profileMap = new Map();
             posts.forEach((item) {
               profileMap[item.pqLang] = item;

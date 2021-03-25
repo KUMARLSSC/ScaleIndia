@@ -135,10 +135,12 @@ class EmployerPage extends StatelessWidget {
                             height: 15,
                           ),
                           BusyButton(
-                            title: 'Sourcing',
+                            title: 'Sourcing Login',
                             color: Colors.brown[900],
                             onPressed: () {
-                              model.navigateToSourcingView();
+                              model.sourcinglogin(
+                                  email: emailController.text,
+                                  password: passwordController.text);
                             },
                           ),
                           new Padding(padding: EdgeInsets.only(bottom: 20.0)),

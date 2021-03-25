@@ -1,6 +1,10 @@
+import 'dart:io';
+import 'package:Scaleindia/Pages/EmployeeDashBoard/load_csv.dart';
+import 'package:Scaleindia/Pages/EmployeeDashBoard/sourcing_csv_page.dart';
 import 'package:Scaleindia/ViewModels/employerPage_viewmodel.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -80,6 +84,32 @@ class CompanySourcingSelect extends StatelessWidget {
                             model.navigateToCsHomeView();
                           },
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        BusyButton(
+                          title: 'Bulk Upload',
+                          busy: model.busy,
+                          color: Colors.green,
+                          onPressed: () {
+                            openfile(context);
+                          },
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        BusyButton(
+                          title: 'Csv View',
+                          busy: model.busy,
+                          color: Colors.green,
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SourcingCsvHomePage(),
+                                ));
+                          },
+                        ),
                         new Padding(padding: EdgeInsets.only(bottom: 20.0)),
                       ],
                     ),
@@ -89,6 +119,20 @@ class CompanySourcingSelect extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Future<void> openfile(BuildContext context) async {
+    File file = await FilePicker.getFile(
+      type: FileType.custom,
+    );
+    String path = file.path;
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) {
+          return SourcingLoadCsvDataScreen(path: path);
+        },
       ),
     );
   }

@@ -11,6 +11,27 @@ class EmployerPageViewModel extends BaseModel {
       locator<AuthenticationService>();
   final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
+  String email1 = 'admin@gmail.com';
+  String password1 = 'leatherssc';
+
+  Future sourcinglogin({
+    @required String email,
+    @required String password,
+  }) async {
+    if (email == email1 && password == password1) {
+      _navigationService.navigateTo(SouringPageViewRoute);
+    } else if (email.isEmpty && password.isEmpty) {
+      await _dialogService.showDialog(
+        title: 'Given field is empty ',
+        description: 'Please enter your request id',
+      );
+    } else {
+      await _dialogService.showDialog(
+        title: 'Failed',
+        description: 'Wrong Mail or Password',
+      );
+    }
+  }
 
   Future login({
     @required String email,

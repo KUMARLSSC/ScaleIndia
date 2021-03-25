@@ -1,48 +1,36 @@
-import 'dart:io';
-import 'package:Scaleindia/Pages/RPL-4Admin/main_csv.dart';
-import 'package:Scaleindia/Pages/RPL-4Admin/rpl4_csv_Page.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
-import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
-class RPL4HomePageAdmin extends StatefulWidget {
+class SourcingCsvHomePage extends StatefulWidget {
   @override
-  _RPL4HomePageAdminState createState() => _RPL4HomePageAdminState();
+  _SourcingCsvHomePageState createState() => _SourcingCsvHomePageState();
 }
 
-class _RPL4HomePageAdminState extends State<RPL4HomePageAdmin> {
+class _SourcingCsvHomePageState extends State<SourcingCsvHomePage> {
   List<List<dynamic>> data = [];
   @override
   void initState() {
     super.initState();
-    FirebaseFirestore.instance.collection('RPL-4Admin').snapshots();
+    FirebaseFirestore.instance.collection('SourcingFile').snapshots();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: BusyButton(
-        onPressed: () {
-          openfile(context);
-        },
-        title: 'Bulk Upload',
-        color: Colors.green,
-      ),
       appBar: AppBar(
-        title: Text("RPL-4 Admin"),
+        title: Text("Souring CSV Files"),
         backgroundColor: kBlack,
         centerTitle: true,
       ),
       // ignore: missing_required_param
       body: RefreshIndicator(
           child: StreamBuilder(
-            stream:
-                FirebaseFirestore.instance.collection('RPL-4Admin').snapshots(),
+            stream: FirebaseFirestore.instance
+                .collection('SourcingFile')
+                .snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
                 return Center(
@@ -79,7 +67,7 @@ class _RPL4HomePageAdminState extends State<RPL4HomePageAdmin> {
                                       elevation: 7.0,
                                       child: Center(
                                         child: Text(
-                                          documentSnapshot['location'],
+                                          documentSnapshot['location1'],
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -100,39 +88,25 @@ class _RPL4HomePageAdminState extends State<RPL4HomePageAdmin> {
 
   Future<void> _getData() async {
     setState(() {
-      FirebaseFirestore.instance..collection('RPL-4Admin').snapshots();
+      FirebaseFirestore.instance.collection('SourcingFile').snapshots();
     });
-  }
-
-  Future<void> openfile(BuildContext context) async {
-    File file = await FilePicker.getFile(
-      type: FileType.custom,
-    );
-    String path = file.path;
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) {
-          return LoadCsvDataScreen(path: path);
-        },
-      ),
-    );
   }
 }
 
-class Excel {
-  final String location;
-  final String url;
-  final DocumentReference reference;
+class Excel1 {
+  final String location1;
+  final String url1;
+  final DocumentReference reference1;
 
-  Excel.fromMap(Map<String, dynamic> map, {this.reference})
-      : assert(map['location'] != null),
-        assert(map['url'] != null),
-        location = map['location'],
-        url = map['url'];
+  Excel1.fromMap(Map<String, dynamic> map, {this.reference1})
+      : assert(map['location1'] != null),
+        assert(map['url1'] != null),
+        location1 = map['location1'],
+        url1 = map['url1'];
 
-  Excel.fromSnapshot(DocumentSnapshot snapshot)
-      : this.fromMap(snapshot.data(), reference: snapshot.reference);
+  Excel1.fromSnapshot(DocumentSnapshot snapshot)
+      : this.fromMap(snapshot.data(), reference1: snapshot.reference);
 
   @override
-  String toString() => "Excel<$location:$url>";
+  String toString() => "Excel1<$location1:$url1>";
 }

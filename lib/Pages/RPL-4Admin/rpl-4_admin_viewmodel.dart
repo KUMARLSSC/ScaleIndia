@@ -36,6 +36,10 @@ class RPL4AdminViewModel extends BaseModel {
     }
   }
 
+  void admin() {
+    _navigationService.navigateTo(RPL4AdminHomePageViewRoute);
+  }
+
   Future verify({
     @required String phoneNo,
     @required String sms,
