@@ -1,6 +1,5 @@
 import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Services/authentication_service.dart';
-import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:Scaleindia/ViewModels/base_model.dart';
 import 'package:Scaleindia/locator.dart';
