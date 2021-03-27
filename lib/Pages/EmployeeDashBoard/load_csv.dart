@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-
+import 'package:path/path.dart' as path;
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:csv/csv.dart';
@@ -361,8 +361,7 @@ class _LoadCsvDataScreenState extends State<SourcingLoadCsvDataScreen> {
 
   Future<void> uploadFile(File image2) async {
     try {
-      int randomNumber2 = Random().nextInt(10000000);
-      String imageLocation2 = 'Sourcing/csv$randomNumber2.csv';
+      String imageLocation2 = await getFileNameWithExtension(image2);
       final Reference reference2 =
           FirebaseStorage.instanceFor(bucket: "gs://scaleindia.appspot.com")
               .ref()
@@ -407,5 +406,17 @@ class _LoadCsvDataScreenState extends State<SourcingLoadCsvDataScreen> {
   Future<void> openfile(String path) async {
     final csvFile = new File(path);
     uploadFile(csvFile);
+  }
+
+  static Future<String> getFileNameWithExtension(File file) async {
+    if (await file.exists()) {
+      //To get file name without extension
+      //path.basenameWithoutExtension(file.path);
+
+      //return file with file extension
+      return path.basename(file.path);
+    } else {
+      return null;
+    }
   }
 }

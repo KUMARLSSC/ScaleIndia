@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:provider/provider.dart';
 import 'Manager/dialog_manager.dart';
 import 'Models/router.dart';
@@ -14,6 +15,7 @@ import 'locator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await FlutterDownloader.initialize(debug: true);
   setupLocator();
   await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations(

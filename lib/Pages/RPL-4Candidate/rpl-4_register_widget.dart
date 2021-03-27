@@ -1,4 +1,3 @@
-import 'package:Scaleindia/Pages/RPL-4Candidate/rpl_otp.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/expansion_list.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
