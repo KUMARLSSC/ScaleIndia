@@ -13,7 +13,7 @@ class EmployeeDashBoardPage extends StatefulWidget {
 class _EmployeeDashBoardPageState extends State<EmployeeDashBoardPage> {
   int pageIndex = 0;
 
-  Widget _showPage = new EmployeeElearningPage();
+  Widget _showPage = new FindJobPage();
   Widget _pageChooser(int page) {
     switch (page) {
       case 0:

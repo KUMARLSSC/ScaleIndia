@@ -1230,6 +1230,12 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
   final lastWorkingDesignationController = TextEditingController();
   final addressController = TextEditingController();
   final genderController = TextEditingController();
+  final expectedSalaryController = TextEditingController();
+  final experiencebifurcationwithdesignationController =
+      TextEditingController();
+  final intrestareaController = TextEditingController();
+  final lastsalaryController = TextEditingController();
+  final technicalEducation = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -1809,6 +1815,211 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                           height: 1,
                         ),
                         Container(
+                          height: 114,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Technical Qualification:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[200]))),
+                                child: InputField(
+                                  placeholder:
+                                      'Eg:Diploma In footwear Manufacturing',
+                                  controller: technicalEducation,
+                                  text1InputType: TextInputType.text,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1,
+                        ),
+                        Container(
+                          height: 114,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Experience with designation:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[200]))),
+                                child: InputField(
+                                  placeholder: 'Eg:3year-Closing supervisor',
+                                  controller:
+                                      experiencebifurcationwithdesignationController,
+                                  text1InputType: TextInputType.text,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1,
+                        ),
+                        Container(
+                          height: 114,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Last Salary:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[200]))),
+                                child: InputField(
+                                  placeholder: 'Eg:15000',
+                                  controller: lastsalaryController,
+                                  text1InputType: TextInputType.number,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1,
+                        ),
+                        Container(
+                          height: 114,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Interest area:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[200]))),
+                                child: InputField(
+                                  placeholder: 'Eg:General Manager,Trainer,',
+                                  controller: intrestareaController,
+                                  text1InputType: TextInputType.text,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1,
+                        ),
+                        Container(
+                          height: 114,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Expected Salary:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[200]))),
+                                child: InputField(
+                                  placeholder: 'Eg:25000',
+                                  controller: expectedSalaryController,
+                                  text1InputType: TextInputType.number,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1,
+                        ),
+                        GestureDetector(
+                          // When we tap we call selectImage
+                          onTap: () => model.selectImage(),
+                          child: Container(
+                            height: 250,
+                            decoration: BoxDecoration(
+                                color: Colors.grey[200],
+                                borderRadius: BorderRadius.circular(10)),
+                            alignment: Alignment.center,
+                            // If the selected image is null we show "Tap to add post image"
+                            child: model.selectedImage == null
+                                ? Text(
+                                    'Tap to Upload image',
+                                    style: TextStyle(color: Colors.grey[400]),
+                                  )
+                                // If we have a selected image we want to show it
+                                : Image.file(model.selectedImage),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1,
+                        ),
+                        GestureDetector(
+                          // When we tap we call selectImage
+                          onTap: () => model.selectResume(),
+                          child: Container(
+                              height: 250,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(10)),
+                              alignment: Alignment.center,
+                              // If the selected image is null we show "Tap to add post image"
+                              child: model.selectedResume == null
+                                  ? Text(
+                                      'Tap to Upload Resume',
+                                      style: TextStyle(color: Colors.grey[400]),
+                                    )
+                                  // If we have a selected image we want to show it
+                                  : Text(
+                                      'Selected',
+                                      style: TextStyle(color: Colors.grey[400]),
+                                    )),
+                        ),
+                        Container(
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
@@ -1854,6 +2065,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                   busy: model.busy,
                   title: 'Submit',
                   onPressed: () {
+                    // ignore: missing_required_param
                     model.signUp(
                         address: addressController.text,
                         employeeEmailAddress: emailController.text,
@@ -1876,7 +2088,13 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                         dateOfBirth: dateOfBirthController.text,
                         gender: genderController.text,
                         aadharNumber: aadharNumberController.text,
-                        workExperiance: workExperianceController.text);
+                        workExperiance: workExperianceController.text,
+                        expectedSalary: expectedSalaryController.text,
+                        experiencebifurcationwithdesignation:
+                            educationQualificationController.text,
+                        intrestarea: intrestareaController.text,
+                        lastsalary: lastsalaryController.text,
+                        technicalEducation: technicalEducation.text);
                   },
                   color: Colors.blue,
                 ),

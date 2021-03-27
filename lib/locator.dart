@@ -11,7 +11,10 @@ import 'package:Scaleindia/Services/practical_services.dart';
 import 'package:Scaleindia/Services/request_service.dart';
 import 'package:Scaleindia/Services/theory_service.dart';
 import 'package:Scaleindia/shared/image_selector.dart';
+import 'package:Scaleindia/shared/resum_selector.dart';
 import 'package:get_it/get_it.dart';
+
+import 'Services/employee_cloud_storage.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -28,5 +31,7 @@ void setupLocator() {
   locator.registerLazySingleton(() => LocationService());
   locator.registerLazySingleton(() => BackgroundFetchService());
   locator.registerLazySingleton(() => CloudStorageService());
+  locator.registerLazySingleton(() => EmployeeCloudStorageService());
   locator.registerLazySingleton(() => ImageSelector());
+  locator.registerLazySingleton(() => ResumeSelector());
 }

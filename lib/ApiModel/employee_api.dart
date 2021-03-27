@@ -17,6 +17,15 @@ class Employee {
   final String lastCompanyWorkedFor;
   final String lastWorkingDesignation;
   final String address;
+  final String technicalEducation;
+  final String experiencebifurcationwithdesignation;
+  final String lastsalary;
+  final String expectedSalary;
+  final String intrestarea;
+  final String resumeUrl;
+  final String resumeFileName;
+  final String imageUrl;
+  final String imageFileName;
 
   Employee(
       {this.employeeEmailAddress,
@@ -36,13 +45,22 @@ class Employee {
       this.motherName,
       this.pincode,
       this.state,
-      this.workExperiance});
+      this.workExperiance,
+      this.expectedSalary,
+      this.experiencebifurcationwithdesignation,
+      this.imageFileName,
+      this.imageUrl,
+      this.intrestarea,
+      this.lastsalary,
+      this.resumeFileName,
+      this.resumeUrl,
+      this.technicalEducation});
 
   Employee.fromData(Map<String, dynamic> data)
       : employeeEmailAddress = data['employeeEmailAddress'],
         id = data['id'],
         name = data['name'],
-        address=data['address'],
+        address = data['address'],
         gender = data['gender'],
         phoneNumber = data['phoneNumber'],
         alternatePhoneNumber = data['alternatePhoneNumber'],
@@ -56,13 +74,23 @@ class Employee {
         lastCompanyWorkedFor = data['lastCompanyWorkedFor'],
         lastWorkingDesignation = data['lastWorkingDesignation'],
         educationalQualification = data['educationalQualification'],
-        aadharNumber = data['aadharNumber'];
+        aadharNumber = data['aadharNumber'],
+        expectedSalary = data['expectedSalary'],
+        experiencebifurcationwithdesignation =
+            data['experiencebifurcationwithdesignation'],
+        imageFileName = data['imageFileName'],
+        imageUrl = data['imageUrl'],
+        intrestarea = data['intrestarea'],
+        lastsalary = data['lastsalary'],
+        resumeFileName = data['resumeFileName'],
+        resumeUrl = data['resumeUrl'],
+        technicalEducation = data['technicalEducation'];
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'name': name,
-      'address':address,
+      'address': address,
       'employeeEmailAddress': employeeEmailAddress,
       'gender': gender,
       'phoneNumber': phoneNumber,
@@ -77,7 +105,17 @@ class Employee {
       'workExperiance': workExperiance,
       'lastCompanyWorkedFor': lastCompanyWorkedFor,
       'lastWorkingDesignation': lastWorkingDesignation,
-      'educationalQualification': educationalQualification
+      'educationalQualification': educationalQualification,
+      'imageUrl': imageUrl,
+      'imageFileName': imageFileName,
+      'expectedSalary': expectedSalary,
+      'experiencebifurcationwithdesignation':
+          experiencebifurcationwithdesignation,
+      'intrestarea': intrestarea,
+      'lastsalary': lastsalary,
+      'resumeFileName': resumeFileName,
+      'resumeUrl': resumeUrl,
+      'technicalEducation': technicalEducation,
     };
   }
 }

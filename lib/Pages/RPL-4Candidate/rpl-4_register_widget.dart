@@ -5,6 +5,8 @@ import 'package:Scaleindia/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 
 class RPL4RegisterWidget extends StatefulWidget {
+  final Function onpressed;
+  RPL4RegisterWidget({this.onpressed});
   @override
   _RPL4RegisterWidgetState createState() => _RPL4RegisterWidgetState();
 }
@@ -317,11 +319,7 @@ class _RPL4RegisterWidgetState extends State<RPL4RegisterWidget> {
             ),
             BusyButton(
               title: 'Submit',
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        OTPScreen(phoneNumberController.text)));
-              },
+              onPressed: widget.onpressed,
               color: Colors.blue,
             ),
           ],

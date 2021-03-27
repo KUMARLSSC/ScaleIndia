@@ -109,6 +109,15 @@ class AuthenticationService {
     @required String gender,
     @required String aadharNumber,
     @required String workExperiance,
+    @required String technicalEducation,
+    @required String experiencebifurcationwithdesignation,
+    @required String lastsalary,
+    @required String expectedSalary,
+    @required String intrestarea,
+    @required String resumeUrl,
+    @required String resumeFileName,
+    @required String imageUrl,
+    @required String imageFileName,
   }) async {
     try {
       var authResult = await _firebaseAuth.createUserWithEmailAndPassword(
@@ -134,7 +143,17 @@ class AuthenticationService {
           educationalQualification: educationalQualification,
           pincode: pincode,
           state: state,
-          address: address);
+          address: address,
+          technicalEducation: technicalEducation,
+          imageFileName: imageFileName,
+          imageUrl: imageUrl,
+          intrestarea: intrestarea,
+          resumeFileName: resumeFileName,
+          resumeUrl: resumeUrl,
+          expectedSalary: expectedSalary,
+          experiencebifurcationwithdesignation:
+              experiencebifurcationwithdesignation,
+          lastsalary: lastsalary);
 
       await _firestoreService.createEmployee(_currentEmployee);
 
