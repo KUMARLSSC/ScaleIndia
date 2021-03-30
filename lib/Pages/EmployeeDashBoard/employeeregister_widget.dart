@@ -2016,7 +2016,7 @@ class _EmployeeRegisterWidgetState extends State<EmployeeRegisterWidget> {
                                   // If we have a selected image we want to show it
                                   : Text(
                                       'Selected',
-                                      style: TextStyle(color: Colors.grey[400]),
+                                      style: TextStyle(color: Colors.green),
                                     )),
                         ),
                         Container(

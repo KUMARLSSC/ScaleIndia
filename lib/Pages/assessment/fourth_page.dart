@@ -63,11 +63,15 @@ class _FourthPageState extends State<FourthPage> {
   @override
   void initState() {
     super.initState();
-
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     _initializeCamera();
     initPlayer();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   void initPlayer() {
@@ -97,7 +101,7 @@ class _FourthPageState extends State<FourthPage> {
   }
 
   void _initializeCamera() async {
-    await loadModel();
+    // await loadModel();
     CameraDescription description = await getCamera(_direction);
 
     ImageRotation rotation = rotationIntToImageRotation(

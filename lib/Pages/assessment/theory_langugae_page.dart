@@ -8,25 +8,25 @@ import 'package:Scaleindia/widgets/HeaderWidget.dart';
 import 'package:Scaleindia/Pages/assessment/theory_language_widget.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
-import 'package:audioplayers/audio_cache.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
-class LanguagePage extends StatelessWidget {
+class LanguagePage extends StatefulWidget {
   final Candidate candidate;
   final CenterAssesor centerAssesor;
   LanguagePage({
     this.candidate,
     this.centerAssesor,
   });
-  void initPlayer() {
-    AudioPlayer advancedPlayer;
-    AudioCache audioCache;
-    advancedPlayer = new AudioPlayer();
-    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
-    audioCache.play('rules.mp3');
+  @override
+  _LanguagePageState createState() => _LanguagePageState();
+}
+
+class _LanguagePageState extends State<LanguagePage> {
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   Future<void> _rules(BuildContext context) async {
@@ -61,7 +61,6 @@ class LanguagePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer.run(() => initPlayer());
     Timer.run(() => _rules(context));
     CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
     return ViewModelBuilder<LanguagePageViewModel>.reactive(
@@ -145,9 +144,9 @@ class LanguagePage extends StatelessWidget {
             posts = profileMap.values.toList();
             final r = posts[index];
             return LanguageWidget(
-              candidate: candidate,
+              candidate: widget.candidate,
               theory: r,
-              centerAssesor: centerAssesor,
+              centerAssesor: widget.centerAssesor,
             );
           });
 }

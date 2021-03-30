@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:Scaleindia/ApiModel/employee_api.dart';
 import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Services/authentication_service.dart';
 import 'package:Scaleindia/Services/dialog_service.dart';
@@ -22,7 +20,6 @@ class EmployeeViewModel extends BaseModel {
   final ResumeSelector _resumeSelector = locator<ResumeSelector>();
   final EmployeeCloudStorageService _employeecloudStorageService =
       locator<EmployeeCloudStorageService>();
-  Employee _employee;
 
   String _selectedGender = 'Select a Gender';
   String get selectedRole => _selectedGender;
@@ -116,7 +113,6 @@ class EmployeeViewModel extends BaseModel {
         resumeFileName: storageResult.resumFileName,
         resumeUrl: storageResult.resumeUrl,
         technicalEducation: technicalEducation);
-    ;
     setBusy(false);
 
     if (result is bool) {

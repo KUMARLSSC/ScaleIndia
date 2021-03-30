@@ -304,7 +304,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
             'prCandidateId': this.widget.candidate.clEnrollmentNo,
             'prQuestionId': 0,
             'prMarks': 0,
-            'prNos': tqNos,
+            'prNos': quesObj.pqNos == null ? 'null' : tqNos,
             'prType': false,
           });
         }

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
 import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
@@ -25,22 +24,22 @@ class Options extends StatefulWidget {
   CameraController cameraController;
   int notReccount = 0;
   static final GlobalKey<_OptionsState> globalKey = GlobalKey();
-  Options(
-      {Key key,
-      this.theory1,
-      this.theory,
-      this.candidate,
-      this.notReccount,
-      this.cameraController})
-      : super(key: globalKey);
+  Options({
+    Key key,
+    this.theory1,
+    this.theory,
+    this.candidate,
+    this.notReccount,
+    this.cameraController,
+  }) : super(key: globalKey);
   @override
   _OptionsState createState() => _OptionsState();
 }
 
 class _OptionsState extends State<Options> {
-  final NavigationService _navigationService = locator<NavigationService>();
   final Map<int, dynamic> _answers = {};
   final Api _api = locator<Api>();
+  final NavigationService _navigationService = locator<NavigationService>();
   AudioPlayer advancedPlayer;
   AudioCache audioCache;
   int _currentIndex = 0;
@@ -48,6 +47,12 @@ class _OptionsState extends State<Options> {
     setState(() {
       _currentIndex = val;
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _loading();
   }
 
   void initPlayer() {
@@ -288,7 +293,7 @@ class _OptionsState extends State<Options> {
             'prCandidateId': this.widget.candidate.clEnrollmentNo,
             'prQuestionId': 0,
             'prMarks': 0,
-            'prNos': tqNos,
+            'prNos': quesObj.tqNos == null ? 'null' : tqNos,
             'prType': true,
           });
         }
@@ -319,12 +324,11 @@ class _OptionsState extends State<Options> {
                     actions: <Widget>[
                       // ignore: deprecated_member_use
                       FlatButton(
-                        child: Text('Ok'),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                          _navigationService.navigateTo(ThirdViewRoute);
-                        },
-                      )
+                          child: Text('Ok'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            _navigationService.navigateTo(ThirdViewRoute);
+                          })
                     ],
                   )));
     }
@@ -361,7 +365,7 @@ class _OptionsState extends State<Options> {
             'prCandidateId': this.widget.candidate.clEnrollmentNo,
             'prQuestionId': 0,
             'prMarks': 0,
-            'prNos': tqNos,
+            'prNos': quesObj.tqNos == null ? 'null' : tqNos,
             'prType': true,
           });
         }
@@ -392,7 +396,8 @@ class _OptionsState extends State<Options> {
                   FlatButton(
                     child: Text('Ok'),
                     onPressed: () {
-                      exit(0);
+                      Navigator.of(context).pop();
+                      _navigationService.navigateTo(ThirdViewRoute);
                     },
                   )
                 ],

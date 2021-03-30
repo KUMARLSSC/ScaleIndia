@@ -3,7 +3,6 @@ import 'package:Scaleindia/Pages/EmployeeDashBoard/profile_Page.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'elearning_page.dart';
 
 class EmployeeDashBoardPage extends StatefulWidget {
   @override

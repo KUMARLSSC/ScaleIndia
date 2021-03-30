@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:csv_reader/csv_reader.dart';
 import 'package:path/path.dart' as path;
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

@@ -24,6 +24,11 @@ class _HomePageState extends State<HomePage> {
     initPlayer();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   void initPlayer() {
     advancedPlayer = new AudioPlayer();
     audioCache = new AudioCache(fixedPlayer: advancedPlayer);

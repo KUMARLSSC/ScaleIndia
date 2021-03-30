@@ -26,12 +26,12 @@ class RPL4ViewModel extends BaseModel {
     } else if (phoneNumber1.isEmpty) {
       await _dialogService.showDialog(
         title: 'Given field is empty ',
-        description: 'Please enter your request id',
+        description: 'Please enter your phone number',
       );
     } else {
       await _dialogService.showDialog(
-        title: 'Request Id error',
-        description: 'Please re-enter your request id',
+        title: 'Failed',
+        description: 'Please enter valid numbeer',
       );
     }
   }
