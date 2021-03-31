@@ -4,6 +4,7 @@ import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/internet_connection.dart';
 import 'package:flutter/material.dart';
 
+import 'feed_back.dart';
 import 'lss2301_page.dart';
 import 'lss2401.dart';
 import 'lss2501.dart';
@@ -28,6 +29,24 @@ class _RPL4HomePageState extends State<RPL4HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          actions: [
+            Center(
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => FeedBackPage()),
+                                );
+                },
+                child: Text(
+                  'FeedBack',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w300),
+                ),
+              ),
+            )
+          ],
           automaticallyImplyLeading: false,
           title: Text("RPL-4 Candidate"),
           backgroundColor: kBlack,

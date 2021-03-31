@@ -14,6 +14,7 @@ import 'package:Scaleindia/shared/image_selector.dart';
 import 'package:Scaleindia/shared/resum_selector.dart';
 import 'package:get_it/get_it.dart';
 
+import 'Pages/RPL-4Candidate/video_selector.dart';
 import 'Services/employee_cloud_storage.dart';
 
 GetIt locator = GetIt.instance;
@@ -33,5 +34,6 @@ void setupLocator() {
   locator.registerLazySingleton(() => CloudStorageService());
   locator.registerLazySingleton(() => EmployeeCloudStorageService());
   locator.registerLazySingleton(() => ImageSelector());
+  locator.registerLazySingleton(() => VideoSelector());
   locator.registerLazySingleton(() => ResumeSelector());
 }

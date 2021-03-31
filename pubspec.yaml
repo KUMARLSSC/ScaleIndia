@@ -74,6 +74,7 @@ dependencies:
   csv: ^5.0.0  
   csv_reader: ^1.0.2
   flutter_downloader: ^1.5.2
+  video_player: ^2.1.0
 
 dev_dependencies:
   flutter_test:

@@ -4,10 +4,13 @@ import 'package:Scaleindia/ApiModel/employee_api.dart';
 import 'package:Scaleindia/ApiModel/employee_candidate_sourcing.dart';
 import 'package:Scaleindia/ApiModel/employer_api.dart';
 import 'package:Scaleindia/ApiModel/rpl-4_api.dart';
+import 'package:Scaleindia/ApiModel/rpl4_feedback_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 
 class FirestoreService {
+  final CollectionReference _usersCollectionReferencerpl4FeedBack =
+      FirebaseFirestore.instance.collection('FeedBack');
   final CollectionReference _usersCollectionReferenceEmployee =
       FirebaseFirestore.instance.collection('Employees');
   final CollectionReference _employeeCandidateCollectionReference =
@@ -18,6 +21,8 @@ class FirestoreService {
       FirebaseFirestore.instance.collection('Employers');
   final CollectionReference _usersCollectionReferenceRPL4 =
       FirebaseFirestore.instance.collection('RPL-4');
+  final StreamController<List<RPL4Feedback>> _feedbackcontroller =
+      StreamController<List<RPL4Feedback>>.broadcast();
   final StreamController<List<Employee>> _employeeController =
       StreamController<List<Employee>>.broadcast();
   final StreamController<List<Employer>> _employerController =
@@ -263,6 +268,18 @@ class FirestoreService {
       await _companySourcingCollectionReference
           .doc(comapanySourcing.documentId)
           .update(comapanySourcing.toMap());
+    } catch (e) {
+      if (e is PlatformException) {
+        return e.message;
+      }
+
+      return e.toString();
+    }
+  }
+
+  Future addFeedback(RPL4Feedback rpl4feedback) async {
+    try {
+      await _usersCollectionReferencerpl4FeedBack.add(rpl4feedback.toMap());
     } catch (e) {
       if (e is PlatformException) {
         return e.message;
