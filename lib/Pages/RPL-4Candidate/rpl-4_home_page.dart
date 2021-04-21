@@ -1,18 +1,8 @@
-import 'dart:io';
-import 'package:Scaleindia/Pages/RPL-4Candidate/rpl4_home_widget.dart';
+import 'package:Scaleindia/Pages/RPL-4Candidate/rpl-4_handbook.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
-import 'package:Scaleindia/widgets/internet_connection.dart';
+import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:flutter/material.dart';
-
-import 'feed_back.dart';
-import 'lss2301_page.dart';
-import 'lss2401.dart';
-import 'lss2501.dart';
-import 'lss2601.dart';
-import 'lss2701.dart';
-import 'lss5301.dart';
-import 'lss5501.dart';
-import 'lss7501.dart';
+import 'Rpl-4Assessment/rpl-4_assessment.dart';
 
 class RPL4HomePage extends StatefulWidget {
   @override
@@ -28,162 +18,91 @@ class _RPL4HomePageState extends State<RPL4HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          actions: [
-            Center(
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => FeedBackPage()),
-                                );
-                },
-                child: Text(
-                  'FeedBack',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w300),
-                ),
-              ),
-            )
-          ],
-          automaticallyImplyLeading: false,
-          title: Text("RPL-4 Candidate"),
-          backgroundColor: kBlack,
-          centerTitle: true,
-        ),
-        body: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Center(
-                child: Text(
-                  "Welcome To RPL-4",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 23,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Expanded(
-                  child: Container(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                child: ConnectionCheck(
-                  child: Padding(
-                      padding: EdgeInsets.all(1),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: <Widget>[
-                            Center(
-                                child: Text(
-                              "Select a HandBook",
-                              style: kTitleStyle,
-                            )),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Rpl4HomeWidget(
-                              title: 'Cutter (Footwear)',
-                              btitle: 'LSSQ2301',
-                              onpressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Lss2301Page()),
-                                );
-                              },
-                            ),
-                            Rpl4HomeWidget(
-                              title: 'Skiving Operator Footwear',
-                              btitle: 'LSSQ2401',
-                              onpressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Lss2401Page()),
-                                );
-                              },
-                            ),
-                            Rpl4HomeWidget(
-                              title: 'Stitching Operator ',
-                              btitle: 'LSSQ2501',
-                              onpressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Lss2501Page()),
-                                );
-                              },
-                            ),
-                            Rpl4HomeWidget(
-                              title: 'Pre Assembly Operations Footwear',
-                              btitle: 'LSSQ2601',
-                              onpressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Lss2601Page()),
-                                );
-                              },
-                            ),
-                            Rpl4HomeWidget(
-                              title: 'Lasting Operator',
-                              btitle: 'LSSQ2701',
-                              onpressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Lss2701Page()),
-                                );
-                              },
-                            ),
-                            Rpl4HomeWidget(
-                              title: 'Cutter (Goods & Garments)',
-                              btitle: 'LSSQ5301',
-                              onpressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Lss5301Page()),
-                                );
-                              },
-                            ),
-                            Rpl4HomeWidget(
-                              title: 'Stitching Goods and Garments',
-                              btitle: 'LSSQ5501',
-                              onpressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Lss5501Page()),
-                                );
-                              },
-                            ),
-                            Rpl4HomeWidget(
-                              title: 'Moulding Operator ',
-                              btitle: 'LSSQ7501',
-                              onpressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Lss7501Page()),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
-                      )),
-                ),
-              )),
-            ],
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          const SizedBox(
+            height: 50,
           ),
-        ));
-  }
-
-  Future<bool> _onWillPop() async {
-    return exit(0);
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Center(
+                  child: ClipRRect(
+                    child: Image.asset(
+                      "assets/img/logo.png",
+                      fit: BoxFit.fill,
+                      height: 100,
+                      width: 250,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Center(
+                  child: Text(
+                    "RPL-4 Candidate",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 23,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Container(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.all(1),
+                  child: Column(
+                    children: <Widget>[
+                      Center(
+                          child: Text(
+                        "Select:",
+                        style: kTitleStyle,
+                      )),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      BusyButton(
+                        title: 'HandBook',
+                        color: Colors.green,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RPL4HandBook()),
+                          );
+                        },
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      BusyButton(
+                        title: 'Assessment',
+                        color: Colors.green,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Rpl4AssessmentPage()),
+                          );
+                        },
+                      ),
+                      new Padding(padding: EdgeInsets.only(bottom: 20.0)),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

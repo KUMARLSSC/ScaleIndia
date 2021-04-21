@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:Scaleindia/Pages/RPL-4Admin/rpl-4_home_page.dart';
 import 'package:path/path.dart' as path;
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -339,6 +340,7 @@ class _LoadCsvDataScreenState extends State<LoadCsvDataScreen> {
                       title: 'Submit',
                       color: Colors.green,
                       onPressed: () {
+                        //convertCSVToJson(widget.path);
                         openfile(widget.path);
                       })
             ],
@@ -356,7 +358,23 @@ class _LoadCsvDataScreenState extends State<LoadCsvDataScreen> {
         .toList();
   }
 
-  Future<void> uploadFile(File image2) async {
+  Future<String> convertCSVToJson(String path) async {
+    List<List<dynamic>> csvList = await loadingCsvData(path);
+    csvList.removeAt(0); //remove column heading
+
+    var list = <CandidateUploadData>[];
+    for (List<dynamic> rowData in csvList) {
+      list.add(CandidateUploadData.fromList(rowData));
+    }
+    var jsonStr = jsonEncode(list);
+    _addFileToDatabase2(list);
+    print(jsonStr);
+    return jsonStr;
+  }
+
+  Future<void> uploadFile(
+    File image2,
+  ) async {
     try {
       String imageLocation2 = await getFileNameWithExtension(image2);
       final Reference reference2 =
@@ -372,9 +390,7 @@ class _LoadCsvDataScreenState extends State<LoadCsvDataScreen> {
         });
       });
       TaskSnapshot taskSnapshot = await uploadTask;
-      _addFileToDatabase2(
-        imageLocation2,
-      );
+
       String url = await taskSnapshot.ref.getDownloadURL();
       print('url$url');
     } catch (e) {
@@ -383,18 +399,20 @@ class _LoadCsvDataScreenState extends State<LoadCsvDataScreen> {
   }
 
   Future<void> _addFileToDatabase2(
-    String text2,
-  ) async {
+      List<CandidateUploadData> candidateUploadData) async {
     try {
       // Get image URL from firebase
-      final ref = FirebaseStorage.instance.ref().child(text2);
-      var imageString = await ref.getDownloadURL();
+      // final ref = FirebaseStorage.instance.ref().child(text2);
+      // var imageString = await ref.getDownloadURL();
 
       // Add location and url to database
-      await FirebaseFirestore.instance.collection('RPL-4Admin').doc().set({
-        'url': imageString,
-        'location': text2,
-      });
+      for (CandidateUploadData candidateUploadDatas in candidateUploadData) {
+        await FirebaseFirestore.instance
+            .collection('RPL-4Admin')
+            .doc()
+            .set(candidateUploadDatas.toJson())
+            .whenComplete(() => print('uploaded successfully'));
+      }
     } catch (e) {
       print(e.message);
     }
@@ -402,6 +420,7 @@ class _LoadCsvDataScreenState extends State<LoadCsvDataScreen> {
 
   Future<void> openfile(String path) async {
     final csvFile = new File(path);
+    convertCSVToJson(csvFile.path);
     uploadFile(csvFile);
   }
 
@@ -416,4 +435,76 @@ class _LoadCsvDataScreenState extends State<LoadCsvDataScreen> {
       return null;
     }
   }
+}
+
+class CandidateUploadData {
+  int slno;
+  String salutation;
+  String name;
+  String fathername;
+  int mobileNo;
+  int aadharNo;
+  String address;
+  String marriage;
+  String qualification;
+  String dob;
+  String gender;
+  String jobRole;
+  String qpCode;
+  String employementName;
+  String companyName;
+
+  CandidateUploadData(
+      this.slno,
+      this.salutation,
+      this.name,
+      this.fathername,
+      this.mobileNo,
+      this.aadharNo,
+      this.address,
+      this.marriage,
+      this.qualification,
+      this.dob,
+      this.gender,
+      this.jobRole,
+      this.qpCode,
+      this.employementName,
+      this.companyName);
+
+  CandidateUploadData.fromList(List<dynamic> items)
+      : this(
+          items[0],
+          items[1],
+          items[2],
+          items[3],
+          items[4],
+          items[5],
+          items[6],
+          items[7],
+          items[8],
+          items[9],
+          items[10],
+          items[11],
+          items[12],
+          items[13],
+          items[14],
+        );
+
+  Map<String, dynamic> toJson() => {
+        'slno': this.slno,
+        'name': this.name,
+        'salutation': this.salutation,
+        'fathername': this.fathername,
+        'mobileNo': this.mobileNo,
+        'aadharNo': this.aadharNo,
+        'address': this.address,
+        'marriage': this.marriage,
+        'qualification': this.qualification,
+        'dob': this.dob,
+        'gender': this.gender,
+        'jobRole': this.jobRole,
+        'qpCode': this.qpCode,
+        'employementName': this.employementName,
+        'companyName': this.companyName
+      };
 }

@@ -20,6 +20,7 @@ class InputField extends StatefulWidget {
   final String additionalNote;
   final Function(String) onChanged;
   final TextInputFormatter formatter;
+  final FormFieldValidator<String> validator;
 
   InputField(
       {@required this.controller,
@@ -34,6 +35,7 @@ class InputField extends StatefulWidget {
       this.validationMessage,
       this.textInputAction = TextInputAction.next,
       this.textInputType = TextInputType.number,
+      this.validator,
       this.password = false,
       this.isReadOnly = false,
       this.smallVersion = false});
@@ -68,6 +70,7 @@ class _InputFieldState extends State<InputField> {
             children: <Widget>[
               Expanded(
                 child: TextFormField(
+                  validator: widget.validator,
                   controller: widget.controller,
                   keyboardType: isKeyboardType == false
                       ? widget.textInputType

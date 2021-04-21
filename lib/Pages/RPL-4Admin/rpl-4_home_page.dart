@@ -27,6 +27,8 @@ class _RPL4HomePageAdminState extends State<RPL4HomePageAdmin> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return WillPopScope(
         child: Scaffold(
           backgroundColor: Colors.white,
@@ -64,40 +66,84 @@ class _RPL4HomePageAdminState extends State<RPL4HomePageAdmin> {
                           DocumentSnapshot documentSnapshot =
                               snapshot.data.docs[index];
                           return Padding(
-                              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Stack(
-                                  children: <Widget>[
-                                    Container(
-                                      height: 100,
-                                      decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image:
-                                              AssetImage('assets/img/logo.png'),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    Center(
-                                      child: Container(
-                                        height: 140,
-                                        child: Card(
-                                          margin: EdgeInsets.all(18),
-                                          elevation: 7.0,
-                                          child: Center(
-                                            child: Text(
-                                              documentSnapshot['location'],
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 10),
+                            child: Material(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(15),
+                              elevation: 8,
+                              child: Container(
+                                width: width,
+                                height: height,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 16.0),
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            documentSnapshot['name'],
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito',
+                                              fontSize: 19,
                                             ),
                                           ),
-                                        ),
+                                          SizedBox(
+                                            height: 1,
+                                          ),
+                                          Divider(),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                  'Aadhar no:${documentSnapshot['aadharNo']}'),
+                                              Text(
+                                                  'DOB:${documentSnapshot['dob']}')
+                                            ],
+                                          ),
+                                          Divider(),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    'JobRole : ${documentSnapshot['jobRole']}',
+                                                    style:
+                                                        TextStyle(fontSize: 13),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 1.5,
+                                                  ),
+                                                  Text(
+                                                    'Employement Status:   ${documentSnapshot['employementName']}',
+                                                    style:
+                                                        TextStyle(fontSize: 13),
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          )
+                                        ],
                                       ),
+                                    ),
+                                    SizedBox(
+                                      height: 16,
                                     ),
                                   ],
                                 ),
-                              ));
+                              ),
+                            ),
+                          );
                         });
                   }
                 },
@@ -130,22 +176,4 @@ class _RPL4HomePageAdminState extends State<RPL4HomePageAdmin> {
       ),
     );
   }
-}
-
-class Excel {
-  final String location;
-  final String url;
-  final DocumentReference reference;
-
-  Excel.fromMap(Map<String, dynamic> map, {this.reference})
-      : assert(map['location'] != null),
-        assert(map['url'] != null),
-        location = map['location'],
-        url = map['url'];
-
-  Excel.fromSnapshot(DocumentSnapshot snapshot)
-      : this.fromMap(snapshot.data(), reference: snapshot.reference);
-
-  @override
-  String toString() => "Excel<$location:$url>";
 }

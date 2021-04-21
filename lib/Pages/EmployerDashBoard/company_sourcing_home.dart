@@ -1,4 +1,4 @@
-import 'package:Scaleindia/Pages/EmployeeDashBoard/company_souring_list.dart';
+import 'package:Scaleindia/Pages/EmployerDashBoard/company_souring_list.dart';
 import 'package:Scaleindia/ViewModels/ecas_viewmodel.dart';
 import 'package:Scaleindia/shared/ui_helpers.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';

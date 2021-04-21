@@ -1,4 +1,4 @@
-import 'package:Scaleindia/Pages/EmployeeDashBoard/company_widget.dart';
+import 'package:Scaleindia/Pages/EmployerDashBoard/company_widget.dart';
 import 'package:flutter/material.dart';
 
 class CompanyCreate extends StatelessWidget {

@@ -102,7 +102,7 @@ class RPL4ViewModel extends BaseModel {
     } else {
       await _dialogService.showDialog(
         title: 'Failed',
-        description: 'Please enter valid numbeer',
+        description: 'Please enter valid number',
       );
     }
   }

@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:Scaleindia/Pages/EmployeeDashBoard/load_csv.dart';
-import 'package:Scaleindia/Pages/EmployeeDashBoard/sourcing_csv_page.dart';
+import 'package:Scaleindia/Pages/EmployerDashBoard/load_csv.dart';
+import 'package:Scaleindia/Pages/EmployerDashBoard/sourcing_csv_page.dart';
 import 'package:Scaleindia/ViewModels/employerPage_viewmodel.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';

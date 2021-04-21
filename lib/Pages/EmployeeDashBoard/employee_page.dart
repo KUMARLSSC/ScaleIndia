@@ -130,6 +130,14 @@ class EmployeePage extends StatelessWidget {
                             model.navigateToEmployeeRegister();
                           },
                         ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        BusyButton(
+                          title: 'Sourcing Login',
+                          color: Colors.brown[900],
+                          onPressed: () {},
+                        ),
                         new Padding(padding: EdgeInsets.only(bottom: 20.0)),
                       ],
                     ),

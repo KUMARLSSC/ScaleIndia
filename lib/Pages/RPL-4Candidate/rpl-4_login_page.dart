@@ -1,12 +1,18 @@
+import 'package:Scaleindia/Pages/RPL-4Candidate/rpl-4_home_page.dart';
 import 'package:Scaleindia/Pages/RPL-4Candidate/rpl-4_viewmodel.dart';
+import 'package:Scaleindia/Services/dialog_service.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../locator.dart';
+
 class RPL4LoginPage extends StatelessWidget {
-  final phoneNumberController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
+  final DialogService _dialogService = locator<DialogService>();
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<RPL4ViewModel>.reactive(
@@ -87,12 +93,11 @@ class RPL4LoginPage extends StatelessWidget {
                         height: 15,
                       ),
                       BusyButton(
-                        title: 'Login',
-                        color: Colors.green,
-                        onPressed: () {
-                          model.login(phoneNumber1: phoneNumberController.text);
-                        },
-                      ),
+                          title: 'Login',
+                          color: Colors.green,
+                          onPressed: () {
+                            getData(phoneNumberController.text, context);
+                          }),
                       SizedBox(
                         height: 30,
                       ),
@@ -113,5 +118,30 @@ class RPL4LoginPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  CollectionReference _collectionRef =
+      FirebaseFirestore.instance.collection('RPL-4Admin');
+
+  Future<void> getData(Object value, BuildContext context) async {
+    // Get docs from collection reference
+    QuerySnapshot querySnapshot = await _collectionRef.get();
+
+    // Get data from docs and convert map to List
+    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+    if (allData.any((element) => element.toString().contains(value)) &&
+        phoneNumberController.text.length == 10 &&
+        phoneNumberController.text.isNotEmpty) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => RPL4HomePage()),
+      );
+    } else {
+      await _dialogService.showDialog(
+        title: 'Failed',
+        description:
+            'Please enter valid phone number or Please enter 10 Digit phone number',
+      );
+    }
   }
 }
