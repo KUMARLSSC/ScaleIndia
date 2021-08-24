@@ -1,5 +1,4 @@
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
-import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_api.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
@@ -7,7 +6,6 @@ import 'package:Scaleindia/Pages/assessment/practical_language_widget.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
 class LanguagePage1 extends StatelessWidget {
@@ -16,7 +14,6 @@ class LanguagePage1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
     return ViewModelBuilder<LanguagePageViewModel>.reactive(
         onModelReady: (model) => model.getPractical(1),
         viewModelBuilder: () => LanguagePageViewModel(),

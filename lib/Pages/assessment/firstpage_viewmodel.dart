@@ -8,10 +8,12 @@ import '../../locator.dart';
 import '../../ViewModels/base_model.dart';
 
 class FirstPageViewModel extends BaseModel {
+  String i;
+
+  final DialogService _dialogService = locator<DialogService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final RequestService _requestService = locator<RequestService>();
-  final DialogService _dialogService = locator<DialogService>();
-  String i;
+
 //  String i = "1";
   Future firstpage({
     @required String requestidText,

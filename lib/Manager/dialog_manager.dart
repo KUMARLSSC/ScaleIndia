@@ -1,5 +1,5 @@
-import 'package:Scaleindia/Models/dialog_models.dart';
-import 'package:Scaleindia/Services/dialog_service.dart';
+import 'package:ScaleIndia/Models/dialog_models.dart';
+import 'package:ScaleIndia/Services/dialog_service.dart';
 import 'package:flutter/material.dart';
 
 import '../locator.dart';

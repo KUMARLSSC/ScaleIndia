@@ -12,7 +12,8 @@ class Api {
   var client = new http.Client();
 
   Future<CenterAssesor> getCenterAssesor(int resId) async {
-    var response = await client.get('$urlpoint/api/CenterAssesorInfo/$resId');
+    var response =
+        await client.get(Uri.parse('$urlpoint/api/CenterAssesorInfo/$resId'));
     final jsonresponse = json.decode(response.body);
 
     return CenterAssesor.fromJson(jsonresponse);
@@ -22,7 +23,8 @@ class Api {
     // ignore: deprecated_member_use
     var _candidate = List<Candidate>();
     // Get user posts for id
-    var response = await client.get('$urlpoint/api/CandidateList/$resId');
+    var response =
+        await client.get(Uri.parse('$urlpoint/api/CandidateList/$resId'));
 
     // parse into List
     var parsed = json.decode(response.body) as List<dynamic>;
@@ -39,7 +41,8 @@ class Api {
     // ignore: deprecated_member_use
     var _theory = List<Theory>();
     // Get user posts for id
-    var response = await client.get('$urlpoint/api/TheoryQuestion/$resId');
+    var response =
+        await client.get(Uri.parse('$urlpoint/api/TheoryQuestion/$resId'));
 
     // parse into List
     var parsed = json.decode(response.body) as List<dynamic>;
@@ -56,7 +59,8 @@ class Api {
     // ignore: deprecated_member_use
     var _practical = List<Practical>();
     // Get user posts for id
-    var response = await client.get('$urlpoint/api/PracticalQuestion/$resId');
+    var response =
+        await client.get(Uri.parse('$urlpoint/api/PracticalQuestion/$resId'));
 
     // parse into List
     var parsed = json.decode(response.body) as List<dynamic>;
@@ -73,7 +77,8 @@ class Api {
       List<PracticalResult> list) async {
     var body = json.encode(list);
     final response = await client.post(
-        'https://webapplication320200218110357.azurewebsites.net/api/PracticalResult',
+        Uri.parse(
+            'https://webapplication320200218110357.azurewebsites.net/api/PracticalResult'),
         body: body,
         headers: {'Content-type': 'application/json; charset=UTF-8'});
     print(response.headers);
@@ -89,7 +94,8 @@ class Api {
   Future<List<PracticalResult>> updateTheory(List<PracticalResult> list) async {
     var body = json.encode(list);
     final response = await client.post(
-        'https://webapplication320200218110357.azurewebsites.net/api/PracticalResult',
+        Uri.parse(
+            'https://webapplication320200218110357.azurewebsites.net/api/PracticalResult'),
         body: body,
         headers: {'Content-type': 'application/json; charset=UTF-8'});
     print(response.headers);

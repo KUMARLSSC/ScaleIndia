@@ -1,20 +1,25 @@
+import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/EmployeeDashBoard/ecas_candidate_list.dart';
-import 'package:Scaleindia/ViewModels/ecas_viewmodel.dart';
+import 'package:Scaleindia/Pages/EmployeeDashBoard/employeePage_viewmodel.dart';
+import 'package:Scaleindia/Services/navigation_service.dart';
+import 'package:Scaleindia/locator.dart';
 import 'package:Scaleindia/shared/ui_helpers.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class ECASHome extends StatelessWidget {
+  final NavigationService _navigationService = locator<NavigationService>();
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    return ViewModelBuilder<CreatePostViewModel>.reactive(
-        viewModelBuilder: () => CreatePostViewModel(),
-        onModelReady: (model) => model.listenToPosts(),
-        builder: (context, model, child) => Scaffold(
+    return ViewModelBuilder<EmployeePageViewModel>.reactive(
+        viewModelBuilder: () => EmployeePageViewModel(),
+        onModelReady: (model) => model.listenToPosts1(),
+        builder: (context, model, child) => WillPopScope(
+            child: Scaffold(
               backgroundColor: Colors.white,
               body: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -55,6 +60,11 @@ class ECASHome extends StatelessWidget {
                   ],
                 ),
               ),
-            ));
+            ),
+            onWillPop: () => _onWillPop()));
+  }
+
+  Future<bool> _onWillPop() async {
+    return _navigationService.navigateTo(CandidateSouringPageViewRoute);
   }
 }

@@ -1,4 +1,4 @@
-import 'package:Scaleindia/Services/dialog_service.dart';
+import 'package:ScaleIndia/Services/dialog_service.dart';
 import '../../locator.dart';
 import '../../ViewModels/base_model.dart';
 

@@ -1,26 +1,59 @@
-import 'package:Scaleindia/ApiModel/candidate_api.dart';
-import 'package:Scaleindia/ApiModel/center_api.dart';
-import 'package:Scaleindia/ApiModel/practical_api.dart';
+import 'dart:async';
+import 'package:Scaleindia/ApiModel/theory_api.dart';
+import 'package:Scaleindia/Pages/RPL-5/rpl-5_language_widget.dart';
 import 'package:Scaleindia/ViewModels/languagepage_viewmodel.dart';
 import 'package:Scaleindia/widgets/HeaderWidget.dart';
-import 'package:Scaleindia/Pages/assessment/practical_language_widget.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';
 import 'package:Scaleindia/widgets/style_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
-class LanguagePage1 extends StatelessWidget {
-  final Candidate candidate;
-  final bool busy;
-  LanguagePage1({this.candidate, this.busy = false});
+class RPL5TheoryLanguagePage extends StatefulWidget {
+  @override
+  _LanguagePageState createState() => _LanguagePageState();
+}
+
+class _LanguagePageState extends State<RPL5TheoryLanguagePage> {
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  Future<void> _rules(BuildContext context) async {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Rules'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text("- Do not atten any call during exam"),
+                Text(
+                    " - Do not interact with any other apps during exam Eg:whats app,gmail,facebooketc.."),
+                Text(" - Do not minimize the app during exam"),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    CenterAssesor centerAssesor = Provider.of<CenterAssesor>(context);
+    Timer.run(() => _rules(context));
     return ViewModelBuilder<LanguagePageViewModel>.reactive(
-        onModelReady: (model) =>
-            model.getPractical(busy ? 1 : centerAssesor.asId),
+        onModelReady: (model) => model.getTheory(1),
         viewModelBuilder: () => LanguagePageViewModel(),
         builder: (context, model, child) => WillPopScope(
             child: Scaffold(
@@ -44,7 +77,7 @@ class LanguagePage1 extends StatelessWidget {
                             "Select an Language to continue:",
                             style: kTitleStyle,
                           )),
-                          _getPostUi1(model.posts1)
+                          _getPostUi(model.posts)
                         ],
                       )),
             onWillPop: () => _onWillPop(context)));
@@ -80,10 +113,10 @@ class LanguagePage1 extends StatelessWidget {
         false;
   }
 
-  Widget _getPostUi1(
-    List<Practical> posts,
+  Widget _getPostUi(
+    List<Theory> posts,
   ) =>
-      new ListView.builder(
+      ListView.builder(
           shrinkWrap: true,
           itemCount: posts.length,
           itemBuilder: (
@@ -93,15 +126,14 @@ class LanguagePage1 extends StatelessWidget {
             /* final String english = "English";
             final String tamil = "Tamil";
             final String bangla = "Bangla";*/
-            final Map<String, Practical> profileMap = new Map();
+            final Map<String, Theory> profileMap = new Map();
             posts.forEach((item) {
-              profileMap[item.pqLang] = item;
+              profileMap[item.tqLanguage] = item;
             });
             posts = profileMap.values.toList();
             final r = posts[index];
-            return LanguageWidget1(
-              practical: r,
-              busy: true,
+            return RPL5TheoryLanguageWidget(
+              theory: r,
             );
           });
 }

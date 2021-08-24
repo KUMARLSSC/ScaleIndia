@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:Scaleindia/Models/route_names.dart';
 import 'package:Scaleindia/Pages/RPL-4Admin/rpl4_csv_Page.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
@@ -74,7 +73,7 @@ class _RPL4HomePageAdminState extends State<RPL4HomePageAdmin> {
                               elevation: 8,
                               child: Container(
                                 width: width,
-                                height: height,
+                                height: height - 580,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(15),
@@ -164,10 +163,10 @@ class _RPL4HomePageAdminState extends State<RPL4HomePageAdmin> {
   }
 
   Future<void> openfile(BuildContext context) async {
-    File file = await FilePicker.getFile(
+    final file = await FilePicker.platform.pickFiles(
       type: FileType.custom,
     );
-    String path = file.path;
+    String path = file.files.single.path;
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (_) {

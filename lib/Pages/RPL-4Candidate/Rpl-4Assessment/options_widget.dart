@@ -1,19 +1,12 @@
 import 'dart:async';
 import 'package:Scaleindia/ApiModel/candidate_api.dart';
-import 'package:Scaleindia/ApiModel/center_api.dart';
-import 'package:Scaleindia/ApiModel/practical_result_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
-import 'package:Scaleindia/Models/route_names.dart';
-import 'package:Scaleindia/Pages/assessment/summary_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
-import 'package:Scaleindia/widgets/loader_animation.dart';
-import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../locator.dart';
 

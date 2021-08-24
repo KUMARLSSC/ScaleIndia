@@ -1,5 +1,5 @@
 import 'package:Scaleindia/ApiModel/employee_candidate_sourcing.dart';
-import 'package:Scaleindia/ViewModels/ecas_viewmodel.dart';
+import 'package:Scaleindia/Pages/EmployeeDashBoard/employeePage_viewmodel.dart';
 import 'package:Scaleindia/widgets/busy_button.dart';
 import 'package:Scaleindia/widgets/expansion_list.dart';
 import 'package:Scaleindia/widgets/input_field.dart';
@@ -1229,53 +1229,22 @@ class _ECASCreatWidgetState extends State<ECASCreatWidget> {
   final workExperianceController = TextEditingController();
   final districtController = TextEditingController();
   final stateController = TextEditingController();
-  final cityController = TextEditingController();
   final pincodeController = TextEditingController();
   final lastCompanyWorkedForController = TextEditingController();
   final lastWorkingDesignationController = TextEditingController();
   final addressController = TextEditingController();
   final genderController = TextEditingController();
-  final imgurlController = TextEditingController();
+  final expectedSalaryController = TextEditingController();
+  final experiencebifurcationwithdesignationController =
+      TextEditingController();
+  final intrestareaController = TextEditingController();
+  final lastsalaryController = TextEditingController();
+  final technicalEducation = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<CreatePostViewModel>.reactive(
-        viewModelBuilder: () => CreatePostViewModel(),
-        onModelReady: (model) {
-          // update the text in the controller
-          nameController.text = widget.employeeCandidateSourcing?.name ?? '';
-          fatherNameController.text =
-              widget.employeeCandidateSourcing?.fatherName ?? '';
-          genderController.text =
-              widget.employeeCandidateSourcing?.gender ?? '';
-          motherNameController.text =
-              widget.employeeCandidateSourcing?.motherName ?? '';
-          aadharNumberController.text =
-              widget.employeeCandidateSourcing?.aadharNumber ?? '';
-          addressController.text =
-              widget.employeeCandidateSourcing?.address ?? '';
-          alternatePhoneNumberController.text =
-              widget.employeeCandidateSourcing?.alternatePhoneNumber ?? '';
-          phoneNumberController.text =
-              widget.employeeCandidateSourcing?.phoneNumber ?? '';
-          pincodeController.text =
-              widget.employeeCandidateSourcing?.pincode ?? '';
-          cityController.text = widget.employeeCandidateSourcing?.city ?? '';
-          stateController.text = widget.employeeCandidateSourcing?.state ?? '';
-          lastCompanyWorkedForController.text =
-              widget.employeeCandidateSourcing?.lastCompanyWorkedFor ?? '';
-          lastWorkingDesignationController.text =
-              widget.employeeCandidateSourcing?.lastWorkingDesignation ?? '';
-          educationQualificationController.text =
-              widget.employeeCandidateSourcing?.educationalQualification ?? '';
-          emailController.text =
-              widget.employeeCandidateSourcing?.employeeEmailAddress ?? '';
-          educationQualificationController.text =
-              widget.employeeCandidateSourcing?.workExperiance ?? '';
-          educationQualificationController.text =
-              widget.employeeCandidateSourcing?.dateOfBirth ?? '';
-          model.setEdittingPost(widget.employeeCandidateSourcing);
-        },
+    return ViewModelBuilder<EmployeePageViewModel>.reactive(
+        viewModelBuilder: () => EmployeePageViewModel(),
         builder: (context, model, child) => Column(
               children: [
                 Container(
@@ -1849,6 +1818,168 @@ class _ECASCreatWidgetState extends State<ECASCreatWidget> {
                         SizedBox(
                           height: 1,
                         ),
+                        Container(
+                          height: 114,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Technical Qualification:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[200]))),
+                                child: InputField(
+                                  placeholder:
+                                      'Eg:Diploma In footwear Manufacturing',
+                                  controller: technicalEducation,
+                                  text1InputType: TextInputType.text,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1,
+                        ),
+                        Container(
+                          height: 114,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Experience with designation:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[200]))),
+                                child: InputField(
+                                  placeholder: 'Eg:3year-Closing supervisor',
+                                  controller:
+                                      experiencebifurcationwithdesignationController,
+                                  text1InputType: TextInputType.text,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1,
+                        ),
+                        Container(
+                          height: 114,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Last Salary:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[200]))),
+                                child: InputField(
+                                  placeholder: 'Eg:15000',
+                                  controller: lastsalaryController,
+                                  text1InputType: TextInputType.number,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1,
+                        ),
+                        Container(
+                          height: 114,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Interest area:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[200]))),
+                                child: InputField(
+                                  placeholder: 'Eg:General Manager,Trainer,',
+                                  controller: intrestareaController,
+                                  text1InputType: TextInputType.text,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1,
+                        ),
+                        Container(
+                          height: 114,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Expected Salary:",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[200]))),
+                                child: InputField(
+                                  placeholder: 'Eg:25000',
+                                  controller: expectedSalaryController,
+                                  text1InputType: TextInputType.number,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1,
+                        ),
                         GestureDetector(
                           // When we tap we call selectImage
                           onTap: () => model.selectImage(),
@@ -1868,6 +1999,33 @@ class _ECASCreatWidgetState extends State<ECASCreatWidget> {
                                 : Image.file(model.selectedImage),
                           ),
                         ),
+                        SizedBox(
+                          height: 1,
+                        ),
+                        GestureDetector(
+                          // When we tap we call selectImage
+                          onTap: () => model.selectResume(),
+                          child: Container(
+                              height: 250,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  borderRadius: BorderRadius.circular(10)),
+                              alignment: Alignment.center,
+                              // If the selected image is null we show "Tap to add post image"
+                              child: model.selectedResume == null
+                                  ? Text(
+                                      'Tap to Upload Resume',
+                                      style: TextStyle(color: Colors.grey[400]),
+                                    )
+                                  // If we have a selected image we want to show it
+                                  : Text(
+                                      'Selected',
+                                      style: TextStyle(color: Colors.green),
+                                    )),
+                        ),
+                        SizedBox(
+                          height: 150,
+                        ),
                         new Padding(padding: EdgeInsets.only(bottom: 20.0)),
                       ],
                     ),
@@ -1876,39 +2034,42 @@ class _ECASCreatWidgetState extends State<ECASCreatWidget> {
                 SizedBox(
                   height: 18,
                 ),
-                model.selectedImage == null
-                    ? Container()
-                    : BusyButton(
-                        busy: model.busy,
-                        title: 'Submit',
-                        onPressed: () {
-                          model.addPost(
-                            address: addressController.text,
-                            employeeEmailAddress: emailController.text,
-                            password: passwordController.text,
-                            name: nameController.text,
-                            motherName: motherNameController.text,
-                            fatherName: fatherNameController.text,
-                            phoneNumber: phoneNumberController.text,
-                            alternatePhoneNumber:
-                                alternatePhoneNumberController.text,
-                            city: selectedcity,
-                            pincode: pincodeController.text,
-                            state: selectedState,
-                            educationalQualification:
-                                educationQualificationController.text,
-                            lastCompanyWorkedFor:
-                                lastCompanyWorkedForController.text,
-                            lastWorkingDesignation:
-                                lastWorkingDesignationController.text,
-                            dateOfBirth: dateOfBirthController.text,
-                            gender: genderController.text,
-                            aadharNumber: aadharNumberController.text,
-                            workExperiance: workExperianceController.text,
-                          );
-                        },
-                        color: Colors.blue,
-                      ),
+                BusyButton(
+                  busy: model.busy,
+                  title: 'Submit',
+                  onPressed: () {
+                    // ignore: missing_required_param
+                    model.addPost(
+                        address: addressController.text,
+                        employeeEmailAddress: emailController.text,
+                        name: nameController.text,
+                        motherName: motherNameController.text,
+                        fatherName: fatherNameController.text,
+                        phoneNumber: phoneNumberController.text,
+                        alternatePhoneNumber:
+                            alternatePhoneNumberController.text,
+                        city: selectedcity,
+                        pincode: pincodeController.text,
+                        state: selectedState,
+                        educationalQualification:
+                            educationQualificationController.text,
+                        lastCompanyWorkedFor:
+                            lastCompanyWorkedForController.text,
+                        lastWorkingDesignation:
+                            lastWorkingDesignationController.text,
+                        dateOfBirth: dateOfBirthController.text,
+                        gender: genderController.text,
+                        aadharNumber: aadharNumberController.text,
+                        workExperiance: workExperianceController.text,
+                        expectedSalary: expectedSalaryController.text,
+                        experiencebifurcationwithdesignation:
+                            educationQualificationController.text,
+                        intrestarea: intrestareaController.text,
+                        lastsalary: lastsalaryController.text,
+                        technicalEducation: technicalEducation.text);
+                  },
+                  color: Colors.blue,
+                ),
               ],
             ));
   }

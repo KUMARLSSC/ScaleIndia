@@ -1,6 +1,7 @@
-import 'package:Scaleindia/Models/route_names.dart';
-import 'package:Scaleindia/Services/authentication_service.dart';
-import 'package:Scaleindia/Services/navigation_service.dart';
+import 'package:ScaleIndia/Models/route_names.dart';
+import 'package:ScaleIndia/Services/authentication_service.dart';
+import 'package:ScaleIndia/Services/navigation_service.dart';
+
 import '../../locator.dart';
 import '../../ViewModels/base_model.dart';
 
@@ -36,5 +37,9 @@ class CandidatePageViewModel extends BaseModel {
 
   void navigateToRPL4AdminLogin() {
     _navigationService.navigateTo(Rpl4AdminViewRoute);
+  }
+
+  void navigateToRPL5Login() {
+    _navigationService.navigateTo(RPL5Login);
   }
 }

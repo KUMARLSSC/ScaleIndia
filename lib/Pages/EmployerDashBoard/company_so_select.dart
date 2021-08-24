@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:Scaleindia/Pages/EmployerDashBoard/load_csv.dart';
 import 'package:Scaleindia/Pages/EmployerDashBoard/sourcing_csv_page.dart';
 import 'package:Scaleindia/ViewModels/employerPage_viewmodel.dart';
@@ -124,10 +123,10 @@ class CompanySourcingSelect extends StatelessWidget {
   }
 
   Future<void> openfile(BuildContext context) async {
-    File file = await FilePicker.getFile(
+    final file = await FilePicker.platform.pickFiles(
       type: FileType.custom,
     );
-    String path = file.path;
+    String path = file.files.single.path;
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (_) {

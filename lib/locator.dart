@@ -1,21 +1,21 @@
-import 'package:Scaleindia/Services/api_services.dart';
-import 'package:Scaleindia/Services/authentication_service.dart';
-import 'package:Scaleindia/Services/background_fetch_service.dart';
-import 'package:Scaleindia/Services/candidate_service.dart';
-import 'package:Scaleindia/Services/cloudStorage_service.dart';
-import 'package:Scaleindia/Services/dialog_service.dart';
-import 'package:Scaleindia/Services/firestore_service.dart';
-import 'package:Scaleindia/Services/location_service.dart';
-import 'package:Scaleindia/Services/navigation_service.dart';
-import 'package:Scaleindia/Services/practical_services.dart';
-import 'package:Scaleindia/Services/request_service.dart';
-import 'package:Scaleindia/Services/theory_service.dart';
-import 'package:Scaleindia/shared/image_selector.dart';
-import 'package:Scaleindia/shared/resum_selector.dart';
+import 'package:ScaleIndia/Services/api_services.dart';
+import 'package:ScaleIndia/Services/authentication_service.dart';
+import 'package:ScaleIndia/Services/background_fetch_service.dart';
+import 'package:ScaleIndia/Services/candidate_service.dart';
+import 'package:ScaleIndia/Services/cloudStorage_service.dart';
+import 'package:ScaleIndia/Services/dialog_service.dart';
+import 'package:ScaleIndia/Services/firestore_service.dart';
+import 'package:ScaleIndia/Services/navigation_service.dart';
+import 'package:ScaleIndia/Services/practical_services.dart';
+import 'package:ScaleIndia/Services/request_service.dart';
+import 'package:ScaleIndia/Services/theory_service.dart';
+import 'package:ScaleIndia/shared/image_selector.dart';
+import 'package:ScaleIndia/shared/resum_selector.dart';
 import 'package:get_it/get_it.dart';
 
 import 'Pages/RPL-4Candidate/video_selector.dart';
 import 'Services/employee_cloud_storage.dart';
+import 'Services/location_service.dart';
 
 GetIt locator = GetIt.instance;
 

@@ -1,48 +1,51 @@
-import 'package:Scaleindia/ApiModel/center_api.dart';
-import 'package:Scaleindia/Models/route_names.dart';
-import 'package:Scaleindia/Pages/Assessor/assessor_homepage.dart';
-import 'package:Scaleindia/Pages/Assessor/sop_page.dart';
-import 'package:Scaleindia/Pages/EmployeeDashBoard/candidate_sourcing.dart';
-import 'package:Scaleindia/Pages/EmployerDashBoard/company_create.dart';
-import 'package:Scaleindia/Pages/EmployerDashBoard/company_so_select.dart';
-import 'package:Scaleindia/Pages/EmployerDashBoard/company_sourcing_home.dart';
-import 'package:Scaleindia/Pages/EmployeeDashBoard/eca_create.dart';
-import 'package:Scaleindia/Pages/EmployeeDashBoard/ecas_home.dart';
-import 'package:Scaleindia/Pages/EmployerDashBoard/sourcing.dart';
-import 'package:Scaleindia/Pages/EmployerDashBoard/employerHome_page.dart';
-import 'package:Scaleindia/Pages/EmployerDashBoard/postJob_page.dart';
-import 'package:Scaleindia/Pages/EmployerDashBoard/viewJob_page.dart';
-import 'package:Scaleindia/Pages/RPL-4Admin/rpl-4_home_page.dart';
-import 'package:Scaleindia/Pages/RPL-4Admin/rpl-4_login_page.dart';
-import 'package:Scaleindia/Pages/RPL-4Candidate/rpl-4_home_page.dart';
-import 'package:Scaleindia/Pages/RPL-4Candidate/rpl-4_login_page.dart';
-import 'package:Scaleindia/Pages/RPL-4Candidate/rpl-4_register_page.dart';
-import 'package:Scaleindia/Pages/RPL-4Candidate/rpl_otp.dart';
-import 'package:Scaleindia/Pages/Trainer/trainer_homePage.dart';
-import 'package:Scaleindia/Pages/Assessor/assessor_page.dart';
-import 'package:Scaleindia/Pages/candidate_page.dart';
-import 'package:Scaleindia/Pages/elearning_page.dart';
-import 'package:Scaleindia/Pages/EmployeeDashBoard/employeeDashBoard_page.dart';
-import 'package:Scaleindia/Pages/EmployeeDashBoard/employeeRegister_page.dart';
-import 'package:Scaleindia/Pages/EmployeeDashBoard/employee_page.dart';
-import 'package:Scaleindia/Pages/EmployerDashBoard/employerDashBoard_page.dart';
-import 'package:Scaleindia/Pages/employerRegister_page.dart';
-import 'package:Scaleindia/Pages/EmployerDashBoard/employer_page.dart';
-import 'package:Scaleindia/Pages/assessment/fourth_page.dart';
-import 'package:Scaleindia/Pages/assessment/first_page.dart';
-import 'package:Scaleindia/Pages/forgotPassword_Page1.dart';
-import 'package:Scaleindia/Pages/forgotPassword_Page2.dart';
-import 'package:Scaleindia/Pages/assessment/third_page.dart';
-import 'package:Scaleindia/Pages/home_page.dart';
-import 'package:Scaleindia/Pages/assessment/theory_langugae_page.dart';
-import 'package:Scaleindia/Pages/onBoarding_page.dart';
-import 'package:Scaleindia/Pages/assessment/practical_page.dart';
-import 'package:Scaleindia/Pages/assessment/summary_page.dart';
-import 'package:Scaleindia/Pages/assessment/theory_page.dart';
-import 'package:Scaleindia/Pages/assessment/second_page.dart';
-import 'package:Scaleindia/Pages/rpl-4_category.dart';
-import 'package:Scaleindia/Pages/trainer_page.dart';
-import 'package:Scaleindia/video_stream/home_page.dart';
+import 'package:ScaleIndia/ApiModel/center_api.dart';
+import 'package:ScaleIndia/Models/route_names.dart';
+import 'package:ScaleIndia/Pages/Assessor/assessor_homepage.dart';
+import 'package:ScaleIndia/Pages/Assessor/assessor_page.dart';
+import 'package:ScaleIndia/Pages/Assessor/sop_page.dart';
+import 'package:ScaleIndia/Pages/EmployeeDashBoard/candidate_sourcing.dart';
+import 'package:ScaleIndia/Pages/EmployeeDashBoard/eca_create.dart';
+import 'package:ScaleIndia/Pages/EmployeeDashBoard/ecas_home.dart';
+import 'package:ScaleIndia/Pages/EmployeeDashBoard/employeeDashBoard_page.dart';
+import 'package:ScaleIndia/Pages/EmployeeDashBoard/employeeRegister_page.dart';
+import 'package:ScaleIndia/Pages/EmployeeDashBoard/employee_page.dart';
+import 'package:ScaleIndia/Pages/EmployeeDashBoard/home_Page.dart';
+import 'package:ScaleIndia/Pages/EmployerDashBoard/company_create.dart';
+import 'package:ScaleIndia/Pages/EmployerDashBoard/company_so_select.dart';
+import 'package:ScaleIndia/Pages/EmployerDashBoard/company_sourcing_home.dart';
+import 'package:ScaleIndia/Pages/EmployerDashBoard/employerDashBoard_page.dart';
+import 'package:ScaleIndia/Pages/EmployerDashBoard/employerHome_page.dart';
+import 'package:ScaleIndia/Pages/EmployerDashBoard/employer_page.dart';
+import 'package:ScaleIndia/Pages/EmployerDashBoard/postJob_page.dart';
+import 'package:ScaleIndia/Pages/EmployerDashBoard/sourcing.dart';
+import 'package:ScaleIndia/Pages/EmployerDashBoard/viewJob_page.dart';
+import 'package:ScaleIndia/Pages/RPL-4Admin/rpl-4_home_page.dart';
+import 'package:ScaleIndia/Pages/RPL-4Admin/rpl-4_login_page.dart';
+import 'package:ScaleIndia/Pages/RPL-4Admin/rpl-4_register_page.dart';
+
+import 'package:ScaleIndia/Pages/RPL-4Candidate/rpl-4_home_page.dart';
+import 'package:ScaleIndia/Pages/RPL-4Candidate/rpl-4_login_page.dart';
+import 'package:ScaleIndia/Pages/RPL-4Candidate/rpl_otp.dart';
+import 'package:ScaleIndia/Pages/RPL-5/rpl-5_login.dart';
+import 'package:ScaleIndia/Pages/RPL-5/rpl5_assessmentPage.dart';
+import 'package:ScaleIndia/Pages/Trainer/trainer_homePage.dart';
+import 'package:ScaleIndia/Pages/assessment/first_page.dart';
+import 'package:ScaleIndia/Pages/assessment/fourth_page.dart';
+import 'package:ScaleIndia/Pages/assessment/practical_page.dart';
+import 'package:ScaleIndia/Pages/assessment/second_page.dart';
+import 'package:ScaleIndia/Pages/assessment/summary_page.dart';
+import 'package:ScaleIndia/Pages/assessment/theory_langugae_page.dart';
+import 'package:ScaleIndia/Pages/assessment/theory_page.dart';
+import 'package:ScaleIndia/Pages/assessment/third_page.dart';
+import 'package:ScaleIndia/Pages/candidate_page.dart';
+import 'package:ScaleIndia/Pages/elearning_page.dart';
+import 'package:ScaleIndia/Pages/employerRegister_page.dart';
+import 'package:ScaleIndia/Pages/forgotPassword_Page1.dart';
+import 'package:ScaleIndia/Pages/forgotPassword_Page2.dart';
+import 'package:ScaleIndia/Pages/onBoarding_page.dart';
+import 'package:ScaleIndia/Pages/rpl-4_category.dart';
+import 'package:ScaleIndia/Pages/trainer_page.dart';
+import 'package:ScaleIndia/video_stream/home_page.dart';
 import 'package:flutter/material.dart';
 
 CenterAssesor centerAssesor;
@@ -50,6 +53,16 @@ String phoneNo;
 String sms;
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
+    case RPL5Login:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: RPL5LoginPage(),
+      );
+    case RPL5AssessmentPage:
+      return _pageRoute(
+        routeName: settings.name,
+        viewToShow: RPL5Assessment(),
+      );
     case RPL4AdminHomePageViewRoute:
       return _pageRoute(
         routeName: settings.name,

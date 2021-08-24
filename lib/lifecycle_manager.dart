@@ -1,13 +1,14 @@
 import 'dart:async';
-import 'package:Scaleindia/Pages/assessment/options_widget.dart';
-import 'package:Scaleindia/Services/background_fetch_service.dart';
-import 'package:Scaleindia/Services/location_service.dart';
-import 'package:Scaleindia/Services/stoppable_service.dart';
-import 'package:Scaleindia/locator.dart';
-import 'package:audioplayers/audio_cache.dart';
+
+import 'package:ScaleIndia/Services/background_fetch_service.dart';
+import 'package:ScaleIndia/Services/location_service.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+import 'Pages/assessment/options_widget.dart';
+import 'Services/stoppable_service.dart';
+import 'locator.dart';
 
 /// Stop and start long running services
 class LifeCycleManager extends StatefulWidget {

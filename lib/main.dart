@@ -1,4 +1,4 @@
-import 'package:Scaleindia/ApiModel/center_api.dart';
+import 'package:ScaleIndia/ApiModel/center_api.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +40,10 @@ class MyApp extends StatelessWidget {
           ),
           navigatorKey: locator<NavigationService>().navigationKey,
           theme: new ThemeData(
-              primaryColor: new Color(0xff09031D), fontFamily: 'Avenir'),
+            primaryColor: new Color(0xff09031D),
+            fontFamily: 'Avenir',
+            //unselectedWidgetColor: Colors.white
+          ),
           home: SplashPage(key),
           onGenerateRoute: generateRoute,
         ));

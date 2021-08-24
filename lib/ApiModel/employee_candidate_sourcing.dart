@@ -17,33 +17,81 @@ class EmployeeCandidateSourcing {
   final String lastCompanyWorkedFor;
   final String lastWorkingDesignation;
   final String address;
+  final String technicalEducation;
+  final String experiencebifurcationwithdesignation;
+  final String lastsalary;
+  final String expectedSalary;
+  final String intrestarea;
+  final String resumeUrl;
+  final String resumeFileName;
   final String imageUrl;
-  final String documentId;
   final String imageFileName;
+  final String documentId;
 
-  EmployeeCandidateSourcing({
-    this.employeeEmailAddress,
-    this.address,
-    this.id,
-    this.name,
-    this.gender,
-    this.phoneNumber,
-    this.alternatePhoneNumber,
-    this.aadharNumber,
-    this.dateOfBirth,
-    this.city,
-    this.educationalQualification,
-    this.fatherName,
-    this.lastCompanyWorkedFor,
-    this.lastWorkingDesignation,
-    this.motherName,
-    this.pincode,
-    this.state,
-    this.workExperiance,
-    this.documentId,
-    this.imageUrl,
-    this.imageFileName,
-  });
+  EmployeeCandidateSourcing(
+      {this.employeeEmailAddress,
+      this.address,
+      this.id,
+      this.name,
+      this.gender,
+      this.phoneNumber,
+      this.alternatePhoneNumber,
+      this.aadharNumber,
+      this.dateOfBirth,
+      this.city,
+      this.educationalQualification,
+      this.fatherName,
+      this.lastCompanyWorkedFor,
+      this.lastWorkingDesignation,
+      this.motherName,
+      this.pincode,
+      this.state,
+      this.workExperiance,
+      this.expectedSalary,
+      this.experiencebifurcationwithdesignation,
+      this.imageFileName,
+      this.imageUrl,
+      this.intrestarea,
+      this.lastsalary,
+      this.resumeFileName,
+      this.resumeUrl,
+      this.documentId,
+      this.technicalEducation});
+
+  static EmployeeCandidateSourcing fromMap(
+      Map<String, dynamic> data, String documentId) {
+    if (data == null) return null;
+    return EmployeeCandidateSourcing(
+        employeeEmailAddress: data['employeeEmailAddress'],
+        id: data['id'],
+        name: data['name'],
+        address: data['address'],
+        gender: data['gender'],
+        phoneNumber: data['phoneNumber'],
+        alternatePhoneNumber: data['alternatePhoneNumber'],
+        dateOfBirth: data['dateOfBirth'],
+        city: data['city'],
+        motherName: data['motherName'],
+        fatherName: data['fatherName'],
+        pincode: data['pincode'],
+        state: data['state'],
+        workExperiance: data['workExperiance'],
+        lastCompanyWorkedFor: data['lastCompanyWorkedFor'],
+        lastWorkingDesignation: data['lastWorkingDesignation'],
+        educationalQualification: data['educationalQualification'],
+        aadharNumber: data['aadharNumber'],
+        expectedSalary: data['expectedSalary'],
+        experiencebifurcationwithdesignation:
+            data['experiencebifurcationwithdesignation'],
+        imageFileName: data['imageFileName'],
+        imageUrl: data['imageUrl'],
+        intrestarea: data['intrestarea'],
+        lastsalary: data['lastsalary'],
+        resumeFileName: data['resumeFileName'],
+        resumeUrl: data['resumeUrl'],
+        documentId: data['documemntId'],
+        technicalEducation: data['technicalEducation']);
+  }
 
   Map<String, dynamic> toMap() {
     return {
@@ -65,36 +113,17 @@ class EmployeeCandidateSourcing {
       'lastCompanyWorkedFor': lastCompanyWorkedFor,
       'lastWorkingDesignation': lastWorkingDesignation,
       'educationalQualification': educationalQualification,
-      'documnetId': documentId,
       'imageUrl': imageUrl,
       'imageFileName': imageFileName,
+      'expectedSalary': expectedSalary,
+      'experiencebifurcationwithdesignation':
+          experiencebifurcationwithdesignation,
+      'intrestarea': intrestarea,
+      'lastsalary': lastsalary,
+      'resumeFileName': resumeFileName,
+      'resumeUrl': resumeUrl,
+      'documnetId': documentId,
+      'technicalEducation': technicalEducation,
     };
-  }
-
-  static EmployeeCandidateSourcing fromMap(
-      Map<String, dynamic> map, String documentId) {
-    if (map == null) return null;
-    return EmployeeCandidateSourcing(
-        employeeEmailAddress: map['employeeEmailAddress'],
-        id: map['id'],
-        name: map['name'],
-        address: map['address'],
-        gender: map['gender'],
-        phoneNumber: map['phoneNumber'],
-        alternatePhoneNumber: map['alternatePhoneNumber'],
-        dateOfBirth: map['dateOfBirth'],
-        city: map['city'],
-        motherName: map['motherName'],
-        fatherName: map['fatherName'],
-        pincode: map['pincode'],
-        state: map['state'],
-        workExperiance: map['workExperiance'],
-        lastCompanyWorkedFor: map['lastCompanyWorkedFor'],
-        lastWorkingDesignation: map['lastWorkingDesignation'],
-        educationalQualification: map['educationalQualification'],
-        documentId: map['documemntId'],
-        imageUrl: map['imageUrl'],
-        imageFileName: map['imageFileName'],
-        aadharNumber: map['aadharNumber']);
   }
 }

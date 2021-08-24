@@ -111,7 +111,11 @@ class TrainerLoginPage extends StatelessWidget {
                       BusyButton(
                         title: 'Login',
                         color: Colors.green,
-                        onPressed: () {},
+                        onPressed: () {
+                          model.login(
+                              email: emailController.text,
+                              password: passwordController.text);
+                        },
                       ),
                       SizedBox(
                         height: 30,

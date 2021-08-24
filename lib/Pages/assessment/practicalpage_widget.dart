@@ -26,8 +26,13 @@ class PracticalPageWidget extends StatefulWidget {
   final List<Practical> practical;
   final Practical practical1;
   final Candidate candidate;
+  final bool busy;
   PracticalPageWidget(
-      {Key key, this.practical, this.candidate, this.practical1})
+      {Key key,
+      this.practical,
+      this.candidate,
+      this.practical1,
+      this.busy = false})
       : super(key: key);
   @override
   _PracticalPageWidgetState createState() => _PracticalPageWidgetState();
@@ -39,12 +44,13 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
   final NavigationService _navigationService = locator<NavigationService>();
   final Map<int, dynamic> _answers = {};
   final Api _api = locator<Api>();
-  bool _isloading = false;
+  bool _isUploaded = false;
+  bool _isLoading = false;
   double _progress;
   setSelectedUser(int val) {
     setState(() {
       _currentIndex = val;
-      _currentIndex = _isloading as int;
+      _currentIndex = _isUploaded as int;
     });
   }
 
@@ -54,6 +60,7 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
   @override
   Widget build(BuildContext context) {
     String _text = "";
+    print(_isUploaded);
     this.widget.practical.retainWhere(
         (element) => element.pqLang.contains(this.widget.practical1.pqLang));
     return ViewModelBuilder<PracticalPageViewModel>.reactive(
@@ -118,18 +125,23 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
                     height: 15,
                   ),
                   // ignore: deprecated_member_use
-                  _isloading == true
-                      ? progress(_isloading)
+                  _isUploaded == true
+                      ? progress(_isUploaded)
                       // ignore: deprecated_member_use
                       : RaisedButton.icon(
-                          onPressed: () {
-                            // opencamera();
-                          },
+                          onPressed: this.widget.busy
+                              ? () {
+                                  //for rpl-5 assesssment
+                                  opencamera();
+                                }
+                              : () {
+                                  // opencamera();
+                                },
                           shape: RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10.0))),
                           label: Text(
-                            'Observation',
+                            'Observation${_currentIndex + 1}',
                             style: TextStyle(color: Colors.white),
                           ),
                           icon: Icon(
@@ -143,49 +155,57 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
                   SizedBox(
                     height: 15,
                   ),
-                  Text(
-                    "Max Marks:${widget.practical[_currentIndex].pqMarks.toString()}",
-                    style: TextStyle(fontSize: 17),
-                  ),
+                  widget.busy
+                      ? Container()
+                      : Text(
+                          "Max Marks:${widget.practical[_currentIndex].pqMarks.toString()}",
+                          style: TextStyle(fontSize: 17),
+                        ),
                   SizedBox(
                     height: 8,
                   ),
-                  Text(
-                    "Enter Marks:",
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
-                  ),
+                  widget.busy
+                      ? Container()
+                      : Text(
+                          "Enter Marks:",
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.w700),
+                        ),
                   SizedBox(
                     height: 15,
                   ),
-                  Container(
-                    height: 85,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Color.fromRGBO(32, 132, 232, .3),
-                              blurRadius: 20,
-                              offset: Offset(0, 10))
-                        ]),
-                    child: Container(
-                      height: 80,
-                      width: 150,
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 1),
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(color: Colors.grey[200]))),
-                      child: InputField(
-                        placeholder: _text,
-                        text1InputType: TextInputType.number,
-                        controller: textController,
-                        onChanged: (v) => setState(() {
-                          _text = v;
-                          _answers[_currentIndex] = v;
-                        }),
-                      ),
-                    ),
-                  ),
+                  widget.busy
+                      ? Container()
+                      : Container(
+                          height: 85,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Color.fromRGBO(32, 132, 232, .3),
+                                    blurRadius: 20,
+                                    offset: Offset(0, 10))
+                              ]),
+                          child: Container(
+                            height: 80,
+                            width: 150,
+                            padding: EdgeInsets.fromLTRB(10, 10, 10, 1),
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom:
+                                        BorderSide(color: Colors.grey[200]))),
+                            child: InputField(
+                              placeholder: _text,
+                              text1InputType: TextInputType.number,
+                              controller: textController,
+                              onChanged: (v) => setState(() {
+                                _text = v;
+                                _answers[_currentIndex] = v;
+                              }),
+                            ),
+                          ),
+                        ),
                   SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -259,28 +279,33 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
   }
 
   void _nextSubmit({@required String mark}) async {
-    if (_answers[_currentIndex] == null) {
-      _dialogService.showDialog(
-        title: 'Failed',
-        description: "You must enter a mark to continue",
-      );
+    if (widget.busy == true) {
+      if (_isUploaded == false) {
+        _dialogService.showDialog(
+          title: 'Failed ',
+          description: "Please upload a video to continue",
+        );
+        return;
+      }
+    } else {
+      if (_answers[_currentIndex] == null) {
+        _dialogService.showDialog(
+          title: 'Failed',
+          description: "You must enter a mark to continue",
+        );
+      }
+      if (int.parse(mark) > widget.practical[_currentIndex].pqMarks) {
+        _dialogService.showDialog(
+          title: 'Failed',
+          description: "Input value is greater than Maximum Marks",
+        );
+        return;
+      }
     }
-    if (int.parse(mark) > widget.practical[_currentIndex].pqMarks) {
-      _dialogService.showDialog(
-        title: 'Failed',
-        description: "Input value is greater than Maximum Marks",
-      );
-      return;
-    }
-    /* if (_isloading == false) {
-      _dialogService.showDialog(
-        title: 'Failed ',
-        description: "Please upload a video to continue",
-      );
-      return;
-    }*/
+
     if (_currentIndex < (widget.practical.length - 1)) {
       setState(() {
+        _isUploaded = false;
         _currentIndex++;
       });
       setState(() {
@@ -300,8 +325,9 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
         if (tempManipulatedData[tqNos] == null) {
           tempManipulatedData[tqNos] = PracticalResult.fromJson({
             'prId': 0,
-            'prbatchId': centerAssesor.asId,
-            'prCandidateId': this.widget.candidate.clEnrollmentNo,
+            'prbatchId': this.widget.busy ? 1 : centerAssesor.asId,
+            'prCandidateId':
+                this.widget.busy ? '123' : this.widget.candidate.clEnrollmentNo,
             'prQuestionId': 0,
             'prMarks': 0,
             'prNos': quesObj.pqNos == null ? 'null' : tqNos,
@@ -338,7 +364,9 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
                         child: Text('Ok'),
                         onPressed: () {
                           Navigator.of(context).pop();
-                          _navigationService.navigateTo(ThirdViewRoute);
+                          widget.busy
+                              ? _navigationService.navigateTo(RPL5Login)
+                              : _navigationService.navigateTo(ThirdViewRoute);
                         },
                       )
                     ],
@@ -389,8 +417,9 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
 
   Future<void> uploadImage(File video) async {
     try {
+      _isLoading = true;
       int randomNumber = Random().nextInt(10000000);
-      String videoLocation = 'practical/video$randomNumber.jpg';
+      String videoLocation = 'rpl-5/video$randomNumber.mp4';
       // ignore: deprecated_member_use
       final Reference reference =
           FirebaseStorage.instanceFor(bucket: "gs://scaleindia.appspot.com")
@@ -400,7 +429,8 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
 
       uploadTask.snapshotEvents.listen((event) {
         setState(() {
-          _isloading = true;
+          _isLoading = false;
+          _isUploaded = true;
           _progress = event.bytesTransferred / event.totalBytes.toDouble();
           print(_progress);
         });
@@ -421,21 +451,31 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
       var videoString = await ref.getDownloadURL();
 
       // Add location and url to database
-      await FirebaseFirestore.instance.collection('PracticalVideo').doc().set({
+      await FirebaseFirestore.instance
+          .collection('RPL-5PracticalVideo')
+          .doc()
+          .set({
         'url': videoString,
         'location': text,
-        'candidateID': widget.candidate.clEnrollmentNo,
-        'candidateName': widget.candidate.clName,
+        'candidateID':
+            this.widget.busy ? '123' : widget.candidate.clEnrollmentNo,
+        'candidateName': this.widget.busy ? 'ABC' : widget.candidate.clName,
+        'Nos': widget.practical[_currentIndex].pqNos,
+        'slno': _currentIndex + 1,
+        'commonQuestion': widget.practical[_currentIndex].pqCommonQuestion,
+        'Question': widget.practical[_currentIndex].pqQuestion,
+        'MAXMarks': widget.practical[_currentIndex].pqMarks,
+        'UploadDate&Time': FieldValue.serverTimestamp()
       });
     } catch (e) {
       print(e.message);
-      /*showDialog(
+      showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
               content: Text(e.message),
             );
-          });*/
+          });
     }
   }
 
@@ -454,46 +494,27 @@ class _PracticalPageWidgetState extends State<PracticalPageWidget> {
   progress(loading) {
     if (loading) {
       // ignore: deprecated_member_use
-      return RaisedButton.icon(
-        onPressed: () {
-          print('Button Clicked.');
-        },
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10.0))),
-        label: Text(
-          'Uploaded',
-          style: TextStyle(color: Colors.white),
-        ),
-        icon: Icon(
-          Icons.videocam,
-          color: Colors.white,
-        ),
-        textColor: Colors.white,
-        splashColor: Colors.blue,
-        color: Colors.grey,
+      return Column(
+        children: [
+          _progress * 100 == 100
+              ? Text(
+                  'Uploaded Successfully',
+                  style: TextStyle(color: Colors.green),
+                )
+              : Container(),
+          CircularProgressIndicator(
+            backgroundColor: Colors.black,
+            value: _progress,
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+          ),
+          Text(
+            '${(_progress * 100).toStringAsFixed(2)} % ',
+            textAlign: TextAlign.center,
+          ),
+        ],
       );
     } else {
       return Text('');
     }
   }
-}
-
-class PracticalVide0Storage {
-  final String location;
-  final String url;
-  final String candidateID;
-  final DocumentReference reference;
-
-  PracticalVide0Storage.fromMap(Map<String, dynamic> map, {this.reference})
-      : assert(map['location'] != null),
-        assert(map['url'] != null),
-        location = map['location'],
-        candidateID = map['candidateID'],
-        url = map['url'];
-
-  PracticalVide0Storage.fromSnapshot(DocumentSnapshot snapshot)
-      : this.fromMap(snapshot.data(), reference: snapshot.reference);
-
-  @override
-  String toString() => "PracticalVide0Storage<$location:$url>";
 }

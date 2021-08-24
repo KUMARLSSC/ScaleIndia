@@ -4,14 +4,15 @@ import 'package:Scaleindia/ApiModel/center_api.dart';
 import 'package:Scaleindia/ApiModel/practical_result_api.dart';
 import 'package:Scaleindia/ApiModel/theory_api.dart';
 import 'package:Scaleindia/Models/route_names.dart';
+import 'package:Scaleindia/Pages/assessment/quiz_finished.dart';
 import 'package:Scaleindia/Pages/assessment/summary_page.dart';
 import 'package:Scaleindia/Services/api_services.dart';
 import 'package:Scaleindia/Services/navigation_service.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
 import 'package:Scaleindia/widgets/loader_animation.dart';
-import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:camera/camera.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../locator.dart';
@@ -20,6 +21,7 @@ import '../../locator.dart';
 class Options extends StatefulWidget {
   final List<Theory> theory;
   final Theory theory1;
+  final bool busy;
   final Candidate candidate;
   CameraController cameraController;
   int notReccount = 0;
@@ -30,6 +32,7 @@ class Options extends StatefulWidget {
     this.theory,
     this.candidate,
     this.notReccount,
+    this.busy = false,
     this.cameraController,
   }) : super(key: globalKey);
   @override
@@ -277,60 +280,83 @@ class _OptionsState extends State<Options> {
         _currentIndex++;
       });
     } else {
-      var tempManipulatedData = {};
-      CenterAssesor centerAssesor =
-          Provider.of<CenterAssesor>(context, listen: false);
-      this._answers.forEach((index, value) {
-        var quesObj = this.widget.theory[index];
-        String tqNos = quesObj.tqNos;
-        if (tqNos == null) {
-          tqNos = "0";
-        }
-        if (tempManipulatedData[tqNos] == null) {
-          tempManipulatedData[tqNos] = PracticalResult.fromJson({
-            'prId': 0,
-            'prbatchId': centerAssesor.asId,
-            'prCandidateId': this.widget.candidate.clEnrollmentNo,
-            'prQuestionId': 0,
-            'prMarks': 0,
-            'prNos': quesObj.tqNos == null ? 'null' : tqNos,
-            'prType': true,
-          });
-        }
-        tempManipulatedData[tqNos].prQuestionId =
-            tempManipulatedData[tqNos].prQuestionId + 1;
-        if (quesObj.tqCorrectAnswer == value)
-          tempManipulatedData[tqNos].prMarks =
-              tempManipulatedData[tqNos].prMarks + 1;
-      });
-      print(tempManipulatedData);
+      /* List data = [];
+      for (int i = 0; i < widget.theory.length; i++)
+        FirebaseFirestore.instance.collection('TheoryMark').doc().set({
+          'Nos': widget.theory[i].tqNos,
+          'slno': widget.theory[i].tqCode,
+          'Question': widget.theory[i].tqQuestion,
+          'correctAnswer': widget.theory[i].tqCorrectAnswer,
+          'givenAnswer': this._answers[i],
+          'MarksGiven':
+              widget.theory[i].tqCorrectAnswer == this._answers[i] ? 1 : 0,
+          'candidateID': '123',
+          'candidateName': 'Abc',
+          'UploadDate&Time': FieldValue.serverTimestamp()
+        });*/
+      try {
+        var tempManipulatedData = {};
+        CenterAssesor centerAssesor =
+            Provider.of<CenterAssesor>(context, listen: false);
+        this._answers.forEach((index, value) {
+          var quesObj = this.widget.theory[index];
+          String tqNos = quesObj.tqNos;
+          if (tqNos == null) {
+            tqNos = "0";
+          }
+          if (tempManipulatedData[tqNos] == null) {
+            tempManipulatedData[tqNos] = PracticalResult.fromJson({
+              'prId': 0,
+              'prbatchId': this.widget.busy ? 1 : centerAssesor.asId,
+              'prCandidateId': this.widget.busy
+                  ? '123'
+                  : this.widget.candidate.clEnrollmentNo,
+              'prQuestionId': 0,
+              'prMarks': 0,
+              'prNos': quesObj.tqNos,
+              'prType': true,
+            });
+          }
+          tempManipulatedData[tqNos].prQuestionId =
+              tempManipulatedData[tqNos].prQuestionId + 1;
+          if (quesObj.tqCorrectAnswer == value)
+            tempManipulatedData[tqNos].prMarks =
+                tempManipulatedData[tqNos].prMarks + 1;
+        });
+        print(tempManipulatedData);
 
-      // ignore: deprecated_member_use
-      var list = new List<PracticalResult>();
-      tempManipulatedData.forEach((key, value) {
-        if (value.prNos == "0") {
-          value['prNos'] = null;
-        }
-        list.add(value);
-      });
-      await _loading()
-          .then((value) => _api.updateTheory(list))
-          .whenComplete(() => showDialog(
-              context: context,
-              barrierDismissible: true,
-              builder: (BuildContext context) => AlertDialog(
-                    title: Text("Completed"),
-                    content: Text("Theory exam was completed successfully"),
-                    actions: <Widget>[
-                      // ignore: deprecated_member_use
-                      FlatButton(
-                          child: Text('Ok'),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                            _navigationService.navigateTo(ThirdViewRoute);
-                          })
-                    ],
-                  )));
+        // ignore: deprecated_member_use
+        var list = new List<PracticalResult>();
+        tempManipulatedData.forEach((key, value) {
+          if (value.prNos == "0") {
+            value['prNos'] = null;
+          }
+          list.add(value);
+        });
+        await _loading()
+            .then((value) => _api.updateTheory(list))
+            .whenComplete(() => showDialog(
+                context: context,
+                barrierDismissible: true,
+                builder: (BuildContext context) => AlertDialog(
+                      title: Text("Completed"),
+                      content: Text("Theory exam was completed successfully"),
+                      actions: <Widget>[
+                        // ignore: deprecated_member_use
+                        FlatButton(
+                            child: Text('Ok'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              widget.busy
+                                  ? _navigationService.navigateTo(RPL5Login)
+                                  : _navigationService
+                                      .navigateTo(ThirdViewRoute);
+                            })
+                      ],
+                    )));
+      } catch (e) {
+        print(e);
+      }
     }
   }
 
@@ -361,8 +387,9 @@ class _OptionsState extends State<Options> {
         if (tempManipulatedData[tqNos] == null) {
           tempManipulatedData[tqNos] = PracticalResult.fromJson({
             'prId': 0,
-            'prbatchId': centerAssesor.asId,
-            'prCandidateId': this.widget.candidate.clEnrollmentNo,
+            'prbatchId': this.widget.busy ? 1 : centerAssesor.asId,
+            'prCandidateId':
+                this.widget.busy ? '123' : this.widget.candidate.clEnrollmentNo,
             'prQuestionId': 0,
             'prMarks': 0,
             'prNos': quesObj.tqNos == null ? 'null' : tqNos,
@@ -397,7 +424,9 @@ class _OptionsState extends State<Options> {
                     child: Text('Ok'),
                     onPressed: () {
                       Navigator.of(context).pop();
-                      _navigationService.navigateTo(ThirdViewRoute);
+                      widget.busy
+                          ? _navigationService.navigateTo(RPL5Login)
+                          : _navigationService.navigateTo(ThirdViewRoute);
                     },
                   )
                 ],

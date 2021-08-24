@@ -1,3 +1,4 @@
+import 'package:Scaleindia/Pages/scorm.dart';
 import 'package:Scaleindia/ViewModels/elearnig_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -60,12 +61,16 @@ class _ELearningPageState extends State<ELearningPage> {
                             children: <Widget>[
                               InkWell(
                                 child: courseWidget(
-                                    'LSS/Q2501',
-                                    'Stiching Operator Footwear',
+                                    'Unit 1 ',
+                                    'Overview of Leather Sector Skill',
                                     'img1',
                                     Color(0xffff6a65),
                                     Color(0xffff5954)),
                                 onTap: () {
+                                  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Scorm()),
+  );
                                 },
                               ),
                               SizedBox(
@@ -78,8 +83,7 @@ class _ELearningPageState extends State<ELearningPage> {
                                     'img2',
                                     Color(0xffe9eefa),
                                     Colors.white),
-                                onTap: () {
-                                },
+                                onTap: () {},
                               ),
                             ],
                           ),
@@ -101,8 +105,7 @@ class _ELearningPageState extends State<ELearningPage> {
                                   'img3',
                                   Color(0xffe9eefa),
                                   Colors.white),
-                              onTap: () {
-                              },
+                              onTap: () {},
                             ),
                             SizedBox(
                               height: 20,
@@ -114,8 +117,7 @@ class _ELearningPageState extends State<ELearningPage> {
                                   'img4',
                                   Color(0xffbdcddfa),
                                   Color(0xffcedaff)),
-                              onTap: () {
-                              },
+                              onTap: () {},
                             ),
                           ],
                         ),

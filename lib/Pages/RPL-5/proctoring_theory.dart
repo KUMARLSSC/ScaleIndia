@@ -1,32 +1,28 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
-import 'package:ScaleIndia/ApiModel/candidate_api.dart';
-import 'package:ScaleIndia/ApiModel/center_api.dart';
-import 'package:ScaleIndia/ApiModel/theory_api.dart';
-import 'package:ScaleIndia/Pages/assessment/theory_page.dart';
-import 'package:ScaleIndia/widgets/timer_widget.dart';
+import 'package:Scaleindia/ApiModel/theory_api.dart';
+import 'package:Scaleindia/Pages/RPL-5/rpl5_theory.dart';
+import 'package:Scaleindia/Pages/assessment/utils.dart';
+import 'package:Scaleindia/widgets/timer_widget.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:camera/camera.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/material.dart';
-import 'utils.dart';
 import 'package:image/image.dart' as imglib;
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 import 'package:quiver/collection.dart';
 
-class FaceDeduction extends StatefulWidget {
+class RPL5TheoryProctoring extends StatefulWidget {
   final Theory theory;
-  final Candidate candidate;
-  final CenterAssesor centerAssesor;
-  FaceDeduction({this.candidate, this.centerAssesor, this.theory});
+
+  RPL5TheoryProctoring({this.theory});
   @override
   _FaceDeductionState createState() => _FaceDeductionState();
 }
 
-class _FaceDeductionState extends State<FaceDeduction> {
+class _FaceDeductionState extends State<RPL5TheoryProctoring> {
   File jsonFile;
   // ignore: unused_field
   dynamic _scanResults;
@@ -201,9 +197,7 @@ class _FaceDeductionState extends State<FaceDeduction> {
           title: const Text('Theory'),
           actions: [TimerLeft()],
         ),
-        body: TheoryPage(
-          candidate: widget.candidate,
-          centerAssesor: widget.centerAssesor,
+        body: RPL5TheoryPage(
           theory: widget.theory,
           notReccount: notReccount,
           cameraController: _camera,

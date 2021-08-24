@@ -1,10 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-import 'package:Scaleindia/ApiModel/candidate_api.dart';
-import 'package:Scaleindia/ApiModel/center_api.dart';
+import 'package:Scaleindia/Pages/RPL-5/rpl-5_theory_language_page.dart';
 import 'package:Scaleindia/Pages/assessment/practical_language_page.dart';
-import 'package:Scaleindia/Pages/assessment/theory_langugae_page.dart';
 import 'package:Scaleindia/Pages/assessment/fifthpage_viewmodel.dart';
 import 'package:Scaleindia/Pages/assessment/utils.dart';
 import 'package:Scaleindia/shared/shared_styles.dart';
@@ -24,18 +22,14 @@ import 'package:path_provider/path_provider.dart';
 import 'package:stacked/stacked.dart';
 import 'package:image/image.dart' as imglib;
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
-import 'utils.dart';
 import 'package:quiver/collection.dart';
 
-class FourthPage extends StatefulWidget {
-  final Candidate candidate;
-  final CenterAssesor centerAssesor;
-  FourthPage({this.candidate, this.centerAssesor});
+class RPL5Assessment extends StatefulWidget {
   @override
   _FourthPageState createState() => _FourthPageState();
 }
 
-class _FourthPageState extends State<FourthPage> {
+class _FourthPageState extends State<RPL5Assessment> {
   String url;
   bool _isloading = false;
   double _progress;
@@ -64,8 +58,8 @@ class _FourthPageState extends State<FourthPage> {
     super.initState();
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    _initializeCamera();
-    initPlayer();
+    //_initializeCamera();
+    //initPlayer();
   }
 
   @override
@@ -236,7 +230,7 @@ class _FourthPageState extends State<FourthPage> {
   Future<void> uploadImage(File image) async {
     try {
       int randomNumber = Random().nextInt(10000000);
-      String imageLocation = 'images/image$randomNumber.jpg';
+      String imageLocation = 'RPL-5images/image$randomNumber.jpg';
       // ignore: deprecated_member_use
       final Reference reference =
           FirebaseStorage.instanceFor(bucket: "gs://scaleindia.appspot.com")
@@ -263,7 +257,7 @@ class _FourthPageState extends State<FourthPage> {
   Future<void> uploadImage2(File image2) async {
     try {
       int randomNumber2 = Random().nextInt(10000000);
-      String imageLocation2 = 'Aadhar/image$randomNumber2.jpg';
+      String imageLocation2 = 'RPL-5Aadhar/image$randomNumber2.jpg';
       final Reference reference2 =
           FirebaseStorage.instanceFor(bucket: "gs://scaleindia.appspot.com")
               .ref()
@@ -292,10 +286,10 @@ class _FourthPageState extends State<FourthPage> {
       var imageString = await ref.getDownloadURL();
 
       // Add location and url to database
-      await FirebaseFirestore.instance.collection('AadharCard').doc().set({
+      await FirebaseFirestore.instance.collection('RPL-5AadharCard').doc().set({
         'url': imageString,
         'location': text2,
-        'candidateID': widget.candidate.clEnrollmentNo,
+        'candidateID': '123',
       });
     } catch (e) {
       print(e.message);
@@ -309,11 +303,11 @@ class _FourthPageState extends State<FourthPage> {
       var imageString = await ref.getDownloadURL();
 
       // Add location and url to database
-      await FirebaseFirestore.instance.collection('Image').doc().set({
+      await FirebaseFirestore.instance.collection('RPL-5Image').doc().set({
         'url': imageString,
         'location': text,
-        'candidateID': widget.candidate.clEnrollmentNo,
-        'candidateName': widget.candidate.clName,
+        'candidateID': '123',
+        'candidateName': 'ABC',
       });
     } catch (e) {
       print(e.message);
@@ -421,7 +415,7 @@ class _FourthPageState extends State<FourthPage> {
         backgroundColor: (_faceFound) ? Colors.blue : Colors.blueGrey,
         child: Icon(Icons.camera),
         onPressed: () {
-          if (_faceFound) _handle(widget.candidate.clName, context);
+          if (_faceFound) _handle('ABC', context);
         },
         heroTag: null,
       ),
@@ -454,10 +448,9 @@ class _FourthPageState extends State<FourthPage> {
   }*/
 
   Future<void> opencamera(BuildContext context) async {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => _buildImage(context)),
-    );
+    final pickedFile = await ImagePicker().getImage(source: ImageSource.camera);
+    File cropped = await ImageCropper.cropImage(sourcePath: pickedFile.path);
+    uploadImage(cropped);
   }
 
   Future<void> opencamera2(BuildContext context) async {
@@ -513,49 +506,27 @@ class _FourthPageState extends State<FourthPage> {
         children: <Widget>[
           Center(
             child: Container(
-              child: widget.candidate.clTheoryDeone == theory
-                  // ignore: deprecated_member_use
-                  ? RaisedButton(
-                      splashColor: Colors.blue,
-                      elevation: 3.0,
-                      color: Colors.black12,
-                      child: Text(
-                        'Theory',
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                      onPressed: () {},
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                    )
-                  // ignore: deprecated_member_use
-                  : RaisedButton(
-                      splashColor: Colors.blue,
-                      elevation: 5.0,
-                      color: new Color(0xFFEA4335),
-                      child: Text(
-                        'Theory',
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LanguagePage(
-                                      candidate: widget.candidate,
-                                      centerAssesor: widget.centerAssesor,
-                                    )));
-                      },
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                    ),
+              child: RaisedButton(
+                splashColor: Colors.blue,
+                elevation: 5.0,
+                color: new Color(0xFFEA4335),
+                child: Text(
+                  'Theory',
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    color: Colors.white,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RPL5TheoryLanguagePage()));
+                },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+              ),
             ),
           ),
           SizedBox(
@@ -563,48 +534,29 @@ class _FourthPageState extends State<FourthPage> {
           ),
           Center(
             child: Container(
-              child: widget.candidate.clPracticalDone == practical
-                  // ignore: deprecated_member_use
-                  ? RaisedButton(
-                      splashColor: Colors.blue,
-                      elevation: 3.0,
-                      color: Colors.black12,
-                      child: Text(
-                        'Practical',
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                      onPressed: () {},
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                    )
-                  // ignore: deprecated_member_use
-                  : RaisedButton(
-                      splashColor: Colors.blue,
-                      elevation: 5.0,
-                      color: new Color(0xFF34A853),
-                      child: Text(
-                        'Practical',
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LanguagePage1(
-                                      candidate: widget.candidate,
-                                    )));
-                      },
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                    ),
+              child: RaisedButton(
+                splashColor: Colors.blue,
+                elevation: 5.0,
+                color: new Color(0xFF34A853),
+                child: Text(
+                  'Practical',
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    color: Colors.white,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LanguagePage1(
+                                busy: true,
+                              )));
+                },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+              ),
             ),
           ),
         ],
@@ -658,7 +610,7 @@ class _FourthPageState extends State<FourthPage> {
                       text: "Candidate ID:",
                       style: TextStyle(color: Colors.black, fontSize: 17)),
                   TextSpan(
-                      text: widget.candidate.clEnrollmentNo,
+                      text: '123',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 20,
@@ -729,8 +681,33 @@ class _FourthPageState extends State<FourthPage> {
                       SizedBox(
                         height: 18,
                       ),
-
-                      progress2(_isloading2, context),
+                      Center(
+                        child: Container(
+                          child: RaisedButton(
+                            splashColor: Colors.blue,
+                            elevation: 5.0,
+                            color: new Color(0xFFEA4335),
+                            child: Text(
+                              'Theory',
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                color: Colors.white,
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          RPL5TheoryLanguagePage()));
+                            },
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      //progress2(_isloading2, context),
                       // ignore: deprecated_member_use
                       RaisedButton(
                         splashColor: Colors.blue,
@@ -775,24 +752,4 @@ class _FourthPageState extends State<FourthPage> {
       ),
     );
   }
-}
-
-class ImageStorage {
-  final String location;
-  final String url;
-  final String candidateID;
-  final DocumentReference reference;
-
-  ImageStorage.fromMap(Map<String, dynamic> map, {this.reference})
-      : assert(map['location'] != null),
-        assert(map['url'] != null),
-        location = map['location'],
-        candidateID = map['candidateID'],
-        url = map['url'];
-
-  ImageStorage.fromSnapshot(DocumentSnapshot snapshot)
-      : this.fromMap(snapshot.data(), reference: snapshot.reference);
-
-  @override
-  String toString() => "ImageStorage<$location:$url>";
 }

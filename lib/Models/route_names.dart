@@ -41,4 +41,6 @@ const String CompanySouringPageViewRoute = "CompanySouringPageViewRoute";
 const String Rpl4CategoryViewRoute = "Rpl4CategoryViewRoute";
 const String Rpl4AdminViewRoute = "Rpl4AdminViewRoute";
 const String RPL4AdminHomePageViewRoute = "RPL4AdminHomePageViewRoute";
+const String RPL5AssessmentPage = "RPL5AssessmentPage";
+const String RPL5Login = "RPL5Login";
 //Generate the view here
